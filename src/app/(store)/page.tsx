@@ -1,8 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ProductCard } from "@/components/store/product-card";
 import { Button } from "@/components/ui/button";
 import { site } from "@/content/site";
-import { solutions } from "@/content/solutions";
 import { listCategories, listProducts } from "@/features/products/queries";
 
 export default async function HomePage() {
@@ -13,44 +13,32 @@ export default async function HomePage() {
 
   return (
     <div>
-      <section className="mx-auto grid max-w-7xl items-end gap-8 px-4 pt-10 pb-12 lg:grid-cols-[1.1fr_0.9fr] lg:pt-16">
-        <div>
-          <h1 className="max-w-xl font-heading text-4xl leading-[1.05] text-ink md:text-6xl">
-            Todo para tu alambrado, en un solo lugar.
-          </h1>
-          <p className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground">
-            Elegí los materiales. Nosotros te ayudamos con medidas, stock y el cierre por WhatsApp.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Button nativeButton={false} render={<Link href="/productos" />}>Armá tu pedido</Button>
-            <Button nativeButton={false} variant="outline" render={<Link href="/soluciones" />}>
-              ¿Qué querés cercar?
+      <section className="at-hero bg-ink text-background">
+        <div className="at-hero-grid">
+          <div className="at-hero-copy">
+            <p className="at-hero-kicker font-mono">Depósito en Tandil</p>
+            <h1 className="at-hero-title">Elegí los materiales y cerrá el pedido.</h1>
+            <p className="at-hero-lead">
+              Tejido, postes y portones con stock real. Armás la lista y la confirmamos por WhatsApp.
+            </p>
+            <Button className="at-hero-cta" nativeButton={false} render={<Link href="/productos" />}>
+              Ver productos
             </Button>
+            <p className="at-hero-address">
+              {site.address}. {site.addressDetail}
+            </p>
           </div>
-        </div>
-        <div className="mesh-ground min-h-72 border border-border p-6 lg:min-h-[28rem]">
-          <p className="max-w-xs bg-card px-3 py-2 text-sm">
-            Tejido, postes de hormigón, portones y seguridad perimetral. Local en {site.address}, Tandil.
-          </p>
-        </div>
-      </section>
-
-      <section className="border-y border-border">
-        <div className="mx-auto max-w-7xl px-4 py-10">
-          <h2 className="font-heading text-3xl">¿Qué querés cercar?</h2>
-          <ul className="mt-6 divide-y divide-border border-y border-border">
-            {solutions.map((solution) => (
-              <li key={solution.slug}>
-                <Link
-                  href={`/soluciones/${solution.slug}`}
-                  className="flex items-baseline justify-between gap-4 py-3 hover:bg-card"
-                >
-                  <span className="font-heading text-xl">{solution.title}</span>
-                  <span className="hidden text-sm text-muted-foreground sm:block">{solution.summary}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <div className="at-hero-media">
+            <Image
+              src="/hero-alambrado.jpg"
+              alt="Rollos de tejido galvanizado, postes de hormigón y un portón en el depósito"
+              width={1280}
+              height={720}
+              priority
+              sizes="(min-width: 768px) 55vw, 100vw"
+              className="at-hero-img"
+            />
+          </div>
         </div>
       </section>
 
@@ -59,12 +47,12 @@ export default async function HomePage() {
         {categories.length === 0 ? (
           <p className="mt-6 text-sm text-muted-foreground">Las familias de producto se cargan con el catálogo.</p>
         ) : (
-        <div className="mt-6 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
+        <div className="cat-grid">
           {categories.map((category, index) => (
             <Link
               key={category.id}
               href={`/productos/${category.slug}`}
-              className={`bg-background p-5 hover:bg-card ${index === 0 ? "sm:col-span-2 lg:min-h-40" : ""}`}
+              className={`cat-cell ${index === 0 ? "cat-span" : ""}`}
             >
               <p className="font-heading text-2xl">{category.name}</p>
               <p className="mt-2 text-sm text-muted-foreground">
@@ -94,25 +82,24 @@ export default async function HomePage() {
         )}
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-10 px-4 py-16 md:grid-cols-2">
-        <div className="border border-border bg-card p-6">
-          <h2 className="font-heading text-3xl">Llevar materiales</h2>
-          <p className="mt-3 max-w-md text-sm leading-relaxed">
-            Si ya sabés altura, abertura y metros, armá la lista y la vemos juntos.
-          </p>
-          <Button className="mt-6" nativeButton={false} render={<Link href="/productos" />}>
-            Ir al catálogo
-          </Button>
-        </div>
-        <div className="bg-ink p-6 text-background">
-          <h2 className="font-heading text-3xl">Necesito la obra completa</h2>
-          <p className="mt-3 max-w-md text-sm leading-relaxed text-background/80">
-            Medimos el terreno, definimos tejido y postes, y cotizamos la instalación.
-          </p>
-          <Button className="mt-6" nativeButton={false} variant="secondary" render={<Link href="/instalaciones" />}>
-            Pedir instalación
-          </Button>
-        </div>
+      <section className="border-y border-border bg-secondary">
+        <ol className="mx-auto grid max-w-7xl gap-6 px-4 py-10 md:grid-cols-3">
+          <li>
+            <p className="font-mono text-sm text-primary">01</p>
+            <p className="mt-2 font-heading text-2xl">Elegís la mercadería</p>
+            <p className="mt-2 text-sm text-muted-foreground">Variante, cantidad y unidad, con el stock del depósito.</p>
+          </li>
+          <li>
+            <p className="font-mono text-sm text-primary">02</p>
+            <p className="mt-2 font-heading text-2xl">Armás el pedido</p>
+            <p className="mt-2 text-sm text-muted-foreground">Nombre, teléfono y si es retiro o envío.</p>
+          </li>
+          <li>
+            <p className="font-mono text-sm text-primary">03</p>
+            <p className="mt-2 font-heading text-2xl">Cerramos la venta</p>
+            <p className="mt-2 text-sm text-muted-foreground">El pedido queda guardado y se confirma por WhatsApp.</p>
+          </li>
+        </ol>
       </section>
 
       <section className="border-t border-border">

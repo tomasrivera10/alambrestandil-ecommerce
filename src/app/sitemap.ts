@@ -1,5 +1,4 @@
 import type { MetadataRoute } from "next";
-import { solutions } from "@/content/solutions";
 import { prisma, safeQuery } from "@/lib/db";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -20,13 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     "",
     "/productos",
-    "/soluciones",
-    "/calcular-alambrado",
-    "/instalaciones",
-    "/nosotros",
-    "/contacto",
     "/pedido",
-    ...solutions.map((item) => `/soluciones/${item.slug}`),
     ...categories.map((item) => `/productos/${item.slug}`),
     ...products.map((item) => `/productos/${item.category.slug}/${item.slug}`),
   ].map((path) => ({ url: `${base}${path}` }));

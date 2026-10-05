@@ -19,9 +19,7 @@ export function SiteFooter() {
           <p>{site.email}</p>
         </div>
         <div className="flex flex-col gap-2 text-sm">
-          <Link href="/nosotros">Nosotros</Link>
-          <Link href="/contacto">Contacto</Link>
-          <Link href="/instalaciones">Instalación</Link>
+          <Link href="/productos">Productos</Link>
           <Link href="/pedido">Armar pedido</Link>
         </div>
       </div>

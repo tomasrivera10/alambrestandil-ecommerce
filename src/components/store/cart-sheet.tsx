@@ -25,7 +25,7 @@ export function CartSheet() {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger
         render={
-          <Button variant="outline" className="h-10 px-3">
+          <Button className="h-10 px-3">
             <ShoppingBag />
             Pedido
             <span className="font-mono tabular-nums">{count}</span>

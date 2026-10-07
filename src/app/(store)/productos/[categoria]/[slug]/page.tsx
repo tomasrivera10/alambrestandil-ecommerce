@@ -33,7 +33,7 @@ export default async function ProductPage({ params }: Props) {
   );
   const reference = product.images.length === 0 ? categoryPhotos[categoria] : null;
   const images = product.images.length
-    ? product.images.map((image) => ({ url: image.url, alt: image.alt }))
+    ? product.images.map((image) => ({ url: image.url, alt: image.alt, isReference: image.isReference, sourceUrl: image.sourceUrl }))
     : reference
       ? [{ url: reference.src, alt: `Imagen de referencia: ${reference.alt}` }]
       : [];

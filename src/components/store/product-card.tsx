@@ -18,7 +18,7 @@ export function ProductCard({ product }: { product: CatalogProduct }) {
           name={product.name}
           ratio="aspect-square"
         />
-        {reference && <span className="reference-label">Imagen de referencia</span>}
+        {(reference || product.imageIsReference) && <span className="reference-label">Imagen de referencia</span>}
         <span className="product-card-arrow">
           <ArrowUpRight size={19} />
         </span>

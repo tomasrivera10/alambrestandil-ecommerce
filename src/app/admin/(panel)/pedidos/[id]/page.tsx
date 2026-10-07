@@ -1,3 +1,4 @@
+import { requireArea } from "@/lib/rbac";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/db";
 import { formatMoney, formatOrderNumber, unitLabel } from "@/lib/format";
@@ -6,6 +7,7 @@ import { updateOrderStatus } from "@/features/crm/actions";
 import { Button } from "@/components/ui/button";
 
 export default async function OrderDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  await requireArea("orders");
   const { id } = await params;
   const order = await prisma.order.findUnique({
     where: { id },

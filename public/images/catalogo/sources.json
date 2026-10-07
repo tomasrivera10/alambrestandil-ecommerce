@@ -1,0 +1,74 @@
+[
+  {
+    "file": "ganchos.jpg",
+    "imageUrl": "https://www.alambre.com.ar/admin/uploads/aberturas-de-aluminio-Gr-productos1712758967.jpg",
+    "sourceUrl": "https://www.alambre.com.ar/aberturas-de-aluminio/53-ganchos-jota-diferentes-tamaos",
+    "width": 720,
+    "height": 540,
+    "isReference": true,
+    "checked": "2026-10-07"
+  },
+  {
+    "file": "tejido-romboidal.jpg",
+    "imageUrl": "https://www.alambre.com.ar/admin/uploads/aberturas-de-aluminio-Gr-productos1712758269.jpg",
+    "sourceUrl": "https://www.alambre.com.ar/aberturas-de-aluminio/41-tejido-romboidal",
+    "width": 720,
+    "height": 540,
+    "isReference": true,
+    "checked": "2026-10-07"
+  },
+  {
+    "file": "puas.jpg",
+    "imageUrl": "https://www.alambre.com.ar/admin/uploads/aberturas-de-aluminio-Gr-productos1712759518.jpg",
+    "sourceUrl": "https://www.alambre.com.ar/aberturas-de-aluminio/64-alambre-de-pas",
+    "width": 720,
+    "height": 540,
+    "isReference": true,
+    "checked": "2026-10-07"
+  },
+  {
+    "file": "postes.jpg",
+    "imageUrl": "https://www.alambre.com.ar/admin/uploads/aberturas-de-aluminio-Gr-productos1712759783.jpg",
+    "sourceUrl": "https://www.alambre.com.ar/aberturas-de-aluminio/71-postes-de-hormign-rectos-y-olmpicos",
+    "width": 720,
+    "height": 540,
+    "isReference": true,
+    "checked": "2026-10-07"
+  },
+  {
+    "file": "alambre-ar.jpg",
+    "imageUrl": "https://www.alambre.com.ar/admin/uploads/aberturas-de-aluminio-Gr-productos1712759635.jpg",
+    "sourceUrl": "https://www.alambre.com.ar/aberturas-de-aluminio/67-alambre-de-alta-y-mediana-resistencia",
+    "width": 720,
+    "height": 540,
+    "isReference": true,
+    "checked": "2026-10-07"
+  },
+  {
+    "file": "concertina-cruzada.jpg",
+    "imageUrl": "https://www.alambre.com.ar/admin/uploads/aberturas-de-aluminio-Gr-productos1712759478.jpg",
+    "sourceUrl": "https://www.alambre.com.ar/aberturas-de-aluminio/63-concertinas-dobles",
+    "width": 720,
+    "height": 540,
+    "isReference": true,
+    "checked": "2026-10-07"
+  },
+  {
+    "file": "planchuelas.jpg",
+    "imageUrl": "https://www.alambre.com.ar/admin/uploads/aberturas-de-aluminio-Gr-productos1712758893.jpg",
+    "sourceUrl": "https://www.alambre.com.ar/aberturas-de-aluminio/51-planchuelas-diferentes-alturas",
+    "width": 720,
+    "height": 540,
+    "isReference": true,
+    "checked": "2026-10-07"
+  },
+  {
+    "file": "torniquetes.jpg",
+    "imageUrl": "https://www.alambre.com.ar/admin/uploads/aberturas-de-aluminio-Gr-productos1712758926.jpg",
+    "sourceUrl": "https://www.alambre.com.ar/aberturas-de-aluminio/52-torniquetes",
+    "width": 720,
+    "height": 540,
+    "isReference": true,
+    "checked": "2026-10-07"
+  }
+]

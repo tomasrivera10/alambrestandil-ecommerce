@@ -28,8 +28,8 @@ export function BrandCampaign() {
             Trabajamos con productos Romboidal. Encontrá los materiales para tu proyecto y
             consultanos por la medida que necesitás.
           </p>
-          <Link href="/productos?marca=Romboidal" className="store-button button-light">
-            Explorá Romboidal <ArrowUpRight size={18} />
+          <Link href="/productos/tejido-romboidal" className="store-button button-light">
+            Explorá los tejidos <ArrowUpRight size={18} />
           </Link>
         </div>
         <div className="campaign-photo">

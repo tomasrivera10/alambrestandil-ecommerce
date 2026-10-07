@@ -1,3 +1,4 @@
+import { requireArea } from "@/lib/rbac";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/db";
 import { formatMoney, formatOrderNumber } from "@/lib/format";
@@ -5,6 +6,7 @@ import { addCustomerNote } from "@/features/crm/actions";
 import { Button } from "@/components/ui/button";
 
 export default async function CustomerPage({ params }: { params: Promise<{ id: string }> }) {
+  await requireArea("customers");
   const { id } = await params;
   const customer = await prisma.customer.findUnique({
     where: { id },

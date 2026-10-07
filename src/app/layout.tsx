@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: "%s | Alambres Tandil",
   },
   description:
-    "Tejidos, postes, portones y cercos perimetrales en Tandil. Armá el pedido y cerramos los detalles por WhatsApp.",
+    "La Casa del Alambrado en Tandil. Tejidos romboidales, accesorios, puertas y portones galvanizados, directo de fábrica. Materiales, asesoramiento y colocación.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

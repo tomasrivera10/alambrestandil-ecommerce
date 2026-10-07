@@ -10,12 +10,12 @@ export const checkoutSchema = z.object({
   items: z
     .array(
       z.object({
-        variantId: z.string().min(1),
+        variantId: z.string().min(1).max(128),
         quantity: z.number().positive().max(9999),
         notes: z.string().max(200).optional(),
       }),
     )
-    .min(1, "El pedido está vacío."),
+    .min(1, "El pedido está vacío.").max(100),
 });
 
 export type CheckoutInput = z.infer<typeof checkoutSchema>;

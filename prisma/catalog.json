@@ -1,0 +1,1436 @@
+{
+  "source": "Alambres Tandil.xlsx",
+  "sheet": "Stock",
+  "ignoredColumns": [
+    "Precio Lista",
+    "Precio con descuento",
+    "Precio Final",
+    "Stock Actual",
+    "Totales"
+  ],
+  "duplicates": [
+    {
+      "keptRow": 41,
+      "duplicateRow": 70
+    },
+    {
+      "keptRow": 42,
+      "duplicateRow": 71
+    },
+    {
+      "keptRow": 43,
+      "duplicateRow": 72
+    },
+    {
+      "keptRow": 44,
+      "duplicateRow": 73
+    },
+    {
+      "keptRow": 45,
+      "duplicateRow": 74
+    },
+    {
+      "keptRow": 46,
+      "duplicateRow": 75
+    }
+  ],
+  "products": [
+    {
+      "name": "Tejido romboidal galvanizado",
+      "slug": "tejido-romboidal-galvanizado",
+      "category": "tejido-romboidal",
+      "brand": null,
+      "salesUnit": "ROLLO",
+      "shortDescription": "Tejido romboidal galvanizado. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Tejido romboidal galvanizado. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": true,
+      "variants": [
+        {
+          "sku": "AT-XLS-003",
+          "name": "Tejido Rombo 2½\" 10M X 1.20M C/16",
+          "salesUnit": "ROLLO",
+          "attributes": {
+            "largo": "10 m",
+            "altura": "1.20 m",
+            "calibre": "16",
+            "abertura": "2½ pulgadas"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A3:B3",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-004",
+          "name": "Tejido Rombo 2½\" 10M X 1.50M C/16",
+          "salesUnit": "ROLLO",
+          "attributes": {
+            "largo": "10 m",
+            "altura": "1.50 m",
+            "calibre": "16",
+            "abertura": "2½ pulgadas"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A4:B4",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-005",
+          "name": "Tejido Rombo 3\" 10M X 1.50M C/16",
+          "salesUnit": "ROLLO",
+          "attributes": {
+            "largo": "10 m",
+            "altura": "1.50 m",
+            "calibre": "16",
+            "abertura": "3 pulgadas"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A5:B5",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-006",
+          "name": "Tejido Rombo 2\" 10M X 1.00M C/14",
+          "salesUnit": "ROLLO",
+          "attributes": {
+            "largo": "10 m",
+            "altura": "1.00 m",
+            "calibre": "14",
+            "abertura": "2 pulgadas"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A6:B6",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-007",
+          "name": "Tejido Rombo 2½\" 10M X 1.20M C/14",
+          "salesUnit": "ROLLO",
+          "attributes": {
+            "largo": "10 m",
+            "altura": "1.20 m",
+            "calibre": "14",
+            "abertura": "2½ pulgadas"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A7:B7",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-008",
+          "name": "Tejido Rombo 2½\" 10M X 1.50M C/14",
+          "salesUnit": "ROLLO",
+          "attributes": {
+            "largo": "10 m",
+            "altura": "1.50 m",
+            "calibre": "14",
+            "abertura": "2½ pulgadas"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A8:B8",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-009",
+          "name": "Tejido Rombo 2\" 15M X 1.80M C/14",
+          "salesUnit": "ROLLO",
+          "attributes": {
+            "largo": "15 m",
+            "altura": "1.80 m",
+            "calibre": "14",
+            "abertura": "2 pulgadas"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A9:B9",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-010",
+          "name": "Tejido Rombo 2\" 15M X 2.00M C/14",
+          "salesUnit": "ROLLO",
+          "attributes": {
+            "largo": "15 m",
+            "altura": "2.00 m",
+            "calibre": "14",
+            "abertura": "2 pulgadas"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A10:B10",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-011",
+          "name": "TEJIDO ROMBOIDAL 150-60-14 x 15 MT",
+          "salesUnit": "ROLLO",
+          "attributes": {},
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A11:B11",
+          "reviewNote": "Confirmar interpretación de 150-60-14; se conserva la denominación original.",
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-012",
+          "name": "Tejido Rombo 3\" 15M X 1.50M C/14",
+          "salesUnit": "ROLLO",
+          "attributes": {
+            "largo": "15 m",
+            "altura": "1.50 m",
+            "calibre": "14",
+            "abertura": "3 pulgadas"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A12:B12",
+          "reviewNote": null,
+          "active": true
+        }
+      ]
+    },
+    {
+      "name": "Torniquete zincado",
+      "slug": "torniquete-zincado",
+      "category": "accesorios-de-colocacion",
+      "brand": null,
+      "salesUnit": "UNIDAD",
+      "shortDescription": "Torniquete zincado. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Torniquete zincado. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": true,
+      "variants": [
+        {
+          "sku": "AT-XLS-014",
+          "name": "TORNIQUETES Nº 5 ZINCADOS",
+          "salesUnit": "UNIDAD",
+          "attributes": {},
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A14:B14",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-015",
+          "name": "TORNIQUETES Nº 7 ZINCADOS",
+          "salesUnit": "UNIDAD",
+          "attributes": {},
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A15:B15",
+          "reviewNote": null,
+          "active": true
+        }
+      ]
+    },
+    {
+      "name": "Torniquete doble",
+      "slug": "torniquete-doble",
+      "category": "accesorios-de-colocacion",
+      "brand": null,
+      "salesUnit": "UNIDAD",
+      "shortDescription": "Torniquete doble. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Torniquete doble. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": false,
+      "variants": [
+        {
+          "sku": "AT-XLS-016",
+          "name": "TORNIQUETE DOBLE",
+          "salesUnit": "UNIDAD",
+          "attributes": {},
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A16:B16",
+          "reviewNote": null,
+          "active": true
+        }
+      ]
+    },
+    {
+      "name": "Planchuela zincada",
+      "slug": "planchuela-zincada",
+      "category": "accesorios-de-colocacion",
+      "brand": null,
+      "salesUnit": "UNIDAD",
+      "shortDescription": "Planchuela zincada. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Planchuela zincada. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": false,
+      "variants": [
+        {
+          "sku": "AT-XLS-018",
+          "name": "Planchuela 3/4 x 3/16 x 1.00M Zincada",
+          "salesUnit": "UNIDAD",
+          "attributes": {
+            "seccion": "3/4 × 3/16 pulgadas",
+            "largo": "1.00 m",
+            "terminacion": "Zincada"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A18:B18",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-019",
+          "name": "Planchuela 3/4 x 3/16 x 1.50M Zincada",
+          "salesUnit": "UNIDAD",
+          "attributes": {
+            "seccion": "3/4 × 3/16 pulgadas",
+            "largo": "1.50 m",
+            "terminacion": "Zincada"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A19:B19",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-020",
+          "name": "Planchuela 3/4 x 3/16 x 1.80M Zincada",
+          "salesUnit": "UNIDAD",
+          "attributes": {
+            "seccion": "3/4 × 3/16 pulgadas",
+            "largo": "1.80 m",
+            "terminacion": "Zincada"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A20:B20",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-021",
+          "name": "Planchuela 3/4 x 3/16 x 2.00M Zincada",
+          "salesUnit": "UNIDAD",
+          "attributes": {
+            "seccion": "3/4 × 3/16 pulgadas",
+            "largo": "2.00 m",
+            "terminacion": "Zincada"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A21:B21",
+          "reviewNote": null,
+          "active": true
+        }
+      ]
+    },
+    {
+      "name": "Alambre de fardo Nº 16",
+      "slug": "alambre-de-fardo",
+      "category": "alambre-galvanizado",
+      "brand": null,
+      "salesUnit": "KG",
+      "shortDescription": "Alambre de fardo Nº 16. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Alambre de fardo Nº 16. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": false,
+      "variants": [
+        {
+          "sku": "AT-XLS-023",
+          "name": "KG.FARDO Nº16 X ROLLO (1,62mm)",
+          "salesUnit": "KG",
+          "attributes": {},
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A23:B23",
+          "reviewNote": null,
+          "active": true
+        }
+      ]
+    },
+    {
+      "name": "Alambre galvanizado",
+      "slug": "alambre-galvanizado",
+      "category": "alambre-galvanizado",
+      "brand": null,
+      "salesUnit": "KG",
+      "shortDescription": "Alambre galvanizado. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Alambre galvanizado. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": false,
+      "variants": [
+        {
+          "sku": "AT-XLS-024",
+          "name": "KG.GALVA Nº 12 X ROLLO (2,64mm)",
+          "salesUnit": "KG",
+          "attributes": {
+            "calibre": "12",
+            "diametro": "2,64mm"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A24:B24",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-025",
+          "name": "KG.GALVA.Nº 13 X ROLLO (2,33mm)",
+          "salesUnit": "KG",
+          "attributes": {
+            "calibre": "13",
+            "diametro": "2,33mm"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A25:B25",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-026",
+          "name": "KG.GALVA.Nº 14 X ROLLO (2,03mm)",
+          "salesUnit": "KG",
+          "attributes": {
+            "calibre": "14",
+            "diametro": "2,03mm"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A26:B26",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-027",
+          "name": "KG.GALVA Nº 16 X ROLLO (1,62mm)",
+          "salesUnit": "KG",
+          "attributes": {
+            "calibre": "16",
+            "diametro": "1,62mm"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A27:B27",
+          "reviewNote": null,
+          "active": true
+        }
+      ]
+    },
+    {
+      "name": "Alambre de alta resistencia 17/15",
+      "slug": "alambre-alta-resistencia",
+      "category": "alambre-galvanizado",
+      "brand": null,
+      "salesUnit": "ROLLO",
+      "shortDescription": "Alambre de alta resistencia 17/15. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Alambre de alta resistencia 17/15. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": false,
+      "variants": [
+        {
+          "sku": "AT-XLS-028",
+          "name": "ALAMBRE A/R 17/15 X 1000M",
+          "salesUnit": "ROLLO",
+          "attributes": {},
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A28:B28",
+          "reviewNote": null,
+          "active": true
+        }
+      ]
+    },
+    {
+      "name": "Alambre boyero 1,80 mm",
+      "slug": "alambre-boyero",
+      "category": "alambre-galvanizado",
+      "brand": null,
+      "salesUnit": "ROLLO",
+      "shortDescription": "Alambre boyero 1,80 mm. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Alambre boyero 1,80 mm. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": false,
+      "variants": [
+        {
+          "sku": "AT-XLS-029",
+          "name": "ALAMBRE BOYERO 1,80MM X 1000M",
+          "salesUnit": "ROLLO",
+          "attributes": {},
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A29:B29",
+          "reviewNote": null,
+          "active": true
+        }
+      ]
+    },
+    {
+      "name": "Soporte para concertina en Y",
+      "slug": "soporte-concertina-y",
+      "category": "concertinas",
+      "brand": null,
+      "salesUnit": "UNIDAD",
+      "shortDescription": "Soporte para concertina en Y. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Soporte para concertina en Y. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": false,
+      "variants": [
+        {
+          "sku": "AT-XLS-031",
+          "name": "SOPORTE P/ CONSERTINA \"Y\"",
+          "salesUnit": "UNIDAD",
+          "attributes": {},
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A31:B31",
+          "reviewNote": null,
+          "active": true
+        }
+      ]
+    },
+    {
+      "name": "Pinche para medianera eco, 5 puntas",
+      "slug": "pinche-medianera",
+      "category": "concertinas",
+      "brand": null,
+      "salesUnit": "UNIDAD",
+      "shortDescription": "Pinche para medianera eco, 5 puntas. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Pinche para medianera eco, 5 puntas. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": false,
+      "variants": [
+        {
+          "sku": "AT-XLS-032",
+          "name": "PINCHE P/ MEDIANERA X 1M \"eco\" 5 PUNTAS",
+          "salesUnit": "UNIDAD",
+          "attributes": {},
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A32:B32",
+          "reviewNote": null,
+          "active": true
+        }
+      ]
+    },
+    {
+      "name": "Concertina de seguridad",
+      "slug": "concertina-de-seguridad",
+      "category": "concertinas",
+      "brand": null,
+      "salesUnit": "ROLLO",
+      "shortDescription": "Concertina de seguridad. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Concertina de seguridad. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": false,
+      "variants": [
+        {
+          "sku": "AT-XLS-033",
+          "name": "CONCERTINA 300MM X (SIMPLE) 10M",
+          "salesUnit": "ROLLO",
+          "attributes": {
+            "diametro": "300 mm",
+            "largo": "10 m",
+            "tipo": "Simple"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A33:B33",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-034",
+          "name": "CONSERTINA 450MM X CRUZADA 10M",
+          "salesUnit": "ROLLO",
+          "attributes": {
+            "diametro": "450 mm",
+            "largo": "10 m",
+            "tipo": "Cruzada"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A34:B34",
+          "reviewNote": null,
+          "active": true
+        }
+      ]
+    },
+    {
+      "name": "Alambre de púas",
+      "slug": "alambre-de-puas",
+      "category": "alambre-de-puas",
+      "brand": null,
+      "salesUnit": "ROLLO",
+      "shortDescription": "Alambre de púas. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Alambre de púas. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": true,
+      "variants": [
+        {
+          "sku": "AT-XLS-036",
+          "name": "PUAS FRAC X 10M",
+          "salesUnit": "ROLLO",
+          "attributes": {
+            "presentacion": "10 m"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A36:B36",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-037",
+          "name": "PUAS FRAC X 25M",
+          "salesUnit": "ROLLO",
+          "attributes": {
+            "presentacion": "25 m"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A37:B37",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-038",
+          "name": "PUAS FRAC X 50M",
+          "salesUnit": "ROLLO",
+          "attributes": {
+            "presentacion": "50 m"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A38:B38",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-039",
+          "name": "PUAS FRAC X 100M",
+          "salesUnit": "ROLLO",
+          "attributes": {
+            "presentacion": "100 m"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A39:B39",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-040",
+          "name": "PUAS X ROLLO 500M",
+          "salesUnit": "ROLLO",
+          "attributes": {
+            "presentacion": "500 m"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A40:B40",
+          "reviewNote": null,
+          "active": true
+        }
+      ]
+    },
+    {
+      "name": "Clavo con cabeza de plomo dentado",
+      "slug": "clavo-cabeza-plomo",
+      "category": "clavos",
+      "brand": null,
+      "salesUnit": "UNIDAD",
+      "shortDescription": "Clavo con cabeza de plomo dentado. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Clavo con cabeza de plomo dentado. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": false,
+      "variants": [
+        {
+          "sku": "AT-XLS-041",
+          "name": "CAJ.C/PLOMO 2½\" DENTADO (20 PAQ)",
+          "salesUnit": "UNIDAD",
+          "attributes": {},
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A41:B41",
+          "reviewNote": "Repetido en Stock!A70: figura Unidad y Kg. Confirmar unidad de venta; se conserva una sola referencia.",
+          "active": false
+        },
+        {
+          "sku": "AT-XLS-042",
+          "name": "PAQ.C/PLOMO 2½\" X 100U",
+          "salesUnit": "UNIDAD",
+          "attributes": {},
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A42:B42",
+          "reviewNote": "Repetido en Stock!A71: figura Unidad y Kg. Confirmar unidad de venta; se conserva una sola referencia.",
+          "active": false
+        },
+        {
+          "sku": "AT-XLS-043",
+          "name": "CAJ.C/PLOMO 3\" DENTADO",
+          "salesUnit": "UNIDAD",
+          "attributes": {},
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A43:B43",
+          "reviewNote": "Repetido en Stock!A72: figura Unidad y Kg. Confirmar unidad de venta; se conserva una sola referencia.",
+          "active": false
+        },
+        {
+          "sku": "AT-XLS-044",
+          "name": "PAQ.C/PLOMO 3\" X 100U",
+          "salesUnit": "UNIDAD",
+          "attributes": {},
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A44:B44",
+          "reviewNote": "Repetido en Stock!A73: figura Unidad y Kg. Confirmar unidad de venta; se conserva una sola referencia.",
+          "active": false
+        },
+        {
+          "sku": "AT-XLS-045",
+          "name": "CAJ.C/PLOMO 4\" DENTADO",
+          "salesUnit": "UNIDAD",
+          "attributes": {},
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A45:B45",
+          "reviewNote": "Repetido en Stock!A74: figura Unidad y Kg. Confirmar unidad de venta; se conserva una sola referencia.",
+          "active": false
+        },
+        {
+          "sku": "AT-XLS-046",
+          "name": "PAQ.C/PLOMO 4\" X 100U",
+          "salesUnit": "UNIDAD",
+          "attributes": {},
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A46:B46",
+          "reviewNote": "Repetido en Stock!A75: figura Unidad y Kg. Confirmar unidad de venta; se conserva una sola referencia.",
+          "active": false
+        }
+      ]
+    },
+    {
+      "name": "Puerta para cerco",
+      "slug": "puerta-para-cerco",
+      "category": "puertas-y-portones",
+      "brand": null,
+      "salesUnit": "UNIDAD",
+      "shortDescription": "Puerta para cerco. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Puerta para cerco. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": false,
+      "variants": [
+        {
+          "sku": "AT-XLS-048",
+          "name": "PUERTA 0.90 X2M",
+          "salesUnit": "UNIDAD",
+          "attributes": {
+            "medida": "0.90 X2M"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A48:B48",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-049",
+          "name": "PUERTA 0.90 X1,5M",
+          "salesUnit": "UNIDAD",
+          "attributes": {
+            "medida": "0.90 X1,5M"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A49:B49",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-050",
+          "name": "PUERTA 0.90 X1,8M",
+          "salesUnit": "UNIDAD",
+          "attributes": {
+            "medida": "0.90 X1,8M"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A50:B50",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-051",
+          "name": "PUERTA 0,90 X1M",
+          "salesUnit": "UNIDAD",
+          "attributes": {
+            "medida": "0,90 X1M"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A51:B51",
+          "reviewNote": null,
+          "active": true
+        }
+      ]
+    },
+    {
+      "name": "Portón para cerco",
+      "slug": "porton-para-cerco",
+      "category": "puertas-y-portones",
+      "brand": null,
+      "salesUnit": "UNIDAD",
+      "shortDescription": "Portón para cerco. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Portón para cerco. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": true,
+      "variants": [
+        {
+          "sku": "AT-XLS-052",
+          "name": "PORTON 1.80 X 3M",
+          "salesUnit": "UNIDAD",
+          "attributes": {
+            "medida": "1.80 X 3M"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A52:B52",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-053",
+          "name": "PORTON 1.80 X 4M",
+          "salesUnit": "UNIDAD",
+          "attributes": {
+            "medida": "1.80 X 4M"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A53:B53",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-054",
+          "name": "PORTON 1,50 X 4M",
+          "salesUnit": "UNIDAD",
+          "attributes": {
+            "medida": "1,50 X 4M"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A54:B54",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-055",
+          "name": "PORTON 2 X 4M",
+          "salesUnit": "UNIDAD",
+          "attributes": {
+            "medida": "2 X 4M"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A55:B55",
+          "reviewNote": null,
+          "active": true
+        }
+      ]
+    },
+    {
+      "name": "Poste esquinero",
+      "slug": "poste-esquinero",
+      "category": "postes-de-hormigon",
+      "brand": null,
+      "salesUnit": "UNIDAD",
+      "shortDescription": "Poste esquinero. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Poste esquinero. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": true,
+      "variants": [
+        {
+          "sku": "AT-XLS-057",
+          "name": "POSTE ESQUINERO 2M RECTO",
+          "salesUnit": "UNIDAD",
+          "attributes": {},
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A57:B57",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-058",
+          "name": "POSTE ESQUINERO 2M OLIMPICO",
+          "salesUnit": "UNIDAD",
+          "attributes": {},
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A58:B58",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-059",
+          "name": "POSTE ESQUINERO 1,50M RECTO",
+          "salesUnit": "UNIDAD",
+          "attributes": {},
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A59:B59",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-060",
+          "name": "POSTE ESQUINERO 1M 12M",
+          "salesUnit": "UNIDAD",
+          "attributes": {},
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A60:B60",
+          "reviewNote": "Medida ambigua en el Excel. Confirmar antes de publicar esta variante.",
+          "active": false
+        }
+      ]
+    },
+    {
+      "name": "Poste intermedio",
+      "slug": "poste-intermedio",
+      "category": "postes-de-hormigon",
+      "brand": null,
+      "salesUnit": "UNIDAD",
+      "shortDescription": "Poste intermedio. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Poste intermedio. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": false,
+      "variants": [
+        {
+          "sku": "AT-XLS-061",
+          "name": "INTERMEDIO RECTO REFUERZO 2M 1,8",
+          "salesUnit": "UNIDAD",
+          "attributes": {},
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A61:B61",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-062",
+          "name": "INTERMEDIO OLIMPICO",
+          "salesUnit": "UNIDAD",
+          "attributes": {},
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A62:B62",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-063",
+          "name": "INTERMEDIO 1,50M",
+          "salesUnit": "UNIDAD",
+          "attributes": {},
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A63:B63",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-064",
+          "name": "INTERMEDIO 1M 1,2M",
+          "salesUnit": "UNIDAD",
+          "attributes": {},
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A64:B64",
+          "reviewNote": "Medida ambigua en el Excel. Confirmar antes de publicar esta variante.",
+          "active": false
+        }
+      ]
+    },
+    {
+      "name": "Puntal",
+      "slug": "puntal",
+      "category": "postes-de-hormigon",
+      "brand": null,
+      "salesUnit": "UNIDAD",
+      "shortDescription": "Puntal. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Puntal. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": false,
+      "variants": [
+        {
+          "sku": "AT-XLS-066",
+          "name": "PUNTAL 2M",
+          "salesUnit": "UNIDAD",
+          "attributes": {},
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A66:B66",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-067",
+          "name": "PUNTAL 1,50M",
+          "salesUnit": "UNIDAD",
+          "attributes": {},
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A67:B67",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-068",
+          "name": "PUNTAL 1M",
+          "salesUnit": "UNIDAD",
+          "attributes": {},
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A68:B68",
+          "reviewNote": null,
+          "active": true
+        }
+      ]
+    },
+    {
+      "name": "Clavo punta París",
+      "slug": "clavo-punta-paris",
+      "category": "clavos",
+      "brand": null,
+      "salesUnit": "KG",
+      "shortDescription": "Clavo punta París. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Clavo punta París. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": true,
+      "variants": [
+        {
+          "sku": "AT-XLS-076",
+          "name": "Clavo P.PARIS 1\"",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "1\""
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A76:B76",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-077",
+          "name": "Clavo P.PARIS 1.5",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "1.5"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A77:B77",
+          "reviewNote": null,
+          "active": true
+        }
+      ]
+    },
+    {
+      "name": "Clavo punta París Acerbrag",
+      "slug": "clavo-punta-paris-acerbrag",
+      "category": "clavos",
+      "brand": "Acerbrag",
+      "salesUnit": "KG",
+      "shortDescription": "Clavo punta París Acerbrag. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Clavo punta París Acerbrag. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": false,
+      "variants": [
+        {
+          "sku": "AT-XLS-078",
+          "name": "Clavo P.PARIS 2 ACERBRAG",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "2 ACERBRAG"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A78:B78",
+          "reviewNote": null,
+          "active": true
+        }
+      ]
+    },
+    {
+      "name": "Clavo punta París Acindar",
+      "slug": "clavo-punta-paris-acindar",
+      "category": "clavos",
+      "brand": "Acindar",
+      "salesUnit": "KG",
+      "shortDescription": "Clavo punta París Acindar. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Clavo punta París Acindar. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": false,
+      "variants": [
+        {
+          "sku": "AT-XLS-079",
+          "name": "Clavo P.PARIS 2.5 ACINDAR",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "2.5 ACINDAR"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A79:B79",
+          "reviewNote": null,
+          "active": true
+        }
+      ]
+    },
+    {
+      "name": "Clavo punta París, medidas grandes",
+      "slug": "clavo-punta-paris-grande",
+      "category": "clavos",
+      "brand": null,
+      "salesUnit": "KG",
+      "shortDescription": "Clavo punta París, medidas grandes. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Clavo punta París, medidas grandes. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": false,
+      "variants": [
+        {
+          "sku": "AT-XLS-080",
+          "name": "Clavo P.PARIS 3 Y 3 1/2",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "3 Y 3 1/2"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A80:B80",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-081",
+          "name": "Clavo P.PARIS 4",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "4"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A81:B81",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-082",
+          "name": "Clavo P.PARIS 5",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "5"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A82:B82",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-083",
+          "name": "Clavo P.PARIS 6",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "6"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A83:B83",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-084",
+          "name": "Clavo P.PARIS 7\"",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "7\""
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A84:B84",
+          "reviewNote": null,
+          "active": true
+        }
+      ]
+    },
+    {
+      "name": "Clavo espiralado",
+      "slug": "clavo-espiralado",
+      "category": "clavos",
+      "brand": null,
+      "salesUnit": "KG",
+      "shortDescription": "Clavo espiralado. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Clavo espiralado. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": false,
+      "variants": [
+        {
+          "sku": "AT-XLS-085",
+          "name": "Clavo ESPIRLADO 1\"",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "1\""
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A85:B85",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-086",
+          "name": "Clavo ESPIRLADO 1,5\"",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "1,5\""
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A86:B86",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-087",
+          "name": "Clavo ESPIRLADO 2\"",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "2\""
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A87:B87",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-088",
+          "name": "Clavo ESPIRLADO 2,5\"",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "2,5\""
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A88:B88",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-089",
+          "name": "Clavo ESPIRLADO 3\"",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "3\""
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A89:B89",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-090",
+          "name": "Clavo ESPIRLADO 4\"",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "4\""
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A90:B90",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-091",
+          "name": "Clavo ESPIRLADO 5\" Y 6\"",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "5\" Y 6\""
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A91:B91",
+          "reviewNote": null,
+          "active": true
+        }
+      ]
+    },
+    {
+      "name": "Clavo cajonero",
+      "slug": "clavo-cajonero",
+      "category": "clavos",
+      "brand": null,
+      "salesUnit": "KG",
+      "shortDescription": "Clavo cajonero. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Clavo cajonero. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": false,
+      "variants": [
+        {
+          "sku": "AT-XLS-092",
+          "name": "CAJONERO 1.5",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "1.5"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A92:B92",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-093",
+          "name": "CAJONERO 2.5",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "2.5"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A93:B93",
+          "reviewNote": null,
+          "active": true
+        }
+      ]
+    },
+    {
+      "name": "Clavo cabeza chata",
+      "slug": "clavo-cabeza-chata",
+      "category": "clavos",
+      "brand": null,
+      "salesUnit": "KG",
+      "shortDescription": "Clavo cabeza chata. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Clavo cabeza chata. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": false,
+      "variants": [
+        {
+          "sku": "AT-XLS-094",
+          "name": "7/16CHATA",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "16CHATA"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A94:B94",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-095",
+          "name": "8/20 CHATA",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "20 CHATA"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A95:B95",
+          "reviewNote": null,
+          "active": true
+        }
+      ]
+    },
+    {
+      "name": "Clavo cabeza chata Gerdau",
+      "slug": "clavo-cabeza-chata-gerdau",
+      "category": "clavos",
+      "brand": "Gerdau",
+      "salesUnit": "KG",
+      "shortDescription": "Clavo cabeza chata Gerdau. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Clavo cabeza chata Gerdau. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": false,
+      "variants": [
+        {
+          "sku": "AT-XLS-096",
+          "name": "8/25 CHATA GERDAU",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "25 CHATA GERDAU"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A96:B96",
+          "reviewNote": null,
+          "active": true
+        }
+      ]
+    },
+    {
+      "name": "Clavo cabeza chata, otras medidas",
+      "slug": "clavo-cabeza-chata-otras",
+      "category": "clavos",
+      "brand": null,
+      "salesUnit": "KG",
+      "shortDescription": "Clavo cabeza chata, otras medidas. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Clavo cabeza chata, otras medidas. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": false,
+      "variants": [
+        {
+          "sku": "AT-XLS-097",
+          "name": "10/35 CHATA",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "0/35 CHATA"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A97:B97",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-098",
+          "name": "9/25 CHATA",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "25 CHATA"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A98:B98",
+          "reviewNote": null,
+          "active": true
+        }
+      ]
+    },
+    {
+      "name": "Clavo cabeza perdida",
+      "slug": "clavo-cabeza-perdida",
+      "category": "clavos",
+      "brand": null,
+      "salesUnit": "KG",
+      "shortDescription": "Clavo cabeza perdida. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Clavo cabeza perdida. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": false,
+      "variants": [
+        {
+          "sku": "AT-XLS-099",
+          "name": "16/63 PERDIDA",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "6/63 PERDIDA"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A99:B99",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-100",
+          "name": "12/35 PERDIDA",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "2/35 PERDIDA"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A100:B100",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-101",
+          "name": "9/25 PERDIDA",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "25 PERDIDA"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A101:B101",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-102",
+          "name": "9/30 PERDIDA",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "30 PERDIDA"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A102:B102",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-103",
+          "name": "12/30 PERDIDA",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "2/30 PERDIDA"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A103:B103",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-104",
+          "name": "14/40 PERDIDA",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "4/40 PERDIDA"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A104:B104",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-105",
+          "name": "12/50 PERDIDA",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "2/50 PERDIDA"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A105:B105",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-106",
+          "name": "8/20 PERDIDA",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "20 PERDIDA"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A106:B106",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-107",
+          "name": "15/50 PERDIDA",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "5/50 PERDIDA"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A107:B107",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-108",
+          "name": "10/25 PERDIDA",
+          "salesUnit": "KG",
+          "attributes": {
+            "medida": "0/25 PERDIDA"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A108:B108",
+          "reviewNote": null,
+          "active": true
+        }
+      ]
+    },
+    {
+      "name": "Palomita J",
+      "slug": "palomita-j",
+      "category": "accesorios-de-colocacion",
+      "brand": null,
+      "salesUnit": "UNIDAD",
+      "shortDescription": "Palomita J. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Palomita J. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": false,
+      "variants": [
+        {
+          "sku": "AT-XLS-110",
+          "name": "PALOMITAS J",
+          "salesUnit": "UNIDAD",
+          "attributes": {
+            "medida": "PALOMITAS J"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A110:B110",
+          "reviewNote": null,
+          "active": true
+        }
+      ]
+    },
+    {
+      "name": "Gancho J 5/16 × 8 pulgadas",
+      "slug": "gancho-j",
+      "category": "accesorios-de-colocacion",
+      "brand": null,
+      "salesUnit": "UNIDAD",
+      "shortDescription": "Gancho J 5/16 × 8 pulgadas. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Gancho J 5/16 × 8 pulgadas. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": false,
+      "variants": [
+        {
+          "sku": "AT-XLS-111",
+          "name": "GANCHO J 5/16 8\"",
+          "salesUnit": "UNIDAD",
+          "attributes": {
+            "medida": "5/16 8\""
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A111:B111",
+          "reviewNote": null,
+          "active": true
+        }
+      ]
+    },
+    {
+      "name": "Palomita Z",
+      "slug": "palomita-z",
+      "category": "accesorios-de-colocacion",
+      "brand": null,
+      "salesUnit": "UNIDAD",
+      "shortDescription": "Palomita Z. Elegí la medida o presentación para armar tu pedido.",
+      "technicalDescription": "Palomita Z. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.",
+      "featured": false,
+      "variants": [
+        {
+          "sku": "AT-XLS-112",
+          "name": "PALOMITAS Z",
+          "salesUnit": "UNIDAD",
+          "attributes": {
+            "medida": "PALOMITAS Z"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A112:B112",
+          "reviewNote": null,
+          "active": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, Camera, MapPin, Phone } from "lucide-react";
+import { ArrowUpRight, Camera, LockKeyhole, MapPin, Phone } from "lucide-react";
 import { site } from "@/content/site";
 import { BrandLogo } from "./brand-logo";
 export function SiteFooter() {
@@ -21,9 +21,9 @@ export function SiteFooter() {
             <BrandLogo white />
           </Link>
           <p>
-            Materiales, asesoramiento e instalación.
+            La Casa del Alambrado en Tandil.
             <br />
-            Desde Tandil, para tu próximo proyecto.
+            Todo para el alambrado y el alambrador.
           </p>
           <a
             href="https://www.instagram.com/alambrestandil/"
@@ -40,7 +40,7 @@ export function SiteFooter() {
           <Link href="/productos/tejido-romboidal">Tejidos y mallas</Link>
           <Link href="/productos/postes-de-hormigon">Postes de hormigón</Link>
           <Link href="/productos/puertas-y-portones">Puertas y portones</Link>
-          <Link href="/productos?marca=Romboidal">Productos Romboidal</Link>
+          <Link href="/productos/accesorios-de-colocacion">Accesorios de colocación</Link>
         </nav>
         <nav aria-label="Ayuda y empresa">
           <h3>Estamos para ayudarte</h3>
@@ -73,6 +73,9 @@ export function SiteFooter() {
         <a href="https://www.romboidal.com.ar/" target="_blank" rel="noreferrer">
           Trabajamos con Romboidal <ArrowUpRight size={12} />
         </a>
+        <Link href="/admin/login" className="footer-admin-link">
+          <LockKeyhole size={14} aria-hidden="true" /> Administración
+        </Link>
       </div>
     </footer>
   );

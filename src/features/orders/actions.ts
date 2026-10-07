@@ -32,7 +32,7 @@ export async function createOrder(raw: unknown) {
   }
 
   const variants = await prisma.productVariant.findMany({
-    where: { id: { in: input.items.map((item) => item.variantId) }, active: true },
+    where: { id: { in: input.items.map((item) => item.variantId) }, active: true, product: { status: "ACTIVE" } },
     include: { product: true },
   });
   if (variants.length !== input.items.length) {
@@ -48,11 +48,7 @@ export async function createOrder(raw: unknown) {
 
     const customer = await tx.customer.upsert({
       where: { phone },
-      update: {
-        name: input.name,
-        locality: input.locality,
-        address: input.address || undefined,
-      },
+      update: {}, // Public submissions must not modify existing customer data.
       create: {
         name: input.name,
         phone,

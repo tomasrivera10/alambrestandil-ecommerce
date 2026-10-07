@@ -3,7 +3,7 @@ import { CatalogView } from "@/components/store/catalog-view";
 export const metadata: Metadata = {
   title: "Productos",
   description:
-    "Tejidos, postes, portones y materiales para cercos en Tandil. Encontrá tu medida y armá el pedido.",
+    "Todo para el alambrado y el alambrador en Tandil: tejidos romboidales, postes, accesorios, puertas y portones galvanizados. Encontrá tu medida y armá el pedido.",
 };
 export default async function ProductsPage({
   searchParams,

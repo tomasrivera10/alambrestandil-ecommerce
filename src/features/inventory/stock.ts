@@ -12,8 +12,10 @@ export type MovementType =
   | "CANCELACION";
 
 export function availableStock(state: StockState) {
-  return state.onHand - state.reserved;
+  return roundQuantity(state.onHand - state.reserved);
 }
+
+export function roundQuantity(value: number) { return Math.round(value * 1000) / 1000; }
 
 export function applyStock(
   state: StockState,
@@ -24,27 +26,29 @@ export function applyStock(
     throw new Error("La cantidad del movimiento tiene que ser distinta de cero.");
   }
 
-  const abs = Math.abs(Math.trunc(quantity));
+  const amount = roundQuantity(quantity);
+  if (amount === 0) throw new Error("La cantidad mínima es 0,001.");
+  const abs = Math.abs(amount);
 
   switch (type) {
     case "ENTRADA":
     case "DEVOLUCION":
-      return { ...state, onHand: state.onHand + abs };
+      return { ...state, onHand: roundQuantity(state.onHand + abs) };
     case "AJUSTE":
-      return { ...state, onHand: state.onHand + Math.trunc(quantity) };
+      return { ...state, onHand: roundQuantity(state.onHand + amount) };
     case "RESERVA": {
       if (availableStock(state) < abs) {
         throw new Error("No hay stock disponible para reservar.");
       }
-      return { ...state, reserved: state.reserved + abs };
+      return { ...state, reserved: roundQuantity(state.reserved + abs) };
     }
     case "CANCELACION":
-      return { ...state, reserved: Math.max(0, state.reserved - abs) };
+      return { ...state, reserved: Math.max(0, roundQuantity(state.reserved - abs)) };
     case "VENTA": {
-      const reserved = Math.max(0, state.reserved - abs);
-      return { onHand: state.onHand - abs, reserved };
+      const reserved = Math.max(0, roundQuantity(state.reserved - abs));
+      return { onHand: roundQuantity(state.onHand - abs), reserved };
     }
     default:
-      return state;
+      throw new Error("Tipo de movimiento inválido.");
   }
 }

@@ -714,6 +714,22 @@
   gap: 8px;
   align-items: center;
 }
+.footer-bottom .footer-admin-link {
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 1px solid #ffffff40;
+  color: #fff;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.footer-admin-link:hover {
+  background: #ffffff14;
+  border-color: #fff;
+}
+.footer-admin-link:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
 .store-panel {
   --muted-foreground: #5a6268;
   --foreground: #171b1f;

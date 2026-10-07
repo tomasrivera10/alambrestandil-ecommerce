@@ -16,14 +16,14 @@ export default async function HomePage() {
         <div className="hero-shade" />
         <div className="store-container hero-content">
           <h1>
-            Tu proyecto.
+            La casa del
             <br />
-            Bien cercado.
+            alambrado.
           </h1>
           <p>
-            Tejidos, postes y portones.
+            En Tandil, todo para el alambrado y el alambrador.
             <br />
-            Todo para darle forma a tu espacio.
+            Tejidos romboidales, accesorios, puertas y portones galvanizados, directo de fábrica.
           </p>
           <div className="hero-actions">
             <Link href="/productos" className="store-button">
@@ -42,7 +42,7 @@ export default async function HomePage() {
       <div className="service-strip store-container">
         <span>
           <MapPin />
-          Retirá en nuestro local
+          Retirá en Ijurco 1480, Tandil
         </span>
         <span>
           <MessageCircle />
@@ -56,9 +56,9 @@ export default async function HomePage() {
       <section className="store-section store-container" aria-labelledby="categories-title">
         <div className="section-heading">
           <h2 id="categories-title">
-            Todo empieza
+            Todo para
             <br />
-            por el material.
+            tu alambrado.
           </h2>
           <Link href="/productos" className="text-link">
             Ver todo el catálogo <ArrowUpRight size={17} />
@@ -92,8 +92,8 @@ export default async function HomePage() {
         <section className="store-section store-container featured-section">
           <div className="section-heading">
             <div>
-              <h2>Listos para tu proyecto.</h2>
-              <p>Una selección de nuestro catálogo.</p>
+              <h2>Materiales para tu cerco.</h2>
+              <p>Tejidos, postes y accesorios para el trabajo de todos los días.</p>
             </div>
             <Link href="/productos" className="text-link">
               Ver productos <ArrowUpRight size={17} />
@@ -211,13 +211,14 @@ export default async function HomePage() {
           </div>
           <div>
             <h2>
-              Somos de acá.
+              De Tandil.
               <br />
-              Estamos para vos.
+              Con historia en el rubro.
             </h2>
             <p>
-              Desde 2018, en Alambres Tandil acompañamos a quienes construyen, cercan y transforman
-              sus espacios. Con materiales, asesoramiento y una conversación directa.
+              En Alambres Tandil continuamos el legado de Alambrados Neri SH, con más de dos décadas
+              de trayectoria en el rubro. Acompañamos a particulares y alambradores con materiales,
+              asesoramiento y colocación en toda la ciudad.
             </p>
             <Link href="/nosotros" className="text-link">
               Conocé nuestra historia <ArrowUpRight size={18} />

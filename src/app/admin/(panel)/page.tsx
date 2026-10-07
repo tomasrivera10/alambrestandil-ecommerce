@@ -1,9 +1,14 @@
+import { redirect } from "next/navigation";
+import { requireArea, getSession } from "@/lib/rbac";
 import Link from "next/link";
 import { prisma, safeQuery } from "@/lib/db";
 import { countStaleOrders } from "@/features/orders/attention";
 import { formatMoney } from "@/lib/format";
 
 export default async function DashboardPage() {
+  const session = await getSession();
+  if (session?.user.role === "STOCK") redirect("/admin/stock");
+  await requireArea("orders");
   const [fresh, waiting, confirmed, low, recentCustomers] = await Promise.all([
     safeQuery(() => prisma.order.count({ where: { status: { in: ["NUEVO", "ENVIADO_A_WHATSAPP"] } } }), 0),
     safeQuery(() => prisma.order.count({ where: { status: { in: ["CONTACTADO", "COTIZADO"] } } }), 0),

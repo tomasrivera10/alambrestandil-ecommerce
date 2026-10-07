@@ -6,8 +6,8 @@ export default function ContactPage() {
   return (
     <ServicePage
       eyebrow="Contacto"
-      title="Acercate. Lo resolvemos juntos."
-      intro="Traé las medidas, una idea o las dudas. Te ayudamos a elegir los materiales para avanzar."
+      title="Encontranos en Tandil."
+      intro="Estamos en Ijurco 1480, esquina colectora Macaya. Traé las medidas de tu cerco o escribinos por WhatsApp: te ayudamos a elegir los materiales y a consultar por la colocación."
       image="/images/tandil/materiales.webp"
     >
       <dl>

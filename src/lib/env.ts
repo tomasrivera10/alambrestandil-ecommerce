@@ -21,5 +21,17 @@ export const env = schema.parse({
 });
 
 export function authSecret() {
+  if (process.env.NODE_ENV === "production") {
+    if (
+      !env.BETTER_AUTH_SECRET ||
+      env.BETTER_AUTH_SECRET.length < 32 ||
+      env.BETTER_AUTH_SECRET === "dev-only-secret-change-me-please"
+    ) {
+      throw new Error("Producción requiere BETTER_AUTH_SECRET único de al menos 32 caracteres.");
+    }
+    if (!env.BETTER_AUTH_URL || new URL(env.BETTER_AUTH_URL).protocol !== "https:") {
+      throw new Error("Producción requiere BETTER_AUTH_URL con HTTPS.");
+    }
+  }
   return env.BETTER_AUTH_SECRET ?? "dev-only-secret-change-me-please";
 }

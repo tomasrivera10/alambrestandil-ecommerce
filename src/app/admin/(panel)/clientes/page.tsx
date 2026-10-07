@@ -1,7 +1,9 @@
+import { requireArea } from "@/lib/rbac";
 import Link from "next/link";
 import { prisma, safeQuery } from "@/lib/db";
 
 export default async function CustomersPage() {
+  await requireArea("customers");
   const customers = await safeQuery(
     () =>
       prisma.customer.findMany({

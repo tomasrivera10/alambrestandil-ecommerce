@@ -18,6 +18,7 @@ export type CatalogProduct = {
   uses: string[];
   imageUrl: string | null;
   imageAlt: string | null;
+  imageIsReference: boolean;
   available: number | null;
 };
 
@@ -33,7 +34,7 @@ function mapProduct(product: {
   featured: boolean;
   uses: string[];
   category: { slug: string; name: string };
-  images: { url: string; alt: string }[];
+  images: { url: string; alt: string; isReference?: boolean }[];
   variants: { inventory: { onHand: number; reserved: number } | null }[];
 }): CatalogProduct {
   const available = product.variants.reduce((sum, variant) => {
@@ -50,18 +51,19 @@ function mapProduct(product: {
     brand: product.brand,
     salesUnit: String(product.salesUnit),
     priceVisibility: product.priceVisibility,
-    price: decimalToNumber(product.price),
+    price: product.priceVisibility === "HIDDEN" ? null : decimalToNumber(product.price),
     featured: product.featured,
     uses: product.uses,
     imageUrl: product.images[0]?.url ?? null,
     imageAlt: product.images[0]?.alt ?? null,
+    imageIsReference: product.images[0]?.isReference ?? false,
     available,
   };
 }
 
 const productInclude = {
   category: true,
-  images: { orderBy: { sortOrder: "asc" as const }, take: 1 },
+  images: { orderBy: [{ sortOrder: "asc" as const }, { id: "asc" as const }], take: 1 },
   variants: { include: { inventory: true } },
 };
 
@@ -69,6 +71,7 @@ export async function listCategories() {
   return safeQuery(
     () =>
       prisma.category.findMany({
+        where: { products: { some: { status: "ACTIVE" } } },
         orderBy: { sortOrder: "asc" },
         include: { _count: { select: { products: { where: { status: "ACTIVE" } } } } },
       }),
@@ -101,7 +104,7 @@ export async function listProducts(filters?: {
         },
         include: {
           ...productInclude,
-          images: { orderBy: { sortOrder: "asc" }, take: 1 },
+          images: { orderBy: [{ sortOrder: "asc" }, { id: "asc" }], take: 1 },
           variants: {
             where: { active: true },
             include: { inventory: true },
@@ -119,7 +122,7 @@ export async function listProducts(filters?: {
     const scored = products
       .map((product) => {
         const attributes = product.variants
-          .map((variant) => JSON.stringify(variant.attributes))
+          .map((variant) => `${variant.name} ${variant.sku} ${JSON.stringify(variant.attributes)}`)
           .join(" ");
         return {
           product: mapProduct(product as never),
@@ -161,7 +164,7 @@ export async function getProductBySlug(categorySlug: string, slug: string) {
       where: { slug, status: "ACTIVE", category: { slug: categorySlug } },
       include: {
         category: true,
-        images: { orderBy: { sortOrder: "asc" } },
+        images: { orderBy: [{ sortOrder: "asc" }, { id: "asc" }] },
         variants: {
           where: { active: true },
           include: { inventory: true },
@@ -174,7 +177,7 @@ export async function getProductBySlug(categorySlug: string, slug: string) {
             suggested: {
               include: {
                 category: true,
-                images: { orderBy: { sortOrder: "asc" }, take: 1 },
+                images: { orderBy: [{ sortOrder: "asc" }, { id: "asc" }], take: 1 },
                 variants: { where: { active: true }, include: { inventory: true } },
               },
             },
@@ -185,10 +188,10 @@ export async function getProductBySlug(categorySlug: string, slug: string) {
     if (!product) return null;
     return {
       ...product,
-      price: decimalToNumber(product.price),
+      price: product.priceVisibility === "HIDDEN" ? null : decimalToNumber(product.price),
       variants: product.variants.map((variant) => ({
         ...variant,
-        price: decimalToNumber(variant.price),
+        price: product.priceVisibility === "HIDDEN" ? null : decimalToNumber(variant.price),
         available: variant.inventory ? variant.inventory.onHand - variant.inventory.reserved : 0,
         attributes: variant.attributes as Record<string, string>,
       })),

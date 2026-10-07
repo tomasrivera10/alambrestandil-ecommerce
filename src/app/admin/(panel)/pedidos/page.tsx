@@ -1,8 +1,10 @@
+import { requireArea } from "@/lib/rbac";
 import Link from "next/link";
 import { prisma, safeQuery } from "@/lib/db";
 import { formatOrderNumber } from "@/lib/format";
 
 export default async function OrdersPage() {
+  await requireArea("orders");
   const orders = await safeQuery(
     () =>
       prisma.order.findMany({

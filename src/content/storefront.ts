@@ -25,26 +25,27 @@ export const featuredCategories = [
   {
     slug: "tejido-romboidal",
     name: "Tejidos",
-    detail: "El principio de un buen cerco.",
+    detail: "Romboidales para tu alambrado.",
     ...categoryPhotos["tejido-romboidal"],
   },
   {
     slug: "postes-de-hormigon",
     name: "Postes",
-    detail: "La base de tu proyecto.",
+    detail: "El sostén de tu alambrado.",
     ...categoryPhotos["postes-de-hormigon"],
   },
   {
     slug: "puertas-y-portones",
     name: "Portones",
-    detail: "Dale entrada a tu espacio.",
+    detail: "Puertas y portones galvanizados.",
     ...categoryPhotos["puertas-y-portones"],
   },
   {
-    slug: "tejido-revestido",
-    name: "Revestidos",
-    detail: "Privacidad que se ve bien.",
-    ...categoryPhotos["tejido-revestido"],
+    slug: "accesorios-de-colocacion",
+    name: "Accesorios",
+    detail: "Cada pieza para la colocación.",
+    src: "/images/catalogo/torniquetes.jpg",
+    alt: "Torniquete: imagen de referencia de Alambre Pallás",
   },
 ];
 export const filterLabels: Record<string, string> = {

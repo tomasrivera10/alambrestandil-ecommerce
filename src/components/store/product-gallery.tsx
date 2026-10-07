@@ -6,7 +6,7 @@ export function ProductGallery({
   name,
   reference = false,
 }: {
-  images: { url: string; alt: string }[];
+  images: { url: string; alt: string; isReference?: boolean; sourceUrl?: string | null }[];
   name: string;
   reference?: boolean;
 }) {
@@ -21,8 +21,9 @@ export function ProductGallery({
           name={name}
           ratio="aspect-square"
         />
-        {reference && <span className="reference-label">Imagen de referencia de la categoría</span>}
+        {(reference || image?.isReference) && <span className="reference-label">Imagen de referencia</span>}
       </div>
+      {image?.sourceUrl && <a href={image.sourceUrl} target="_blank" rel="noreferrer" className="text-xs underline">Fuente de la fotografía</a>}
       {images.length > 1 && (
         <div className="product-thumbnails" aria-label="Galería del producto">
           {images.map((item, index) => (

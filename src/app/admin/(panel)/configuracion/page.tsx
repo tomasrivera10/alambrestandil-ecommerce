@@ -1,8 +1,10 @@
+import { requireArea } from "@/lib/rbac";
 import { prisma } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { revalidatePath } from "next/cache";
 
 export default async function SettingsPage() {
+  await requireArea("settings");
   const settings = await prisma.siteSetting.findMany();
   const map = Object.fromEntries(settings.map((item) => [item.key, item.value]));
 

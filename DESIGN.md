@@ -7,6 +7,9 @@ colors:
   white: "#fff"
   ink: "#171b1f"
   muted: "#f2f3f3"
+  header-surface: "#f7f7f7"
+  header-divider: "#eceeef"
+  charcoal-hover: "#343a40"
   muted-foreground: "#5a6268"
   border: "#dce0e1"
   field-border: "#cbd0d3"
@@ -88,11 +91,11 @@ components:
     backgroundColor: "{colors.muted}"
     textColor: "{colors.ink}"
     padding: "0 16px"
-    height: "46px"
+    height: "44px"
   navigation:
     backgroundColor: "{colors.white}"
     textColor: "{colors.ink}"
-    height: "47px"
+    height: "44px"
   active-filter:
     backgroundColor: "{colors.muted}"
     textColor: "{colors.ink}"
@@ -129,7 +132,7 @@ La paleta es blanco, carbón y rojo, con grises fríos funcionales. El verde de 
 
 ### Neutral
 - **Blanco** (`white`): fondo de tienda y campos; texto sobre acciones y campañas oscuras.
-- **Carbón** (`ink`): títulos, texto principal, franja superior, campaña y pie.
+- **Carbón** (`ink`): títulos, texto principal, botón de pedido, campaña y pie.
 - **Gris de superficie** (`muted`): búsqueda, medios de producto, resumen de pedido y formularios.
 - **Gris de lectura secundaria** (`muted-foreground`): descripciones, unidades y metadatos.
 - **Grises de borde** (`border`, `field-border`, `field-border-strong`): separación y delimitación de controles.
@@ -161,7 +164,7 @@ Contenedor de ancho `min(100% - 80px, 1360px)`, centrado. A 800px los márgenes 
 
 Inicio: categorías y destacados en cuatro columnas, dos en móvil. Catálogo: sidebar de 220px y contenido con gap 46px; a 1100px sidebar 200px, gap 28px y productos en dos columnas. A 800px filtros en panel lateral y catálogo en dos columnas. Servicios pasan de dos columnas a una a 760px. La ficha de producto usa dos columnas y galería sticky en escritorio; a 800px se apila y elimina sticky.
 
-Header de escritorio sticky, con franja superior de 32px, fila de marca/búsqueda de 100px y navegación de 47px. En móvil el header vuelve al flujo, la búsqueda ocupa una fila completa y la navegación mide 42px. Los paneles de menú/filtros usan `min(90vw, 380px)`; pedido `min(100vw, 470px)`.
+Header de escritorio sticky de 84px, una sola fila con logo de 160px, navegación, búsqueda y acciones. A 1050px la navegación pasa al menú lateral y la altura baja a 76px. A 600px la búsqueda ocupa una segunda fila de 44px y el header conserva su posición sticky; logo de 124px y pedido con icono y contador. Los paneles de menú/filtros usan `min(90vw, 380px)`; pedido `min(100vw, 470px)`.
 
 ## Elevation & Depth
 
@@ -172,6 +175,8 @@ La tienda es plana: separadores de 1px y cambios de superficie construyen jerarq
 Imágenes rectangulares y campos de esquina recta. El radio global de controles shadcn es 2px; filtros y resumen del carrito lo conservan cuando se declara. Formularios de servicio y botones de campaña usan radio 0. El círculo queda reservado al contador y a indicadores de stock/filtro. Las tarjetas son contenido abierto, no cajas redondeadas elevadas.
 
 ## Components
+
+La cabecera usa `src/components/store/site-header.module.css`, importado directamente por `SiteHeader`, para mantener sus estilos ligados al componente y aislados del CSS global de la tienda.
 
 ### Buttons
 
@@ -187,11 +192,11 @@ Tarjetas de producto sin sombra ni marco exterior. Imagen recortada, copia debaj
 
 ### Inputs / Fields
 
-Búsqueda de cabecera gris, altura 46px (42px móvil), padding horizontal 16px. Filtros con borde gris, altura mínima 44px; formulario de servicio con borde fuerte y altura mínima 46px. Foco rojo visible; búsqueda de catálogo usa `focus-within` con outline 2px y offset 2px. No ocultar el foco del contenedor cuando el input interno elimina su outline.
+Búsqueda de cabecera gris con borde visible, altura 44px, padding horizontal 14px y botón rojo de 44px con lupa. Foco del contenedor con outline rojo de 2px y offset de 2px. Filtros con borde gris, altura mínima 44px; formulario de servicio con borde fuerte y altura mínima 46px. Foco rojo visible; búsqueda de catálogo usa `focus-within` con outline 2px y offset 2px. No ocultar el foco del contenedor cuando el input interno elimina su outline.
 
 ### Navigation
 
-Blanca, tipografía Figtree 13px/600, separadores finos y subrayado rojo animado de 2px al hover. Catálogo permanece rojo. Menú móvil en panel lateral con enlaces separados por líneas. El acceso al pedido muestra contador; su texto se oculta en móvil para preservar espacio.
+Navegación integrada en una única fila blanca, Figtree 13px/600. La página o sección activa usa texto rojo y subrayado; Productos ya no lleva un color fijo. El estado sigue rutas anidadas y búsqueda; en inicio sigue el scroll. El menú móvil comparte la selección y la conserva mientras bloquea el desplazamiento. Calculadora y contacto son accesos de icono de 44px con nombre accesible y tooltip nativo. Contacto pasa al menú por debajo de 1200px; toda la navegación pasa al menú por debajo de 1050px. Pedido usa botón carbón de 44px y contador blanco; el texto se oculta en móvil.
 
 ### Campañas y movimiento
 
@@ -212,3 +217,19 @@ FadeContent adapta React Bits mediante Web Animations API: 650ms, `cubic-bezier(
 - **Don't** inventar precios, testimonios, certificaciones o imágenes específicas de una variante.
 - **Don't** sustituir el catálogo por un botón flotante de WhatsApp ni presentar cobro online.
 - **Don't** añadir sombras decorativas, cápsulas generalizadas o tracking más cerrado que -0.04em.
+
+## Recorrido comercial del inicio
+
+La portada mide entre 400 y 500px (480px en móvil) para acercar el catálogo al primer viewport. Categorías con fotografía 4:3, destacados y acceso al catálogo completo preceden a la orientación por proyecto. La campaña grande de Romboidal ya no interrumpe el inicio; la referencia al fabricante sigue en el pie. Los accesos internos llevan a soluciones, instalación y local con margen para el header sticky. La información del negocio cierra el recorrido.
+
+### Hero de instalación (octubre 2026)
+
+La portada usa la fotografía aportada por el usuario, editada con ImageGen para mejorar luz, color, definición y encuadre horizontal. Asset WebP de 2560 × 1441px, ampliado desde la salida de 1672 × 941px; no es captura nativa 4K. Procedencia y prompt completo en `public/images/hero/provenance.json`. En escritorio el cartel queda a la derecha y la sombra se limita al área de texto. Hasta 800px, la fotografía ocupa un bloque superior de 240–360px y la copia continúa sobre carbón, sin superponerse al cartel.
+
+### Ficha de producto (octubre 2026)
+
+Plantilla compartida con ancho máximo de 1200px y galería contenida de hasta 440px en escritorio y 360px en móvil. La foto conserva la proporción sin recortar; se puede ampliar en un diálogo accesible. En móvil, nombre, descripción breve y unidad preceden a la galería. Las imágenes orientativas mantienen su etiqueta y fuente.
+
+Hasta seis variantes se muestran como radios con superficies de selección de 46px, selección carbón y foco rojo; para más variantes se usa Select de Base UI con navegación por teclado y opciones de al menos 44px. Orden natural de medidas. Los controles de cantidad de 48px reúnen edición directa, decremento e incremento; cantidades enteras para unidades discretas y decimales para metros/kg. Acción roja de 48px, radio local de 4px y confirmación de agregado. Se conserva el mínimo de una unidad del recorrido existente.
+
+Descripción técnica visible bajo la ficha, usos y documentación solo cuando existen, guía de pedido, retiro y aclaración de precio/stock/entrega. FadeContent adaptado de React Bits presenta el bloque principal una vez y respeta movimiento reducido. No sumar efectos decorativos sobre controles o texto técnico. Tipografía local: 12px para información secundaria, 13–15px para lectura/controles, 18px para subtítulos, 24px para sección, 26px para precio y título fluido de 32–44px. Las fichas no garantizan stock ni reemplazan contenido técnico faltante por afirmaciones generadas.

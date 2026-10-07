@@ -4,14 +4,13 @@ import { ArrowRight, ArrowUpRight, MapPin, MessageCircle, Ruler, Wrench } from "
 import { listProducts } from "@/features/products/queries";
 import { ProductCard } from "@/components/store/product-card";
 import { HeroMedia } from "@/components/store/hero-media";
-import { BrandCampaign } from "@/components/store/brand-campaign";
 import { FadeContent } from "@/components/store/fade-content";
 import { featuredCategories } from "@/content/storefront";
 export default async function HomePage() {
   const featured = await listProducts({ featured: true });
   return (
     <>
-      <section className="store-hero">
+      <section className="store-hero" data-store-section="productos">
         <HeroMedia videoSrc={process.env.NEXT_PUBLIC_HERO_VIDEO_URL} />
         <div className="hero-shade" />
         <div className="store-container hero-content">
@@ -27,10 +26,10 @@ export default async function HomePage() {
           </p>
           <div className="hero-actions">
             <Link href="/productos" className="store-button">
-              Explorá los productos <ArrowUpRight size={19} />
+              Ver productos y medidas <ArrowUpRight size={19} />
             </Link>
-            <Link href="/instalaciones" className="hero-secondary">
-              También lo instalamos <ArrowRight size={17} />
+            <Link href="#productos" className="hero-secondary">
+              Elegí por categoría <ArrowRight size={17} />
             </Link>
           </div>
         </div>
@@ -53,13 +52,17 @@ export default async function HomePage() {
           Consultá por instalación
         </span>
       </div>
-      <section className="store-section store-container" aria-labelledby="categories-title">
+      <section
+        id="productos"
+        data-store-section="productos"
+        className="store-section store-container home-categories"
+        aria-labelledby="categories-title"
+      >
         <div className="section-heading">
-          <h2 id="categories-title">
-            Todo para
-            <br />
-            tu alambrado.
-          </h2>
+          <div>
+            <h2 id="categories-title">Productos por categoría</h2>
+            <p>Elegí el material, revisá las medidas y agregalo a tu pedido.</p>
+          </div>
           <Link href="/productos" className="text-link">
             Ver todo el catálogo <ArrowUpRight size={17} />
           </Link>
@@ -89,10 +92,13 @@ export default async function HomePage() {
         </div>
       </section>
       {featured.length > 0 && (
-        <section className="store-section store-container featured-section">
+        <section
+          className="store-section store-container featured-section"
+          aria-labelledby="featured-title"
+        >
           <div className="section-heading">
             <div>
-              <h2>Materiales para tu cerco.</h2>
+              <h2 id="featured-title">Productos destacados</h2>
               <p>Tejidos, postes y accesorios para el trabajo de todos los días.</p>
             </div>
             <Link href="/productos" className="text-link">
@@ -106,16 +112,26 @@ export default async function HomePage() {
           </div>
         </section>
       )}
-      <FadeContent>
-        <BrandCampaign />
-      </FadeContent>
-      <section className="store-section store-container solutions-section">
+      <div className="home-catalog-next store-container">
+        <p>¿Buscás otro material? Encontrá todas las categorías y medidas en el catálogo.</p>
+        <Link href="/productos" className="store-button">
+          Ver todos los productos <ArrowUpRight size={18} />
+        </Link>
+      </div>
+      <nav className="home-section-nav store-container" aria-label="Ayuda para tu proyecto">
+        <span>¿Necesitás orientación?</span>
+        <Link href="#soluciones">Elegí según tu espacio</Link>
+        <Link href="#instalaciones">Materiales e instalación</Link>
+        <Link href="#nosotros">Conocé el local</Link>
+      </nav>
+      <section
+        id="soluciones"
+        data-store-section="soluciones"
+        className="store-section store-container solutions-section"
+        aria-labelledby="solutions-title"
+      >
         <div className="section-heading">
-          <h2>
-            ¿Qué tenés
-            <br />
-            en mente?
-          </h2>
+          <h2 id="solutions-title">Materiales según tu proyecto</h2>
           <div>
             <p>
               Cada espacio pide su propio cerco.
@@ -136,11 +152,7 @@ export default async function HomePage() {
               sizes="(min-width: 800px) 60vw, 100vw"
             />
             <div>
-              <h3>
-                Un terreno.
-                <br />
-                Muchas posibilidades.
-              </h3>
+              <h3>Para cerrar un terreno</h3>
               <span>
                 Cerrá tu terreno <ArrowUpRight size={18} />
               </span>
@@ -154,13 +166,9 @@ export default async function HomePage() {
               sizes="(min-width: 800px) 40vw, 100vw"
             />
             <div>
-              <h3>
-                Tu espacio.
-                <br />
-                Tu privacidad.
-              </h3>
+              <h3>Para cercar tu casa</h3>
               <span>
-                Conocé los revestidos <ArrowUpRight size={18} />
+                Elegí el cerco para tu casa <ArrowUpRight size={18} />
               </span>
             </div>
           </Link>
@@ -168,12 +176,9 @@ export default async function HomePage() {
       </section>
       <section className="project-help">
         <div className="store-container project-help-grid">
-          <div>
+          <div id="calculadora" data-store-section="calcular-alambrado">
             <Ruler size={36} strokeWidth={1.5} />
-            <h2>
-              De la medida
-              <br />a los materiales.
-            </h2>
+            <h2>Calculá tus materiales</h2>
             <p>
               ¿Ya tenés los metros? Usá la calculadora para preparar una lista estimada y la
               revisamos juntos.
@@ -182,13 +187,9 @@ export default async function HomePage() {
               Calculá tu alambrado <ArrowUpRight size={18} />
             </Link>
           </div>
-          <div>
+          <div id="instalaciones" data-store-section="instalaciones">
             <Wrench size={36} strokeWidth={1.5} />
-            <h2>
-              Nos ocupamos
-              <br />
-              del cerco completo.
-            </h2>
+            <h2>Materiales e instalación</h2>
             <p>
               Materiales y colocación. Contanos cómo es tu terreno y consultá por la instalación en
               Tandil y zona.
@@ -200,7 +201,11 @@ export default async function HomePage() {
         </div>
       </section>
       <FadeContent>
-        <section className="store-section store-container local-story">
+        <section
+          id="nosotros"
+          data-store-section="nosotros"
+          className="store-section store-container local-story"
+        >
           <div className="local-story-photo">
             <Image
               src="/images/tandil/materiales.webp"

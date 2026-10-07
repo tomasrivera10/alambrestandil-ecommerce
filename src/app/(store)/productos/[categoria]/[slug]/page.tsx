@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, MapPin, MessageCircle, ChevronRight } from "lucide-react";
 import { VariantPicker } from "@/components/store/variant-picker";
+import { FadeContent } from "@/components/store/fade-content";
 import { ProductGallery } from "@/components/store/product-gallery";
 import { ProductCard } from "@/components/store/product-card";
 import { getProductBySlug } from "@/features/products/queries";
@@ -33,7 +34,12 @@ export default async function ProductPage({ params }: Props) {
   );
   const reference = product.images.length === 0 ? categoryPhotos[categoria] : null;
   const images = product.images.length
-    ? product.images.map((image) => ({ url: image.url, alt: image.alt, isReference: image.isReference, sourceUrl: image.sourceUrl }))
+    ? product.images.map((image) => ({
+        url: image.url,
+        alt: image.alt,
+        isReference: image.isReference,
+        sourceUrl: image.sourceUrl,
+      }))
     : reference
       ? [{ url: reference.src, alt: `Imagen de referencia: ${reference.alt}` }]
       : [];
@@ -58,12 +64,8 @@ export default async function ProductPage({ params }: Props) {
         <ChevronRight size={12} />
         <span>{product.name}</span>
       </nav>
-      <div className="product-detail-grid">
-        <ProductGallery images={images} name={product.name} reference={Boolean(reference)} />
-        <div className="product-detail-copy">
-          <Link href={`/productos/${categoria}`} className="product-category">
-            {product.category.name}
-          </Link>
+      <FadeContent className="product-detail-grid">
+        <div className="product-summary">
           <h1>{product.name}</h1>
           <p className="product-intro">{product.shortDescription}</p>
           <div className="product-brand-line">
@@ -74,6 +76,9 @@ export default async function ProductPage({ params }: Props) {
               </span>
             )}
           </div>
+        </div>
+        <ProductGallery images={images} name={product.name} reference={Boolean(reference)} />
+        <div className="product-detail-copy">
           {product.variants.length ? (
             <VariantPicker
               variants={product.variants}
@@ -104,37 +109,45 @@ export default async function ProductPage({ params }: Props) {
               Precio y entrega a confirmar por WhatsApp
             </span>
           </div>
-          <div className="product-details">
-            <details open>
-              <summary>Características y detalles</summary>
-              <p>{product.technicalDescription}</p>
-            </details>
-            {product.uses.length > 0 && (
-              <details>
-                <summary>¿Para qué lo puedo usar?</summary>
-                <p>{product.uses.join(", ")}</p>
-              </details>
-            )}
-            {product.documentationUrl && (
-              <a
-                href={product.documentationUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="text-link"
-              >
-                Ver documentación técnica <ArrowUpRight size={16} />
-              </a>
-            )}
-            <details>
-              <summary>¿Cómo hago el pedido?</summary>
-              <p>
-                Elegí la variante y cantidad, agregalas a tu pedido y completá tus datos. Guardamos
-                la lista y seguimos por WhatsApp para confirmar precio, disponibilidad y entrega.
-              </p>
-            </details>
-          </div>
         </div>
-      </div>
+      </FadeContent>
+      <section className="product-information" aria-labelledby="product-description-title">
+        <div>
+          <h2 id="product-description-title">Sobre este producto</h2>
+          <p>{product.technicalDescription?.trim() || product.shortDescription}</p>
+          {product.uses.length > 0 && (
+            <div className="product-uses">
+              <h3>Usos recomendados</h3>
+              <ul>
+                {product.uses.map((use) => (
+                  <li key={use}>{use}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {product.documentationUrl && (
+            <a
+              href={product.documentationUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="text-link"
+            >
+              Ver documentación técnica <ArrowUpRight size={16} />
+            </a>
+          )}
+        </div>
+        <div className="product-order-guide">
+          <h3>Del catálogo a tu proyecto</h3>
+          <ol>
+            <li>Elegí la medida y la cantidad que necesitás.</li>
+            <li>Agregá los materiales a tu pedido y completá tus datos.</li>
+            <li>Continuá por WhatsApp para confirmar precio, disponibilidad y entrega.</li>
+          </ol>
+          <Link href="/calcular-alambrado" className="text-link">
+            Calculá los materiales de tu cerco <ArrowUpRight size={16} />
+          </Link>
+        </div>
+      </section>
       {product.complements.length > 0 && (
         <section className="store-section">
           <div className="section-heading">

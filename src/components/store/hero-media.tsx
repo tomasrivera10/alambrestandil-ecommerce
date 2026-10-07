@@ -18,10 +18,10 @@ export function HeroMedia({ videoSrc }: { videoSrc?: string }) {
     return () => preference.removeEventListener("change", update);
   }, [videoSrc]);
   return (
-    <>
+    <div className="hero-media">
       <Image
-        src="/images/tandil/cancha.webp"
-        alt="Cerco perimetral con tejido romboidal y postes en Tandil"
+        src="/images/hero/alambrado-tandil-editado.webp"
+        alt="Alambrado romboidal instalado con postes de hormigón y cartel de Alambres Tandil"
         fill
         preload
         sizes="100vw"
@@ -55,6 +55,6 @@ export function HeroMedia({ videoSrc }: { videoSrc?: string }) {
           </button>
         </>
       )}
-    </>
+    </div>
   );
 }

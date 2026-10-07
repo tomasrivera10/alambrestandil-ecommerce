@@ -17,7 +17,7 @@ OWN-WORLD: blanco, carbón y rojo de la marca; tipografía Archivo con títulos 
 
 STORY: reconocer el negocio, encontrar el material, elegir medida y armar un pedido trazable. Romboidal se presenta como fabricante comercializado, no como identidad de la tienda.
 
-FIRST VIEWPORT: franja superior carbón, header blanco con marca, búsqueda y pedido; navegación por debajo; fotografía amplia de materiales, título blanco grande a la izquierda y acceso rojo al catálogo. Video sustituye la foto solo con un archivo real validado. Debajo aparecen accesos visuales a categorías.
+FIRST VIEWPORT: header blanco compacto de una sola fila, con marca, navegación, búsqueda con botón rojo, accesos de calculadora/contacto y pedido carbón. En móvil, menú lateral y búsqueda en una segunda fila. Fotografía amplia de materiales, título blanco grande a la izquierda y acceso rojo al catálogo. Video sustituye la foto solo con un archivo real validado.
 
 FORM: dirección elegida explícitamente por el usuario, referencia YETI + Milwaukee; prevalece sobre el sorteo a04c47bc. Movimiento distintivo en campaña Romboidal con pausa, cambios de filtros y galería; sin impedir compra.
 

@@ -12,10 +12,22 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { BrandLogo } from "./brand-logo";
-export function MobileMenu() {
-  const [open, setOpen] = useState(false);
+import { storeNavigation } from "./store-navigation";
+export function MobileMenu({
+  activeSection,
+  current,
+  open,
+  onOpenChange,
+}: {
+  activeSection: string;
+  current: "page" | "location";
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}) {
+  const [sectionOnOpen, setSectionOnOpen] = useState(activeSection);
+  const selectedSection = open ? sectionOnOpen : activeSection;
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
+    <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetTrigger
         render={
           <Button
@@ -23,6 +35,9 @@ export function MobileMenu() {
             size="icon"
             className="mobile-menu-button"
             aria-label="Abrir menú"
+            onClickCapture={() => {
+              setSectionOnOpen(activeSection);
+            }}
           />
         }
       >
@@ -37,14 +52,20 @@ export function MobileMenu() {
         </SheetHeader>
         <nav aria-label="Navegación móvil" className="mobile-menu-links">
           {[
-            ["Productos", "/productos"],
-            ["Soluciones", "/soluciones"],
-            ["Calculá tu alambrado", "/calcular-alambrado"],
-            ["Instalaciones", "/instalaciones"],
-            ["Nosotros", "/nosotros"],
-            ["Contacto", "/contacto"],
-          ].map(([label, href]) => (
-            <Link key={href} href={href} onClick={() => setOpen(false)}>
+            ...storeNavigation,
+            {
+              label: "Calculá tu alambrado",
+              href: "/calcular-alambrado",
+              section: "calcular-alambrado",
+            },
+            { label: "Contacto", href: "/contacto", section: "contacto" },
+          ].map(({ label, href, section }) => (
+            <Link
+              key={href}
+              href={href}
+              aria-current={selectedSection === section ? current : undefined}
+              onClick={() => onOpenChange(false)}
+            >
               {label}
               <ArrowUpRight size={18} />
             </Link>

@@ -1,63 +1,78 @@
+"use client";
+
+import { useState } from "react";
+import styles from "./site-header.module.css";
 import Link from "next/link";
-import { Search, MapPin, ArrowUpRight } from "lucide-react";
+import Form from "next/form";
+import { Search, Calculator, MessageCircle } from "lucide-react";
 import { CartSheet } from "./cart-sheet";
 import { BrandLogo } from "./brand-logo";
 import { MobileMenu } from "./mobile-menu";
+import { storeNavigation, useStoreNavigation } from "./store-navigation";
+
 export function SiteHeader() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const { activeSection, current } = useStoreNavigation(menuOpen);
   return (
-    <>
-      <div className="store-utility">
-        <div className="store-container">
-          <span>La Casa del Alambrado · Tandil</span>
-          <Link href="/contacto">
-            <MapPin size={13} /> Ijurco 1480 <ArrowUpRight size={12} />
-          </Link>
-        </div>
-      </div>
-      <header className="store-header">
-        <div className="store-container header-main">
-          <MobileMenu />
-          <Link href="/" className="header-brand" aria-label="Alambres Tandil, inicio">
-            <BrandLogo />
-          </Link>
-          <form action="/buscar" role="search" className="header-search">
+    <header data-store-header className={styles["commerce-header"]}>
+      <div className={`store-container ${styles["commerce-header-inner"]}`}>
+        <MobileMenu
+          activeSection={activeSection}
+          current={current}
+          open={menuOpen}
+          onOpenChange={setMenuOpen}
+        />
+        <Link href="/" className={styles["commerce-brand"]} aria-label="Alambres Tandil, inicio">
+          <BrandLogo />
+        </Link>
+        <nav className={styles["commerce-nav"]} aria-label="Navegación principal">
+          {storeNavigation.map(({ label, href, section }) => (
+            <Link
+              key={href}
+              href={href}
+              aria-current={activeSection === section ? current : undefined}
+            >
+              {label}
+            </Link>
+          ))}
+        </nav>
+        <Form action="/buscar" role="search" className={styles["commerce-search"]}>
+          <label className="sr-only" htmlFor="store-search">
+            Buscar productos
+          </label>
+          <input
+            id="store-search"
+            name="q"
+            placeholder="Buscá productos…"
+            type="search"
+            autoComplete="off"
+          />
+          <button type="submit" aria-label="Buscar productos">
             <Search size={19} aria-hidden="true" />
-            <label className="sr-only" htmlFor="store-search">
-              Buscar productos
-            </label>
-            <input
-              id="store-search"
-              name="q"
-              placeholder="¿Qué necesitás para tu proyecto?"
-              type="search"
-              autoComplete="off"
-            />
-            <button type="submit" aria-label="Buscar">
-              <ArrowUpRight size={19} />
-            </button>
-          </form>
-          <Link href="/contacto" className="header-help">
-            ¿Necesitás una mano?
-            <strong>
-              Hablemos <ArrowUpRight size={14} />
-            </strong>
+          </button>
+        </Form>
+        <div className={styles["commerce-actions"]}>
+          <Link
+            href="/calcular-alambrado"
+            aria-current={activeSection === "calcular-alambrado" ? current : undefined}
+            className={styles["commerce-tool"]}
+            aria-label="Calculá tu alambrado"
+            title="Calculá tu alambrado"
+          >
+            <Calculator size={20} aria-hidden="true" />
+          </Link>
+          <Link
+            href="/contacto"
+            aria-current={activeSection === "contacto" ? current : undefined}
+            className={`${styles["commerce-tool"]} ${styles["commerce-contact"]}`}
+            aria-label="Contacto"
+            title="Contacto"
+          >
+            <MessageCircle size={20} aria-hidden="true" />
           </Link>
           <CartSheet />
         </div>
-        <div className="header-nav-wrap">
-          <nav className="store-container header-nav" aria-label="Navegación principal">
-            <Link href="/productos" className="nav-catalog">
-              Productos <ArrowUpRight size={15} />
-            </Link>
-            <Link href="/soluciones">Soluciones</Link>
-            <Link href="/instalaciones">Instalaciones</Link>
-            <Link href="/nosotros">Nosotros</Link>
-            <Link href="/calcular-alambrado" className="nav-calculator">
-              Calculá tu alambrado <ArrowUpRight size={15} />
-            </Link>
-          </nav>
-        </div>
-      </header>
-    </>
+      </div>
+    </header>
   );
 }

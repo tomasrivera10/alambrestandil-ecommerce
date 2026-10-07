@@ -4,7 +4,7 @@ import { site } from "@/content/site";
 import { BrandLogo } from "./brand-logo";
 export function SiteFooter() {
   return (
-    <footer className="store-footer">
+    <footer className="store-footer" data-store-section="contacto">
       <div className="store-container footer-top">
         <h2>
           Un buen cerco empieza

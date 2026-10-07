@@ -12,11 +12,7 @@ export function PriceTag({
   }
   const formatted = formatMoney(price);
   if (visibility === "FROM") {
-    return (
-      <span className="font-mono text-sm tabular-nums">
-        Desde {formatted}
-      </span>
-    );
+    return <span className="font-mono text-sm tabular-nums">Desde {formatted}</span>;
   }
   return <span className="font-mono text-sm tabular-nums">{formatted}</span>;
 }

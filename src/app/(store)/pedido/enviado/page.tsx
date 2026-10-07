@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { formatOrderNumber } from "@/lib/format";
-
+import { OrderWhatsapp } from "@/components/store/order-whatsapp";
 export default async function SentPage({
   searchParams,
 }: {
@@ -9,16 +9,19 @@ export default async function SentPage({
   const { n } = await searchParams;
   const number = Number(n);
   return (
-    <div className="mx-auto max-w-xl px-4 py-16">
-      <h1 className="font-heading text-4xl">Pedido registrado</h1>
-      <p className="mt-4 text-sm leading-relaxed">
-        {Number.isFinite(number)
-          ? `Quedó cargado como ${formatOrderNumber(number)}. Si WhatsApp no se abrió, volvé a intentar desde el chat del local.`
-          : "El pedido quedó cargado."}
+    <div className="store-container py-20">
+      <span className="eyebrow">Gracias por elegirnos</span>
+      <h1 className="mt-4">Tu pedido está registrado.</h1>
+      <p className="my-6 max-w-xl">
+        {n && Number.isFinite(number) ? `Pedido ${formatOrderNumber(number)}. ` : ""}Abrí WhatsApp
+        para enviarnos el detalle y confirmar disponibilidad, precio y entrega con el equipo.
       </p>
-      <Link href="/productos" className="mt-6 inline-block text-sm underline">
-        Seguir mirando materiales
-      </Link>
+      <div className="flex flex-wrap gap-4">
+        <OrderWhatsapp />
+        <Link href="/productos" className="store-button button-outline">
+          Seguir mirando materiales
+        </Link>
+      </div>
     </div>
   );
 }

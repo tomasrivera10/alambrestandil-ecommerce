@@ -1,22 +1,31 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ServicePage } from "@/components/store/service-page";
 import { site } from "@/content/site";
-
 export const metadata: Metadata = { title: "Nosotros" };
-
 export default function AboutPage() {
   return (
-    <article className="mx-auto max-w-2xl px-4 py-12">
-      <h1 className="font-heading text-4xl">La Casa del Alambrado</h1>
-      <p className="mt-6 text-sm leading-relaxed">
-        Alambres Tandil vende y coloca materiales para cercos en Tandil. El local está en{" "}
-        {site.address}, {site.addressDetail}. El proyecto arrancó en 2018 y se apoya en la
-        trayectoria de Alambrados Neri.
+    <ServicePage
+      eyebrow="Nosotros"
+      title="De Tandil. Para tus proyectos."
+      intro="Somos La Casa del Alambrado. Materiales, experiencia y una conversación directa para encontrar el cerco que necesitás."
+      image="/images/tandil/materiales.webp"
+    >
+      <h2>El trabajo se construye todos los días.</h2>
+      <p>
+        Alambres Tandil nació en 2018, con Mauro Broggia al frente y la trayectoria familiar de
+        Alambrados Neri como punto de partida.
       </p>
-      <p className="mt-4 text-sm leading-relaxed">
-        Trabajamos tejidos de Romboidal SA, fabricante con certificado INTI, y atendemos al
-        particular, al alambrador, a la obra y al campo con el mismo mostrador: una lista clara y
-        una conversación por WhatsApp.
+      <p>
+        Atendemos al particular, al alambrador, a la obra y al campo. Trabajamos con productos
+        Romboidal y acompañamos cada proyecto, desde la elección de materiales hasta su colocación.
       </p>
-    </article>
+      <p>
+        Encontranos en {site.address}, {site.addressDetail}, Tandil.
+      </p>
+      <Link href="/contacto" className="store-button button-red mt-8">
+        Vení a conocernos
+      </Link>
+    </ServicePage>
   );
 }

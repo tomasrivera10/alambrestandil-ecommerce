@@ -1,92 +1,139 @@
 "use client";
-
 import { useState } from "react";
-import { ShoppingBag } from "lucide-react";
+import Link from "next/link";
+import { ShoppingBag, ArrowUpRight, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
+  SheetDescription,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { cartCount, useCart } from "@/features/cart/store";
+import { cartCount, useCart, useCartLines } from "@/features/cart/store";
 import { formatMoney, unitLabel } from "@/lib/format";
-import Link from "next/link";
-
+import { ProductMedia } from "./product-media";
 export function CartSheet() {
-  const lines = useCart((state) => state.lines);
+  const lines = useCartLines();
   const setQuantity = useCart((state) => state.setQuantity);
   const remove = useCart((state) => state.remove);
   const count = cartCount(lines);
   const [open, setOpen] = useState(false);
-
+  const priced = lines.filter(
+    (line) => line.unitPrice != null && line.priceVisibility !== "HIDDEN",
+  );
+  const estimated = priced.reduce((sum, line) => sum + line.unitPrice! * line.quantity, 0);
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger
         render={
-          <Button className="h-10 px-3">
-            <ShoppingBag />
-            Pedido
-            <span className="font-mono tabular-nums">{count}</span>
-          </Button>
+          <Button
+            variant="ghost"
+            className="cart-trigger"
+            aria-label={`Mi pedido, ${count} materiales`}
+          />
         }
-      />
-      <SheetContent side="right" className="w-full sm:max-w-md">
+      >
+        <ShoppingBag size={22} />
+        <span>Mi pedido</span>
+        <span className="cart-count">{count}</span>
+      </SheetTrigger>
+      <SheetContent side="right" className="store-panel cart-panel">
         <SheetHeader>
-          <SheetTitle>Tu pedido</SheetTitle>
+          <SheetTitle>Tu próximo proyecto.</SheetTitle>
+          <SheetDescription>
+            {lines.length
+              ? `${lines.length} ${lines.length === 1 ? "material" : "materiales"} en tu pedido`
+              : "Tu lista de materiales empieza acá."}
+          </SheetDescription>
         </SheetHeader>
-        {lines.length === 0 ? (
-          <p className="px-4 text-sm text-muted-foreground">
-            Todavía no agregaste materiales. Recorré el catálogo y armá la lista.
-          </p>
+        {!lines.length ? (
+          <div className="cart-empty">
+            <ShoppingBag size={44} strokeWidth={1} />
+            <h3>Todavía hay lugar para tus ideas.</h3>
+            <p>Recorré el catálogo, elegí tus materiales y los vamos sumando acá.</p>
+            <Button
+              nativeButton={false}
+              render={<Link href="/productos" />}
+              onClick={() => setOpen(false)}
+            >
+              Explorá el catálogo <ArrowUpRight size={17} />
+            </Button>
+          </div>
         ) : (
-          <div className="flex min-h-0 flex-1 flex-col">
-            <ul className="flex-1 space-y-4 overflow-auto px-4">
+          <>
+            <ul className="cart-lines">
               {lines.map((line) => (
-                <li key={line.variantId} className="border-b border-border pb-4">
-                  <p className="font-medium">{line.productName}</p>
-                  <p className="text-sm text-muted-foreground">{line.variantName}</p>
-                  <div className="mt-2 flex items-center justify-between gap-3">
-                    <label className="text-xs text-muted-foreground">
-                      Cantidad
-                      <input
-                        className="ml-2 h-8 w-16 border border-input bg-transparent px-2 font-mono"
-                        type="number"
-                        min={1}
-                        value={line.quantity}
-                        onChange={(event) =>
-                          setQuantity(line.variantId, Number(event.target.value))
-                        }
-                      />
-                    </label>
-                    <button
-                      type="button"
-                      className="text-xs underline"
-                      onClick={() => remove(line.variantId)}
+                <li key={line.variantId}>
+                  <Link href={line.href} onClick={() => setOpen(false)} className="cart-line-image">
+                    <ProductMedia
+                      src={line.imageUrl}
+                      alt={line.productName}
+                      name={line.productName}
+                    />
+                  </Link>
+                  <div>
+                    <Link
+                      href={line.href}
+                      onClick={() => setOpen(false)}
+                      className="cart-line-name"
                     >
-                      Quitar
-                    </button>
+                      {line.productName}
+                    </Link>
+                    <p>{line.variantName}</p>
+                    <span className="cart-line-price">
+                      {line.unitPrice == null || line.priceVisibility === "HIDDEN"
+                        ? "Precio a confirmar"
+                        : `${line.priceVisibility === "FROM" ? "Desde " : ""}${formatMoney(line.unitPrice)} / ${unitLabel(line.unit, 1)}`}
+                    </span>
+                    <div className="cart-line-controls">
+                      <label>
+                        Cantidad
+                        <input
+                          type="number"
+                          min={1}
+                          step={["METRO", "KG"].includes(line.unit) ? "0.001" : "1"}
+                          value={line.quantity}
+                          onChange={(event) => {
+                            const value = Number(event.target.value);
+                            if (Number.isFinite(value) && value >= 1)
+                              setQuantity(line.variantId, value);
+                          }}
+                        />
+                      </label>
+                      <button
+                        type="button"
+                        aria-label={`Quitar ${line.productName}`}
+                        onClick={() => remove(line.variantId)}
+                      >
+                        <Trash2 size={15} />
+                      </button>
+                    </div>
                   </div>
-                  <p className="mt-1 font-mono text-xs">
-                    {line.unitPrice == null || line.priceVisibility === "HIDDEN"
-                      ? "Precio a confirmar"
-                      : `${formatMoney(line.unitPrice)} / ${unitLabel(line.unit, 1)}`}
-                  </p>
                 </li>
               ))}
             </ul>
-            <div className="border-t border-border p-4">
+            <div className="cart-summary">
+              <div>
+                <span>
+                  {priced.length < lines.length ? "Subtotal con precio" : "Total estimado"}
+                </span>
+                <strong>{priced.length ? formatMoney(estimated) : "A confirmar"}</strong>
+              </div>
+              <p>Confirmamos precio, disponibilidad y entrega por WhatsApp.</p>
               <Button
-                className="w-full"
                 nativeButton={false}
                 render={<Link href="/pedido" />}
                 onClick={() => setOpen(false)}
               >
-                Continuar pedido
+                Revisar y enviar pedido <ArrowUpRight size={17} />
               </Button>
+              <button type="button" className="cart-continue" onClick={() => setOpen(false)}>
+                Seguir eligiendo materiales
+              </button>
             </div>
-          </div>
+          </>
         )}
       </SheetContent>
     </Sheet>

@@ -1,20 +1,15 @@
 import type { Metadata } from "next";
+import { ServicePage } from "@/components/store/service-page";
 import { EstimateForm } from "@/components/store/estimate-form";
-import { ESTIMATE_DISCLAIMER } from "@/features/quotes/estimate";
-
-export const metadata: Metadata = {
-  title: "Calculá tu alambrado",
-  description: "Estimación de materiales para un cerco. Sujeta a validación en el local.",
-};
-
-export default function CalculatorPage() {
+export const metadata: Metadata = { title: "Calculá tu alambrado" };
+export default function Page() {
   return (
-    <div className="mx-auto max-w-xl px-4 py-10">
-      <h1 className="font-heading text-4xl">Calculá tu alambrado</h1>
-      <p className="mt-3 text-sm leading-relaxed">{ESTIMATE_DISCLAIMER}</p>
-      <div className="mt-8">
-        <EstimateForm />
-      </div>
-    </div>
+    <ServicePage
+      eyebrow="Calculá tu alambrado"
+      title="Poné tu proyecto en números."
+      intro="Una primera estimación de materiales para avanzar. El equipo confirma medidas, cantidades y presupuesto antes de cerrar tu pedido."
+    >
+      <EstimateForm />
+    </ServicePage>
   );
 }

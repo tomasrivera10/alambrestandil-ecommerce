@@ -1,0 +1,12 @@
+[
+  {
+    "antipattern": "border-accent-on-rounded",
+    "name": "Border accent on rounded element",
+    "description": "Thick accent border on a rounded card — the border clashes with the rounded corners. Remove the border or the border-radius.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/(store)/storefront.css",
+    "line": 282,
+    "snippet": "border-top:3px solid"
+  }
+]

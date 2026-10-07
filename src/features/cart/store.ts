@@ -2,6 +2,7 @@
 
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { useSyncExternalStore } from "react";
 
 export type CartLine = {
   variantId: string;
@@ -55,4 +56,16 @@ export const useCart = create<CartState>()(
 
 export function cartCount(lines: CartLine[]) {
   return lines.reduce((sum, line) => sum + line.quantity, 0);
+}
+
+const emptyLines: CartLine[] = [];
+const subscribeHydration = () => () => {};
+export function useCartLines() {
+  const hydrated = useSyncExternalStore(
+    subscribeHydration,
+    () => true,
+    () => false,
+  );
+  const lines = useCart((state) => state.lines);
+  return hydrated ? lines : emptyLines;
 }

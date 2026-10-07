@@ -16,7 +16,7 @@ Quien entra a armar un pedido es un particular, constructor, alambrador o produc
 
 ## Product Purpose
 
-Alambres Tandil publica el catálogo real, deja armar un pedido con variantes y cantidades, lo guarda y lo cierra por WhatsApp. El éxito es un pedido trazable, un cliente reconocido por teléfono y un stock que solo cambia con un movimiento.
+Alambres Tandil publica el catálogo real, deja armar un pedido con variantes y cantidades, lo guarda y permite continuarlo por WhatsApp desde un botón explícito en la página de éxito. El éxito es un pedido trazable, un cliente reconocido por teléfono y un stock que solo cambia con un movimiento.
 
 ## Positioning
 
@@ -24,26 +24,26 @@ Es la casa del alambrado en Tandil: materiales e instalación en el mismo lugar,
 
 ## Operating Context
 
-El local está en Ijurco 1480, esquina colectora Macaya, Ruta 226, Tandil. Teléfono de línea 249 421-4973. El número de WhatsApp es configurable y puede no coincidir con el fijo. Correo: alambrestandil@gmail.com. Relación de trayectoria con Alambrados Neri (222 450-5000). Tejido de referencia Romboidal SA, con prueba de calidad INTI. El vendedor responde el mensaje ya armado, no un formulario suelto.
+El local está en Ijurco 1480, esquina colectora Macaya, Ruta 226, Tandil. Teléfono de línea 249 421-4973. El número de WhatsApp es configurable y puede no coincidir con el fijo. Correo: alambrestandil@gmail.com. Relación de trayectoria con Alambrados Neri (222 450-5000). Tejido de referencia Romboidal SA. No afirmar certificaciones de calidad sin evidencia verificada. El vendedor responde el mensaje ya armado, no un formulario suelto.
 
 ## Capabilities and Constraints
 
 - Catálogo con categorías, variantes, unidades (unidad, metro, rollo, kg, paquete, panel, juego) y visibilidad de precio PUBLIC, HIDDEN o FROM.
 - Acciones de pedido: agregar al pedido, pedir presupuesto, consultar disponibilidad, consultar por WhatsApp, armar el pedido, solicitar cotización. No hay botón de compra ni cobro online.
-- Carrito en el navegador hasta confirmar. El pedido se persiste y después se abre WhatsApp.
+- Carrito en el navegador hasta confirmar. El pedido se persiste y lleva a una página de éxito con un botón explícito para continuar por WhatsApp.
 - Estados: borrador interno, nuevo, enviado a WhatsApp, contactado, cotizado, confirmado, preparando, listo, entregado, cancelado. La reserva de stock empieza en confirmado. Entregado descuenta. Cancelar un pedido reservado libera.
 - Cliente único por teléfono argentino normalizado. Etiquetas: Particular, Constructor, Alambrador, Rural, Empresa, Mayorista, Frecuente.
 - Roles: ADMIN, VENDEDOR, STOCK. No hay registro público.
 - Calculador de alambrado e instalaciones generan una cotización estimada, con aviso de que no es un metraje cerrado.
-- Fotos del sitio anterior no están disponibles. Hasta tener archivos reales se usan placeholders.
+- Hay fotografías reales del negocio, materiales e instalaciones disponibles y con procedencia registrada. Para variantes sin imagen específica, distinguir las referencias visuales de las fotografías exactas del producto. El video original de Instagram sigue pendiente; el hero usa fotografía de respaldo.
 
 ## Brand Commitments
 
-Nombre: Alambres Tandil. Bajada: La Casa del Alambrado. Voz en voseo, concreta, de mostrador. La identidad visual no copia el rojo de la plantilla anterior.
+Nombre: Alambres Tandil. Bajada: La Casa del Alambrado. Voz en voseo, concreta, de mostrador. La identidad visual usa el rojo verificado del logo real, carbón y blanco; el usuario autorizó reemplazar la anterior dirección verde de la tienda pública.
 
 ## Evidence on Hand
 
-Contenido de alambrestandil.com.ar: dirección, teléfonos, familias de producto, dualidad materiales/instalación y campos de obra (tejido, poste, terreno, malla, metros, portón, ubicación). No hay fotos utilizables ni precios publicados de origen. No inventar testimonios ni certificados que no estén en ese contenido.
+Contenido de alambrestandil.com.ar: dirección, teléfonos, familias de producto, dualidad materiales/instalación y campos de obra (tejido, poste, terreno, malla, metros, portón, ubicación). Hay fotos reales utilizables y logo verificado; no hay precios publicados de origen. No inventar testimonios ni certificados que no estén en ese contenido.
 
 ## Product Principles
 

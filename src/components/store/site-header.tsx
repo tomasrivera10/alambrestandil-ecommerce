@@ -1,44 +1,63 @@
 import Link from "next/link";
-import { CartSheet } from "@/components/store/cart-sheet";
-import { site } from "@/content/site";
-
+import { Search, MapPin, ArrowUpRight } from "lucide-react";
+import { CartSheet } from "./cart-sheet";
+import { BrandLogo } from "./brand-logo";
+import { MobileMenu } from "./mobile-menu";
 export function SiteHeader() {
   return (
-    <header className="site-header sticky top-0 z-40 border-b border-ink bg-ink text-background">
-      <div className="mx-auto flex h-16 max-w-7xl items-center gap-6 px-4">
-        <Link href="/" className="min-w-0">
-          <span className="block font-heading text-lg leading-none tracking-tight">{site.name}</span>
-          <span className="text-[11px] text-background/70">{site.tagline}</span>
-        </Link>
-        <nav className="flex items-center gap-5 text-sm">
-          <Link href="/productos" className="hover:underline">
-            Productos
+    <>
+      <div className="store-utility">
+        <div className="store-container">
+          <span>La Casa del Alambrado · Tandil</span>
+          <Link href="/contacto">
+            <MapPin size={13} /> Ijurco 1480 <ArrowUpRight size={12} />
           </Link>
-        </nav>
-        <form action="/buscar" className="ml-auto hidden min-w-0 flex-1 md:block md:max-w-xs">
-          <label className="sr-only" htmlFor="q">
-            Buscar productos
-          </label>
-          <input
-            id="q"
-            name="q"
-            placeholder="tejido 1.80, poste olímpico"
-            className="h-10 w-full border border-background/20 bg-background px-3 text-sm text-foreground outline-none focus-visible:border-primary"
-          />
-        </form>
-        <CartSheet />
+        </div>
       </div>
-      <form action="/buscar" className="border-t border-background/15 px-4 py-2 md:hidden">
-        <label className="sr-only" htmlFor="qm">
-          Buscar productos
-        </label>
-        <input
-          id="qm"
-          name="q"
-          placeholder="Buscar tejido, poste, malla"
-          className="h-10 w-full border border-background/20 bg-background px-3 text-sm text-foreground"
-        />
-      </form>
-    </header>
+      <header className="store-header">
+        <div className="store-container header-main">
+          <MobileMenu />
+          <Link href="/" className="header-brand" aria-label="Alambres Tandil, inicio">
+            <BrandLogo />
+          </Link>
+          <form action="/buscar" role="search" className="header-search">
+            <Search size={19} aria-hidden="true" />
+            <label className="sr-only" htmlFor="store-search">
+              Buscar productos
+            </label>
+            <input
+              id="store-search"
+              name="q"
+              placeholder="¿Qué necesitás para tu proyecto?"
+              type="search"
+              autoComplete="off"
+            />
+            <button type="submit" aria-label="Buscar">
+              <ArrowUpRight size={19} />
+            </button>
+          </form>
+          <Link href="/contacto" className="header-help">
+            ¿Necesitás una mano?
+            <strong>
+              Hablemos <ArrowUpRight size={14} />
+            </strong>
+          </Link>
+          <CartSheet />
+        </div>
+        <div className="header-nav-wrap">
+          <nav className="store-container header-nav" aria-label="Navegación principal">
+            <Link href="/productos" className="nav-catalog">
+              Productos <ArrowUpRight size={15} />
+            </Link>
+            <Link href="/soluciones">Soluciones</Link>
+            <Link href="/instalaciones">Instalaciones</Link>
+            <Link href="/nosotros">Nosotros</Link>
+            <Link href="/calcular-alambrado" className="nav-calculator">
+              Calculá tu alambrado <ArrowUpRight size={15} />
+            </Link>
+          </nav>
+        </div>
+      </header>
+    </>
   );
 }

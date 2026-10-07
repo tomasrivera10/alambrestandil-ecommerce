@@ -11,7 +11,7 @@ export function EstimateForm() {
 
   return (
     <form
-      className="grid gap-4 text-sm"
+      className="store-form grid gap-4 text-sm"
       onSubmit={async (event) => {
         event.preventDefault();
         setPending(true);
@@ -66,11 +66,11 @@ export function EstimateForm() {
       </label>
       <label className="grid gap-1">
         Nombre
-        <Input name="name" required />
+        <Input name="name" autoComplete="name" required />
       </label>
       <label className="grid gap-1">
         Teléfono
-        <Input name="phone" required />
+        <Input name="phone" type="tel" autoComplete="tel" required />
       </label>
       <label className="grid gap-1">
         Localidad

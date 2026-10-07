@@ -1,9 +1,9 @@
 "use client";
-
 import { useState } from "react";
-import { AddToOrder } from "@/components/store/add-to-order";
+import { AddToOrder } from "./add-to-order";
+import { PriceTag } from "./price-tag";
 import { unitLabel } from "@/lib/format";
-
+import { filterLabels } from "@/content/storefront";
 type Variant = {
   id: string;
   name: string;
@@ -13,7 +13,6 @@ type Variant = {
   available: number;
   attributes: Record<string, string>;
 };
-
 export function VariantPicker({
   variants,
   productName,
@@ -39,16 +38,15 @@ export function VariantPicker({
   const variant = variants.find((item) => item.id === id) ?? variants[0];
   if (!variant) return null;
   const unit = variant.salesUnit ?? fallbackUnit;
-
   return (
-    <div id="pedido" className="mt-6 border border-border bg-card p-4">
-      <label className="grid gap-1 text-xs">
-        Variante
-        <select
-          className="h-10 border border-input bg-background px-2 text-sm"
-          value={variant.id}
-          onChange={(event) => setId(event.target.value)}
-        >
+    <div id="pedido" className="variant-panel">
+      <div className="variant-price">
+        <PriceTag visibility={priceVisibility} price={variant.price ?? fallbackPrice} />
+        <span>por {unitLabel(unit, 1)}</span>
+      </div>
+      <label className="variant-select">
+        Elegí tu medida
+        <select value={variant.id} onChange={(event) => setId(event.target.value)}>
           {variants.map((item) => (
             <option key={item.id} value={item.id}>
               {item.name}
@@ -56,34 +54,36 @@ export function VariantPicker({
           ))}
         </select>
       </label>
-      <p className="mt-3 font-mono text-xs text-muted-foreground">SKU {variant.sku}</p>
-      <p className="mt-2 text-sm">
+      <div className="variant-stock">
+        <span className={variant.available > 0 ? "stock-indicator has-stock" : "stock-indicator"} />
         {variant.available > 0
           ? `${variant.available} ${unitLabel(unit)} disponibles`
           : "Consultar disponibilidad"}
-      </p>
-      <dl className="mt-4 grid grid-cols-2 gap-2 text-sm">
-        {Object.entries(variant.attributes).map(([key, value]) => (
-          <div key={key} className="border-t border-border pt-2">
-            <dt className="text-xs text-muted-foreground">{key}</dt>
-            <dd>{value}</dd>
-          </div>
-        ))}
-      </dl>
-      <div className="mt-5">
-        <AddToOrder
-          variantId={variant.id}
-          productName={productName}
-          variantName={variant.name}
-          href={href}
-          unit={unit}
-          unitPrice={variant.price ?? fallbackPrice}
-          priceVisibility={priceVisibility}
-          imageUrl={imageUrl}
-          ctaType={ctaType}
-          whatsappUrl={whatsappUrl}
-        />
+        <small>SKU {variant.sku}</small>
       </div>
+      {Object.keys(variant.attributes).length > 0 && (
+        <dl className="variant-attributes">
+          {Object.entries(variant.attributes).map(([key, value]) => (
+            <div key={key}>
+              <dt>{filterLabels[key] ?? key}</dt>
+              <dd>{value}</dd>
+            </div>
+          ))}
+        </dl>
+      )}
+      <AddToOrder
+        key={variant.id}
+        variantId={variant.id}
+        productName={productName}
+        variantName={variant.name}
+        href={href}
+        unit={unit}
+        unitPrice={variant.price ?? fallbackPrice}
+        priceVisibility={priceVisibility}
+        imageUrl={imageUrl}
+        ctaType={ctaType}
+        whatsappUrl={whatsappUrl}
+      />
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/features/cart/store";
+import { ArrowUpRight, Check } from "lucide-react";
 
 const LABELS: Record<string, string> = {
   ADD_TO_ORDER: "Agregar al pedido",
@@ -38,24 +39,32 @@ export function AddToOrder({
 }) {
   const add = useCart((state) => state.add);
   const [quantity, setQuantity] = useState(1);
+  const [added, setAdded] = useState(false);
 
   if (ctaType === "WHATSAPP" && whatsappUrl) {
     return (
-      <Button render={<a href={whatsappUrl} target="_blank" rel="noreferrer" />}>
+      <Button
+        nativeButton={false}
+        render={<a href={whatsappUrl} target="_blank" rel="noreferrer" />}
+      >
         {LABELS.WHATSAPP}
       </Button>
     );
   }
 
   return (
-    <div className="flex items-end gap-3">
+    <div className="add-to-order">
       <label className="grid gap-1 text-xs">
         Cantidad
         <input
           type="number"
           min={1}
+          step={["METRO", "KG"].includes(unit) ? "0.001" : "1"}
           value={quantity}
-          onChange={(event) => setQuantity(Number(event.target.value))}
+          onChange={(event) => {
+            setQuantity(Number(event.target.value));
+            setAdded(false);
+          }}
           className="h-10 w-20 border border-input bg-card px-2 font-mono"
         />
       </label>
@@ -66,16 +75,18 @@ export function AddToOrder({
             productName,
             variantName,
             href,
-            quantity: Math.max(1, quantity),
+            quantity: Number.isFinite(quantity) ? Math.max(1, quantity) : 1,
             unit,
             unitPrice,
             priceVisibility,
             imageUrl,
           });
           toast.success("Agregado al pedido");
+          setAdded(true);
         }}
       >
-        {LABELS[ctaType] ?? LABELS.ADD_TO_ORDER}
+        {added ? "Agregado al pedido" : (LABELS[ctaType] ?? LABELS.ADD_TO_ORDER)}
+        {added ? <Check size={17} /> : <ArrowUpRight size={17} />}
       </Button>
     </div>
   );

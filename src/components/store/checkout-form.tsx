@@ -5,12 +5,13 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useCart } from "@/features/cart/store";
+import Link from "next/link";
+import { useCart, useCartLines } from "@/features/cart/store";
 import { createOrder } from "@/features/orders/actions";
 import { formatMoney } from "@/lib/format";
 
 export function CheckoutForm() {
-  const lines = useCart((state) => state.lines);
+  const lines = useCartLines();
   const clear = useCart((state) => state.clear);
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
@@ -19,9 +20,13 @@ export function CheckoutForm() {
 
   if (lines.length === 0) {
     return (
-      <p className="text-sm text-muted-foreground">
-        El pedido está vacío. Volvé al catálogo y agregá materiales.
-      </p>
+      <div className="catalog-empty">
+        <h2>Tu próximo proyecto empieza acá.</h2>
+        <p>Agregá materiales al pedido y te ayudamos a confirmar cantidades y entrega.</p>
+        <Link href="/productos" className="store-button button-red">
+          Explorar productos
+        </Link>
+      </div>
     );
   }
 
@@ -29,11 +34,13 @@ export function CheckoutForm() {
     if (line.unitPrice == null || line.priceVisibility === "HIDDEN") return sum;
     return sum + line.unitPrice * line.quantity;
   }, 0);
-  const hasPrice = lines.some((line) => line.unitPrice != null && line.priceVisibility !== "HIDDEN");
+  const hasPrice = lines.some(
+    (line) => line.unitPrice != null && line.priceVisibility !== "HIDDEN",
+  );
 
   return (
     <form
-      className="grid gap-4"
+      className="store-form grid gap-4"
       onSubmit={async (event) => {
         event.preventDefault();
         const form = new FormData(event.currentTarget);
@@ -53,7 +60,7 @@ export function CheckoutForm() {
             })),
           });
           clear();
-          window.open(result.url, "_blank", "noopener,noreferrer");
+          sessionStorage.setItem("last-order-whatsapp", result.url);
           router.push(`/pedido/enviado?n=${result.number}`);
         } catch (cause) {
           setError(cause instanceof Error ? cause.message : "No pudimos crear el pedido.");
@@ -82,7 +89,7 @@ export function CheckoutForm() {
       </label>
       <label className="grid gap-1 text-sm">
         Teléfono
-        <Input name="phone" required autoComplete="tel" />
+        <Input name="phone" type="tel" required autoComplete="tel" />
       </label>
       <label className="grid gap-1 text-sm">
         Localidad

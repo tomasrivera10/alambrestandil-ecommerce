@@ -12,7 +12,7 @@ export function InstallationForm() {
 
   return (
     <form
-      className="grid gap-4 text-sm"
+      className="store-form grid gap-4 text-sm"
       onSubmit={async (event) => {
         event.preventDefault();
         const form = new FormData(event.currentTarget);
@@ -54,31 +54,49 @@ export function InstallationForm() {
         }
       }}
     >
-      <p className="text-muted-foreground">Al momento de la obra el suelo tiene que estar limpio.</p>
-      <label className="grid gap-1">Nombre<Input name="name" required /></label>
-      <label className="grid gap-1">Teléfono<Input name="phone" required /></label>
-      <label className="grid gap-1">Localidad<Input name="locality" required defaultValue="Tandil" /></label>
-      <label className="grid gap-1">Dirección de la obra<Input name="address" required /></label>
-      <label className="grid gap-1">Tipo de tejido
+      <p className="text-muted-foreground">
+        Al momento de la obra el suelo tiene que estar limpio.
+      </p>
+      <label className="grid gap-1">
+        Nombre
+        <Input name="name" autoComplete="name" required />
+      </label>
+      <label className="grid gap-1">
+        Teléfono
+        <Input name="phone" type="tel" autoComplete="tel" required />
+      </label>
+      <label className="grid gap-1">
+        Localidad
+        <Input name="locality" required defaultValue="Tandil" />
+      </label>
+      <label className="grid gap-1">
+        Dirección de la obra
+        <Input name="address" required />
+      </label>
+      <label className="grid gap-1">
+        Tipo de tejido
         <select name="tissue" className="h-10 border border-input bg-card px-2">
           <option>Símil ligustrina</option>
           <option>Revestido en PVC</option>
           <option>Galvanizado romboidal</option>
         </select>
       </label>
-      <label className="grid gap-1">Poste
+      <label className="grid gap-1">
+        Poste
         <select name="post" className="h-10 border border-input bg-card px-2">
           <option>Olímpico</option>
           <option>Recto</option>
         </select>
       </label>
-      <label className="grid gap-1">Terreno
+      <label className="grid gap-1">
+        Terreno
         <select name="terrain" className="h-10 border border-input bg-card px-2">
           <option>Lote</option>
           <option>Lote con ochava</option>
         </select>
       </label>
-      <label className="grid gap-1">Malla
+      <label className="grid gap-1">
+        Malla
         <select name="mesh" className="h-10 border border-input bg-card px-2">
           <option>1 1/2</option>
           <option>2</option>
@@ -87,26 +105,42 @@ export function InstallationForm() {
         </select>
       </label>
       <div className="grid grid-cols-3 gap-2">
-        <label className="grid gap-1">Largo<Input name="length" required /></label>
-        <label className="grid gap-1">Ancho<Input name="width" required /></label>
-        <label className="grid gap-1">Fondo<Input name="depth" required /></label>
+        <label className="grid gap-1">
+          Largo
+          <Input name="length" required />
+        </label>
+        <label className="grid gap-1">
+          Ancho
+          <Input name="width" required />
+        </label>
+        <label className="grid gap-1">
+          Fondo
+          <Input name="depth" required />
+        </label>
       </div>
-      <label className="grid gap-1">Portón
+      <label className="grid gap-1">
+        Portón
         <select name="gate" className="h-10 border border-input bg-card px-2">
           <option>Caño estructural, línea económica</option>
           <option>Caño estructural, reforzado</option>
         </select>
       </label>
-      <label className="grid gap-1">Ubicación del portón
+      <label className="grid gap-1">
+        Ubicación del portón
         <select name="gateLocation" className="h-10 border border-input bg-card px-2">
           <option>Frente</option>
           <option>Lateral</option>
           <option>Fondo</option>
         </select>
       </label>
-      <label className="grid gap-1">Observaciones<Textarea name="notes" /></label>
+      <label className="grid gap-1">
+        Observaciones
+        <Textarea name="notes" />
+      </label>
       {error ? <p className="text-destructive">{error}</p> : null}
-      <Button type="submit" disabled={pending}>Solicitar presupuesto</Button>
+      <Button type="submit" disabled={pending}>
+        Solicitar presupuesto
+      </Button>
     </form>
   );
 }

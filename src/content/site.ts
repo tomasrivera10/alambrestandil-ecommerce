@@ -7,6 +7,7 @@ export const site = {
   email: "alambrestandil@gmail.com",
   phoneDisplay: "249 421-4973",
   phoneDigits: "5492494214973",
+  whatsappLink: "https://wa.me/message/GADFWAJGSDYNA1",
   neriPhone: "222 450-5000",
   mapsQuery: "Ijurco 1480, Tandil, Buenos Aires",
 } as const;

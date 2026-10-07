@@ -1,19 +1,40 @@
 import Link from "next/link";
-import { PriceTag } from "@/components/store/price-tag";
-import { ProductMedia } from "@/components/store/product-media";
+import { ArrowUpRight } from "lucide-react";
+import { PriceTag } from "./price-tag";
+import { ProductMedia } from "./product-media";
+import { categoryPhotos } from "@/content/storefront";
 import type { CatalogProduct } from "@/features/products/queries";
-
 export function ProductCard({ product }: { product: CatalogProduct }) {
+  const reference = !product.imageUrl ? categoryPhotos[product.categorySlug] : null;
   return (
     <Link
       href={`/productos/${product.categorySlug}/${product.slug}`}
-      className="group grid content-start gap-3"
+      className="store-product-card"
     >
-      <ProductMedia src={product.imageUrl} alt={product.imageAlt} name={product.name} />
-      <div className="grid gap-1">
-        <p className="text-xs text-muted-foreground">{product.categoryName}</p>
-        <h3 className="font-heading text-lg leading-tight group-hover:underline">{product.name}</h3>
-        <PriceTag visibility={product.priceVisibility} price={product.price} />
+      <div className="product-card-image">
+        <ProductMedia
+          src={product.imageUrl ?? reference?.src ?? null}
+          alt={product.imageAlt ?? (reference ? `Imagen de referencia: ${reference.alt}` : null)}
+          name={product.name}
+          ratio="aspect-square"
+        />
+        {reference && <span className="reference-label">Imagen de referencia</span>}
+        <span className="product-card-arrow">
+          <ArrowUpRight size={19} />
+        </span>
+      </div>
+      <div className="product-card-copy">
+        <p className="product-category">{product.brand || product.categoryName}</p>
+        <h3>{product.name}</h3>
+        <p className="product-card-description">{product.shortDescription}</p>
+        <div className="product-card-price">
+          <PriceTag visibility={product.priceVisibility} price={product.price} />
+        </div>
+        <span className="product-stock">
+          {product.available && product.available > 0
+            ? "Stock disponible"
+            : "Consultar disponibilidad"}
+        </span>
       </div>
     </Link>
   );

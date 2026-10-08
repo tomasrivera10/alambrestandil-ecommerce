@@ -13,7 +13,8 @@ export default function AboutPage() {
       eyebrow="Nosotros"
       title="La Casa del Alambrado en Tandil."
       intro="Todo para el alambrado y el alambrador. Te ayudamos a elegir los materiales y acompañamos tu obra, desde el primer poste hasta el portón."
-      image="/images/tandil/materiales.webp"
+      image="/images/tandil/historia-alambrados-neri.png"
+      imageAlt="Dos chicos frente al antiguo cartel de Alambrados Neri S.H."
     >
       <h2>Un legado de más de dos décadas.</h2>
       <p>

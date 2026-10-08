@@ -6,6 +6,7 @@ export function ServicePage({
   title,
   intro,
   image = "/images/tandil/tejido.webp",
+  imageAlt = "Materiales y cercos de Alambres Tandil",
   media,
   children,
 }: {
@@ -13,6 +14,7 @@ export function ServicePage({
   title: string;
   intro: string;
   image?: string;
+  imageAlt?: string;
   media?: ReactNode;
   children: ReactNode;
 }) {
@@ -32,7 +34,7 @@ export function ServicePage({
               <div className="service-page-photo">
                 <Image
                   src={image}
-                  alt="Materiales y cercos de Alambres Tandil"
+                  alt={imageAlt}
                   fill
                   sizes="(max-width: 760px) 100vw, 45vw"
                 />

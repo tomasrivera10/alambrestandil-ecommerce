@@ -1,9 +1,13 @@
 import "dotenv/config";
+import { retireLegacyGalleryImages } from "./apply-product-images";
 import { randomUUID } from "node:crypto";
 import { hashPassword } from "better-auth/crypto";
 import { PrismaClient } from "../src/generated/prisma/client";
 
-const prisma = new PrismaClient();
+// Initial imports execute many queries against the remote database.
+const prisma = new PrismaClient({
+  transactionOptions: { maxWait: 10000, timeout: 300000 },
+});
 
 import { importCatalog } from "./import-catalog";
 import { applyProductImages, applyPostImages, applyGateImages, applyInstalledDoorImage, applyFeaturedImages } from "./apply-product-images";
@@ -15,6 +19,7 @@ async function main() {
   await applyGateImages(prisma);
   await applyInstalledDoorImage(prisma);
   await applyFeaturedImages(prisma);
+  await retireLegacyGalleryImages(prisma);
 
   for (const name of ["Particular", "Constructor", "Alambrador", "Rural", "Empresa", "Mayorista", "Frecuente"]) {
     await prisma.tag.upsert({ where: { name }, update: {}, create: { name } });

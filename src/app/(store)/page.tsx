@@ -161,8 +161,8 @@ export default async function HomePage() {
         >
           <div className="local-story-photo">
             <Image
-              src="/images/tandil/materiales.webp"
-              alt="Materiales y postes en el depósito de Alambres Tandil"
+              src="/images/tandil/historia-alambrados-neri.png"
+              alt="Dos chicos frente al antiguo cartel de Alambrados Neri S.H."
               fill
               sizes="(min-width: 800px) 50vw, 100vw"
             />

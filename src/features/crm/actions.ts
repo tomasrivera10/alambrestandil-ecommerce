@@ -4,49 +4,43 @@ import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/db";
 import { requireArea } from "@/lib/rbac";
 import { canTransition, stockEffect } from "@/features/orders/transitions";
-import { writeMovement } from "@/features/inventory/ledger";
+import { writeMovementInTransaction } from "@/features/inventory/ledger";
 import type { OrderStatus } from "@/generated/prisma/client";
 
 export async function updateOrderStatus(orderId: string, to: OrderStatus, note?: string) {
   const actor = await requireArea("orders");
-  const order = await prisma.order.findUnique({
-    where: { id: orderId },
-    include: { items: true },
-  });
-  if (!order) throw new Error("Pedido inexistente.");
-  if (!canTransition(order.status, to)) {
-    throw new Error("Ese cambio de estado no está permitido.");
-  }
-
-  const effect = stockEffect(order.status, to);
-  if (effect) {
-    for (const item of order.items) {
-      if (!item.variantId) continue;
-      await writeMovement({
-        variantId: item.variantId,
-        type: effect,
-        quantity: Math.round(Number(item.quantity)),
-        reason: `Pedido AT-${order.number}: ${to}`,
-        reference: order.id,
-        userId: actor.userId,
-      });
-    }
-  }
-
-  await prisma.order.update({
-    where: { id: orderId },
-    data: {
-      status: to,
-      history: {
-        create: {
-          fromStatus: order.status,
-          toStatus: to,
-          note,
-          userId: actor.userId,
+  await prisma.$transaction(
+    async (tx) => {
+      const order = await tx.order.findUnique({ where: { id: orderId }, include: { items: true } });
+      if (!order) throw new Error("Pedido inexistente.");
+      if (!canTransition(order.status, to))
+        throw new Error("Ese cambio de estado no está permitido.");
+      const effect = stockEffect(order.status, to);
+      if (effect) {
+        for (const item of order.items) {
+          if (!item.variantId) continue;
+          await writeMovementInTransaction(tx, {
+            variantId: item.variantId,
+            type: effect,
+            quantity: Number(item.quantity),
+            reason: `Pedido AT-${order.number}: ${to}`,
+            reference: order.id,
+            userId: actor.userId,
+          });
+        }
+      }
+      await tx.order.update({
+        where: { id: orderId },
+        data: {
+          status: to,
+          history: {
+            create: { fromStatus: order.status, toStatus: to, note, userId: actor.userId },
+          },
         },
-      },
+      });
     },
-  });
+    { isolationLevel: "Serializable" },
+  );
   revalidatePath("/admin/pedidos");
   revalidatePath(`/admin/pedidos/${orderId}`);
 }

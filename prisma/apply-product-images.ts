@@ -1,5 +1,33 @@
 import type { PrismaClient } from "../src/generated/prisma/client";
 
+/** Remove only reviewed legacy gallery entries; source assets remain on disk. */
+export async function retireLegacyGalleryImages(prisma: PrismaClient) {
+  const key = "legacy-gallery-cleanup-2026-10-08-v1";
+  if (await prisma.siteSetting.findUnique({ where: { key } })) return;
+  const reviewed = [
+    ["tejido-romboidal-galvanizado", "/images/catalogo/tejido-romboidal.jpg"],
+    ["torniquete-zincado", "/images/catalogo/torniquetes.jpg"],
+    ["concertina-de-seguridad", "/images/catalogo/concertina-cruzada.jpg"],
+    ["alambre-de-puas", "/images/romboidal/puas.webp"],
+    ["alambre-de-puas", "/images/catalogo/puas.jpg"],
+    ["porton-para-cerco", "/images/romboidal/puertas.webp"],
+    ["poste-esquinero", "/images/catalogo/postes.jpg"],
+    ["poste-intermedio", "/images/catalogo/postes.jpg"],
+  ];
+  await prisma.$transaction(async (tx) => {
+    const backup = [];
+    for (const [slug, url] of reviewed) {
+      const product = await tx.product.findUniqueOrThrow({ where: { slug } });
+      const entries = await tx.productImage.findMany({
+        where: { productId: product.id, url, sortOrder: { gt: 0 } },
+      });
+      backup.push(...entries);
+      await tx.productImage.deleteMany({ where: { id: { in: entries.map((entry) => entry.id) } } });
+    }
+    await tx.siteSetting.create({ data: { key, value: JSON.stringify({ retiredImages: backup }) } });
+  });
+}
+
 const images = [
   {
     slug: "tejido-romboidal-galvanizado",

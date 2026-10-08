@@ -139,7 +139,7 @@ export async function importCatalog(prisma: PrismaClient) {
         data: { key, value: "31 familias; 94 referencias únicas; precios y stock excluidos" },
       });
     },
-    { timeout: 60000 },
+    { timeout: 300000 },
   );
   console.log(
     "Importadas 31 familias y 94 referencias únicas. Precios y stock del Excel excluidos.",

@@ -2,9 +2,12 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
-  // Include the native Prisma engine used by Vercel Functions.
+  serverExternalPackages: ["@napi-rs/canvas", "tesseract.js", "pdfjs-dist", "exceljs", "mammoth"],
+  // Prisma uses a custom generated client; include its native engine in Functions.
   outputFileTracingIncludes: {
     "/*": ["./src/generated/prisma/libquery_engine-*.so.node"],
+    "/api/admin/supplier-lists": ["./node_modules/@tesseract.js-data/spa/4.0.0/spa.traineddata.gz"],
+    "/api/admin/supplier-lists/chunks": ["./node_modules/@tesseract.js-data/spa/4.0.0/spa.traineddata.gz"],
   },
   async redirects() {
     return [{ source: "/soluciones/:path*", destination: "/instalaciones", permanent: true }];

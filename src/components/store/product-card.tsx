@@ -26,14 +26,17 @@ export function ProductCard({ product }: { product: CatalogProduct }) {
         <p className="product-category">{product.brand || product.categoryName}</p>
         <h3>{product.name}</h3>
         <p className="product-card-description">{product.shortDescription}</p>
-        <div className="product-card-price">
-          <PriceTag visibility={product.priceVisibility} price={product.price} />
+        <div className="product-card-purchase">
+          <div className="product-card-price">
+            <PriceTag visibility={product.priceVisibility} price={product.price} />
+            <span className="product-card-cta">Ver opciones <ChevronRight size={17} aria-hidden="true" /></span>
+          </div>
+          <span className="product-stock">
+            {product.available && product.available > 0
+              ? "Stock disponible"
+              : "Consultar disponibilidad"}
+          </span>
         </div>
-        <span className="product-stock">
-          {product.available && product.available > 0
-            ? "Stock disponible"
-            : "Consultar disponibilidad"}
-        </span>
       </div>
     </Link>
   );

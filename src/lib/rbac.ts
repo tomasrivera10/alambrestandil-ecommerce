@@ -4,12 +4,20 @@ import { auth } from "@/lib/auth";
 export const ROLES = ["ADMIN", "VENDEDOR", "STOCK"] as const;
 export type Role = (typeof ROLES)[number];
 
-export type Area = "orders" | "customers" | "quotes" | "products" | "inventory" | "settings";
+export type Area =
+  | "orders"
+  | "customers"
+  | "quotes"
+  | "products"
+  | "inventory"
+  | "suppliers"
+  | "metrics"
+  | "settings";
 
 const ACCESS: Record<Exclude<Role, "ADMIN">, Area[]> & { ADMIN: ["*"] } = {
   ADMIN: ["*"],
-  VENDEDOR: ["orders", "customers", "quotes"],
-  STOCK: ["products", "inventory"],
+  VENDEDOR: ["orders", "customers", "quotes", "metrics"],
+  STOCK: ["products", "inventory", "suppliers"],
 };
 
 export function isRole(value: string | null | undefined): value is Role {

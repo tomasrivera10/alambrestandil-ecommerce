@@ -114,7 +114,13 @@ components:
 
 La tienda pública combina campañas amplias con información de producto precisa. El recorrido lleva de reconocer el negocio a encontrar material, elegir medida y armar un pedido trazable. La geometría firme, las superficies claras y los títulos Archivo sostienen una experiencia concreta, legible desde el celular.
 
-Este documento registra la implementación de `src/app/(store)/storefront.css` y `src/components/store`, con fuentes de `src/app/layout.tsx` y valores compartidos de `src/app/globals.css`. Reemplaza la antigua dirección verde para el storefront por autorización explícita del usuario. El administrador conserva su estructura compacta de tablas y formularios; no recibió este rediseño de superficies. Sus tokens globales actuales también son rojos, con texto `#222222`, fondo `#ffffff` y bordes `#d6d6d6`; no describirlo como una interfaz verde. Los valores del frontmatter corresponden a la tienda pública.
+Este documento registra la implementación de `src/app/(store)/storefront.css` y `src/components/store`, con fuentes de `src/app/layout.tsx` y valores compartidos de `src/app/globals.css`. Reemplaza la antigua dirección verde para el storefront por autorización explícita del usuario. El panel administrativo usa una dirección específica de operación, descrita abajo. Los valores del frontmatter corresponden a la tienda pública.
+
+## Panel administrativo
+
+El panel usa una mesa de trabajo sobria: navegación de carbón, superficie clara cálida, tablas blancas y rojo de marca solo para acciones y selección. Las vistas de stock, proveedores, ventas y métricas comparten encabezados, filtros, tablas y estados. La jerarquía prioriza qué hacer hoy y mantiene la densidad necesaria para inventario. Los estilos del panel viven en `src/app/admin/admin.css` y no alteran la tienda pública.
+
+Para el panel se admiten los tonos `#202421` (navegación), `#f5f5f3` (fondo), `#e1e4df` (bordes), `#677069` (texto secundario) y `#c90000` (acción). Los radios suaves de 5 a 9 px distinguen controles y superficies del panel sin convertir las tablas en tarjetas decorativas. La tipografía del producto sigue usando las fuentes compartidas Archivo y Figtree.
 
 **Key Characteristics:**
 - Fotografía real rectangular y campañas de ancho completo.

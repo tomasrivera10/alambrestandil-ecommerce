@@ -59,7 +59,6 @@ export function StockMovementForm({
           Tipo
           <select name="type" className="h-10 border border-input px-2">
             <option value="ENTRADA">Entrada de mercadería</option>
-            <option value="VENTA">Salida por venta</option>
             <option value="AJUSTE">Ajuste (+ / −)</option>
             <option value="DEVOLUCION">Devolución</option>
           </select>

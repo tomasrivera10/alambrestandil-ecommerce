@@ -17,7 +17,9 @@
     "postinstall": "prisma generate",
     "predev": "node scripts/start-local-db.mjs",
     "db:start": "prisma dev start alambrestandil",
-    "db:stop": "prisma dev stop alambrestandil"
+    "db:stop": "prisma dev stop alambrestandil",
+    "db:deploy": "prisma migrate deploy",
+    "vercel-build": "node scripts/vercel-build.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",
@@ -56,5 +58,8 @@
     "vitest": "^5.0.3",
     "shadcn": "^4.21.2"
   },
-  "packageManager": "npm@10.9.4"
+  "packageManager": "npm@10.9.4",
+  "engines": {
+    "node": "22.x"
+  }
 }

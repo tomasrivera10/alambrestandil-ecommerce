@@ -60,3 +60,7 @@ Las sesiones duran como máximo 8 horas sin renovación automática y usan cooki
 Estas medidas no equivalen a una auditoría externa ni garantizan ausencia de vulnerabilidades. El límite por teléfono en formularios públicos no sustituye protección contra bots en el perímetro. La CSP actual protege contra marcos, objetos y cambios de base/formulario; no es una política estricta de scripts con nonce. MFA y protección distribuida contra abuso de formularios quedan como mejoras pendientes.
 
 Revisión del 7 de octubre de 2026: `npm audit --omit=dev` informa 3 entradas de severidad alta (`prisma`, `@prisma/config`, `deepmerge-ts`), provenientes de una misma alerta de agotamiento de pila al combinar objetos recursivos: https://github.com/advisories/GHSA-ggr8-5vv4-36mx. La ruta observada es la herramienta de configuración de Prisma, no un formulario público. No se aplicó el downgrade incompatible sugerido por npm. Debe revisarse una actualización compatible de Prisma antes de declarar cerrada la auditoría. shadcn se clasificó como herramienta de desarrollo; eso reduce el alcance de producción, pero no elimina las alertas de las herramientas en la auditoría completa.
+
+## Deploy en Vercel
+
+Ver [la guía de despliegue](docs/DEPLOY-VERCEL.md) para Neon, variables, Vercel Blob y carga inicial. El build de Vercel aplica las migraciones en Production; el catálogo y el administrador se cargan una sola vez desde una terminal.

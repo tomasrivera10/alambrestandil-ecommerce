@@ -6,12 +6,14 @@ export function ServicePage({
   title,
   intro,
   image = "/images/tandil/tejido.webp",
+  media,
   children,
 }: {
   eyebrow: string;
   title: string;
   intro: string;
   image?: string;
+  media?: ReactNode;
   children: ReactNode;
 }) {
   return (
@@ -25,15 +27,19 @@ export function ServicePage({
         <div className="service-page-intro">
           <h1>{title}</h1>
           <p>{intro}</p>
-          <div className="service-page-photo">
-            <Image
-              src={image}
-              alt="Materiales y cercos de Alambres Tandil"
-              fill
-              sizes="(max-width: 760px) 100vw, 45vw"
-            />
-          </div>
-          <span className="service-caption">Alambres Tandil · Materiales y colocación</span>
+          {media ?? (
+            <>
+              <div className="service-page-photo">
+                <Image
+                  src={image}
+                  alt="Materiales y cercos de Alambres Tandil"
+                  fill
+                  sizes="(max-width: 760px) 100vw, 45vw"
+                />
+              </div>
+              <span className="service-caption">Alambres Tandil · Materiales y colocación</span>
+            </>
+          )}
         </div>
         <div className="service-page-body">{children}</div>
       </div>

@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, ArrowUpRight } from "lucide-react";
+import { Menu, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -48,7 +48,7 @@ export function MobileMenu({
           <SheetTitle>
             <BrandLogo />
           </SheetTitle>
-          <SheetDescription>Materiales y soluciones para tu cerco.</SheetDescription>
+          <SheetDescription>Materiales e instalación para tu cerco.</SheetDescription>
         </SheetHeader>
         <nav aria-label="Navegación móvil" className="mobile-menu-links">
           {[
@@ -67,7 +67,7 @@ export function MobileMenu({
               onClick={() => onOpenChange(false)}
             >
               {label}
-              <ArrowUpRight size={18} />
+              <ChevronRight size={18} strokeWidth={1.75} aria-hidden="true" />
             </Link>
           ))}
         </nav>

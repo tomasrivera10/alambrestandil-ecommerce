@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, MessageCircle } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight, MessageCircle } from "lucide-react";
 import {
   getCatalog,
   listBrands,
@@ -60,11 +60,11 @@ export async function CatalogView({
     <div className="catalog-page store-container">
       <div className="store-breadcrumb">
         <Link href="/">Inicio</Link>
-        <span>/</span>
+        <ChevronRight size={14} strokeWidth={1.75} aria-hidden="true" />
         {category ? (
           <>
             <Link href="/productos">Productos</Link>
-            <span>/</span>
+            <ChevronRight size={14} strokeWidth={1.75} aria-hidden="true" />
             <span>{category.name}</span>
           </>
         ) : (
@@ -136,7 +136,7 @@ export async function CatalogView({
             <nav className="catalog-pagination" aria-label="Páginas del catálogo">
               {result.page > 1 && (
                 <Link href={pageHref(result.page - 1)} aria-label="Página anterior">
-                  <ArrowLeft size={16} />
+                  <ChevronLeft size={16} aria-hidden="true" />
                   Anterior
                 </Link>
               )}
@@ -146,7 +146,7 @@ export async function CatalogView({
               {result.page < result.pages && (
                 <Link href={pageHref(result.page + 1)} aria-label="Página siguiente">
                   Siguiente
-                  <ArrowRight size={16} />
+                  <ChevronRight size={16} aria-hidden="true" />
                 </Link>
               )}
             </nav>

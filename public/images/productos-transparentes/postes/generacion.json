@@ -1,0 +1,16 @@
+{
+  "tool": "image_gen built-in",
+  "status": "Visualizaciones orientativas regeneradas a partir de fotos de Romboidal. Geometría oculta y agujeros reconstruidos; no certifican dimensiones del producto real.",
+  "images": [
+    {
+      "file": "poste-olimpico.png",
+      "reference": "/images/romboidal/postes/poste-olimpico.jpg",
+      "prompt": "Use case: product-mockup / reference-guided reconstruction. Create a high-resolution photorealistic ecommerce cutout of ONE precast reinforced concrete Olympic fence post based on the main foreground concrete post in the supplied Romboidal reference photo. The reference is low-resolution: reconstruct convincingly, do not reproduce blur. Entire post visible from flat bottom to angled upper arm; long slender square-section light gray concrete shaft with the recognizable integral bent/angled top extension for barbed wire matching the reference silhouette. Show subtle realistic fine aggregate texture and only simple small mounting holes as suggested by reference; no exposed rebar, no branding, no text or measurements. Isolate ONLY the post, remove ALL chainlink, wires, landscape, grass, sky, other posts and yellow circular border. Actual fully transparent alpha background, no simulated checkerboard, no floor or cast shadow. Premium soft neutral studio lighting; slight three-quarter view reveals two faces; centered, nearly vertical, full object occupies 88 percent of image height, generous clear margin, square canvas, highest available quality and resolution. This is a product reference illustration, not a technical dimensional drawing."
+    },
+    {
+      "file": "poste-recto.png",
+      "reference": "/images/romboidal/postes/poste-recto.jpg",
+      "prompt": "Use case: product-mockup / reference-guided reconstruction. Generate a high-resolution photorealistic ecommerce cutout of ONE straight precast reinforced concrete fence post. Image 1 is the actual Romboidal reference: use the foreground straight post's slender square-section silhouette and flat squared top. Image 2 is a previously generated Olympic post, use ONLY to match concrete texture, neutral silver-gray tone, soft studio lighting, slight three-quarter camera showing two faces, and overall presentation; do NOT copy its bent top. The requested post is perfectly STRAIGHT from bottom to top, no angled extension. Full tall narrow post visible with simple discreet mounting holes along shaft, no extra parts. Realistic fine light gray concrete aggregate and slight surface pores. Reconstruct high quality rather than enlarging reference blur. Remove ALL chainlink mesh, wires, landscape, sky, grass, yellow circular border and other posts. No text, branding or dimensions. Actual transparent alpha background including holes; no checkerboard drawing, no floor, no cast shadow. Centered nearly vertical, occupies 88 percent of square canvas height, generous margins. Highest available quality and resolution. Orientative product visualization, not a dimensioned technical drawing."
+    }
+  ]
+}

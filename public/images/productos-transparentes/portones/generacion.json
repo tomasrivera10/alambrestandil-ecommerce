@@ -1,0 +1,20 @@
+{
+  "tool": "image_gen built-in",
+  "reference": "/images/tandil/portones.webp",
+  "source": "https://alambrestandil.com.ar/",
+  "background": "Opaque white. Transparent draft rejected due to colored residues in mesh openings.",
+  "status": "Illustrative AI visualizations; dimensions and fittings not verified against actual products.",
+  "images": [
+    {
+      "file": "porton-dos-hojas.webp",
+      "prompts": [
+        "Use case: product-mockup. Generate a high resolution photorealistic catalog visualization of ONE closed double-leaf chain link fence gate based on the galvanized tubular construction in the reference photograph from Alambres Tandil. Reference is material and construction guidance, not edit target. Two equal leaves, rounded upper outer corners, galvanized round steel tube silver finish, single horizontal middle rail per leaf, fine regular diamond chain-link galvanized mesh tightly stretched inside both frames, small realistic center latch, side hinge fittings. Front elevation almost straight-on with subtle visible tube depth. Overall width approximately twice height, full object centered with 8 percent clear margin. Premium sharp realistic studio product photography, soft neutral light, clear silver metal against any website background. Actual transparent background INCLUDING every diamond opening between wires and gaps between frames. No ground, no environment, no support concrete posts, no yellow border, no text, no logos, no watermark, no dark painted finish. Preserve plausible manufacturing geometry; avoid extra braces and decorative spikes. This is an illustrative product visualization not a claim of exact dimensions.",
+        "Use case: precise-object-edit. Edit this gate catalog visualization. Keep the exact two-leaf galvanized tubular gate construction, latch, mesh, framing and camera. Replace ALL background with perfectly uniform pure white #FFFFFF, including ALL diamond holes inside the chain-link mesh and every gap. Remove ALL blue cyan black and speckled residues between wires and around the perimeter. Clean crisp silver galvanized wires and frames on pure white studio backdrop. No transparency requested: opaque pure white everywhere outside metal. No ground shadow, no text, no logos. High resolution realistic product catalog photo. Preserve mesh detail and plausible woven wires."
+      ]
+    },
+    {
+      "file": "puerta-peatonal.webp",
+      "prompt": "Use case: product-mockup. Generate ONE pedestrian chain-link fence gate, single leaf, galvanized silver round tubular steel frame with rounded corners, fine regular diamond galvanized woven wire mesh, one horizontal middle rail, two small hinge fittings on left and simple latch on right. Reference photograph from Alambres Tandil guides actual materials and manufacturing. Full gate centered front elevation slightly reveals tube depth, taller than wide proportion width 0.9 height 1.8. High resolution premium realistic product studio photography, sharp detailed mesh. Uniform pure white #FFFFFF opaque background EVERYWHERE outside metal including every diamond mesh opening. No transparency, no environment, no floor shadow, no border, no text, no logos, no watermark, no concrete posts, no spikes, no blue cyan residues. 8 percent margin. Illustrative catalog visualization not exact dimensional drawing."
+    }
+  ]
+}

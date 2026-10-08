@@ -1,0 +1,164 @@
+.page {
+  padding-top: 24px;
+  padding-bottom: 72px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  align-items: end;
+  margin: 28px 0 40px;
+}
+.page .header h1 {
+  font-size: clamp(2.2rem, 3.6vw, 3.5rem);
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+  margin: 0 0 16px;
+}
+.header p {
+  font-size: 16px;
+  color: #5a6268;
+  margin: 0;
+}
+.headerAction {
+  display: grid;
+  gap: 16px;
+  justify-items: start;
+}
+.headerAction > span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #5a6268;
+}
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: start;
+}
+.workColumn,
+.formPanel {
+  min-width: 0;
+}
+.formPanel {
+  scroll-margin-top: 140px;
+}
+.page .formPanel h2 {
+  font-size: 24px;
+  line-height: 1.2;
+  margin: 0 0 18px;
+}
+.materials {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  border-top: 1px solid #dce0e1;
+  padding-top: 20px;
+  margin-top: 24px;
+  font-size: 13px;
+}
+.materials > span {
+  color: #5a6268;
+}
+.materials a {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  margin-left: auto;
+  font-weight: 700;
+}
+.planning {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+  gap: 64px;
+  border-top: 1px solid #dce0e1;
+  margin-top: 56px;
+  padding-top: 40px;
+}
+.page .planning h2 {
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  line-height: 1.15;
+  margin: 0 0 12px;
+}
+.planning p {
+  color: #5a6268;
+  font-size: 15px;
+  line-height: 1.65;
+  margin: 0;
+}
+.planning :global(.text-link) {
+  margin-top: 24px;
+}
+.questions details {
+  border-bottom: 1px solid #dce0e1;
+}
+.questions summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+  padding: 18px 0;
+  font-weight: 600;
+  list-style: none;
+}
+.questions summary::-webkit-details-marker {
+  display: none;
+}
+.questions summary svg {
+  flex-shrink: 0;
+  transition: transform 250ms;
+}
+.questions details[open] summary svg {
+  transform: rotate(45deg);
+  color: #d30000;
+}
+.questions details p {
+  padding-bottom: 20px;
+  max-width: 65ch;
+}
+.questions summary:hover,
+.materials a:hover {
+  color: #d30000;
+}
+.page :focus-visible {
+  outline: 2px solid #d30000;
+  outline-offset: 4px;
+}
+@media (max-width: 900px) {
+  .grid {
+    gap: 28px;
+  }
+}
+@media (max-width: 760px) {
+  .header {
+    display: block;
+    margin: 24px 0 32px;
+  }
+  .headerAction {
+    margin-top: 24px;
+  }
+  .grid,
+  .planning {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+  .planning {
+    margin-top: 40px;
+    padding-top: 32px;
+  }
+  .page {
+    padding-bottom: 48px;
+  }
+  .materials {
+    gap: 14px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .questions summary svg {
+    transition: none;
+  }
+}

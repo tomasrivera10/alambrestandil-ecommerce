@@ -220,7 +220,7 @@ FadeContent adapta React Bits mediante Web Animations API: 650ms, `cubic-bezier(
 
 ## Recorrido comercial del inicio
 
-La portada mide entre 400 y 500px (480px en móvil) para acercar el catálogo al primer viewport. Categorías con fotografía 4:3, destacados y acceso al catálogo completo preceden a la orientación por proyecto. La campaña grande de Romboidal ya no interrumpe el inicio; la referencia al fabricante sigue en el pie. Los accesos internos llevan a soluciones, instalación y local con margen para el header sticky. La información del negocio cierra el recorrido.
+La portada mide entre 400 y 500px (480px en móvil) para acercar el catálogo al primer viewport. Categorías con fotografía 4:3, destacados y acceso al catálogo completo preceden a la orientación por proyecto. La campaña grande de Romboidal ya no interrumpe el inicio; la referencia al fabricante sigue en el pie. Los accesos internos llevan a instalación y local con margen para el header sticky. La información del negocio cierra el recorrido.
 
 ### Hero de instalación (octubre 2026)
 
@@ -233,3 +233,17 @@ Plantilla compartida con ancho máximo de 1200px y galería contenida de hasta 4
 Hasta seis variantes se muestran como radios con superficies de selección de 46px, selección carbón y foco rojo; para más variantes se usa Select de Base UI con navegación por teclado y opciones de al menos 44px. Orden natural de medidas. Los controles de cantidad de 48px reúnen edición directa, decremento e incremento; cantidades enteras para unidades discretas y decimales para metros/kg. Acción roja de 48px, radio local de 4px y confirmación de agregado. Se conserva el mínimo de una unidad del recorrido existente.
 
 Descripción técnica visible bajo la ficha, usos y documentación solo cuando existen, guía de pedido, retiro y aclaración de precio/stock/entrega. FadeContent adaptado de React Bits presenta el bloque principal una vez y respeta movimiento reducido. No sumar efectos decorativos sobre controles o texto técnico. Tipografía local: 12px para información secundaria, 13–15px para lectura/controles, 18px para subtítulos, 24px para sección, 26px para precio y título fluido de 32–44px. Las fichas no garantizan stock ni reemplazan contenido técnico faltante por afirmaciones generadas.
+
+### Footer compacto (octubre 2026)
+
+Pie carbón con llamada a la acción de 20–26px y 24px de padding vertical. El cuerpo reúne marca, redes y contacto; dos columnas de navegación; y ubicación con mapa Google de 152px. En tablet, el mapa ocupa una fila completa; en móvil, marca, navegación de dos columnas y ubicación se apilan, con áreas táctiles de al menos 44px. Los enlaces conservan foco blanco y texto secundario de alto contraste. Administración es un enlace discreto en la franja final.
+
+Facebook e Instagram coinciden con los enlaces públicos de alambrestandil.com.ar; WhatsApp conserva el enlace configurado. El mapa usa las coordenadas del enlace Google Maps publicado en el sitio oficial (-37.3021419, -59.1250783), con carga diferida y acceso independiente a “Cómo llegar”. Tipografía del cuerpo de 13px, títulos de grupo de 14px e información secundaria de 12px.
+
+Los enlaces sociales del footer muestran los símbolos vectoriales de Simple Icons 15.0.0 en colores de cada marca, con área de toque de 44px y nombre accesible. Los SVG se guardan en `public/social` para evitar dependencias externas en tiempo de uso.
+
+## Instalaciones y navegación · octubre 2026
+La sección Soluciones se elimina del inicio y de la navegación. Sus URLs anteriores redirigen permanentemente a Instalaciones. Instalaciones conserva la galería y el presupuesto alineados, e incorpora alcance de materiales y colocación, orientación para describir la obra y condiciones para presupuestar, con listas abiertas y separadores.
+
+### Instalaciones · presupuesto guiado
+Encabezado breve con acceso a la consulta, galería real a la izquierda y formulario de tres pasos a la derecha. Los campos permanecen montados al navegar; validación del paso visible y foco en su título. Medidas opcionales, selección de asesoramiento y continuación explícita por WhatsApp tras guardar. Preguntas frecuentes desplegables sustituyen los párrafos extensos. Entrada de galería con FadeContent, transición de pasos y giro del control de ayuda, respetando movimiento reducido. Verificado en escritorio y móvil; navegación hacia adelante y atrás conserva los datos.

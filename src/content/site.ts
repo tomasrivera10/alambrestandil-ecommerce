@@ -8,6 +8,10 @@ export const site = {
   phoneDisplay: "249 421-4973",
   phoneDigits: "5492494214973",
   whatsappLink: "https://wa.me/message/GADFWAJGSDYNA1",
+  instagramLink: "https://www.instagram.com/alambrestandil/",
+  facebookLink: "https://www.facebook.com/p/Alambres-Tandil-100052568722728/",
   neriPhone: "222 450-5000",
+  mapsLink: "https://maps.app.goo.gl/Gp2fPRytbFzTMq6d6",
+  mapsCoordinates: "-37.3021419,-59.1250783",
   mapsQuery: "Ijurco 1480, Tandil, Buenos Aires",
 } as const;

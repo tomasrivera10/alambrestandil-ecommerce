@@ -10,6 +10,7 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 import { ProductMedia } from "./product-media";
+import { useProductSelection } from "./product-selection";
 export function ProductGallery({
   images,
   name,
@@ -19,7 +20,10 @@ export function ProductGallery({
   name: string;
   reference?: boolean;
 }) {
-  const [selected, setSelected] = useState(0);
+  const selection = useProductSelection();
+  const [manual, setManual] = useState<{ variantId?: string; index: number } | null>(null);
+  const selected =
+    manual && manual.variantId === selection?.id ? manual.index : (selection?.imageIndex ?? 0);
   const image = images[selected];
   return (
     <div className="product-gallery">
@@ -40,9 +44,6 @@ export function ProductGallery({
             >
               <Expand size={16} /> Ampliar
             </DialogTrigger>
-          )}
-          {(reference || image?.isReference) && (
-            <span className="reference-label">Imagen de referencia</span>
           )}
         </div>
         {image && (
@@ -67,11 +68,7 @@ export function ProductGallery({
         )}
       </Dialog>
       <div className="product-gallery-caption">
-        <span>
-          {reference || image?.isReference
-            ? "La imagen es orientativa de este producto."
-            : "Fotografía del producto"}
-        </span>
+        {!(reference || image?.isReference) && <span>Fotografía del producto</span>}
         {images.length > 1 && (
           <span>
             {selected + 1} / {images.length}
@@ -91,7 +88,7 @@ export function ProductGallery({
               key={item.url}
               aria-label={`Ver imagen ${index + 1} de ${name}`}
               aria-pressed={index === selected}
-              onClick={() => setSelected(index)}
+              onClick={() => setManual({ variantId: selection?.id, index })}
             >
               <ProductMedia src={item.url} alt={item.alt || name} name={name} />
             </button>

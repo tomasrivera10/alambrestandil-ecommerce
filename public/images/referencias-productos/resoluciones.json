@@ -1,0 +1,146 @@
+[
+  {
+    "file": "public/images/referencias-productos/tejido-galvanizado.jpeg",
+    "width": 1080,
+    "height": 1080,
+    "hasAlpha": false,
+    "alphaRange": null
+  },
+  {
+    "file": "public/images/referencias-productos/tejido-pvc-verde.png",
+    "width": 2000,
+    "height": 2000,
+    "hasAlpha": true,
+    "alphaRange": [
+      0,
+      255
+    ]
+  },
+  {
+    "file": "public/images/referencias-productos/torniquete-cambren.webp",
+    "width": 1024,
+    "height": 1024,
+    "hasAlpha": true,
+    "alphaRange": [
+      0,
+      255
+    ]
+  },
+  {
+    "file": "public/images/referencias-productos/torniquete-n7.jpg",
+    "width": 800,
+    "height": 800,
+    "hasAlpha": false,
+    "alphaRange": null
+  },
+  {
+    "file": "public/images/romboidal/accesorios.webp",
+    "width": 280,
+    "height": 280,
+    "hasAlpha": true,
+    "alphaRange": [
+      0,
+      255
+    ]
+  },
+  {
+    "file": "public/images/romboidal/concertinas.webp",
+    "width": 280,
+    "height": 280,
+    "hasAlpha": true,
+    "alphaRange": [
+      0,
+      255
+    ]
+  },
+  {
+    "file": "public/images/romboidal/mallas.webp",
+    "width": 280,
+    "height": 280,
+    "hasAlpha": true,
+    "alphaRange": [
+      0,
+      255
+    ]
+  },
+  {
+    "file": "public/images/romboidal/placas.webp",
+    "width": 280,
+    "height": 280,
+    "hasAlpha": true,
+    "alphaRange": [
+      0,
+      255
+    ]
+  },
+  {
+    "file": "public/images/romboidal/puas.webp",
+    "width": 280,
+    "height": 280,
+    "hasAlpha": true,
+    "alphaRange": [
+      0,
+      255
+    ]
+  },
+  {
+    "file": "public/images/romboidal/puertas.webp",
+    "width": 280,
+    "height": 280,
+    "hasAlpha": true,
+    "alphaRange": [
+      0,
+      255
+    ]
+  },
+  {
+    "file": "public/images/romboidal/tejido-ligustrina.webp",
+    "width": 280,
+    "height": 280,
+    "hasAlpha": true,
+    "alphaRange": [
+      0,
+      255
+    ]
+  },
+  {
+    "file": "public/images/romboidal/tejido-pvc.webp",
+    "width": 280,
+    "height": 280,
+    "hasAlpha": true,
+    "alphaRange": [
+      0,
+      255
+    ]
+  },
+  {
+    "file": "public/images/romboidal/tejido-romboidal.webp",
+    "width": 280,
+    "height": 280,
+    "hasAlpha": true,
+    "alphaRange": [
+      0,
+      255
+    ]
+  },
+  {
+    "file": "public/images/productos-transparentes/tejido-galvanizado-borrador-v2.png",
+    "width": 1254,
+    "height": 1254,
+    "hasAlpha": true,
+    "alphaRange": [
+      0,
+      255
+    ]
+  },
+  {
+    "file": "public/images/productos-transparentes/tejido-galvanizado-borrador.png",
+    "width": 1254,
+    "height": 1254,
+    "hasAlpha": true,
+    "alphaRange": [
+      0,
+      255
+    ]
+  }
+]

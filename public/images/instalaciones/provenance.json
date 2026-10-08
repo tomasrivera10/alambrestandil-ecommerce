@@ -1,0 +1,21 @@
+{
+  "updatedAt": "2026-10-08",
+  "selection": "Imagen anterior primero; cerco romboidal amplio y prolijo con cartel después. Sin fotos rurales ni primeros planos.",
+  "images": [
+    {
+      "file": "/images/tandil/tejido.webp",
+      "width": 1440,
+      "height": 1080,
+      "source": "https://alambrestandil.com.ar/",
+      "processing": "Archivo existente, sin nuevas modificaciones."
+    },
+    {
+      "file": "/images/hero/alambrado-tandil-editado.webp",
+      "width": 2560,
+      "height": 1441,
+      "source": "Fotografía aportada previamente por el dueño, editada previamente para el hero.",
+      "nativeGeneratedDimensions": "1672x941",
+      "processing": "Archivo existente, sin nuevas modificaciones. Ver /images/hero/provenance.json para origen y prompt exacto."
+    }
+  ]
+}

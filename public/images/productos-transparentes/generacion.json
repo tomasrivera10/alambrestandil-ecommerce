@@ -1,0 +1,9 @@
+{
+  "tool": "image_gen built-in",
+  "status": "Borradores: artefactos azules y residuos entre alambres; no aptos para publicar",
+  "source": "../referencias-productos/tejido-galvanizado.jpeg",
+  "prompts": [
+    "Use case: background-extraction. Edit the supplied photograph of a galvanized chain-link fencing roll for an ecommerce product asset. Remove only the white background and floor shadow, including all visible white spaces between wires. Output actual transparent alpha, not a checkerboard drawing. Preserve the exact roll shape, partially unrolled sheet, diamond weave geometry, wire thickness, metallic finish, camera angle and framing. Do not invent packaging, logos or text. Preserve fine wire edges and internal gaps. Highest available resolution.",
+    "Background-extraction edit for ecommerce. Use ONLY the original supplied product photo. Remove white backdrop and cast shadows to actual transparent alpha, including the openings of the unrolled diamond mesh. Keep galvanized roll and wire geometry unchanged. All metal must remain neutral silver gray, absolutely no blue or colored pixels or halos. No floor, no text, no logos. Clean precise realistic cutout."
+  ]
+}

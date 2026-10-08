@@ -5,6 +5,7 @@ import { ArrowUpRight, MapPin, MessageCircle, ChevronRight } from "lucide-react"
 import { VariantPicker } from "@/components/store/variant-picker";
 import { FadeContent } from "@/components/store/fade-content";
 import { ProductGallery } from "@/components/store/product-gallery";
+import { ProductSelection } from "@/components/store/product-selection";
 import { ProductCard } from "@/components/store/product-card";
 import { getProductBySlug } from "@/features/products/queries";
 import { categoryPhotos } from "@/content/storefront";
@@ -64,53 +65,55 @@ export default async function ProductPage({ params }: Props) {
         <ChevronRight size={12} />
         <span>{product.name}</span>
       </nav>
-      <FadeContent className="product-detail-grid">
-        <div className="product-summary">
-          <h1>{product.name}</h1>
-          <p className="product-intro">{product.shortDescription}</p>
-          <div className="product-brand-line">
-            <span>Venta por {unitLabel(product.salesUnit, 1)}</span>
-            {product.brand && (
-              <span>
-                Marca: <strong>{product.brand}</strong>
-              </span>
-            )}
-          </div>
-        </div>
-        <ProductGallery images={images} name={product.name} reference={Boolean(reference)} />
-        <div className="product-detail-copy">
-          {product.variants.length ? (
-            <VariantPicker
-              variants={product.variants}
-              productName={product.name}
-              href={href}
-              fallbackUnit={product.salesUnit}
-              fallbackPrice={product.price}
-              priceVisibility={product.priceVisibility}
-              imageUrl={product.images[0]?.url ?? null}
-              ctaType={product.ctaType}
-              whatsappUrl={wa}
-            />
-          ) : (
-            <div className="product-unavailable">
-              <p>Consultanos por las opciones de este producto.</p>
-              <a href={wa} className="store-button">
-                Consultar disponibilidad <MessageCircle size={17} />
-              </a>
+      <ProductSelection key={product.id} variants={product.variants} images={images}>
+        <FadeContent className="product-detail-grid">
+          <div className="product-summary">
+            <h1>{product.name}</h1>
+            <p className="product-intro">{product.shortDescription}</p>
+            <div className="product-brand-line">
+              <span>Venta por {unitLabel(product.salesUnit, 1)}</span>
+              {product.brand && (
+                <span>
+                  Marca: <strong>{product.brand}</strong>
+                </span>
+              )}
             </div>
-          )}
-          <div className="product-fulfillment">
-            <span>
-              <MapPin size={17} />
-              Retiro en Ijurco 1480, Tandil
-            </span>
-            <span>
-              <MessageCircle size={17} />
-              Precio y entrega a confirmar por WhatsApp
-            </span>
           </div>
-        </div>
-      </FadeContent>
+          <ProductGallery images={images} name={product.name} reference={Boolean(reference)} />
+          <div className="product-detail-copy">
+            {product.variants.length ? (
+              <VariantPicker
+                variants={product.variants}
+                productName={product.name}
+                href={href}
+                fallbackUnit={product.salesUnit}
+                fallbackPrice={product.price}
+                priceVisibility={product.priceVisibility}
+                imageUrl={product.images[0]?.url ?? null}
+                ctaType={product.ctaType}
+                whatsappUrl={wa}
+              />
+            ) : (
+              <div className="product-unavailable">
+                <p>Consultanos por las opciones de este producto.</p>
+                <a href={wa} className="store-button">
+                  Consultar disponibilidad <MessageCircle size={17} />
+                </a>
+              </div>
+            )}
+            <div className="product-fulfillment">
+              <span>
+                <MapPin size={17} />
+                Retiro en Ijurco 1480, Tandil
+              </span>
+              <span>
+                <MessageCircle size={17} />
+                Precio y entrega a confirmar por WhatsApp
+              </span>
+            </div>
+          </div>
+        </FadeContent>
+      </ProductSelection>
       <section className="product-information" aria-labelledby="product-description-title">
         <div>
           <h2 id="product-description-title">Sobre este producto</h2>

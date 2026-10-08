@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { PriceTag } from "./price-tag";
 import { ProductMedia } from "./product-media";
 import { categoryPhotos } from "@/content/storefront";
@@ -18,9 +18,8 @@ export function ProductCard({ product }: { product: CatalogProduct }) {
           name={product.name}
           ratio="aspect-square"
         />
-        {(reference || product.imageIsReference) && <span className="reference-label">Imagen de referencia</span>}
         <span className="product-card-arrow">
-          <ArrowUpRight size={19} />
+          <ChevronRight size={20} strokeWidth={1.75} aria-hidden="true" />
         </span>
       </div>
       <div className="product-card-copy">

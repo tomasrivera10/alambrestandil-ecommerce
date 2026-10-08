@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { authClient } from "@/lib/auth-client";
@@ -13,6 +15,13 @@ export default function LoginPage() {
 
   return (
     <main className="mx-auto flex min-h-full max-w-sm flex-col justify-center px-4 py-16">
+      <Link
+        href="/"
+        className="mb-6 inline-flex min-h-11 w-fit items-center gap-2 rounded-sm text-sm text-muted-foreground hover:text-foreground hover:underline focus-visible:outline-2 focus-visible:outline-offset-4"
+      >
+        <ArrowLeft size={16} aria-hidden="true" />
+        Volver a la tienda
+      </Link>
       <h1 className="font-heading text-3xl">Ingreso al panel</h1>
       <form
         className="mt-6 grid gap-3"

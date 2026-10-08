@@ -12,6 +12,7 @@ import { AddToOrder } from "./add-to-order";
 import { PriceTag } from "./price-tag";
 import { unitLabel } from "@/lib/format";
 import { filterLabels } from "@/content/storefront";
+import { useProductSelection } from "./product-selection";
 type Variant = {
   id: string;
   name: string;
@@ -47,7 +48,9 @@ export function VariantPicker({
   );
   const labelId = useId();
   const [id, setId] = useState(variants[0]?.id ?? "");
-  const variant = variants.find((item) => item.id === id) ?? variants[0];
+  const selection = useProductSelection();
+  const select = selection?.select ?? setId;
+  const variant = variants.find((item) => item.id === (selection?.id ?? id)) ?? variants[0];
   if (!variant) return null;
   const unit = variant.salesUnit ?? fallbackUnit;
   return (
@@ -78,7 +81,7 @@ export function VariantPicker({
                     name={labelId}
                     value={item.id}
                     checked={variant.id === item.id}
-                    onChange={() => setId(item.id)}
+                    onChange={() => select(item.id)}
                   />
                   <span>
                     {!duplicates && entries.length === 1 ? label : item.name}
@@ -92,7 +95,7 @@ export function VariantPicker({
           <Select
             value={variant.id}
             onValueChange={(value) => {
-              if (value) setId(value);
+              if (value) select(value);
             }}
             items={variants.map((item) => ({ value: item.id, label: item.name }))}
           >
@@ -136,7 +139,7 @@ export function VariantPicker({
         unit={unit}
         unitPrice={variant.price ?? fallbackPrice}
         priceVisibility={priceVisibility}
-        imageUrl={imageUrl}
+        imageUrl={selection ? selection.imageUrl : imageUrl}
         ctaType={ctaType}
         whatsappUrl={whatsappUrl}
       />

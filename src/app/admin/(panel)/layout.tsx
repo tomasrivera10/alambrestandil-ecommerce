@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
@@ -30,6 +31,13 @@ export default async function PanelLayout({ children }: { children: React.ReactN
         <div className="px-4 py-4">
           <p className="font-heading text-lg">Alambres Tandil</p>
           <p className="text-xs text-muted-foreground">{session.user.email}</p>
+          <Link
+            href="/"
+            className="mt-3 inline-flex min-h-11 items-center gap-2 rounded-sm text-sm text-muted-foreground hover:text-foreground hover:underline focus-visible:outline-2 focus-visible:outline-offset-4"
+          >
+            <ArrowLeft size={16} aria-hidden="true" />
+            Volver a la tienda
+          </Link>
         </div>
         <nav className="flex gap-1 overflow-auto px-2 pb-3 md:block md:space-y-1 md:px-2">
           {links

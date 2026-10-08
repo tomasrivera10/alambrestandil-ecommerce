@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, MapPin, MessageCircle, Ruler, Wrench } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ChevronRight, MapPin, MessageCircle, Ruler, Wrench } from "lucide-react";
 import { listProducts } from "@/features/products/queries";
 import { ProductCard } from "@/components/store/product-card";
 import { HeroMedia } from "@/components/store/hero-media";
@@ -84,7 +84,7 @@ export default async function HomePage() {
               </div>
               <div className="category-copy">
                 <h3>{category.name}</h3>
-                <ArrowUpRight size={22} />
+                <ChevronRight className="navigation-chevron" size={22} strokeWidth={1.75} aria-hidden="true" />
                 <p>{category.detail}</p>
               </div>
             </Link>
@@ -120,60 +120,9 @@ export default async function HomePage() {
       </div>
       <nav className="home-section-nav store-container" aria-label="Ayuda para tu proyecto">
         <span>¿Necesitás orientación?</span>
-        <Link href="#soluciones">Elegí según tu espacio</Link>
         <Link href="#instalaciones">Materiales e instalación</Link>
         <Link href="#nosotros">Conocé el local</Link>
       </nav>
-      <section
-        id="soluciones"
-        data-store-section="soluciones"
-        className="store-section store-container solutions-section"
-        aria-labelledby="solutions-title"
-      >
-        <div className="section-heading">
-          <h2 id="solutions-title">Materiales según tu proyecto</h2>
-          <div>
-            <p>
-              Cada espacio pide su propio cerco.
-              <br />
-              Encontrá por dónde empezar.
-            </p>
-            <Link href="/soluciones" className="text-link">
-              Todas las soluciones <ArrowUpRight size={17} />
-            </Link>
-          </div>
-        </div>
-        <div className="solution-photo-grid">
-          <Link href="/soluciones/cerrar-un-terreno" className="solution-photo">
-            <Image
-              src="/images/tandil/tejido.webp"
-              alt="Cerco y portón en un terreno de Tandil"
-              fill
-              sizes="(min-width: 800px) 60vw, 100vw"
-            />
-            <div>
-              <h3>Para cerrar un terreno</h3>
-              <span>
-                Cerrá tu terreno <ArrowUpRight size={18} />
-              </span>
-            </div>
-          </Link>
-          <Link href="/soluciones/cercar-una-casa" className="solution-photo">
-            <Image
-              src="/images/tandil/rombogreen.webp"
-              alt="Cerco verde revestido para una vivienda"
-              fill
-              sizes="(min-width: 800px) 40vw, 100vw"
-            />
-            <div>
-              <h3>Para cercar tu casa</h3>
-              <span>
-                Elegí el cerco para tu casa <ArrowUpRight size={18} />
-              </span>
-            </div>
-          </Link>
-        </div>
-      </section>
       <section className="project-help">
         <div className="store-container project-help-grid">
           <div id="calculadora" data-store-section="calcular-alambrado">

@@ -1,0 +1,99 @@
+.gallery {
+  margin-top: 0;
+  min-width: 0;
+}
+.gallery .heading {
+  font-family: var(--font-archivo);
+  font-size: 24px;
+  line-height: 1.2;
+  margin: 0 0 18px;
+}
+.track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: #d30000 #f2f3f3;
+}
+.slide {
+  flex: 0 0 100%;
+  position: relative;
+  height: clamp(260px, 25vw, 320px);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  background: #fff;
+}
+.slide img {
+  object-fit: cover;
+  object-position: center;
+}
+.caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  margin-top: 14px;
+}
+.caption p {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+.caption span {
+  color: #5a6268;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 10px;
+}
+.controls a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.controls a:hover {
+  color: #d30000;
+}
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+.buttons button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #cbd0d3;
+  color: #171b1f;
+  background: #fff;
+  cursor: pointer;
+}
+.buttons button:hover:not(:disabled) {
+  background: #171b1f;
+  border-color: #171b1f;
+  color: #fff;
+}
+.buttons button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.gallery :focus-visible {
+  outline: 2px solid #d30000;
+  outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+  .slide {
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+}

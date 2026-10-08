@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { SlidersHorizontal, Search, X, ArrowRight } from "lucide-react";
+import { SlidersHorizontal, Search, X, ArrowRight, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -63,7 +63,7 @@ export function CatalogFilters(props: FilterProps) {
           className={!props.currentCategory ? "filter-category selected" : "filter-category"}
         >
           Todos los productos
-          <ArrowRight size={13} />
+          <ChevronRight className="navigation-chevron" size={16} strokeWidth={1.75} aria-hidden="true" />
         </Link>
         {props.categories.map((category) => (
           <Link
@@ -77,7 +77,10 @@ export function CatalogFilters(props: FilterProps) {
             }
           >
             {category.name}
-            <span>{category._count.products}</span>
+            <span className="filter-category-trailing">
+              <span>{category._count.products}</span>
+              <ChevronRight className="navigation-chevron" size={16} strokeWidth={1.75} aria-hidden="true" />
+            </span>
           </Link>
         ))}
       </fieldset>

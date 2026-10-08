@@ -20,7 +20,21 @@ export function ProductMedia({
     return (
       <div className={`product-media ${ratio}`}>
         {src.startsWith("/") ? (
-          <Image src={src} alt={alt || name} fill sizes={sizes} preload={preload} />
+          <Image
+            src={src}
+            alt={alt || name}
+            fill
+            sizes={sizes}
+            preload={preload}
+            style={
+              src.startsWith("/images/referencias-productos/") ||
+              src.startsWith("/images/romboidal/") ||
+              src.startsWith("/images/productos-generados/") ||
+              src.startsWith("/images/productos-transparentes/")
+                ? { objectFit: "contain" }
+                : undefined
+            }
+          />
         ) : (
           <img src={src} alt={alt || name} loading={preload ? "eager" : "lazy"} />
         )}

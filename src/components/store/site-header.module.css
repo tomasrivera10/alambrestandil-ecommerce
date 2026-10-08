@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   gap: 24px;
-  min-height: 84px;
+  min-height: calc(var(--store-header-height) - 1px);
 }
 .commerce-brand {
   flex-shrink: 0;
@@ -131,7 +131,6 @@
     display: none;
   }
   .commerce-header-inner {
-    min-height: 76px;
     gap: 16px;
   }
 }

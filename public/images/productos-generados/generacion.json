@@ -1,0 +1,15 @@
+{
+  "tool": "image_gen built-in",
+  "date": "2026-10-08",
+  "status": "Visualizaciones genéricas orientativas, no fotografías del inventario. Fondo blanco opaco.",
+  "images": [
+    {
+      "file": "alambre-puas.webp",
+      "prompt": "Use case: product-mockup. Premium photorealistic ecommerce product catalog photograph of ONE neatly wound coil of galvanized double-strand barbed fencing wire, unbranded without any packaging or labels. Realistic twisted silver gray steel wire and evenly spaced small four-point barbs, plausible manufactured wire coil with open center, lying at subtle three-quarter angle. Complete coil fully visible centered in square composition with 12 percent margin. Soft neutral studio lighting, sharp real metal texture. Pure white opaque background including center and all spaces between wires, no colored residue, no floor shadow, no environment, no text, no border, no logos, no watermark. Illustrative image for generic alambre de puas, not a specific brand or length."
+    },
+    {
+      "file": "clavos-paris.webp",
+      "prompt": "Use case: product-mockup. Premium photorealistic ecommerce catalog photograph of a small tidy group of eight ordinary steel common wire nails, Argentine clavo punta Paris. Straight round smooth shanks, flat circular subtly textured heads and sharp diamond points, natural unpolished silver gray steel. Arrange loosely overlapping as a compact horizontal fan seen at three-quarter overhead view; all nails fully visible. No screws, no roofing nails, no twisted shafts, no packaging. Centered square composition fills about 75 percent width. Soft neutral studio lighting, sharp metal detail. Perfect white opaque background, no floor shadow, no environment, no text, no dimensions, no logos or watermark. Generic illustrative product image, not exact size or brand."
+    }
+  ]
+}

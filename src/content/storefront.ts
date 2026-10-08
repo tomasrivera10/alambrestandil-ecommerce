@@ -1,7 +1,7 @@
 export const categoryPhotos: Record<string, { src: string; alt: string }> = {
   "tejido-romboidal": {
-    src: "/images/tandil/tejido.webp",
-    alt: "Cerco de tejido romboidal en Tandil",
+    src: "/images/referencias-productos/tejido-galvanizado.jpeg",
+    alt: "Rollo de tejido romboidal galvanizado, imagen de referencia",
   },
   "tejido-revestido": {
     src: "/images/tandil/rombogreen.webp",
@@ -19,7 +19,10 @@ export const categoryPhotos: Record<string, { src: string; alt: string }> = {
     src: "/images/tandil/materiales.webp",
     alt: "Postes de hormigón en el depósito",
   },
-  "puertas-y-portones": { src: "/images/tandil/portones.webp", alt: "Portón de caño y tejido" },
+  "puertas-y-portones": {
+    src: "/images/productos-transparentes/portones/porton-dos-hojas.webp",
+    alt: "Portón galvanizado de dos hojas con tejido romboidal, visualización orientativa",
+  },
 };
 export const featuredCategories = [
   {
@@ -32,7 +35,8 @@ export const featuredCategories = [
     slug: "postes-de-hormigon",
     name: "Postes",
     detail: "El sostén de tu alambrado.",
-    ...categoryPhotos["postes-de-hormigon"],
+    src: "/images/productos-transparentes/postes/poste-olimpico.png",
+    alt: "Poste olímpico de hormigón, visualización orientativa",
   },
   {
     slug: "puertas-y-portones",
@@ -44,8 +48,8 @@ export const featuredCategories = [
     slug: "accesorios-de-colocacion",
     name: "Accesorios",
     detail: "Cada pieza para la colocación.",
-    src: "/images/catalogo/torniquetes.jpg",
-    alt: "Torniquete: imagen de referencia de Alambre Pallás",
+    src: "/images/referencias-productos/torniquete-cambren.webp",
+    alt: "Torniquete zincado, imagen de referencia de Cambren",
   },
 ];
 export const filterLabels: Record<string, string> = {

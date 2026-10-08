@@ -1,4 +1,14 @@
 import { PrismaClient } from "@/generated/prisma/client";
+import path from "node:path";
+
+// Bundling relocates Prisma's generated client, so its default lookup misses
+// the engine included by outputFileTracingIncludes in Vercel Functions.
+if (process.env.VERCEL && process.platform === "linux" && process.arch === "x64") {
+  process.env.PRISMA_QUERY_ENGINE_LIBRARY ??= path.join(
+    process.cwd(),
+    "src/generated/prisma/libquery_engine-rhel-openssl-3.0.x.so.node",
+  );
+}
 
 const globalForPrisma = globalThis as unknown as { prisma?: PrismaClient };
 

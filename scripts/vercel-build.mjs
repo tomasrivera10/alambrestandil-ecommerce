@@ -15,12 +15,16 @@ const database = new URL(process.env.DATABASE_URL);
 if (!["postgres:", "postgresql:"].includes(database.protocol) || ["localhost", "127.0.0.1", "[::1]"].includes(database.hostname)) {
   throw new Error("DATABASE_URL debe apuntar a PostgreSQL externo, por ejemplo Neon.");
 }
-function run(args) {
-  const result = spawnSync("npm", ["exec", "--", ...args], { stdio: "inherit", env: process.env });
+function run(args, commandEnv = process.env) {
+  const result = spawnSync("npm", ["exec", "--", ...args], { stdio: "inherit", env: commandEnv });
   if (result.error) throw result.error;
   if (result.status !== 0) process.exit(result.status ?? 1);
 }
 run(["prisma", "generate"]);
 // Previews must use their own database; migrations there are an explicit step.
-if (process.env.VERCEL_ENV === "production") run(["prisma", "migrate", "deploy"]);
+if (process.env.VERCEL_ENV === "production") {
+  // Session advisory locks used by migrations require a direct connection.
+  const migrationUrl = process.env.DATABASE_URL_UNPOOLED ?? process.env.DATABASE_POSTGRES_URL_NON_POOLING ?? process.env.DATABASE_URL;
+  run(["prisma", "migrate", "deploy"], { ...process.env, DATABASE_URL: migrationUrl });
+}
 run(["next", "build", "--webpack"]);

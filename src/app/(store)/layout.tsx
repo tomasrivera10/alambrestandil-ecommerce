@@ -2,8 +2,6 @@ import "./storefront.css";
 import { SiteFooter } from "@/components/store/site-footer";
 import { SiteHeader } from "@/components/store/site-header";
 
-export const dynamic = "force-dynamic";
-
 export default function StoreLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="storefront flex min-h-full flex-col">

@@ -6,6 +6,10 @@ import { ProductCard } from "@/components/store/product-card";
 import { HeroMedia } from "@/components/store/hero-media";
 import { FadeContent } from "@/components/store/fade-content";
 import { featuredCategories } from "@/content/storefront";
+
+// Featured products include current prices and availability.
+export const dynamic = "force-dynamic";
+
 export default async function HomePage() {
   const featured = await listProducts({ featured: true });
   return (

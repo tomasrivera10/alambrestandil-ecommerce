@@ -2,6 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // Include the native Prisma engine used by Vercel Functions.
+  outputFileTracingIncludes: {
+    "/*": ["./src/generated/prisma/libquery_engine-*.so.node"],
+  },
   async redirects() {
     return [{ source: "/soluciones/:path*", destination: "/instalaciones", permanent: true }];
   },

@@ -23,4 +23,4 @@ function run(args) {
 run(["prisma", "generate"]);
 // Previews must use their own database; migrations there are an explicit step.
 if (process.env.VERCEL_ENV === "production") run(["prisma", "migrate", "deploy"]);
-run(["next", "build"]);
+run(["next", "build", "--webpack"]);

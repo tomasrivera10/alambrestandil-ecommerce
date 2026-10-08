@@ -25,6 +25,14 @@ run(["prisma", "generate"]);
 if (process.env.VERCEL_ENV === "production") {
   // Session advisory locks used by migrations require a direct connection.
   const migrationUrl = process.env.DATABASE_URL_UNPOOLED ?? process.env.DATABASE_POSTGRES_URL_NON_POOLING ?? process.env.DATABASE_URL;
-  run(["prisma", "migrate", "deploy"], { ...process.env, DATABASE_URL: migrationUrl });
+  const migrationEnv = { ...process.env, DATABASE_URL: migrationUrl };
+  // Avoid acquiring a migration lock for code-only deployments when the
+  // database is already up to date. Pending migrations still use normal locks.
+  const status = spawnSync("npm", ["exec", "--", "prisma", "migrate", "status"], {
+    stdio: "inherit",
+    env: migrationEnv,
+  });
+  if (status.error) throw status.error;
+  if (status.status !== 0) run(["prisma", "migrate", "deploy"], migrationEnv);
 }
 run(["next", "build", "--webpack"]);

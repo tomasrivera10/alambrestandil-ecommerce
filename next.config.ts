@@ -2,12 +2,15 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  distDir: process.env.NEXT_DIST_DIR || ".next",
   serverExternalPackages: ["@napi-rs/canvas", "tesseract.js", "pdfjs-dist", "exceljs", "mammoth"],
   // Prisma uses a custom generated client; include its native engine in Functions.
   outputFileTracingIncludes: {
     "/*": ["./src/generated/prisma/libquery_engine-*.so.node"],
     "/api/admin/supplier-lists": ["./node_modules/@tesseract.js-data/spa/4.0.0/spa.traineddata.gz"],
-    "/api/admin/supplier-lists/chunks": ["./node_modules/@tesseract.js-data/spa/4.0.0/spa.traineddata.gz"],
+    "/api/admin/supplier-lists/chunks": [
+      "./node_modules/@tesseract.js-data/spa/4.0.0/spa.traineddata.gz",
+    ],
   },
   async redirects() {
     return [{ source: "/soluciones/:path*", destination: "/instalaciones", permanent: true }];
@@ -28,6 +31,16 @@ const nextConfig: NextConfig = {
           ...(process.env.NODE_ENV === "production"
             ? [{ key: "Strict-Transport-Security", value: "max-age=31536000" }]
             : []),
+        ],
+      },
+      {
+        source: "/api/admin/supplier-lists/:id",
+        headers: [
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          {
+            key: "Content-Security-Policy",
+            value: "frame-ancestors 'self'; object-src 'none'; base-uri 'self'",
+          },
         ],
       },
       {

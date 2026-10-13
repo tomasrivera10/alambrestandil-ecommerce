@@ -1,6 +1,7 @@
+import { SectionNav } from "@/components/admin/section-nav";
 import Link from "next/link";
-import { requireArea } from "@/lib/rbac";
-import { prisma } from "@/lib/db";
+import { requireArea } from "@/server/rbac";
+import { prisma } from "@/server/db";
 import { StockMovementForm } from "@/components/admin/stock-movement-form";
 import { StockCountForm } from "@/components/admin/stock-count-form";
 
@@ -55,6 +56,7 @@ export default async function StockPage({
   }));
   return (
     <main className="admin-page">
+      <SectionNav kind="products" />
       <div className="admin-page-heading">
         <div>
           <h1>Stock</h1>

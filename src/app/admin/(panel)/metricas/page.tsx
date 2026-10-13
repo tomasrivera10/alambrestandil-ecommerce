@@ -1,5 +1,5 @@
-import { prisma } from "@/lib/db";
-import { requireArea } from "@/lib/rbac";
+import { prisma } from "@/server/db";
+import { requireArea } from "@/server/rbac";
 
 export default async function MetricsPage({
   searchParams,

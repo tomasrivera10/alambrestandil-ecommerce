@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { prisma, safeQuery } from "@/lib/db";
+import { prisma, safeQuery } from "@/server/db";
 
 export const dynamic = "force-dynamic";
 

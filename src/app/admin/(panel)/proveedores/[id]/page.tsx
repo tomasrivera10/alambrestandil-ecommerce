@@ -1,268 +1,255 @@
+import { VariantSelect } from "@/components/admin/variant-select";
+/* eslint-disable @next/next/no-img-element -- Admin previews support supplier image hosts. */
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import { prisma } from "@/lib/db";
-import { requireArea } from "@/lib/rbac";
-import {
-  approveSupplierList,
-  reviewSupplierRow,
-  updateSupplierItem,
-} from "@/features/suppliers/actions";
+import { Package, ArrowLeft } from "lucide-react";
+import { prisma } from "@/server/db";
+import { requireArea } from "@/server/rbac";
+import { updateSupplierItem } from "@/server/suppliers/actions";
 import { SupplierUpload } from "@/components/admin/supplier-upload";
-import type { ImportedRow } from "@/features/suppliers/parse";
-
+import { SupplierReview } from "@/components/admin/supplier-review";
+import { PricingPanel } from "@/components/admin/pricing-panel";
+import { PriceDisplay } from "@/components/admin/price-display";
+import { ActionForm } from "@/components/admin/action-form";
+import type { ImportedRow } from "@/server/suppliers/parse";
 export const maxDuration = 60;
-
-export default async function SupplierPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function SupplierPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ q?: string; pagina?: string; articulo?: string }>;
+}) {
   await requireArea("suppliers");
   const { id } = await params;
+  const { q = "", pagina = "1", articulo } = await searchParams;
   const supplier = await prisma.supplier.findUnique({
     where: { id },
     include: {
-      items: { orderBy: { name: "asc" } },
-      lists: { orderBy: { createdAt: "desc" }, take: 8 },
+      lists: {
+        orderBy: { createdAt: "desc" },
+        take: 8,
+        select: { id: true, filename: true, status: true, rows: true, notes: true },
+      },
+      _count: { select: { items: true } },
     },
   });
   if (!supplier) notFound();
-  const variants = await prisma.productVariant.findMany({
-    where: { active: true },
-    select: { id: true, sku: true, name: true },
-    orderBy: { sku: "asc" },
-  });
-  const low = await prisma.inventory.findMany({
-    where: {
-      variantId: {
-        in: supplier.items
-          .filter((item) => item.purchased && item.variantId)
-          .map((item) => item.variantId!),
+  const where = {
+    supplierId: id,
+    ...(articulo ? { id: articulo } : {}),
+    ...(q
+      ? {
+          OR: [
+            { name: { contains: q, mode: "insensitive" as const } },
+            { code: { contains: q, mode: "insensitive" as const } },
+          ],
+        }
+      : {}),
+  };
+  const count = await prisma.supplierItem.count({ where });
+  const pages = Math.max(1, Math.ceil(count / 20));
+  const page = Math.min(pages, Math.max(1, Math.trunc(Number(pagina)) || 1));
+  const [items, variants] = await Promise.all([
+    prisma.supplierItem.findMany({
+      where,
+      orderBy: { name: "asc" },
+      skip: (page - 1) * 20,
+      take: 20,
+      include: {
+        variant: {
+          include: {
+            inventory: true,
+            product: { include: { images: { orderBy: { sortOrder: "asc" }, take: 1 } } },
+          },
+        },
       },
-    },
-  });
-  const shortage = low.filter(
-    (item) =>
-      item.onHand - item.reserved <= 0 ||
-      (item.minStock > 0 && item.onHand - item.reserved <= item.minStock),
-  );
-  const itemByVariant = new Map(
-    supplier.items
-      .filter((item) => item.purchased && item.variantId)
-      .map((item) => [item.variantId, item]),
-  );
-  const itemByCode = new Map(supplier.items.map((item) => [item.code, item]));
+    }),
+    prisma.productVariant.findMany({
+      where: { active: true },
+      include: { product: { include: { images: { orderBy: { sortOrder: "asc" }, take: 1 } } } },
+      orderBy: { product: { name: "asc" } },
+    }),
+  ]);
+  const options = variants.map((v) => ({
+    id: v.id,
+    name: `${v.product.name} · ${v.name} (${v.sku})`,
+    unit: v.salesUnit ?? v.product.salesUnit,
+    image: v.product.images[0]?.url,
+  }));
   return (
     <main className="admin-page">
+      <Link className="admin-back" href="/admin/proveedores">
+        <ArrowLeft size={16} /> Proveedores
+      </Link>
       <div className="admin-page-heading">
         <div>
           <h1>{supplier.name}</h1>
-          <p>
-            {supplier.items.length} artículos en catálogo ·{" "}
-            {supplier.items.filter((item) => item.purchased).length} que compramos
-          </p>
+          <p>De la lista del proveedor al precio de venta, con cada importe a la vista.</p>
         </div>
+        <span className="admin-badge">{supplier._count.items} artículos</span>
       </div>
+      <ol className="admin-process">
+        <li>
+          <strong>Subí la lista</strong>
+          <span>PDF, Excel o Word</span>
+        </li>
+        <li>
+          <strong>Revisá los costos</strong>
+          <span>Compará con el original</span>
+        </li>
+        <li>
+          <strong>Vinculá la medida</strong>
+          <span>El mismo producto y unidad</span>
+        </li>
+        <li>
+          <strong>Definí el precio</strong>
+          <span>Costo, margen y mercado</span>
+        </li>
+      </ol>
       <SupplierUpload supplierId={id} />
-      <section className="mt-9">
-        <h2 className="admin-section-title">Listas recibidas</h2>
-        <div className="space-y-4">
-          {supplier.lists.map((list) => {
-            const rows = list.rows as ImportedRow[];
-            const pending = rows.filter((row) => row.warning || row.price == null);
-            return (
-              <details key={list.id} className="admin-panel p-4" open={list.status === "REVIEW"}>
-                <summary className="cursor-pointer font-medium">
-                  {list.filename} · {list.status === "REVIEW" ? "Para revisar" : "Aprobada"} ·{" "}
-                  {rows.length} filas
-                </summary>
-                <p className="my-3 text-sm text-muted-foreground">
-                  <a
-                    className="mr-3 font-semibold text-primary underline"
-                    href={`/api/admin/supplier-lists/${list.id}`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Abrir documento original
-                  </a>
-                  {list.notes} {pending.length} filas requieren corrección.
-                </p>
-                {list.status === "REVIEW" && (
-                  <>
-                    <div className="max-h-[480px] overflow-auto">
-                      <table className="admin-table">
-                        <thead>
-                          <tr>
-                            <th>Fila</th>
-                            <th>Código</th>
-                            <th>Producto</th>
-                            <th>Precio de lista</th>
-                            <th>Cambio</th>
-                            <th>Estado</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {rows.map((row, index) => (
-                            <tr key={index}>
-                              <td>{row.page ?? index + 1}</td>
-                              <td>{row.code}</td>
-                              <td>{row.name}</td>
-                              <td>
-                                {row.price == null ? "—" : `$ ${row.price.toLocaleString("es-AR")}`}
-                              </td>
-                              <td>
-                                {itemByCode.get(row.code)?.listPrice && row.price != null
-                                  ? `${Math.round((row.price / Number(itemByCode.get(row.code)!.listPrice) - 1) * 100)} %`
-                                  : "Nuevo"}
-                              </td>
-                              <td>
-                                {row.warning ? (
-                                  <details>
-                                    <summary className="cursor-pointer text-primary">
-                                      Revisar
-                                    </summary>
-                                    <form
-                                      action={reviewSupplierRow}
-                                      className="grid min-w-64 gap-2 py-2"
-                                    >
-                                      <input hidden name="listId" value={list.id} readOnly />
-                                      <input hidden name="index" value={index} readOnly />
-                                      <input
-                                        className="admin-input"
-                                        name="code"
-                                        defaultValue={row.code}
-                                        aria-label="Código"
-                                      />
-                                      <input
-                                        className="admin-input"
-                                        name="name"
-                                        defaultValue={row.name}
-                                        aria-label="Nombre"
-                                      />
-                                      <input
-                                        className="admin-input"
-                                        name="price"
-                                        type="number"
-                                        step="0.01"
-                                        defaultValue={row.price ?? ""}
-                                        aria-label="Precio"
-                                      />
-                                      <button className="admin-button">Confirmar fila</button>
-                                    </form>
-                                  </details>
-                                ) : (
-                                  "Lista"
-                                )}
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                    <form
-                      action={async () => {
-                        "use server";
-                        await approveSupplierList(list.id);
-                      }}
-                    >
-                      <button className="admin-button mt-4" disabled={pending.length > 0}>
-                        Aprobar lista
-                      </button>
-                    </form>
-                  </>
-                )}
-              </details>
-            );
-          })}
+      <section className="admin-section">
+        <div className="admin-section-heading">
+          <h2>Listas de precios</h2>
+          <span className="admin-help">Últimas 8 listas</span>
         </div>
-      </section>
-      <section className="mt-9">
-        <h2 className="admin-section-title">Reposición</h2>
-        <p className="text-sm text-muted-foreground">
-          {shortage.length
-            ? `${shortage.length} productos elegidos están en el mínimo o por debajo.`
-            : "Los productos elegidos están por encima del mínimo configurado."}
-        </p>
-        {shortage.length > 0 && (
-          <div className="mt-4 overflow-x-auto">
-            <table className="admin-table">
-              <thead>
-                <tr>
-                  <th>Producto</th>
-                  <th>Disponible</th>
-                  <th>Mínimo</th>
-                  <th>Faltante hasta mínimo</th>
-                  <th>Lista</th>
-                </tr>
-              </thead>
-              <tbody>
-                {shortage.map((stock) => {
-                  const item = itemByVariant.get(stock.variantId);
-                  return (
-                    <tr key={stock.id}>
-                      <td>{item?.name ?? stock.variantId}</td>
-                      <td>{stock.onHand - stock.reserved}</td>
-                      <td>{stock.minStock}</td>
-                      <td>{Math.max(0, stock.minStock - (stock.onHand - stock.reserved))}</td>
-                      <td>
-                        {item?.listPrice
-                          ? `$ ${Number(item.listPrice).toLocaleString("es-AR")}`
-                          : "—"}
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
+        {supplier.lists.length ? (
+          supplier.lists.map((list) => (
+            <div id={`lista-${list.id}`} key={list.id} className="admin-anchor">
+              <SupplierReview
+                id={list.id}
+                filename={list.filename}
+                status={list.status}
+                rows={list.rows as ImportedRow[]}
+                notes={list.notes}
+                variants={options}
+              />
+            </div>
+          ))
+        ) : (
+          <p className="admin-empty-inline">
+            Subí la primera lista para empezar a comparar costos.
+          </p>
         )}
       </section>
-      <section className="mt-9">
-        <h2 className="admin-section-title">Productos del proveedor</h2>
-        <div className="overflow-x-auto">
-          <table className="admin-table">
-            <thead>
-              <tr>
-                <th>Código</th>
-                <th>Descripción</th>
-                <th>Lista</th>
-                <th>Compramos</th>
-                <th>Vincular con</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {supplier.items.map((item) => (
-                <tr key={item.id}>
-                  <td>{item.code}</td>
-                  <td>{item.name}</td>
-                  <td>
-                    {item.listPrice ? `$ ${Number(item.listPrice).toLocaleString("es-AR")}` : "—"}
-                  </td>
-                  <td colSpan={3}>
-                    <form action={updateSupplierItem} className="flex items-center gap-3">
-                      <input type="hidden" name="id" value={item.id} />
-                      <input
-                        name="purchased"
-                        type="checkbox"
-                        defaultChecked={item.purchased}
-                        aria-label={`Compramos ${item.name}`}
-                      />
-                      <select
-                        name="variantId"
-                        defaultValue={item.variantId ?? ""}
-                        className="admin-input max-w-64"
-                      >
-                        <option value="">Sin vincular</option>
-                        {variants.map((v) => (
-                          <option value={v.id} key={v.id}>
-                            {v.sku} · {v.name}
-                          </option>
-                        ))}
-                      </select>
-                      <button className="admin-button-secondary">Guardar</button>
-                    </form>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+      <section className="admin-section">
+        <div className="admin-section-heading">
+          <div>
+            <h2>Artículos y precios de venta</h2>
+            <p>Vinculá cada artículo con su presentación exacta en la tienda.</p>
+          </div>
         </div>
+        {articulo && (
+          <Link className="admin-back" href={`/admin/proveedores/${id}`}>
+            Ver todos los artículos del proveedor
+          </Link>
+        )}
+        <form className="admin-toolbar">
+          <label className="grow">
+            Buscar artículo
+            <input
+              name="q"
+              className="admin-input"
+              defaultValue={q}
+              placeholder="Nombre o código del proveedor"
+            />
+          </label>
+          <button className="admin-button-secondary">Buscar</button>
+        </form>
+        <div className="admin-supplier-items">
+          {items.map((item) => (
+            <article
+              key={item.id}
+              id={`item-${item.id}`}
+              className="admin-supplier-item admin-anchor"
+            >
+              <div className="admin-item-heading">
+                <div className="admin-product-thumb">
+                  {item.variant?.product.images[0] ? (
+                    /* Product photographs may be from supplier HTTPS sources. */ <img
+                      src={item.variant.product.images[0].url}
+                      alt={item.variant.product.images[0].alt}
+                    />
+                  ) : (
+                    <Package size={28} />
+                  )}
+                </div>
+                <div>
+                  <h3>{item.name}</h3>
+                  <p>
+                    {item.code} · {item.unit || "Unidad sin aclarar"} · lista actualizada{" "}
+                    {item.updatedAt.toLocaleDateString("es-AR")}
+                  </p>
+                  {item.variant && (
+                    <Link
+                      className="admin-back"
+                      href={`/admin/productos/${item.variant.productId}`}
+                    >
+                      Ver producto y stock
+                    </Link>
+                  )}
+                </div>
+                <PriceDisplay
+                  kind="cost"
+                  label="Costo literal de lista"
+                  value={item.listPrice == null ? null : Number(item.listPrice)}
+                />
+              </div>
+              <details className="admin-disclosure" open={!item.variantId}>
+                <summary>
+                  {item.variantId
+                    ? "Cambiar vínculo o artículo comprado"
+                    : "Vincular con una medida de la tienda"}
+                </summary>
+                <ActionForm action={updateSupplierItem} className="admin-inline-form">
+                  <input hidden name="id" value={item.id} readOnly />
+                  <VariantSelect options={options} defaultValue={item.variantId ?? ""} />
+                  <label className="admin-check">
+                    <input name="purchased" type="checkbox" defaultChecked={item.purchased} />{" "}
+                    Compramos este artículo
+                  </label>
+                  <label className="admin-check">
+                    <input type="checkbox" name="exact" /> Confirmo mismo producto y unidad
+                  </label>
+                  <button className="admin-button-secondary">Guardar vínculo</button>
+                </ActionForm>
+              </details>
+              {item.variantId ? (
+                <details className="admin-disclosure">
+                  <summary>Comparar costo, margen y precio de venta</summary>
+                  <PricingPanel variantId={item.variantId} supplierItemId={item.id} />
+                </details>
+              ) : (
+                <p className="admin-help">
+                  Vinculá la medida para calcular su margen y comparar el mercado.
+                </p>
+              )}
+              {item.variant?.inventory &&
+                item.variant.inventory.onHand - item.variant.inventory.reserved <=
+                  item.variant.inventory.minStock && (
+                  <p className="admin-notice">
+                    Reponer · disponible:{" "}
+                    {item.variant.inventory.onHand - item.variant.inventory.reserved} · mínimo:{" "}
+                    {item.variant.inventory.minStock}
+                  </p>
+                )}
+            </article>
+          ))}
+        </div>
+        {!items.length && (
+          <p className="admin-empty-inline">No hay artículos para esta búsqueda.</p>
+        )}
+        <nav aria-label="Páginas de artículos" className="admin-pagination">
+          <span>
+            {count} artículos · página {page} de {pages}
+          </span>
+          {page > 1 && (
+            <Link href={`?q=${encodeURIComponent(q)}&pagina=${page - 1}`}>Anterior</Link>
+          )}
+          {page < pages && (
+            <Link href={`?q=${encodeURIComponent(q)}&pagina=${page + 1}`}>Siguiente</Link>
+          )}
+        </nav>
       </section>
     </main>
   );

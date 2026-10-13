@@ -1,7 +1,9 @@
+import { Truck, ArrowUpRight } from "lucide-react";
+import { ActionForm } from "@/components/admin/action-form";
 import Link from "next/link";
-import { prisma } from "@/lib/db";
-import { requireArea } from "@/lib/rbac";
-import { createSupplier } from "@/features/suppliers/actions";
+import { prisma } from "@/server/db";
+import { requireArea } from "@/server/rbac";
+import { createSupplier } from "@/server/suppliers/actions";
 
 export default async function SuppliersPage() {
   await requireArea("suppliers");
@@ -14,7 +16,7 @@ export default async function SuppliersPage() {
       <div className="admin-page-heading">
         <div>
           <h1>Proveedores</h1>
-          <p>Listas, productos elegidos y reposición en un solo lugar.</p>
+          <p>Subí listas, revisá costos y definí precios con margen y mercado a la vista.</p>
         </div>
       </div>
       <div className="grid gap-3 md:grid-cols-3">
@@ -24,14 +26,21 @@ export default async function SuppliersPage() {
             key={supplier.id}
             href={`/admin/proveedores/${supplier.id}`}
           >
+            <Truck size={24} className="mb-5 text-primary" />
             <h2 className="text-lg font-semibold">{supplier.name}</h2>
             <p className="mt-3 text-sm text-muted-foreground">
               {supplier._count.items} artículos · {supplier._count.lists} listas
             </p>
+            <span className="admin-back mt-5 mb-0">
+              Abrir costos y precios <ArrowUpRight size={16} />
+            </span>
           </Link>
         ))}
       </div>
-      <form action={createSupplier} className="admin-panel mt-8 flex flex-wrap items-end gap-3 p-5">
+      <ActionForm
+        action={createSupplier}
+        className="admin-panel mt-8 flex flex-wrap items-end gap-3 p-5"
+      >
         <label className="grid gap-1 text-sm">
           Nuevo proveedor
           <input
@@ -43,7 +52,7 @@ export default async function SuppliersPage() {
           />
         </label>
         <button className="admin-button">Agregar proveedor</button>
-      </form>
+      </ActionForm>
     </main>
   );
 }

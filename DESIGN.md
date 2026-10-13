@@ -253,3 +253,11 @@ La sección Soluciones se elimina del inicio y de la navegación. Sus URLs anter
 
 ### Instalaciones · presupuesto guiado
 Encabezado breve con acceso a la consulta, galería real a la izquierda y formulario de tres pasos a la derecha. Los campos permanecen montados al navegar; validación del paso visible y foco en su título. Medidas opcionales, selección de asesoramiento y continuación explícita por WhatsApp tras guardar. Preguntas frecuentes desplegables sustituyen los párrafos extensos. Entrada de galería con FadeContent, transición de pasos y giro del control de ayuda, respetando movimiento reducido. Verificado en escritorio y móvil; navegación hacia adelante y atrás conserva los datos.
+
+## Panel de administración · octubre 2026
+
+Modo Operate. Fondo claro para trabajo de mostrador y depósito, navegación carbón con cinco destinos principales e indicador rojo; Archivo y Figtree mantienen la identidad. Catálogo con fotografía real, medidas y disponibilidad; las fotos faltantes muestran una acción para cargarlas y el origen de cada imagen se conserva en su ficha. Las tarjetas del panel no muestran el rótulo «imagen de referencia». Campos delimitados de al menos 46 px, acciones con nombres concretos y opciones avanzadas desplegables.
+
+Proveedores sigue el recorrido documento → fila → presentación exacta → costo aprobado → guía de precio. El documento y la revisión comparten el espacio en escritorio y se apilan en móvil. Importes en ARS con dos decimales y cifras tabulares: costo ocre oscuro, mercado azul, sugerencia verde y publicado rojo; cada uno conserva rótulo y explicación. La única entrada animada aparece al terminar una carga, con FadeContent adaptado de React Bits y movimiento reducido respetado.
+
+Tokens específicos del panel: tinta #20242b, fondo #f4f5f7, texto secundario #57616d, borde #dce0e6, contorno de campos #bcc4cf. Importes: costo #87501b, mercado #2159a0, sugerido #1f6848, venta #a91a22. Controles de 46 px y radios de 6–10 px; texto operativo 12–15 px, títulos de bloque 17–22 px e importes 22–24 px. Estos tokens se limitan al modo Operate del panel.

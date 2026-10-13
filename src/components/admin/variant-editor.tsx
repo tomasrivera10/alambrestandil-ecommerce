@@ -1,11 +1,12 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { saveVariant } from "@/features/products/actions";
+import { saveVariant } from "@/server/products/actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
+import { unitLabel } from "@/lib/format";
 
 export type EditableVariant = {
   id: string;
@@ -84,8 +85,13 @@ function VariantForm({
           <Input name="name" required minLength={2} defaultValue={variant?.name} />
         </label>
         <label className="grid gap-1 text-sm">
-          Código SKU
-          <Input name="sku" required minLength={2} defaultValue={variant?.sku} />
+          Código interno (opcional)
+          <Input
+            name="sku"
+            minLength={2}
+            defaultValue={variant?.sku}
+            placeholder="Se genera al guardar"
+          />
         </label>
         <label className="grid gap-1 text-sm">
           Unidad de venta
@@ -96,7 +102,9 @@ function VariantForm({
           >
             <option value="">Usar unidad del producto</option>
             {["UNIDAD", "METRO", "ROLLO", "KG", "PAQUETE", "PANEL", "JUEGO"].map((u) => (
-              <option key={u}>{u}</option>
+              <option key={u} value={u}>
+                {unitLabel(u, 1)}
+              </option>
             ))}
           </select>
         </label>
@@ -120,9 +128,11 @@ function VariantForm({
           />
         </label>
         <p className="self-center text-sm text-muted-foreground">
-          Físico: {variant?.inventory?.onHand ?? 0} · Reservado: {variant?.inventory?.reserved ?? 0}
-          <br />
-          Las cantidades se actualizan en Stock con un movimiento.
+          El stock se consulta y actualiza en{" "}
+          <a href="#stock-producto" className="font-medium underline underline-offset-4">
+            Stock por medida
+          </a>
+          .
         </p>
       </div>
       <label className="grid gap-1 text-sm">
@@ -163,9 +173,11 @@ function VariantForm({
 export function VariantEditor({
   productId,
   variants,
+  fallbackUnit,
 }: {
   productId: string;
   variants: EditableVariant[];
+  fallbackUnit: string;
 }) {
   const [adding, setAdding] = useState(false);
   return (
@@ -196,6 +208,11 @@ export function VariantEditor({
               <span className="ml-3 text-muted-foreground">
                 {v.sku} · {v.active ? "Publicada" : "Oculta"}
                 {v.reviewNote ? " · Revisar datos" : ""}
+              </span>
+              <span className="ml-3 font-medium">
+                {Math.round(((v.inventory?.onHand ?? 0) - (v.inventory?.reserved ?? 0)) * 1000) /
+                  1000}{" "}
+                {unitLabel(v.salesUnit ?? fallbackUnit)} disponibles
               </span>
             </summary>
             <VariantForm key={JSON.stringify(v)} productId={productId} variant={v} />

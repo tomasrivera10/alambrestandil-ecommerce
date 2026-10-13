@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { saveCategory } from "@/features/products/actions";
+import { saveCategory } from "@/server/products/actions";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -45,29 +45,39 @@ export function CategoryEditor({
         <Input name="name" required minLength={2} defaultValue={category?.name} />
       </label>
       <label className="grid gap-1">
-        Dirección web (slug)
+        Dirección web
         <Input
           name="slug"
           required
           pattern="[a-z0-9]+(-[a-z0-9]+)*"
           defaultValue={category?.slug}
         />
+        <span className="text-xs text-muted-foreground">
+          Se usa en el enlace de la tienda. Ejemplo: alambres-lisos.
+        </span>
       </label>
       <label className="grid gap-1 sm:col-span-2">
         Descripción
         <Textarea name="description" defaultValue={category?.description || ""} />
+        <span className="text-xs text-muted-foreground">
+          Texto que se muestra al entrar a esta categoría en la tienda.
+        </span>
       </label>
       <label className="grid gap-1">
-        Orden
+        Orden en la tienda
         <Input name="sortOrder" type="number" required defaultValue={category?.sortOrder || 0} />
+        <span className="text-xs text-muted-foreground">Los números menores aparecen primero.</span>
       </label>
       <label className="grid gap-1">
-        Filtros técnicos (separados por coma)
+        Filtros de productos
         <Input
           name="filterKeys"
           defaultValue={category?.filterKeys.join(", ") || ""}
           placeholder="altura, calibre, largo"
         />
+        <span className="text-xs text-muted-foreground">
+          Atributos que el cliente podrá usar para filtrar. Separalos con comas.
+        </span>
       </label>
       <div className="flex flex-wrap items-center gap-3 sm:col-span-2">
         <Button type="submit" disabled={busy}>

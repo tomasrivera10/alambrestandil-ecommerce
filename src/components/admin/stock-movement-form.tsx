@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { recordStockForm } from "@/features/inventory/actions";
+import { recordStockForm } from "@/server/inventory/actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 export function StockMovementForm({

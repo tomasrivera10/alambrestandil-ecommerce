@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { prisma } from "@/lib/db";
-import { getSession, requireArea } from "@/lib/rbac";
-import { countStaleOrders } from "@/features/orders/attention";
+import { prisma } from "@/server/db";
+import { getSession, requireArea } from "@/server/rbac";
+import { countStaleOrders } from "@/server/orders/attention";
 
 export default async function DashboardPage() {
   const session = await getSession();
-  if (session?.user.role === "STOCK") redirect("/admin/stock");
+  if (session?.user.role === "STOCK") redirect("/admin/productos");
   await requireArea("orders");
   const [fresh, waiting, inventory, pendingLists, recentSales, stale] = await Promise.all([
     prisma.order.count({ where: { status: { in: ["NUEVO", "ENVIADO_A_WHATSAPP"] } } }),
@@ -31,9 +31,14 @@ export default async function DashboardPage() {
           <h1>Buen día, {session?.user.name?.split(" ")[0] ?? "equipo"}</h1>
           <p>Lo que necesita atención hoy en Alambres Tandil.</p>
         </div>
-        <Link href="/admin/ventas" className="admin-button">
-          Registrar venta
-        </Link>
+        <div className="admin-heading-actions">
+          <Link href="/admin/productos/nuevo" className="admin-button-secondary">
+            Agregar producto
+          </Link>
+          <Link href="/admin/ventas" className="admin-button">
+            Registrar venta
+          </Link>
+        </div>
       </div>
       <div className="admin-summary">
         <div>

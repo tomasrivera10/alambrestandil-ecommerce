@@ -28,3 +28,5 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+El flujo del panel reutiliza esta adaptación de FadeContent para la confirmación de carga de listas. Los formularios, tablas y cifras permanecen estáticos durante la operación; la animación se omite con `prefers-reduced-motion`.

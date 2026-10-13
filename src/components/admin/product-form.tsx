@@ -5,7 +5,8 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { saveProduct } from "@/features/products/actions";
+import { saveProduct } from "@/server/products/actions";
+import { unitLabel } from "@/lib/format";
 import { toast } from "sonner";
 
 export function ProductForm({
@@ -35,13 +36,23 @@ export function ProductForm({
   };
 }) {
   const router = useRouter();
+  const [name, setName] = useState(product?.name ?? "");
+  const [slug, setSlug] = useState(product?.slug ?? "");
+  const [slugEdited, setSlugEdited] = useState(false);
+  const slugify = (value: string) =>
+    value
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "");
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [saved, setSaved] = useState(false);
 
   return (
     <form
-      className="grid gap-4 text-sm sm:grid-cols-2 [&_textarea]:min-h-24"
+      className="admin-form text-sm"
       onSubmit={async (event) => {
         event.preventDefault();
         setBusy(true);
@@ -80,138 +91,174 @@ export function ProductForm({
         }
       }}
     >
-      <label className="grid gap-1">
-        Nombre
-        <Input name="name" required defaultValue={product?.name} />
-      </label>
-      <label className="grid gap-1">
-        Dirección web (slug)
-        <Input
-          name="slug"
-          required
-          pattern="[a-z0-9]+(-[a-z0-9]+)*"
-          placeholder="nombre-del-producto"
-          defaultValue={product?.slug}
-        />
-      </label>
-      <label className="grid gap-1">
-        SKU
-        <Input name="sku" defaultValue={product?.sku ?? ""} />
-      </label>
-      <label className="grid gap-1">
-        Categoría
-        <select
-          name="categoryId"
-          defaultValue={product?.categoryId}
-          className="h-10 border border-input bg-card px-2"
-        >
-          {categories.map((category) => (
-            <option key={category.id} value={category.id}>
-              {category.name}
-            </option>
-          ))}
-        </select>
-      </label>
-      <label className="grid gap-1 sm:col-span-2">
-        Descripción corta
-        <Textarea
-          name="shortDescription"
-          minLength={8}
-          required
-          defaultValue={product?.shortDescription}
-        />
-      </label>
-      <label className="grid gap-1 sm:col-span-2">
-        Descripción técnica
-        <Textarea
-          name="technicalDescription"
-          minLength={8}
-          required
-          defaultValue={product?.technicalDescription}
-        />
-      </label>
-      <label className="grid gap-1">
-        Marca
-        <Input name="brand" defaultValue={product?.brand ?? ""} />
-      </label>
-      <label className="grid gap-1">
-        Unidad
-        <select
-          name="salesUnit"
-          defaultValue={product?.salesUnit ?? "UNIDAD"}
-          className="h-10 border border-input bg-card px-2"
-        >
-          {["UNIDAD", "METRO", "ROLLO", "KG", "PAQUETE", "PANEL", "JUEGO"].map((unit) => (
-            <option key={unit}>{unit}</option>
-          ))}
-        </select>
-      </label>
-      <label className="grid gap-1">
-        Precio
-        <select
-          name="priceVisibility"
-          defaultValue={product?.priceVisibility ?? "HIDDEN"}
-          className="h-10 border border-input bg-card px-2"
-        >
-          <option value="PUBLIC">Público</option>
-          <option value="HIDDEN">Consultar</option>
-          <option value="FROM">Desde</option>
-        </select>
-      </label>
-      <label className="grid gap-1">
-        Importe en ARS (ej. 12500,50)
-        <Input
-          name="price"
-          inputMode="decimal"
-          defaultValue={product?.price?.toString().replace(".", ",") ?? ""}
-        />
-      </label>
-      <label className="grid gap-1">
-        Acción
-        <select
-          name="ctaType"
-          defaultValue={product?.ctaType ?? "ADD_TO_ORDER"}
-          className="h-10 border border-input bg-card px-2"
-        >
-          <option value="ADD_TO_ORDER">Agregar al pedido</option>
-          <option value="REQUEST_QUOTE">Pedir presupuesto</option>
-          <option value="CHECK_AVAILABILITY">Consultar disponibilidad</option>
-          <option value="WHATSAPP">Consultar por WhatsApp</option>
-          <option value="BUILD_ORDER">Armar mi pedido</option>
-        </select>
-      </label>
-      <label className="grid gap-1">
-        Estado
-        <select
-          name="status"
-          defaultValue={product?.status ?? "ACTIVE"}
-          className="h-10 border border-input bg-card px-2"
-        >
-          <option value="DRAFT">Borrador</option>
-          <option value="ACTIVE">Activo</option>
-          <option value="ARCHIVED">Archivado</option>
-        </select>
-      </label>
-      <label className="flex items-center gap-2">
-        <input type="checkbox" name="featured" defaultChecked={product?.featured} />
-        Destacado
-      </label>
-      <label className="grid gap-1">
-        Usos, separados por coma
-        <Input name="uses" defaultValue={product?.uses.join(", ") ?? ""} />
-      </label>
-      <label className="grid gap-1">
-        SEO título
-        <Input name="seoTitle" defaultValue={product?.seoTitle ?? ""} />
-      </label>
-      <label className="grid gap-1">
-        SEO descripción
-        <Input name="seoDescription" defaultValue={product?.seoDescription ?? ""} />
-      </label>
-      <label className="grid gap-1 sm:col-span-2">
-        Ficha técnica (URL)
-        <Input name="documentationUrl" type="url" defaultValue={product?.documentationUrl ?? ""} />
-      </label>
+      <section className="admin-form-section">
+        <h2>Información del producto</h2>
+        <p>Lo que el cliente necesita para reconocerlo.</p>
+        <div className="admin-form-grid">
+          <label className="grid gap-1">
+            Nombre
+            <Input
+              name="name"
+              required
+              minLength={2}
+              value={name}
+              placeholder="Ej. Tejido romboidal galvanizado"
+              onChange={(e) => {
+                setName(e.target.value);
+                if (!product && !slugEdited) setSlug(slugify(e.target.value));
+              }}
+            />
+          </label>
+          <label className="grid gap-1">
+            Categoría
+            <select
+              name="categoryId"
+              defaultValue={product?.categoryId}
+              className="h-10 border border-input bg-card px-2"
+            >
+              {categories.map((category) => (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="grid gap-1 sm:col-span-2">
+            Descripción corta
+            <Textarea
+              name="shortDescription"
+              minLength={8}
+              required
+              defaultValue={product?.shortDescription}
+            />
+          </label>
+          <label className="grid gap-1">
+            Marca
+            <Input name="brand" defaultValue={product?.brand ?? ""} />
+          </label>
+          <label className="grid gap-1">
+            Unidad
+            <select
+              name="salesUnit"
+              defaultValue={product?.salesUnit ?? "UNIDAD"}
+              className="h-10 border border-input bg-card px-2"
+            >
+              {["UNIDAD", "METRO", "ROLLO", "KG", "PAQUETE", "PANEL", "JUEGO"].map((unit) => (
+                <option key={unit} value={unit}>
+                  {unitLabel(unit, 1)}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+      </section>
+      <section className="admin-form-section">
+        <h2>Precio y publicación</h2>
+        <p>Elegí cómo mostrarlo en la tienda. Cada medida puede tener su propio precio.</p>
+        <div className="admin-form-grid">
+          <label className="grid gap-1">
+            Precio
+            <select
+              name="priceVisibility"
+              defaultValue={product?.priceVisibility ?? "HIDDEN"}
+              className="h-10 border border-input bg-card px-2"
+            >
+              <option value="PUBLIC">Público</option>
+              <option value="HIDDEN">Consultar</option>
+              <option value="FROM">Desde</option>
+            </select>
+          </label>
+          <label className="grid gap-1">
+            Importe en ARS (ej. 12500,50)
+            <Input
+              name="price"
+              inputMode="decimal"
+              defaultValue={product?.price?.toString().replace(".", ",") ?? ""}
+            />
+          </label>
+          <label className="grid gap-1">
+            Estado
+            <select
+              name="status"
+              defaultValue={product?.status ?? "DRAFT"}
+              className="h-10 border border-input bg-card px-2"
+            >
+              <option value="DRAFT">Borrador</option>
+              <option value="ACTIVE">Publicado</option>
+              <option value="ARCHIVED">Archivado</option>
+            </select>
+          </label>
+        </div>
+      </section>
+      <details className="admin-disclosure">
+        <summary>Datos técnicos y opciones avanzadas</summary>
+        <div className="admin-form-grid">
+          <label className="grid gap-1">
+            Dirección web (slug)
+            <Input
+              name="slug"
+              required
+              pattern="[a-z0-9]+(-[a-z0-9]+)*"
+              placeholder="nombre-del-producto"
+              value={slug}
+              onChange={(e) => {
+                setSlug(e.target.value);
+                setSlugEdited(true);
+              }}
+            />
+          </label>
+          <label className="grid gap-1">
+            SKU
+            <Input name="sku" defaultValue={product?.sku ?? ""} />
+          </label>
+          <label className="grid gap-1 sm:col-span-2">
+            Descripción técnica
+            <Textarea
+              name="technicalDescription"
+              minLength={0}
+              defaultValue={product?.technicalDescription}
+            />
+          </label>
+          <label className="grid gap-1">
+            Acción
+            <select
+              name="ctaType"
+              defaultValue={product?.ctaType ?? "ADD_TO_ORDER"}
+              className="h-10 border border-input bg-card px-2"
+            >
+              <option value="ADD_TO_ORDER">Agregar al pedido</option>
+              <option value="REQUEST_QUOTE">Pedir presupuesto</option>
+              <option value="CHECK_AVAILABILITY">Consultar disponibilidad</option>
+              <option value="WHATSAPP">Consultar por WhatsApp</option>
+              <option value="BUILD_ORDER">Armar mi pedido</option>
+            </select>
+          </label>
+          <label className="flex items-center gap-2">
+            <input type="checkbox" name="featured" defaultChecked={product?.featured} />
+            Destacado
+          </label>
+          <label className="grid gap-1">
+            Usos, separados por coma
+            <Input name="uses" defaultValue={product?.uses.join(", ") ?? ""} />
+          </label>
+          <label className="grid gap-1">
+            SEO título
+            <Input name="seoTitle" defaultValue={product?.seoTitle ?? ""} />
+          </label>
+          <label className="grid gap-1">
+            SEO descripción
+            <Input name="seoDescription" defaultValue={product?.seoDescription ?? ""} />
+          </label>
+          <label className="grid gap-1 sm:col-span-2">
+            Ficha técnica (URL)
+            <Input
+              name="documentationUrl"
+              type="url"
+              defaultValue={product?.documentationUrl ?? ""}
+            />
+          </label>
+        </div>
+      </details>
       <div className="flex flex-wrap items-center gap-3 border-t border-border pt-4 sm:col-span-2">
         <Button type="submit" disabled={busy}>
           {busy ? "Guardando…" : "Guardar producto"}
@@ -223,7 +270,9 @@ export function ProductForm({
         ) : saved ? (
           <p role="status">Producto guardado.</p>
         ) : (
-          <p className="text-muted-foreground">Precios del catálogo importado: a confirmar.</p>
+          <p className="text-muted-foreground">
+            Guardá el producto y continuá con fotos, medidas y stock.
+          </p>
         )}
       </div>
     </form>

@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { recordCountForm } from "@/features/inventory/actions";
+import { recordCountForm } from "@/server/inventory/actions";
 
 export function StockCountForm({
   variants,

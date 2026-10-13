@@ -7,7 +7,7 @@ import { FadeContent } from "@/components/store/fade-content";
 import { ProductGallery } from "@/components/store/product-gallery";
 import { ProductSelection } from "@/components/store/product-selection";
 import { ProductCard } from "@/components/store/product-card";
-import { getProductBySlug } from "@/features/products/queries";
+import { getProductBySlug } from "@/server/products/queries";
 import { categoryPhotos } from "@/content/storefront";
 import { site } from "@/content/site";
 import { whatsappUrl } from "@/features/whatsapp/message";

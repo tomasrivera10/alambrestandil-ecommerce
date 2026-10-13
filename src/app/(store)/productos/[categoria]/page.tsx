@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getCategory } from "@/features/products/queries";
+import { getCategory } from "@/server/products/queries";
 import { CatalogView } from "@/components/store/catalog-view";
 type Props = {
   params: Promise<{ categoria: string }>;

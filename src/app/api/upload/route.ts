@@ -1,10 +1,10 @@
 import { put } from "@vercel/blob";
 import { NextResponse } from "next/server";
-import { getSession } from "@/lib/rbac";
+import { getSession } from "@/server/rbac";
 import { randomUUID } from "node:crypto";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { readUploadForm } from "@/lib/upload-body";
+import { readUploadForm } from "@/server/upload-body";
 
 export const runtime = "nodejs";
 

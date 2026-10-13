@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { recordCounterSale } from "@/features/sales/actions";
+import { recordCounterSale } from "@/server/sales/actions";
 
 type Variant = { id: string; name: string; sku: string; available: number; price: number | null };
 export function CounterSaleForm({ variants }: { variants: Variant[] }) {

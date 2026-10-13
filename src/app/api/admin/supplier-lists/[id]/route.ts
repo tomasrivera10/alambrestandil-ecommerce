@@ -1,5 +1,5 @@
-import { prisma } from "@/lib/db";
-import { requireArea } from "@/lib/rbac";
+import { prisma } from "@/server/db";
+import { requireArea } from "@/server/rbac";
 export const runtime = "nodejs";
 export async function GET(_request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {

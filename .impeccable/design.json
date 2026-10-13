@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-07T04:26:03.591212+00:00",
+  "generatedAt": "2026-10-13T23:53:55.061488+00:00",
   "title": "Design System: Alambres Tandil",
   "extensions": {
     "colorMeta": {
@@ -95,9 +95,11 @@
       "src/app/(store)/storefront.css",
       "src/app/globals.css",
       "src/app/layout.tsx",
-      "src/components/store/fade-content.tsx"
+      "src/components/store/fade-content.tsx",
+      "src/app/admin/admin.css",
+      "src/components/admin/admin-nav.tsx"
     ],
-    "scope": "Tienda pública. Admin mantiene estructura compacta; globals actuales son rojos, no verdes. Sin rediseño de superficies admin."
+    "scope": "Los tokens del frontmatter y los componentes de este archivo corresponden a la tienda pública. El panel administrativo tiene una dirección Operate propia, documentada en DESIGN.md y .impeccable/surfaces/src-app-admin-panel-layout-tsx.md: navegación carbón, superficies claras, fotografías de producto y precios diferenciados por función."
   },
   "components": [
     {
@@ -186,9 +188,9 @@
     ],
     "dos": [
       "Do mantener foco visible y movimiento reducido.",
-      "Do conservar procedencia de imágenes.",
+      "Do conservar procedencia de imágenes; el panel no muestra el rótulo «imagen de referencia» en las tarjetas.",
       "Do continuar el pedido guardado mediante botón explícito de WhatsApp.",
-      "Do mantener el administrador compacto."
+      "Do mantener el administrador como mesa de trabajo compacta con navegación de cinco destinos."
     ],
     "donts": [
       "Don’t recuperar la antigua dirección verde de la tienda.",

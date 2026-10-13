@@ -3,7 +3,7 @@ import { ChevronRight } from "lucide-react";
 import { PriceTag } from "./price-tag";
 import { ProductMedia } from "./product-media";
 import { categoryPhotos } from "@/content/storefront";
-import type { CatalogProduct } from "@/features/products/queries";
+import type { CatalogProduct } from "@/server/products/queries";
 export function ProductCard({ product }: { product: CatalogProduct }) {
   const reference = !product.imageUrl ? categoryPhotos[product.categorySlug] : null;
   return (

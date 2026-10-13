@@ -6,7 +6,7 @@ import {
   listCategories,
   filterOptions,
   type CatalogFilters,
-} from "@/features/products/queries";
+} from "@/server/products/queries";
 import { CatalogFilters as Filters, ActiveFilters, SortCatalog } from "./catalog-filters";
 import { ProductCard } from "./product-card";
 import { site } from "@/content/site";

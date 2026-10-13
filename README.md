@@ -40,6 +40,18 @@ En una máquina nueva, primero configurá PostgreSQL y el archivo `.env` siguien
 - `npm test` Vitest
 - `npm run build` genera el cliente Prisma y compila
 
+## Organización del código
+
+- `src/app`: rutas, layouts y endpoints de Next.js. Los archivos `page.tsx` y `route.ts` permanecen aquí porque Next los descubre por su ubicación.
+- `src/server`: autenticación, base de datos, permisos, consultas, importaciones y acciones que corren en el servidor. Las acciones se agrupan por dominio (`orders`, `products`, `suppliers`, etc.).
+- `src/features`: reglas de negocio que también pueden usar los componentes cliente, como carrito, cálculo de cotizaciones y validaciones compartidas.
+- `src/components`: interfaz reutilizable, separada en tienda, administración y controles genéricos.
+- `src/lib`: utilidades compartidas y cliente de autenticación para el navegador.
+- `src/content`: textos y configuración pública del sitio.
+- `prisma`: esquema, migraciones, catálogo y carga inicial. `scripts` contiene tareas operativas; `docs`, notas y guías.
+
+Las importaciones internas usan el alias `@/`, que apunta a `src/`. El cliente Prisma generado queda en `src/generated/prisma` y no se edita a mano.
+
 ## Datos
 
 El stock solo cambia con un movimiento. Un pedido nuevo no reserva: la reserva empieza al pasar a confirmado. El número de WhatsApp sale de Configuración, después de `WHATSAPP_NUMBER`, y por último del teléfono de línea.

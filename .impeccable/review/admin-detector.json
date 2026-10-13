@@ -1,0 +1,1802 @@
+[
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 6,
+    "snippet": "Undocumented color #20211f is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#20211f",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 9,
+    "snippet": "Undocumented color #202421 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#202421",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 35,
+    "snippet": "border-radius: 6px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "6px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 44,
+    "snippet": "Undocumented color #b5bdb5 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#b5bdb5",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 45,
+    "snippet": "font-size: 11px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "11px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 57,
+    "snippet": "Undocumented color #9aa59d is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#9aa59d",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 68,
+    "snippet": "border-radius: 6px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "6px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 83,
+    "snippet": "Undocumented color #e32720 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#e32720",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 88,
+    "snippet": "font-size: 11px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "11px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 89,
+    "snippet": "Undocumented color #a9b2a9 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#a9b2a9",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 93,
+    "snippet": "font-size: 12px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "12px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 109,
+    "snippet": "Undocumented color #e5e6e1 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#e5e6e1",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 110,
+    "snippet": "Undocumented color #667068 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#667068",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 111,
+    "snippet": "font-size: 12px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "12px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 129,
+    "snippet": "font-size: 30px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "30px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 136,
+    "snippet": "Undocumented color #677069 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#677069",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 140,
+    "snippet": "font-size: 19px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "19px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 148,
+    "snippet": "border-radius: 9px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "9px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 155,
+    "snippet": "border-radius: 9px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "9px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 169,
+    "snippet": "font-size: 25px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "25px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 177,
+    "snippet": "font-size: 12px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "12px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 178,
+    "snippet": "Undocumented color #6b756c is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#6b756c",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 189,
+    "snippet": "Undocumented color #cbd1c9 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#cbd1c9",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 191,
+    "snippet": "border-radius: 5px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "5px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 194,
+    "snippet": "Undocumented color #20211f is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#20211f",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 206,
+    "snippet": "border-radius: 5px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "5px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 213,
+    "snippet": "Undocumented color #c90000 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#c90000",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 220,
+    "snippet": "Undocumented color #cbd1c9 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#cbd1c9",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 222,
+    "snippet": "Undocumented color #273029 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#273029",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 242,
+    "snippet": "Undocumented color #677069 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#677069",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 244,
+    "snippet": "font-size: 11px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "11px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 266,
+    "snippet": "border-radius: 4px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "4px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 268,
+    "snippet": "font-size: 11px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "11px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 273,
+    "snippet": "Undocumented color #245b34 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#245b34",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 276,
+    "snippet": "Undocumented color #fff0dd is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#fff0dd",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 277,
+    "snippet": "Undocumented color #8b4b08 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#8b4b08",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 319,
+    "snippet": "font-size: 25px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "25px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 327,
+    "snippet": "font-size: 21px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "21px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 332,
+    "snippet": "font-size: 30px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "30px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 345,
+    "snippet": "Undocumented color #677069 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#677069",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 346,
+    "snippet": "font-size: 11px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "11px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 357,
+    "snippet": "border-radius: 5px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "5px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 372,
+    "snippet": "font-size: 25px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "25px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 379,
+    "snippet": "Undocumented color #20242b is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#20242b",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 388,
+    "snippet": "Undocumented color #20242b is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#20242b",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 403,
+    "snippet": "Undocumented color #20242b is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#20242b",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 407,
+    "snippet": "Undocumented color #c90000 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#c90000",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 428,
+    "snippet": "font-size: 22px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "22px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 434,
+    "snippet": "font-size: 17px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "17px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 439,
+    "snippet": "font-size: 15px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "15px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 445,
+    "snippet": "Undocumented color #bcc4cf is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#bcc4cf",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 446,
+    "snippet": "border-radius: 7px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "7px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 448,
+    "snippet": "Undocumented color #20242b is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#20242b",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 456,
+    "snippet": "Undocumented color #66717f is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#66717f",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 474,
+    "snippet": "Undocumented color #ffe0dd is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#ffe0dd",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 475,
+    "snippet": "Undocumented color #74201a is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#74201a",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 483,
+    "snippet": "border-radius: 7px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "7px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 494,
+    "snippet": "Undocumented color #4e5966 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#4e5966",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 518,
+    "snippet": "border-radius: 6px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "6px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 519,
+    "snippet": "Undocumented color #4e5966 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#4e5966",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 524,
+    "snippet": "Undocumented color #9e0000 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#9e0000",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 525,
+    "snippet": "Undocumented color #ffe9e6 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#ffe9e6",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 530,
+    "snippet": "Undocumented color #dfe4eb is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#dfe4eb",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 577,
+    "snippet": "font-size: 12px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "12px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 580,
+    "snippet": "Undocumented color #9e1924 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#9e1924",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 581,
+    "snippet": "Undocumented color #fff0f0 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#fff0f0",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 587,
+    "snippet": "Undocumented color #21623f is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#21623f",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 588,
+    "snippet": "Undocumented color #eaf7ef is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#eaf7ef",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 598,
+    "snippet": "Undocumented color #fff5e5 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#fff5e5",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 599,
+    "snippet": "Undocumented color #7a490e is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#7a490e",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 600,
+    "snippet": "Undocumented color #ebd4ad is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#ebd4ad",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 602,
+    "snippet": "border-radius: 6px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "6px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 609,
+    "snippet": "Undocumented color #bcc4cf is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#bcc4cf",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 617,
+    "snippet": "border-radius: 10px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "10px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 688,
+    "snippet": "font-size: 22px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "22px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 719,
+    "snippet": "Undocumented color #bcc4cf is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#bcc4cf",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 721,
+    "snippet": "font-size: 12px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "12px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 732,
+    "snippet": "font-size: 12px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "12px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 741,
+    "snippet": "Undocumented color #aab4c2 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#aab4c2",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 742,
+    "snippet": "border-radius: 12px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "12px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 746,
+    "snippet": "Undocumented color #ad1616 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#ad1616",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 749,
+    "snippet": "font-size: 21px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "21px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 760,
+    "snippet": "Undocumented color #c90000 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#c90000",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 761,
+    "snippet": "Undocumented color #fff0ee is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#fff0ee",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 797,
+    "snippet": "border-radius: 8px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "8px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 804,
+    "snippet": "border-radius: 8px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "8px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 821,
+    "snippet": "Undocumented color #fff0ee is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#fff0ee",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 822,
+    "snippet": "Undocumented color #9e0000 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#9e0000",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 829,
+    "snippet": "font-size: 11px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "11px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 835,
+    "snippet": "border-radius: 10px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "10px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 854,
+    "snippet": "font-size: 12px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "12px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 858,
+    "snippet": "font-size: 24px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "24px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 865,
+    "snippet": "font-size: 12px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "12px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 870,
+    "snippet": "Undocumented color #87501b is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#87501b",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 873,
+    "snippet": "Undocumented color #2159a0 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#2159a0",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 876,
+    "snippet": "Undocumented color #1f6848 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#1f6848",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 879,
+    "snippet": "Undocumented color #a91a22 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#a91a22",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 940,
+    "snippet": "font-size: 12px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "12px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 945,
+    "snippet": "font-size: 16px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "16px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 954,
+    "snippet": "border-radius: 10px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "10px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 969,
+    "snippet": "font-size: 12px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "12px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 977,
+    "snippet": "border-radius: 8px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "8px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 980,
+    "snippet": "Undocumented color #6b7480 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#6b7480",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 1008,
+    "snippet": "border-radius: 10px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "10px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 1040,
+    "snippet": "Undocumented color #4e5966 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#4e5966",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 1041,
+    "snippet": "font-size: 11px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "11px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 1043,
+    "snippet": "border-radius: 5px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "5px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 1054,
+    "snippet": "font-size: 19px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "19px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 1057,
+    "snippet": "font-size: 22px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "22px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 1060,
+    "snippet": "font-size: 12px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "12px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 1077,
+    "snippet": "Undocumented color #226346 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#226346",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 1080,
+    "snippet": "Undocumented color #9e1924 is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#9e1924",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 1100,
+    "snippet": "Undocumented color #20242b is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#20242b",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 1115,
+    "snippet": "Undocumented color #bcc4cf is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#bcc4cf",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 1117,
+    "snippet": "border-radius: 6px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "6px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 1124,
+    "snippet": "Undocumented color #fff0ee is outside DESIGN.md colors",
+    "advisory": true,
+    "ignoreValue": "#fff0ee",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 1155,
+    "snippet": "font-size: 12px !important is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "12px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 1253,
+    "snippet": "font-size: 20px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "20px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 1274,
+    "snippet": "font-size: 22px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "22px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/src/app/admin/admin.css",
+    "line": 1354,
+    "snippet": "font-size: 12px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "12px",
+    "importedBy": [
+      "layout.tsx"
+    ]
+  }
+]

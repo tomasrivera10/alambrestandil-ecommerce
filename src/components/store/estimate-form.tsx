@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { createEstimateQuote } from "@/features/quotes/actions";
+import { createEstimateQuote } from "@/server/quotes/actions";
 
 export function EstimateForm() {
   const [error, setError] = useState<string | null>(null);

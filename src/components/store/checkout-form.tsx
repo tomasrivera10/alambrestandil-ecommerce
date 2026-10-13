@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
 import { useCart, useCartLines } from "@/features/cart/store";
-import { createOrder } from "@/features/orders/actions";
+import { createOrder } from "@/server/orders/actions";
 import { formatMoney } from "@/lib/format";
 
 export function CheckoutForm() {

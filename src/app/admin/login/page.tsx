@@ -31,6 +31,7 @@ export default function LoginPage() {
           setError(null);
           setPending(true);
           const form = new FormData(event.currentTarget);
+          let signedIn = false;
           try {
             const result = await authClient.signIn.email({
               email: String(form.get("email")),
@@ -45,12 +46,12 @@ export default function LoginPage() {
               );
               return;
             }
-            router.push("/admin");
-            router.refresh();
+            signedIn = true;
+            router.replace("/admin");
           } catch {
             setError("No se pudo conectar. Volvé a intentar en unos momentos.");
           } finally {
-            setPending(false);
+            if (!signedIn) setPending(false);
           }
         }}
       >

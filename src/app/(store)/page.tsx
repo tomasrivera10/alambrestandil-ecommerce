@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, ChevronRight, MapPin, MessageCircle, Ruler, Wrench } from "lucide-react";
-import { listProducts } from "@/features/products/queries";
+import { listProducts } from "@/server/products/queries";
 import { ProductCard } from "@/components/store/product-card";
 import { HeroMedia } from "@/components/store/hero-media";
 import { FadeContent } from "@/components/store/fade-content";

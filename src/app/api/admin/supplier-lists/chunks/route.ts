@@ -1,6 +1,6 @@
-import { prisma } from "@/lib/db";
-import { requireArea } from "@/lib/rbac";
-import { importSupplierList } from "@/features/suppliers/import";
+import { prisma } from "@/server/db";
+import { requireArea } from "@/server/rbac";
+import { importSupplierList } from "@/server/suppliers/import";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;

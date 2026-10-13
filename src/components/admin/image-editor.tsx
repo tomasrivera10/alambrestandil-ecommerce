@@ -7,7 +7,7 @@ import {
   removeProductImage,
   setImageCover,
   updateProductImage,
-} from "@/features/products/actions";
+} from "@/server/products/actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -48,8 +48,7 @@ export function ImageEditor({
         Imágenes
       </h2>
       <p className="mt-2 text-sm text-muted-foreground">
-        La primera imagen es la portada. Preferí fotos propias de al menos 1200 px. Marcá las fotos
-        genéricas como referencia.
+        La primera imagen es la portada. Preferí fotos propias de al menos 1200 px.
       </p>
       {!images.length && (
         <p className="my-4 border border-dashed border-border p-4 text-sm">
@@ -66,7 +65,7 @@ export function ImageEditor({
             />
             <p className="mt-2 text-sm">
               {i === 0 ? "Portada · " : ""}
-              {photo.isReference ? "Imagen de referencia" : "Foto del producto"}
+              Foto del producto
             </p>
             {photo.sourceUrl && (
               <a
@@ -91,7 +90,7 @@ export function ImageEditor({
                       productId,
                       String(form.get("alt")),
                       String(form.get("sourceUrl") || ""),
-                      form.get("reference") === "on",
+                      photo.isReference,
                     ),
                   );
                 }}
@@ -103,10 +102,6 @@ export function ImageEditor({
                 <label className="grid gap-1">
                   Fuente
                   <Input name="sourceUrl" type="url" defaultValue={photo.sourceUrl || ""} />
-                </label>
-                <label className="flex items-center gap-2">
-                  <input type="checkbox" name="reference" defaultChecked={photo.isReference} />
-                  Imagen de referencia
                 </label>
                 <Button size="sm" disabled={busy} type="submit">
                   Guardar imagen
@@ -162,7 +157,7 @@ export function ImageEditor({
               url,
               String(form.get("alt")),
               String(form.get("sourceUrl") || ""),
-              form.get("reference") === "on",
+              Boolean(form.get("sourceUrl")),
             );
             formElement.reset();
           });
@@ -185,10 +180,6 @@ export function ImageEditor({
         <label className="grid gap-1">
           Página de origen (opcional para fotos propias)
           <Input name="sourceUrl" type="url" placeholder="https://sitio-del-fabricante/…" />
-        </label>
-        <label className="flex items-center gap-2">
-          <input name="reference" type="checkbox" />
-          Es una imagen de referencia; no muestra la variante exacta
         </label>
         <div className="flex flex-wrap items-center gap-3">
           <Button disabled={busy} type="submit">

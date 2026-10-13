@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ArrowLeft, ArrowRight, Check, MessageCircle } from "lucide-react";
 import styles from "./installation-form.module.css";
-import { createQuote } from "@/features/quotes/actions";
+import { createQuote } from "@/server/quotes/actions";
 
 export function InstallationForm() {
   const [step, setStep] = useState(0);

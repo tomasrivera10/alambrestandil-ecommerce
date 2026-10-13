@@ -1,5 +1,6 @@
-import { prisma } from "@/lib/db";
-import { requireArea } from "@/lib/rbac";
+import { SectionNav } from "@/components/admin/section-nav";
+import { prisma } from "@/server/db";
+import { requireArea } from "@/server/rbac";
 import { CounterSaleForm } from "@/components/admin/counter-sale-form";
 
 export default async function SalesPage() {
@@ -18,6 +19,7 @@ export default async function SalesPage() {
   ]);
   return (
     <main className="admin-page">
+      <SectionNav kind="orders" />
       <div className="admin-page-heading">
         <div>
           <h1>Ventas</h1>

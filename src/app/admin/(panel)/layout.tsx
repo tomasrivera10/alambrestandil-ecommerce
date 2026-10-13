@@ -1,35 +1,26 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
-import { auth } from "@/lib/auth";
-import { can, getSession, isRole } from "@/lib/rbac";
+import { auth } from "@/server/auth";
+import { can, getSession, isRole } from "@/server/rbac";
 import { AdminNav } from "@/components/admin/admin-nav";
 import "../admin.css";
 
 const groups = [
   {
-    label: "Operación",
+    label: "Tu negocio",
     links: [
-      { href: "/admin", label: "Inicio", area: "orders" as const },
+      { href: "/admin", label: "Inicio", area: "inventory" as const },
       { href: "/admin/pedidos", label: "Pedidos", area: "orders" as const },
-      { href: "/admin/ventas", label: "Ventas", area: "orders" as const },
-      { href: "/admin/cotizaciones", label: "Cotizaciones", area: "quotes" as const },
-      { href: "/admin/clientes", label: "Clientes", area: "customers" as const },
-    ],
-  },
-  {
-    label: "Catálogo e inventario",
-    links: [
-      { href: "/admin/stock", label: "Stock", area: "inventory" as const },
       { href: "/admin/productos", label: "Productos", area: "products" as const },
+      { href: "/admin/clientes", label: "Clientes", area: "customers" as const },
       { href: "/admin/proveedores", label: "Proveedores", area: "suppliers" as const },
-      { href: "/admin/categorias", label: "Categorías", area: "products" as const },
     ],
   },
   {
-    label: "Análisis",
+    label: "Herramientas",
     links: [
-      { href: "/admin/metricas", label: "Métricas", area: "metrics" as const },
+      { href: "/admin/metricas", label: "Resultados", area: "metrics" as const },
       { href: "/admin/configuracion", label: "Configuración", area: "settings" as const },
     ],
   },
@@ -56,7 +47,13 @@ export default async function PanelLayout({ children }: { children: React.ReactN
           groups={groups
             .map((group) => ({
               ...group,
-              links: group.links.filter((link) => role === "ADMIN" || can(role, link.area)),
+              links: group.links.filter(
+                (link) =>
+                  role === "ADMIN" ||
+                  (link.href === "/admin"
+                    ? can(role, "orders") || can(role, "inventory")
+                    : can(role, link.area)),
+              ),
             }))
             .filter((group) => group.links.length > 0)}
         />
@@ -75,7 +72,9 @@ export default async function PanelLayout({ children }: { children: React.ReactN
       </aside>
       <div className="admin-main">
         <header className="admin-topbar">
-          <span>La casa del alambrado</span>
+          <Link href="/" target="_blank" className="admin-store-link">
+            Ver la tienda ↗
+          </Link>
           <span>
             {role === "ADMIN" ? "Administración" : role === "STOCK" ? "Depósito" : "Ventas"}
           </span>

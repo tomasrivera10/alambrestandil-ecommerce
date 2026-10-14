@@ -8,6 +8,7 @@ import { invalidateCatalog } from "@/server/products/cache";
 import { variantIdentity } from "@/features/pricing/calculation";
 import { fetchMarketListing, validateMarketUrl, discoverMarket } from "./market";
 import { pricingForVariant } from "./queries";
+import { COMPANY_STOCK_SOURCE } from "@/server/suppliers/review-plan";
 export async function saveMargin(form: FormData) {
   const actor = await requireArea("suppliers");
   const variantId = z.string().min(1).parse(form.get("variantId"));
@@ -116,6 +117,14 @@ export async function publishVariantPrice(form: FormData) {
         include: { product: true },
       });
       const currentPrice = variant.price ?? variant.product.price;
+      if (
+        !variant.active ||
+        !variant.sourceReference?.startsWith(COMPANY_STOCK_SOURCE) ||
+        !item.purchased
+      )
+        throw new Error(
+          "Solo se puede fijar el precio de una medida del Excel Stock que la empresa compra.",
+        );
       if (
         item.variantId !== variantId ||
         Number(item.listPrice) !== Number(form.get("expectedCost")) ||

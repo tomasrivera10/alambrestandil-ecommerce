@@ -8,9 +8,11 @@ import {
   reviewSupplierRow,
   excludeSupplierRow,
   approveSupplierListForm,
+  prepareSupplierSelection,
 } from "@/server/suppliers/actions";
 import { ActionForm } from "./action-form";
 import { PriceDisplay } from "./price-display";
+import type { buildSupplierReviewPlan } from "@/server/suppliers/review-plan";
 export type SupplierVariantOption = VariantOption;
 export function SupplierReview({
   id,
@@ -19,6 +21,7 @@ export function SupplierReview({
   rows,
   notes,
   variants,
+  plan,
 }: {
   id: string;
   filename: string;
@@ -26,6 +29,7 @@ export function SupplierReview({
   rows: ImportedRow[];
   notes: string | null;
   variants: SupplierVariantOption[];
+  plan: ReturnType<typeof buildSupplierReviewPlan>;
 }) {
   const [selected, setSelected] = useState(0);
   const [expanded, setExpanded] = useState(status === "REVIEW");
@@ -35,7 +39,12 @@ export function SupplierReview({
     : filename.toLowerCase().endsWith(".pdf")
       ? "página"
       : "sección de texto";
-  const pending = rows.filter((r) => !r.excluded && (r.warning || r.price == null)).length;
+  const pending = rows.filter(
+    (r, index) => !r.excluded &&
+      (r.warning || r.price == null || !r.variantId || plan[index].kind === "review"),
+  ).length;
+  const ready = plan.filter((item) => item.kind === "exact" || item.kind === "confirmed");
+  const omitted = plan.length - ready.length;
   return (
     <details
       className="admin-disclosure admin-list-review"
@@ -54,6 +63,56 @@ export function SupplierReview({
       <p className="admin-help">
         {notes} Los importes se guardan tal como están en la lista, sin aplicar IVA ni descuentos.
       </p>
+      {status === "REVIEW" && (
+        <section className="admin-bulk-review" aria-label="Selección masiva de artículos">
+          <h3>Elegí solo lo que vende Alambres Tandil</h3>
+          <p className="admin-help">
+            Comparamos con las medidas de la hoja Stock de Alambres Tandil.xlsx. {ready.length}{" "}
+            coincidencias exactas · {omitted} filas sin coincidencia segura o con lectura dudosa.
+            Los artículos del proveedor que no elijas quedan fuera; ningún precio de venta cambia
+            acá.
+          </p>
+          {ready.length > 0 ? (
+            <ActionForm
+              action={prepareSupplierSelection}
+              success="Selección preparada. Revisá el resumen y aprobá los costos."
+            >
+              <input hidden name="listId" value={id} readOnly />
+              <div className="admin-bulk-list">
+                {ready.map(({ index, variantId, kind }) => (
+                  <label key={index} className="admin-bulk-row">
+                    <input type="checkbox" name="selected" value={index} defaultChecked />
+                    <span>
+                      <strong>{rows[index].name}</strong>
+                      <small>
+                        Código {rows[index].code} ·{" "}
+                        {kind === "confirmed" ? "Vínculo confirmado" : "Coincidencia exacta"} ·{" "}
+                        {variants.find((v) => v.id === variantId)?.name}
+                      </small>
+                    </span>
+                    <b>
+                      {rows[index].price?.toLocaleString("es-AR", {
+                        style: "currency",
+                        currency: "ARS",
+                      })}
+                    </b>
+                  </label>
+                ))}
+              </div>
+              <label className="admin-check">
+                <input type="checkbox" name="confirmed" required /> Revisé la selección contra la
+                lista original; los costos se tomarán literalmente, sin descuentos ni IVA inferidos.
+              </label>
+              <button className="admin-button">Preparar artículos seleccionados</button>
+            </ActionForm>
+          ) : (
+            <p className="admin-notice">
+              No hay coincidencias automáticas seguras. Vinculá manualmente solo los artículos que
+              trabajás.
+            </p>
+          )}
+        </section>
+      )}
       <div className="admin-review-workspace">
         {expanded && <SupplierDocument id={id} filename={filename} page={row?.page ?? 1} />}
         <div>
@@ -71,12 +130,15 @@ export function SupplierReview({
                 <span>
                   {r.excluded ? (
                     "Omitida"
-                  ) : r.warning || r.price == null ? (
+                  ) : plan[index].kind === "review" || r.warning || r.price == null ? (
                     <>
                       <AlertTriangle size={14} /> Revisar
                     </>
                   ) : (
-                    <CheckCircle2 size={14} />
+                    <>
+                      <CheckCircle2 size={14} />{" "}
+                      {plan[index].kind === "exact" ? "Coincide" : "Lista"}
+                    </>
                   )}
                 </span>
               </button>
@@ -164,7 +226,7 @@ export function SupplierReview({
                     <input hidden name="listId" value={id} readOnly />
                     <input hidden name="index" value={selected} readOnly />
                     <button className="admin-text-button">
-                      {row.excluded ? "Incluir esta fila" : "Omitir fila que no es un producto"}
+                      {row.excluded ? "Volver a incluir esta fila" : "Excluir esta fila de la selección"}
                     </button>
                   </ActionForm>
                 </>
@@ -185,7 +247,7 @@ export function SupplierReview({
           <input hidden name="listId" value={id} readOnly />
           <p className="admin-help">
             {rows.filter((r) => !r.excluded).length} artículos incluidos · {pending} pendientes.
-            Aprobar actualiza costos, conserva el stock y los precios de venta.
+            Aprobar actualiza solo sus costos. Conserva el stock y los precios de venta.
           </p>
           <button disabled={pending > 0 || !rows.some((r) => !r.excluded)} className="admin-button">
             Aprobar costos de la lista

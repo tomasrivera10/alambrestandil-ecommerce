@@ -43,8 +43,13 @@ beforeEach(() => {
     policy: { margin: 80 },
     market: { average: null },
   });
-  mock.item.mockResolvedValue({ variantId: "v", listPrice: 20.5 });
-  mock.variant.mockResolvedValue({ price: null, product: { price: null } });
+  mock.item.mockResolvedValue({ variantId: "v", listPrice: 20.5, purchased: true });
+  mock.variant.mockResolvedValue({
+    price: null,
+    active: true,
+    sourceReference: "Alambres Tandil.xlsx · Stock!A3:B3",
+    product: { price: null },
+  });
 });
 describe("confirmed price changes", () => {
   it("cannot apply a price without the explicit confirmation", async () => {
@@ -54,11 +59,16 @@ describe("confirmed price changes", () => {
     expect(mock.update).not.toHaveBeenCalled();
   });
   it("rejects a stale cost and does not overwrite a newer price", async () => {
-    mock.item.mockResolvedValue({ variantId: "v", listPrice: 25 });
+    mock.item.mockResolvedValue({ variantId: "v", listPrice: 25, purchased: true });
     await expect(publishVariantPrice(form())).rejects.toThrow("cambió");
     expect(mock.update).not.toHaveBeenCalled();
-    mock.item.mockResolvedValue({ variantId: "v", listPrice: 20.5 });
-    mock.variant.mockResolvedValue({ price: 200, product: { price: null } });
+    mock.item.mockResolvedValue({ variantId: "v", listPrice: 20.5, purchased: true });
+    mock.variant.mockResolvedValue({
+      price: 200,
+      active: true,
+      sourceReference: "Alambres Tandil.xlsx · Stock!A3:B3",
+      product: { price: null },
+    });
     await expect(publishVariantPrice(form())).rejects.toThrow("cambió");
   });
   it("stores the actual cost and resulting margin with the confirmed price", async () => {
@@ -66,5 +76,23 @@ describe("confirmed price changes", () => {
     expect(mock.audit).toHaveBeenCalledWith({
       data: expect.objectContaining({ newPrice: 102.5, cost: 20.5, margin: 80, userId: "owner" }),
     });
+  });
+  it("does not price supplier-only products or articles the company does not buy", async () => {
+    mock.variant.mockResolvedValue({
+      price: null,
+      active: true,
+      sourceReference: null,
+      product: { price: null },
+    });
+    await expect(publishVariantPrice(form())).rejects.toThrow("Solo se puede fijar");
+    mock.variant.mockResolvedValue({
+      price: null,
+      active: true,
+      sourceReference: "Alambres Tandil.xlsx · Stock!A3:B3",
+      product: { price: null },
+    });
+    mock.item.mockResolvedValue({ variantId: "v", listPrice: 20.5, purchased: false });
+    await expect(publishVariantPrice(form())).rejects.toThrow("Solo se puede fijar");
+    expect(mock.update).not.toHaveBeenCalled();
   });
 });

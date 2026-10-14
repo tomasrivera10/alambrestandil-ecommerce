@@ -949,6 +949,47 @@
   display: grid;
   gap: 22px;
 }
+.admin-bulk-review {
+  margin: 18px 0 24px;
+  padding: 20px;
+  border: 1px solid #dce0e6;
+  border-radius: 10px;
+  background: #fff;
+}
+.admin-bulk-review > .admin-help {
+  margin: 8px 0 16px;
+}
+.admin-bulk-list {
+  max-height: 320px;
+  overflow: auto;
+  border-top: 1px solid #dce0e6;
+  border-bottom: 1px solid #dce0e6;
+  margin-bottom: 16px;
+}
+.admin-bulk-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 4px;
+  border-bottom: 1px solid #edf0f2;
+}
+.admin-bulk-row:last-child {
+  border-bottom: 0;
+}
+.admin-bulk-row span {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+  flex: 1;
+}
+.admin-bulk-row small {
+  color: #57616d;
+  font-weight: 400;
+}
+.admin-bulk-row b {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
 .admin-supplier-item {
   background: #fff;
   border: 1px solid #dce0e6;

@@ -6,6 +6,71 @@ import { requireArea } from "@/server/rbac";
 import { z } from "zod";
 import { priceValue } from "@/server/products/validation";
 import type { ImportedRow } from "./parse";
+import { buildSupplierReviewPlan, COMPANY_STOCK_SOURCE } from "./review-plan";
+
+export async function prepareSupplierSelection(form: FormData) {
+  await requireArea("suppliers");
+  const listId = z.string().min(1).parse(form.get("listId"));
+  if (form.get("confirmed") !== "on")
+    throw new Error("Confirmá que comparaste la selección con la lista original.");
+  const selected = new Set(
+    form.getAll("selected").map((value) => z.coerce.number().int().min(0).parse(value)),
+  );
+  const supplierId = await prisma.$transaction(async (tx) => {
+    const list = await tx.supplierPriceList.findUniqueOrThrow({ where: { id: listId } });
+    if (list.status !== "REVIEW") throw new Error("La lista ya fue procesada.");
+    const rows = list.rows as ImportedRow[];
+    if (selected.size === 0) throw new Error("Seleccioná al menos una coincidencia exacta.");
+    const [variants, previous] = await Promise.all([
+      tx.productVariant.findMany({
+        where: { active: true, sourceReference: { startsWith: COMPANY_STOCK_SOURCE } },
+        select: {
+          id: true,
+          name: true,
+          salesUnit: true,
+          sourceReference: true,
+          product: { select: { salesUnit: true } },
+        },
+      }),
+      tx.supplierItem.findMany({
+        where: { supplierId: list.supplierId },
+        select: { code: true, name: true, unit: true, variantId: true },
+      }),
+    ]);
+    const plan = buildSupplierReviewPlan(
+      rows,
+      variants.map((v) => ({
+        id: v.id,
+        name: v.name,
+        unit: v.salesUnit ?? v.product.salesUnit,
+        sourceReference: v.sourceReference,
+      })),
+      previous,
+    );
+    for (const index of selected) {
+      if (index >= rows.length || !["exact", "confirmed"].includes(plan[index].kind))
+        throw new Error("Una fila cambió o requiere revisión individual. Actualizá la página.");
+    }
+    const variantById = new Map(variants.map((variant) => [variant.id, variant]));
+    const next = rows.map((row, index) =>
+      selected.has(index)
+        ? {
+            ...row,
+            variantId: plan[index].variantId!,
+            unit:
+              row.unit ||
+              variantById.get(plan[index].variantId!)?.salesUnit ||
+              variantById.get(plan[index].variantId!)?.product.salesUnit,
+            warning: undefined,
+            excluded: false,
+          }
+        : { ...row, excluded: true },
+    );
+    await tx.supplierPriceList.update({ where: { id: listId }, data: { rows: next } });
+    return list.supplierId;
+  });
+  revalidatePath(`/admin/proveedores/${supplierId}`);
+}
 
 export async function createSupplier(form: FormData) {
   await requireArea("suppliers");
@@ -28,10 +93,20 @@ export async function approveSupplierList(listId: string) {
         throw new Error("Revisá todas las filas antes de aprobar.");
       if (new Set(rows.map((row) => row.code)).size !== rows.length)
         throw new Error("Hay códigos repetidos en la lista.");
-      const variantIds = [...new Set(rows.map((row) => row.variantId).filter((id): id is string => !!id))];
+      if (rows.some((row) => !row.variantId))
+        throw new Error(
+          "Cada artículo incluido debe estar vinculado a una medida del Excel Stock.",
+        );
+      const variantIds = [...new Set(rows.map((row) => row.variantId!))];
+      if (variantIds.length !== rows.length)
+        throw new Error("Dos filas apuntan a la misma medida. Revisá los artículos duplicados.");
       if (variantIds.length) {
         const variants = await tx.productVariant.findMany({
-          where: { id: { in: variantIds } },
+          where: {
+            id: { in: variantIds },
+            active: true,
+            sourceReference: { startsWith: COMPANY_STOCK_SOURCE },
+          },
           select: { id: true },
         });
         if (variants.length !== variantIds.length)
@@ -54,12 +129,14 @@ export async function approveSupplierList(listId: string) {
             listPrice: row.price,
             unit: row.unit || null,
             variantId: row.variantId || null,
+            purchased: true,
           },
           update: {
             name: row.name,
             listPrice: row.price,
             unit: row.unit || null,
             variantId: row.variantId || (preserveLink ? previous?.variantId : null),
+            purchased: true,
           },
         });
       }
@@ -88,7 +165,13 @@ export async function reviewSupplierRow(form: FormData) {
     throw new Error("Confirmá que revisaste esta fila contra el documento.");
   const unit = String(form.get("unit") || "").trim();
   const variantId = String(form.get("variantId") || "");
-  if (variantId) await prisma.productVariant.findUniqueOrThrow({ where: { id: variantId } });
+  if (!variantId) throw new Error("Vinculá una medida de la hoja Stock antes de confirmar.");
+  const variant = await prisma.productVariant.findUniqueOrThrow({
+    where: { id: variantId },
+    include: { product: { select: { salesUnit: true } } },
+  });
+  if (!variant.active || !variant.sourceReference?.startsWith(COMPANY_STOCK_SOURCE))
+    throw new Error("Por ahora solo se admiten productos de Alambres Tandil.xlsx, hoja Stock.");
   const supplierId = await prisma.$transaction(async (tx) => {
     const list = await tx.supplierPriceList.findUniqueOrThrow({ where: { id: listId } });
     if (list.status !== "REVIEW") throw new Error("La lista ya está aprobada.");
@@ -99,7 +182,7 @@ export async function reviewSupplierRow(form: FormData) {
       name,
       code,
       price,
-      unit,
+      unit: unit || variant.salesUnit || variant.product.salesUnit,
       variantId,
       warning: undefined,
       excluded: false,
@@ -116,7 +199,11 @@ export async function updateSupplierItem(form: FormData) {
   const variantId = String(form.get("variantId") || "");
   if (variantId && form.get("exact") !== "on")
     throw new Error("Confirmá que el artículo y su unidad corresponden a esta medida.");
-  if (variantId) await prisma.productVariant.findUniqueOrThrow({ where: { id: variantId } });
+  if (variantId) {
+    const variant = await prisma.productVariant.findUniqueOrThrow({ where: { id: variantId } });
+    if (!variant.active || !variant.sourceReference?.startsWith(COMPANY_STOCK_SOURCE))
+      throw new Error("Por ahora solo se admiten productos de Alambres Tandil.xlsx, hoja Stock.");
+  }
   const item = await prisma.supplierItem.update({
     where: { id },
     data: { purchased: form.get("purchased") === "on", variantId: variantId || null },

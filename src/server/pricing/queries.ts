@@ -24,7 +24,9 @@ export async function pricingForVariant(variantId: string, supplierItemId?: stri
     family = policies.find((p) => p.key === `category:${variant.product.categoryId}`);
   const policy = specific ?? family;
   // A specific supplier choice is required when more than one cost exists.
-  const linked = variant.supplierItems.filter((i) => i.listPrice && Number(i.listPrice) > 0);
+  const linked = variant.supplierItems.filter(
+    (i) => i.purchased && i.listPrice && Number(i.listPrice) > 0,
+  );
   const selected = supplierItemId
     ? linked.find((i) => i.id === supplierItemId)
     : linked.length === 1
@@ -70,7 +72,9 @@ export const familyObservedMargin = cache(async (categoryId: string) => {
     include: { product: true, supplierItems: true },
   });
   const values = variants.flatMap((v) => {
-    const costs = v.supplierItems.filter((i) => i.listPrice && Number(i.listPrice) > 0);
+    const costs = v.supplierItems.filter(
+      (i) => i.purchased && i.listPrice && Number(i.listPrice) > 0,
+    );
     if (costs.length !== 1) return [];
     const observed = grossMargin(
       Number(costs[0].listPrice),

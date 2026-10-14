@@ -12,6 +12,7 @@ import { PricingPanel } from "@/components/admin/pricing-panel";
 import { PriceDisplay } from "@/components/admin/price-display";
 import { ActionForm } from "@/components/admin/action-form";
 import type { ImportedRow } from "@/server/suppliers/parse";
+import { buildSupplierReviewPlan, COMPANY_STOCK_SOURCE } from "@/server/suppliers/review-plan";
 export const maxDuration = 60;
 export default async function SupplierPage({
   params,
@@ -50,7 +51,7 @@ export default async function SupplierPage({
   const count = await prisma.supplierItem.count({ where });
   const pages = Math.max(1, Math.ceil(count / 20));
   const page = Math.min(pages, Math.max(1, Math.trunc(Number(pagina)) || 1));
-  const [items, variants] = await Promise.all([
+  const [items, variants, previousItems] = await Promise.all([
     prisma.supplierItem.findMany({
       where,
       orderBy: { name: "asc" },
@@ -66,9 +67,13 @@ export default async function SupplierPage({
       },
     }),
     prisma.productVariant.findMany({
-      where: { active: true },
+      where: { active: true, sourceReference: { startsWith: COMPANY_STOCK_SOURCE } },
       include: { product: { include: { images: { orderBy: { sortOrder: "asc" }, take: 1 } } } },
       orderBy: { product: { name: "asc" } },
+    }),
+    prisma.supplierItem.findMany({
+      where: { supplierId: id },
+      select: { code: true, name: true, unit: true, variantId: true },
     }),
   ]);
   const options = variants.map((v) => ({
@@ -123,6 +128,16 @@ export default async function SupplierPage({
                 rows={list.rows as ImportedRow[]}
                 notes={list.notes}
                 variants={options}
+                plan={buildSupplierReviewPlan(
+                  list.rows as ImportedRow[],
+                  variants.map((v) => ({
+                    id: v.id,
+                    name: v.name,
+                    unit: v.salesUnit ?? v.product.salesUnit,
+                    sourceReference: v.sourceReference,
+                  })),
+                  previousItems,
+                )}
               />
             </div>
           ))
@@ -214,14 +229,17 @@ export default async function SupplierPage({
                   <button className="admin-button-secondary">Guardar vínculo</button>
                 </ActionForm>
               </details>
-              {item.variantId ? (
+              {item.variantId &&
+              item.purchased &&
+              item.variant?.sourceReference?.startsWith(COMPANY_STOCK_SOURCE) ? (
                 <details className="admin-disclosure">
                   <summary>Comparar costo, margen y precio de venta</summary>
                   <PricingPanel variantId={item.variantId} supplierItemId={item.id} />
                 </details>
               ) : (
                 <p className="admin-help">
-                  Vinculá la medida para calcular su margen y comparar el mercado.
+                  La guía de precio aparece al marcar este artículo como comprado y vincularlo con
+                  una medida de la hoja Stock.
                 </p>
               )}
               {item.variant?.inventory &&

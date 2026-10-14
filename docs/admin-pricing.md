@@ -6,6 +6,8 @@ La navegación principal reúne Inicio, Pedidos, Productos, Clientes y Proveedor
 
 Subir un archivo no modifica stock ni precio de venta. PDF digital y escaneado (OCR), XLSX y DOCX producen filas de revisión con página de origen. Las filas se corrigen o se omiten antes de aprobar. El costo se toma literalmente, sin aplicar descuentos ni impuestos inferidos. El operador confirma que la unidad y presentación corresponden a la variante. Cuando una nueva lista cambia la identidad del artículo, se retira el vínculo anterior hasta volver a confirmarlo.
 
+La selección masiva propone solo coincidencias únicas de producto y presentación contra las variantes activas originadas en `Alambres Tandil.xlsx`, hoja `Stock`. Las filas OCR, duplicadas, sin costo o sin coincidencia exacta quedan para revisión individual. El operador puede desmarcar propuestas; al preparar la selección, las demás filas se omiten de esa lista. Se pueden volver a incluir y corregir antes de aprobar. La aprobación registra costos únicamente para los artículos seleccionados y comprados por la empresa; no modifica existencias ni precios de venta. El Excel define qué referencias trabaja la empresa, no un precio de venta vigente.
+
 ## Márgenes
 
 Margen bruto = (precio de venta − costo) / precio de venta × 100. El objetivo puede confirmarse por familia o por variante; la variante tiene prioridad. La mediana de márgenes observados en la familia solo se propone a partir de variantes con un costo único; no se confirma automáticamente ni se convierte en una regla global. Los cambios de precio se registran con costo, proveedor, referencia de mercado, margen resultante y actor. Una confirmación desactualizada se rechaza si cambió el costo o el precio.

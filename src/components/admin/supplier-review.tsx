@@ -13,6 +13,7 @@ import {
 import { ActionForm } from "./action-form";
 import { PriceDisplay } from "./price-display";
 import type { buildSupplierReviewPlan } from "@/server/suppliers/review-plan";
+import styles from "./supplier-review.module.css";
 export type SupplierVariantOption = VariantOption;
 export function SupplierReview({
   id,
@@ -64,7 +65,7 @@ export function SupplierReview({
         {notes} Los importes se guardan tal como están en la lista, sin aplicar IVA ni descuentos.
       </p>
       {status === "REVIEW" && (
-        <section className="admin-bulk-review" aria-label="Selección masiva de artículos">
+        <section className={styles.bulkReview} aria-label="Selección masiva de artículos">
           <h3>Elegí solo lo que vende Alambres Tandil</h3>
           <p className="admin-help">
             Comparamos con las medidas de la hoja Stock de Alambres Tandil.xlsx. {ready.length}{" "}
@@ -75,14 +76,15 @@ export function SupplierReview({
           {ready.length > 0 ? (
             <ActionForm
               action={prepareSupplierSelection}
+              className={styles.selectionForm}
               success="Selección preparada. Revisá el resumen y aprobá los costos."
             >
               <input hidden name="listId" value={id} readOnly />
-              <div className="admin-bulk-list">
+              <div className={styles.bulkList}>
                 {ready.map(({ index, variantId, kind }) => (
-                  <label key={index} className="admin-bulk-row">
+                  <label key={index} className={styles.bulkRow}>
                     <input type="checkbox" name="selected" value={index} defaultChecked />
-                    <span>
+                    <span className={styles.rowDetail}>
                       <strong>{rows[index].name}</strong>
                       <small>
                         Código {rows[index].code} ·{" "}
@@ -90,7 +92,7 @@ export function SupplierReview({
                         {variants.find((v) => v.id === variantId)?.name}
                       </small>
                     </span>
-                    <b>
+                    <b className={styles.rowPrice}>
                       {rows[index].price?.toLocaleString("es-AR", {
                         style: "currency",
                         currency: "ARS",

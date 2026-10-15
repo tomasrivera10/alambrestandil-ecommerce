@@ -1,0 +1,77 @@
+.bulkReview {
+  margin: 18px 0 24px;
+  padding: 20px;
+  border: 1px solid #dce0e6;
+  border-radius: 10px;
+  background: #fff;
+  min-width: 0;
+}
+
+.bulkReview > :global(.admin-help) {
+  margin: 8px 0 16px;
+}
+
+.selectionForm {
+  min-width: 0;
+}
+
+.bulkList {
+  display: grid;
+  max-height: 360px;
+  overflow: auto;
+  border-block: 1px solid #dce0e6;
+  margin-bottom: 16px;
+}
+
+.bulkRow {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 12px 4px;
+  border-bottom: 1px solid #edf0f2;
+  cursor: pointer;
+}
+
+.bulkRow:last-child {
+  border-bottom: 0;
+}
+
+.rowDetail {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+  line-height: 1.35;
+}
+
+.rowDetail strong,
+.rowDetail small {
+  overflow-wrap: anywhere;
+}
+
+.rowDetail small {
+  color: #57616d;
+  font-weight: 400;
+}
+
+.rowPrice {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+@media (max-width: 700px) {
+  .bulkReview {
+    padding: 16px;
+  }
+
+  .bulkRow {
+    grid-template-columns: 18px minmax(0, 1fr);
+  }
+
+  .rowPrice {
+    grid-column: 2;
+    justify-self: start;
+  }
+}

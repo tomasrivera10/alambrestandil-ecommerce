@@ -65,7 +65,7 @@ export function ImageEditor({
             />
             <p className="mt-2 text-sm">
               {i === 0 ? "Portada · " : ""}
-              Foto del producto
+              {photo.isReference ? "Imagen de referencia" : "Fotografía del producto"}
             </p>
             {photo.sourceUrl && (
               <a
@@ -74,7 +74,7 @@ export function ImageEditor({
                 target="_blank"
                 rel="noreferrer"
               >
-                Ver fuente original
+                {photo.isReference ? "Ver referencia del producto" : "Ver fuente original"}
               </a>
             )}
             <details className="mt-3 text-sm">

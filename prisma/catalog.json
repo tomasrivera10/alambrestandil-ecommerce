@@ -765,15 +765,6 @@
           "active": true
         },
         {
-          "sku": "AT-XLS-058",
-          "name": "POSTE ESQUINERO 2M OLIMPICO",
-          "salesUnit": "UNIDAD",
-          "attributes": {},
-          "sourceReference": "Alambres Tandil.xlsx · Stock!A58:B58",
-          "reviewNote": null,
-          "active": true
-        },
-        {
           "sku": "AT-XLS-059",
           "name": "POSTE ESQUINERO 1,50M RECTO",
           "salesUnit": "UNIDAD",
@@ -813,15 +804,6 @@
           "active": true
         },
         {
-          "sku": "AT-XLS-062",
-          "name": "INTERMEDIO OLIMPICO",
-          "salesUnit": "UNIDAD",
-          "attributes": {},
-          "sourceReference": "Alambres Tandil.xlsx · Stock!A62:B62",
-          "reviewNote": null,
-          "active": true
-        },
-        {
           "sku": "AT-XLS-063",
           "name": "INTERMEDIO 1,50M",
           "salesUnit": "UNIDAD",
@@ -838,6 +820,40 @@
           "sourceReference": "Alambres Tandil.xlsx · Stock!A64:B64",
           "reviewNote": "Medida ambigua en el Excel. Confirmar antes de publicar esta variante.",
           "active": false
+        }
+      ]
+    },
+    {
+      "name": "Poste olímpico con codo",
+      "slug": "poste-olimpico-con-codo",
+      "category": "postes-de-hormigon",
+      "brand": null,
+      "salesUnit": "UNIDAD",
+      "shortDescription": "Poste olímpico de hormigón con codo para cerramientos. Elegí la variante para armar tu pedido.",
+      "technicalDescription": "Poste olímpico de hormigón con codo. Disponible en las variantes esquinero e intermedio; confirmá medidas y disponibilidad con el local.",
+      "featured": false,
+      "variants": [
+        {
+          "sku": "AT-XLS-058",
+          "name": "POSTE ESQUINERO 2M OLIMPICO",
+          "salesUnit": "UNIDAD",
+          "attributes": {
+            "tipo": "Esquinero"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A58:B58",
+          "reviewNote": null,
+          "active": true
+        },
+        {
+          "sku": "AT-XLS-062",
+          "name": "INTERMEDIO OLIMPICO",
+          "salesUnit": "UNIDAD",
+          "attributes": {
+            "tipo": "Intermedio"
+          },
+          "sourceReference": "Alambres Tandil.xlsx · Stock!A62:B62",
+          "reviewNote": null,
+          "active": true
         }
       ]
     },

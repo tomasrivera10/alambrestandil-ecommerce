@@ -8,7 +8,7 @@ async function main() {
   const p=new PrismaClient();
   try {
     const products=await p.product.findMany({where:{status:"ACTIVE"},include:{variants:{include:{inventory:true}},images:true}});
-    assert.equal(products.length,31);
+    assert.equal(products.length,32);
     const imported=products.flatMap(p=>p.variants).filter(v=>v.sku.startsWith("AT-XLS-"));
     assert.equal(imported.length,94);
     assert(imported.every(v=>v.price===null && v.inventory?.onHand===0));
@@ -17,7 +17,7 @@ async function main() {
     assert(products.flatMap(p=>p.variants).filter(v=>!v.sku.startsWith("AT-XLS-")).every(v=>!v.active));
     const originalRows = catalog.products.flatMap(p=>p.variants).map(v=>Number(v.sourceReference.match(/Stock!A(\d+)/)?.[1]));
     assert.equal(new Set(originalRows).size,94);
-    console.log("Base local: 31 familias, 94 referencias; 86 publicadas, 8 ocultas por datos ambiguos. Sin precios ni stock importados.");
+    console.log("Base local: 32 familias, 94 referencias; 86 publicadas, 8 ocultas por datos ambiguos. Sin precios ni stock importados.");
     const auth=await fetch("http://localhost:3000/api/auth/sign-in/email",{method:"POST",headers:{"Content-Type":"application/json",Origin:"http://localhost:3000"},body:JSON.stringify({email:process.env.SEED_ADMIN_EMAIL,password:process.env.SEED_ADMIN_PASSWORD})});
     assert(auth.ok,`Login local: ${auth.status}`);
     const cookie=auth.headers.getSetCookie().map(c=>c.split(";")[0]).join("; ");

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Plus, Minus, ClipboardCheck } from "lucide-react";
 import { recordCountForm, recordStockForm } from "@/server/inventory/actions";
+import { roundQuantity } from "@/features/inventory/stock";
 import { unitLabel } from "@/lib/format";
 export type ProductStockVariant = {
   id: string;
@@ -28,7 +29,7 @@ function StockRow({ variant }: { variant: ProductStockVariant }) {
       ? null
       : mode === "count"
         ? Number(quantity)
-        : variant.onHand + (mode === "entry" ? 1 : -1) * Number(quantity);
+        : roundQuantity(variant.onHand + (mode === "entry" ? 1 : -1) * Number(quantity));
   return (
     <article className="admin-stock-row">
       <div className="admin-section-heading">
@@ -44,7 +45,7 @@ function StockRow({ variant }: { variant: ProductStockVariant }) {
       </div>
       <div className="admin-stock-balances">
         <span>
-          En depósito <strong>{variant.onHand.toLocaleString("es-AR")}</strong>
+          Físico <strong>{variant.onHand.toLocaleString("es-AR")}</strong>
         </span>
         <span>
           Reservado <strong>{variant.reserved.toLocaleString("es-AR")}</strong>
@@ -65,6 +66,7 @@ function StockRow({ variant }: { variant: ProductStockVariant }) {
           ).map(({ id, label, Icon }) => (
             <button
               type="button"
+              disabled={busy}
               key={id}
               aria-pressed={mode === id}
               onClick={() => {
@@ -118,6 +120,7 @@ function StockRow({ variant }: { variant: ProductStockVariant }) {
               ({unit})
               <input
                 className="admin-input"
+                disabled={busy}
                 value={quantity}
                 onChange={(e) => setQuantity(e.target.value)}
                 type="number"
@@ -137,6 +140,7 @@ function StockRow({ variant }: { variant: ProductStockVariant }) {
               <input
                 className="admin-input"
                 name="reason"
+                disabled={busy}
                 required
                 minLength={3}
                 placeholder={
@@ -151,7 +155,7 @@ function StockRow({ variant }: { variant: ProductStockVariant }) {
           </div>
           {next != null && (
             <p className="admin-notice">
-              Depósito: {variant.onHand.toLocaleString("es-AR")} →{" "}
+              Físico: {variant.onHand.toLocaleString("es-AR")} →{" "}
               <strong>
                 {next.toLocaleString("es-AR")} {unit}
               </strong>{" "}
@@ -159,8 +163,8 @@ function StockRow({ variant }: { variant: ProductStockVariant }) {
             </p>
           )}
           <label className="admin-check">
-            <input type="checkbox" required key={`${mode}-${quantity}`} /> Confirmo la cantidad y el
-            motivo del movimiento
+            <input type="checkbox" disabled={busy} required key={`${mode}-${quantity}`} /> Confirmo
+            la cantidad y el motivo del movimiento
           </label>
           <button
             className="admin-button"
@@ -194,14 +198,10 @@ function StockRow({ variant }: { variant: ProductStockVariant }) {
 }
 export function ProductStock({ variants }: { variants: ProductStockVariant[] }) {
   return (
-    <section
-      id="stock-producto"
-      className="admin-section admin-anchor"
-      aria-labelledby="stock-producto-titulo"
-    >
+    <section className="admin-section admin-anchor" aria-labelledby="stock-producto-titulo">
       <h2 id="stock-producto-titulo">Stock por medida</h2>
       <p className="admin-help">
-        Disponible = en depósito − reservado. Cada ingreso, salida o recuento queda registrado.
+        Disponible = físico − reservado. Cada ingreso, salida o recuento queda registrado.
       </p>
       {variants.length ? (
         <div>

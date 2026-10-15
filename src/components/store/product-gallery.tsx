@@ -68,7 +68,9 @@ export function ProductGallery({
         )}
       </Dialog>
       <div className="product-gallery-caption">
-        {!(reference || image?.isReference) && <span>Fotografía del producto</span>}
+        <span>
+          {reference || image?.isReference ? "Imagen de referencia" : "Fotografía del producto"}
+        </span>
         {images.length > 1 && (
           <span>
             {selected + 1} / {images.length}
@@ -77,7 +79,7 @@ export function ProductGallery({
       </div>
       {image?.sourceUrl && (
         <a href={image.sourceUrl} target="_blank" rel="noreferrer" className="product-photo-source">
-          Fuente de la fotografía
+          {reference || image.isReference ? "Referencia del producto" : "Fuente de la fotografía"}
         </a>
       )}
       {images.length > 1 && (

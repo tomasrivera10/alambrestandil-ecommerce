@@ -1,0 +1,8 @@
+{
+  "tool": "image_gen built-in",
+  "date": "2026-10-15",
+  "prompt": "Use case: product-mockup. Create a premium photorealistic hardware ecommerce catalog photograph. Image 1 is ONLY the visual style reference: pure opaque white #ffffff seamless background, realistic neutral silver-gray metal (or the specified real material), soft diffuse studio lighting and subtle gray contact shadow. No labels, logos, watermark, text, packaging or environment. Square canvas at highest available native resolution. Show the COMPLETE subject centered, about 70–75% frame occupancy, ample white safe margins on every side. Fine realistic material detail, coherent mechanical geometry, sharp edges, no clipped parts, no colored contamination. ONE complete one-meter long wall-top security spike strip (Argentine pinche para medianera eco cinco puntas). Image 2 is the supplier's actual product photo: preserve its long thin flat base rail, repeating welded five-point flowers of slender sharp flat steel spikes with central upward point and four outward splayed points. Natural dark bare steel, unpainted industrial gray, no silver stainless bird-control needles, no plastic. Show whole strip diagonally receding into distance, generous white margin, sharp identifiable foreground flower and coherent repeated modules. No wall or installation environment. Input image 1: style guide only. Input image 2: supplier product geometry.",
+  "original": "/Users/tomaspc/.codex/generated_images/01a13d8a-6e92-7230-a592-191e9b1b4ffe/exec-29708b96-c1c6-41ea-8978-4eebdb618bbd.png",
+  "referenceImage": "mt-pinche.jpg",
+  "source": "JULIO CATALOGO MAYORISTA MT 2026.pdf, página 16"
+}

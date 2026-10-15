@@ -1,0 +1,9 @@
+{
+  "tool": "image_gen built-in",
+  "date": "2026-10-15",
+  "prompt": "Use case: product-mockup. Create a premium photorealistic hardware ecommerce catalog photograph. Image 1 is ONLY the visual style reference: pure opaque white #ffffff seamless background, realistic neutral silver-gray metal (or the specified real material), soft diffuse studio lighting and subtle gray contact shadow. No labels, logos, watermark, text, packaging or environment. Square canvas at highest available native resolution. Show the COMPLETE subject centered, about 70–75% frame occupancy, ample white safe margins on every side. Fine realistic material detail, coherent mechanical geometry, sharp edges, no clipped parts, no colored contamination. A tidy group of FOUR Argentine dented-shank LEAD HEAD roofing nails, clavo cabeza de plomo dentado, representative 3 inch. Image 2 defines the broad rounded flattened mushroom lead sealing head that covers the steel head, much wider than the shaft. Straight steel shank has fine annular serrations / retaining teeth on most of its length and sharp diamond point, not screw threads. Natural dull gray lead head and slightly brighter steel shank. One nail shows its round lead sealing cap, others show complete profile. No plastic or rubber washers, no screws, no ordinary small Paris heads, no loose unrelated parts. Image 1 is the user's style guide; any additional image is a morphology reference.",
+  "original": "/Users/tomaspc/.codex/generated_images/01a13d8a-6e92-7230-a592-191e9b1b4ffe/exec-5281591c-7a70-4393-8ee2-151b9760710a.png",
+  "referenceImages": [
+    "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/public/images/catalogo-estudio/referencias/clavo-cabeza-plomo.jpg"
+  ]
+}

@@ -1,5 +1,6 @@
 import "dotenv/config";
 import { retireLegacyGalleryImages } from "./apply-product-images";
+import { applyStudioProductImages } from "./apply-studio-product-images";
 import { randomUUID } from "node:crypto";
 import { hashPassword } from "better-auth/crypto";
 import { PrismaClient } from "../src/generated/prisma/client";
@@ -10,16 +11,18 @@ const prisma = new PrismaClient({
 });
 
 import { importCatalog } from "./import-catalog";
-import { applyProductImages, applyPostImages, applyGateImages, applyInstalledDoorImage, applyFeaturedImages } from "./apply-product-images";
+import { applyProductImages, applyPostImages, applyOlympicPostAndPuntal, applyGateImages, applyInstalledDoorImage, applyFeaturedImages } from "./apply-product-images";
 
 async function main() {
   await importCatalog(prisma);
   await applyProductImages(prisma);
   await applyPostImages(prisma);
+  await applyOlympicPostAndPuntal(prisma);
   await applyGateImages(prisma);
   await applyInstalledDoorImage(prisma);
   await applyFeaturedImages(prisma);
   await retireLegacyGalleryImages(prisma);
+  await applyStudioProductImages(prisma);
 
   for (const name of ["Particular", "Constructor", "Alambrador", "Rural", "Empresa", "Mayorista", "Frecuente"]) {
     await prisma.tag.upsert({ where: { name }, update: {}, create: { name } });

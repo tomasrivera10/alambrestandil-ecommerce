@@ -181,24 +181,30 @@ export function VariantEditor({
 }) {
   const [adding, setAdding] = useState(false);
   return (
-    <section className="mt-10" aria-labelledby="variants-title">
+    <section className="workspace-presentations" aria-labelledby="variants-title">
       <div className="flex items-center justify-between gap-4">
         <h2 id="variants-title" className="font-heading text-xl">
           Medidas y presentaciones{" "}
           <span className="text-muted-foreground">({variants.length})</span>
         </h2>
         <Button variant="outline" onClick={() => setAdding(!adding)}>
-          {adding ? "Cerrar nueva variante" : "Agregar variante"}
+          {adding ? "Cerrar nueva presentación" : "Agregar presentación"}
         </Button>
       </div>
       <p className="my-3 text-sm text-muted-foreground">
-        Abrí una variante para editarla. Desactivarla la retira del catálogo y conserva su
+        Abrí una presentación para editarla. Desactivarla la retira del catálogo y conserva su
         historial.
       </p>
       {adding && (
         <div className="mb-4 border border-border">
           <VariantForm productId={productId} onSaved={() => setAdding(false)} />
         </div>
+      )}
+      {!variants.length && !adding && (
+        <p className="workspace-empty">
+          Todavía no hay presentaciones. Agregá la primera medida para registrar stock y definir su
+          precio.
+        </p>
       )}
       <div className="divide-y divide-border border-y border-border">
         {variants.map((v) => (

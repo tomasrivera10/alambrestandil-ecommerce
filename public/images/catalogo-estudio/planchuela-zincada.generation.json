@@ -1,0 +1,9 @@
+{
+  "tool": "image_gen built-in",
+  "date": "2026-10-15",
+  "prompt": "Use case: product-mockup. Create a premium photorealistic hardware ecommerce catalog photograph. Image 1 is ONLY the visual style reference: pure opaque white #ffffff seamless background, realistic neutral silver-gray metal (or the specified real material), soft diffuse studio lighting and subtle gray contact shadow. No labels, logos, watermark, text, packaging or environment. Square canvas at highest available native resolution. Show the COMPLETE subject centered, about 70–75% frame occupancy, ample white safe margins on every side. Fine realistic material detail, coherent mechanical geometry, sharp edges, no clipped parts, no colored contamination. Three straight long galvanized FLAT steel tension bars for chain-link fencing (Argentine planchuela zincada 3/4 x 3/16, representative length 1.5 m). Thin rectangular cross section, flat parallel faces, clean square-cut ends. They are solid flat strips, NOT angle iron, NOT square tubes, NOT rods, no drilled holes. Arrange three slightly separated parallel diagonal bars, entire length visible, one subtly rotated to reveal thin thickness. Natural spangled zinc silver finish. The bars correspond to MT catalog flat tension strips and Alambre Pallás reference shape.",
+  "original": "/Users/tomaspc/.codex/generated_images/01a13d8a-6e92-7230-a592-191e9b1b4ffe/exec-d0a9c63d-fbba-468b-8fc9-d6f5e642261a.png",
+  "referenceImages": [
+    "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/public/images/catalogo/planchuelas.jpg"
+  ]
+}

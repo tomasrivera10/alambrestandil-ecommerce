@@ -30,4 +30,24 @@ describe("variantImageIndex", () => {
     expect(variantImageIndex(images, variant("Tejido 2m"))).toBe(0);
     expect(variantImageIndex([], variant("Poste recto"))).toBe(0);
   });
+  it("distinguishes simple and crossed concertina in persisted cart lines without a SKU", () => {
+    const concertinas = [
+      { url: "/simple.webp", alt: "Concertina simple de 300 mm" },
+      { url: "/cruzada.webp", alt: "Concertina cruzada de 450 mm" },
+    ];
+    expect(
+      variantImageIndex(concertinas, {
+        name: "CONSERTINA 450MM X CRUZADA 10M",
+        sku: "",
+        attributes: {},
+      }),
+    ).toBe(1);
+    expect(
+      variantImageIndex(concertinas, {
+        name: "CONCERTINA 300MM X (SIMPLE) 10M",
+        sku: "",
+        attributes: {},
+      }),
+    ).toBe(0);
+  });
 });

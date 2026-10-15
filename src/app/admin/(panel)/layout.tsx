@@ -5,20 +5,22 @@ import { auth } from "@/server/auth";
 import { can, getSession, isRole } from "@/server/rbac";
 import { AdminNav } from "@/components/admin/admin-nav";
 import "../admin.css";
+import "../workspace.css";
 
 const groups = [
   {
-    label: "Tu negocio",
+    label: "Trabajo diario",
     links: [
       { href: "/admin", label: "Inicio", area: "inventory" as const },
+      { href: "/admin/productos", label: "Catálogo", area: "products" as const },
+      { href: "/admin/stock", label: "Stock", area: "inventory" as const },
       { href: "/admin/pedidos", label: "Pedidos", area: "orders" as const },
-      { href: "/admin/productos", label: "Productos", area: "products" as const },
       { href: "/admin/clientes", label: "Clientes", area: "customers" as const },
       { href: "/admin/proveedores", label: "Proveedores", area: "suppliers" as const },
     ],
   },
   {
-    label: "Herramientas",
+    label: "Gestión",
     links: [
       { href: "/admin/metricas", label: "Resultados", area: "metrics" as const },
       { href: "/admin/configuracion", label: "Configuración", area: "settings" as const },
@@ -35,6 +37,9 @@ export default async function PanelLayout({ children }: { children: React.ReactN
   if (!isRole(role)) redirect("/admin/login");
   return (
     <div className="admin-shell">
+      <a href="#admin-contenido" className="admin-skip-link">
+        Ir al contenido
+      </a>
       <aside className="admin-sidebar">
         <Link href="/admin" className="admin-brand">
           <span className="admin-brand-mark">AT</span>
@@ -79,7 +84,9 @@ export default async function PanelLayout({ children }: { children: React.ReactN
             {role === "ADMIN" ? "Administración" : role === "STOCK" ? "Depósito" : "Ventas"}
           </span>
         </header>
-        <div className="admin-content">{children}</div>
+        <div className="admin-content" id="admin-contenido" tabIndex={-1}>
+          {children}
+        </div>
       </div>
     </div>
   );

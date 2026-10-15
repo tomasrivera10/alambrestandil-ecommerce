@@ -1,51 +1,62 @@
-import { SectionNav } from "@/components/admin/section-nav";
 import Link from "next/link";
-import { requireArea } from "@/server/rbac";
+import { Calculator, ClipboardCheck, History, ArrowDownUp } from "lucide-react";
+import { requireArea, can } from "@/server/rbac";
 import { prisma } from "@/server/db";
 import { StockMovementForm } from "@/components/admin/stock-movement-form";
+import { StockTool } from "@/components/admin/stock-tools";
 import { StockCountForm } from "@/components/admin/stock-count-form";
+import { StockCategoryWorkspace } from "@/components/admin/stock-category-workspace";
+import { unitLabel } from "@/lib/format";
 
-export default async function StockPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ q?: string; state?: string }>;
-}) {
-  await requireArea("inventory");
-  const { q = "", state = "all" } = await searchParams;
-  const [rows, recent] = await Promise.all([
+const movementLabels: Record<string, string> = {
+  ENTRADA: "Ingreso",
+  AJUSTE: "Ajuste",
+  DEVOLUCION: "Devolución",
+  SALIDA: "Salida",
+  RESERVA: "Reserva",
+  LIBERACION: "Liberación",
+  CANCELACION: "Liberación de reserva",
+  VENTA: "Venta",
+};
+
+export default async function StockPage() {
+  const { role } = await requireArea("inventory");
+  const [rows, recent, categories] = await Promise.all([
     prisma.inventory.findMany({
-      where: {
+      where: { variant: { product: { status: "ACTIVE" } } },
+      include: {
         variant: {
-          product: { status: "ACTIVE" },
-          OR: [
-            { name: { contains: q, mode: "insensitive" } },
-            { sku: { contains: q, mode: "insensitive" } },
-            { product: { name: { contains: q, mode: "insensitive" } } },
-          ],
+          include: { product: { include: { images: { orderBy: { sortOrder: "asc" }, take: 1 } } } },
         },
       },
-      include: { variant: { include: { product: true } } },
-      orderBy: { variant: { sku: "asc" } },
+      orderBy: [{ variant: { product: { name: "asc" } } }, { variant: { name: "asc" } }],
     }),
     prisma.stockMovement.findMany({
       take: 12,
       orderBy: { createdAt: "desc" },
-      include: { variant: true, user: true },
+      include: { variant: { include: { product: true } }, user: true },
     }),
+    prisma.category.findMany({ orderBy: [{ sortOrder: "asc" }, { name: "asc" }] }),
   ]);
-  const filtered = rows.filter((row) =>
-    state === "low"
-      ? row.onHand - row.reserved <= 0 ||
-        (row.minStock > 0 && row.onHand - row.reserved <= row.minStock)
-      : state === "zero"
-        ? row.onHand - row.reserved <= 0
-        : true,
-  );
-  const critical = rows.filter(
-    (row) =>
-      row.onHand - row.reserved <= 0 ||
-      (row.minStock > 0 && row.onHand - row.reserved <= row.minStock),
-  ).length;
+  const stockCategories = categories.map((category) => ({
+    id: category.id,
+    name: category.name,
+    image: null,
+    rows: rows
+      .filter((row) => row.variant.product.categoryId === category.id)
+      .map((row) => ({
+        id: row.variantId,
+        productId: row.variant.productId,
+        product: row.variant.product.name,
+        variant: row.variant.name,
+        sku: row.variant.sku,
+        image: row.variant.product.images[0]?.url ?? null,
+        unit: row.variant.salesUnit ?? row.variant.product.salesUnit,
+        onHand: row.onHand,
+        reserved: row.reserved,
+        minStock: row.minStock,
+      })),
+  }));
   const variants = rows.map((row) => ({
     id: row.variantId,
     name: `${row.variant.product.name} · ${row.variant.name}`,
@@ -55,142 +66,107 @@ export default async function StockPage({
     reserved: row.reserved,
   }));
   return (
-    <main className="admin-page">
-      <SectionNav kind="products" />
-      <div className="admin-page-heading">
+    <main className="admin-page workspace-page">
+      <div className="workspace-heading">
         <div>
           <h1>Stock</h1>
-          <p>Existencias reales, reservas y movimientos por variante.</p>
+          <p>Encontrá una presentación y registrá la mercadería que ingresa.</p>
         </div>
-        <Link href="/admin/productos/nuevo" className="admin-button">
-          Nuevo producto
-        </Link>
-      </div>
-      <div className="admin-summary">
-        <div>
-          <strong>{rows.length}</strong>
-          <span>variantes visibles</span>
-        </div>
-        <div>
-          <strong>{critical}</strong>
-          <span>en mínimo o menos</span>
-        </div>
-        <div>
-          <strong>{rows.filter((r) => r.onHand - r.reserved <= 0).length}</strong>
-          <span>sin disponibilidad</span>
-        </div>
-      </div>
-      <form className="admin-toolbar">
-        <input
-          className="admin-input flex-1"
-          name="q"
-          defaultValue={q}
-          placeholder="Buscar nombre o SKU"
-          aria-label="Buscar stock"
-        />
-        <select name="state" defaultValue={state} className="admin-input">
-          <option value="all">Todos</option>
-          <option value="low">Bajo stock</option>
-          <option value="zero">Sin disponibilidad</option>
-        </select>
-        <button className="admin-button">Filtrar</button>
-      </form>
-      <div className="overflow-x-auto">
-        <table className="admin-table">
-          <thead>
-            <tr>
-              <th>Producto</th>
-              <th>Físico</th>
-              <th>Reservado</th>
-              <th>Disponible</th>
-              <th>Mínimo</th>
-              <th>Precio de venta</th>
-              <th>Estado</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filtered.map((row) => {
-              const available = row.onHand - row.reserved;
-              const low = available <= 0 || (row.minStock > 0 && available <= row.minStock);
-              return (
-                <tr key={row.id}>
-                  <td>
-                    <Link
-                      className="font-medium hover:text-primary"
-                      href={`/admin/productos/${row.variant.productId}`}
-                    >
-                      {row.variant.product.name} · {row.variant.name}
-                    </Link>
-                    <small className="block text-muted-foreground">
-                      {row.variant.sku} ·{" "}
-                      {(row.variant.salesUnit ?? row.variant.product.salesUnit).toLowerCase()}
-                    </small>
-                  </td>
-                  <td>{row.onHand}</td>
-                  <td>{row.reserved}</td>
-                  <td className="font-semibold">{available}</td>
-                  <td>{row.minStock}</td>
-                  <td>
-                    {(row.variant.price ?? row.variant.product.price)
-                      ? `$ ${Number(row.variant.price ?? row.variant.product.price).toLocaleString("es-AR")}`
-                      : "A confirmar"}
-                    <Link
-                      className="ml-2 text-primary underline"
-                      href={`/admin/productos/${row.variant.productId}`}
-                    >
-                      Editar
-                    </Link>
-                  </td>
-                  <td>
-                    <span className={low ? "admin-badge-warning" : "admin-badge"}>
-                      {available <= 0 ? "Sin stock" : low ? "Reponer" : "Disponible"}
-                    </span>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-        {!filtered.length && (
-          <p className="p-6 text-sm text-muted-foreground">No hay variantes para este filtro.</p>
+        {can(role, "products") && (
+          <Link href="/admin/analisis-stock" className="admin-button-secondary">
+            <Calculator size={17} aria-hidden="true" />
+            Análisis de stock
+          </Link>
         )}
       </div>
-      <div className="mt-10 grid gap-6 lg:grid-cols-2">
-        <div className="admin-panel p-5">
-          <StockMovementForm variants={variants} />
-        </div>
-        <StockCountForm variants={variants} />
+      <nav className="workspace-task-links" aria-label="Tareas de stock">
+        <a href="#inventario">Existencias e ingresos</a>
+        <a href="#recuento">
+          <ClipboardCheck size={16} aria-hidden="true" />
+          Recuento físico
+        </a>
+        <a href="#movimientos">
+          <ArrowDownUp size={16} aria-hidden="true" />
+          Otros movimientos
+        </a>
+        <a href="#historial">
+          <History size={16} aria-hidden="true" />
+          Historial
+        </a>
+      </nav>
+      <div id="inventario" className="admin-anchor">
+        <StockCategoryWorkspace categories={stockCategories} />
       </div>
-      <section className="mt-10">
-        <h2 className="admin-section-title">Últimos movimientos</h2>
-        <div className="overflow-x-auto">
-          <table className="admin-table">
+      <div className="workspace-stock-tools">
+        <StockTool
+          id="recuento"
+          title="Recuento físico"
+          description="Compará lo contado con el saldo del sistema"
+        >
+          <StockCountForm variants={variants} />
+        </StockTool>
+        <StockTool
+          id="movimientos"
+          title="Otros movimientos"
+          description="Registrá ajustes o devoluciones con su motivo"
+        >
+          <StockMovementForm variants={variants} />
+        </StockTool>
+      </div>
+      <section className="workspace-history admin-anchor" id="historial">
+        <div className="workspace-section-heading">
+          <h2>Últimos movimientos</h2>
+          <p>Los 12 registros más recientes</p>
+        </div>
+        <div
+          className="workspace-table-scroll"
+          tabIndex={0}
+          role="region"
+          aria-label="Historial de stock, desplazable horizontalmente"
+        >
+          <table className="workspace-table">
             <thead>
               <tr>
                 <th>Fecha</th>
-                <th>Producto</th>
-                <th>Tipo</th>
+                <th>Producto / presentación</th>
+                <th>Movimiento</th>
                 <th>Cantidad</th>
-                <th>Responsable</th>
-                <th>Motivo</th>
+                <th>Responsable y motivo</th>
               </tr>
             </thead>
             <tbody>
               {recent.map((move) => (
                 <tr key={move.id}>
-                  <td>{move.createdAt.toLocaleDateString("es-AR")}</td>
-                  <td>
-                    {move.variant.sku} · {move.variant.name}
+                  <td className="workspace-nowrap">
+                    {move.createdAt.toLocaleString("es-AR", {
+                      dateStyle: "short",
+                      timeStyle: "short",
+                      timeZone: "America/Argentina/Buenos_Aires",
+                    })}
                   </td>
-                  <td>{move.type}</td>
-                  <td>{move.quantity}</td>
-                  <td>{move.user?.name ?? "Sistema"}</td>
-                  <td>{move.reason}</td>
+                  <td>
+                    <strong>{move.variant.product.name}</strong>
+                    <p>{move.variant.name}</p>
+                  </td>
+                  <td>{movementLabels[move.type] ?? move.type}</td>
+                  <td className="workspace-number">
+                    {move.quantity.toLocaleString("es-AR")}{" "}
+                    {unitLabel(move.variant.salesUnit ?? move.variant.product.salesUnit)}
+                  </td>
+                  <td>
+                    {move.user?.name ?? "Sistema"}
+                    <p>{move.reason}</p>
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
+        {!recent.length && (
+          <p className="workspace-footnote">
+            Los ingresos, ajustes y recuentos aparecerán acá al confirmarlos.
+          </p>
+        )}
       </section>
     </main>
   );

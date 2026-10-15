@@ -1,0 +1,9 @@
+{
+  "tool": "image_gen built-in",
+  "date": "2026-10-15",
+  "prompt": "Use case: product-mockup. Create a premium photorealistic hardware ecommerce catalog photograph. Image 1 is ONLY the visual style reference: pure opaque white #ffffff seamless background, realistic neutral silver-gray metal (or the specified real material), soft diffuse studio lighting and subtle gray contact shadow. No labels, logos, watermark, text, packaging or environment. Square canvas at highest available native resolution. Show the COMPLETE subject centered, about 70–75% frame occupancy, ample white safe margins on every side. Fine realistic material detail, coherent mechanical geometry, sharp edges, no clipped parts, no colored contamination. One galvanized CROSS-CLIPPED concertina razor-wire coil, representative 450 mm diameter, partially expanded as a short horizontal cylinder with about 6 loops. Adjacent loops are connected with small steel clips at alternating points to form the characteristic diamond/accordion barrier, unlike an unconnected simple helix. Razor tape with regularly spaced stamped sharp double blades, NOT ordinary four-point barbed wire. Three-quarter perspective, whole coil including both end loops, open white center. Use Romboidal crossed concertina morphology in image 2, improve visual clarity without a fence or installation. Image 1 is the user's style guide; any additional image is a morphology reference.",
+  "original": "/Users/tomaspc/.codex/generated_images/01a13d8a-6e92-7230-a592-191e9b1b4ffe/exec-f92fda3b-8d9f-4daf-b9b5-429995e6d2ec.png",
+  "referenceImages": [
+    "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/public/images/romboidal/concertinas.webp"
+  ]
+}

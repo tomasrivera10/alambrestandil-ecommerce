@@ -14,6 +14,7 @@ import {
 import { cartCount, useCart, useCartLines } from "@/features/cart/store";
 import { formatMoney, unitLabel } from "@/lib/format";
 import { ProductMedia } from "./product-media";
+import { cartImageUrl } from "@/features/products/cart-image";
 export function CartSheet() {
   const lines = useCartLines();
   const setQuantity = useCart((state) => state.setQuantity);
@@ -68,7 +69,7 @@ export function CartSheet() {
                 <li key={line.variantId}>
                   <Link href={line.href} onClick={() => setOpen(false)} className="cart-line-image">
                     <ProductMedia
-                      src={line.imageUrl}
+                      src={cartImageUrl(line)}
                       alt={line.productName}
                       name={line.productName}
                     />

@@ -7,8 +7,7 @@ export function SectionNav({ kind }: { kind: "products" | "orders" }) {
     kind === "products"
       ? [
           ["/admin/productos", "Catálogo"],
-          ["/admin/stock", "Existencias y movimientos"],
-          ["/admin/categorias", "Familias de productos"],
+          ["/admin/categorias", "Categorías"],
         ]
       : [
           ["/admin/pedidos", "Pedidos"],

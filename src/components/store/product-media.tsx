@@ -28,6 +28,7 @@ export function ProductMedia({
             preload={preload}
             style={
               src.startsWith("/images/referencias-productos/") ||
+              src.startsWith("/images/catalogo-estudio/") ||
               src.startsWith("/images/romboidal/") ||
               src.startsWith("/images/productos-generados/") ||
               src.startsWith("/images/productos-transparentes/")
@@ -36,7 +37,12 @@ export function ProductMedia({
             }
           />
         ) : (
-          <img src={src} alt={alt || name} loading={preload ? "eager" : "lazy"} />
+          <img
+            src={src}
+            alt={alt || name}
+            loading={preload ? "eager" : "lazy"}
+            style={{ objectFit: "contain" }}
+          />
         )}
       </div>
     );

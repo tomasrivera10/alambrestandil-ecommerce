@@ -1,0 +1,9 @@
+{
+  "tool": "image_gen built-in",
+  "date": "2026-10-15",
+  "prompt": "Use case: product-mockup. Create a premium photorealistic hardware ecommerce catalog photograph. Image 1 is ONLY the visual style reference: pure opaque white #ffffff seamless background, realistic neutral silver-gray metal (or the specified real material), soft diffuse studio lighting and subtle gray contact shadow. No labels, logos, watermark, text, packaging or environment. Square canvas at highest available native resolution. Show the COMPLETE subject centered, about 70–75% frame occupancy, ample white safe margins on every side. Fine realistic material detail, coherent mechanical geometry, sharp edges, no clipped parts, no colored contamination. One galvanized razor-wire SIMPLE helical concertina coil, representative diameter 300 mm, photographed partially expanded as a short horizontal cylinder with about 6 separated circular loops. Single continuous helix with regular stamped double razor blade tape; loops are NOT clipped to each other, no diamond concertina cross-connections. No ordinary four-point barbs. Keep complete coil and both end loops inside frame; three-quarter perspective shows the open white center and repeated razor shapes. Reference product: Argentine simple concertina 300 mm x 10 m; do not depict a fence or installation. Image 1 is the user's style guide; any additional image is a morphology reference.",
+  "original": "/Users/tomaspc/.codex/generated_images/01a13d8a-6e92-7230-a592-191e9b1b4ffe/exec-80b35683-bcb2-4882-b03f-34d8eca0de24.png",
+  "referenceImages": [
+    "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/public/images/romboidal/concertinas.webp"
+  ]
+}

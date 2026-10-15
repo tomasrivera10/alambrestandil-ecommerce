@@ -1,28 +1,204 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-13T23:53:55.061488+00:00",
+  "generatedAt": "2026-10-15T14:23:51.863670+00:00",
   "title": "Design System: Alambres Tandil",
   "extensions": {
     "colorMeta": {
       "primary": {
         "role": "primary",
-        "displayName": "Rojo de marca"
+        "displayName": "Rojo de marca",
+        "tonalRamp": [
+          "oklch(15% 0.2234 29.23)",
+          "oklch(25% 0.2234 29.23)",
+          "oklch(37% 0.2234 29.23)",
+          "oklch(49% 0.2234 29.23)",
+          "oklch(61% 0.2234 29.23)",
+          "oklch(73% 0.2234 29.23)",
+          "oklch(85% 0.2234 29.23)",
+          "oklch(95% 0.2234 29.23)"
+        ]
       },
-      "ink": {
-        "role": "neutral",
-        "displayName": "Carbón"
+      "primary-hover": {
+        "role": "primary",
+        "displayName": "Rojo de interacción",
+        "tonalRamp": [
+          "oklch(15% 0.1918 29.23)",
+          "oklch(25% 0.1918 29.23)",
+          "oklch(37% 0.1918 29.23)",
+          "oklch(49% 0.1918 29.23)",
+          "oklch(61% 0.1918 29.23)",
+          "oklch(73% 0.1918 29.23)",
+          "oklch(85% 0.1918 29.23)",
+          "oklch(95% 0.1918 29.23)"
+        ]
       },
       "white": {
         "role": "neutral",
-        "displayName": "Blanco"
+        "displayName": "Blanco",
+        "tonalRamp": [
+          "oklch(15% 0.0000 89.88)",
+          "oklch(25% 0.0000 89.88)",
+          "oklch(37% 0.0000 89.88)",
+          "oklch(49% 0.0000 89.88)",
+          "oklch(61% 0.0000 89.88)",
+          "oklch(73% 0.0000 89.88)",
+          "oklch(85% 0.0000 89.88)",
+          "oklch(95% 0.0000 89.88)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Carbón",
+        "tonalRamp": [
+          "oklch(15% 0.0099 248.28)",
+          "oklch(25% 0.0099 248.28)",
+          "oklch(37% 0.0099 248.28)",
+          "oklch(49% 0.0099 248.28)",
+          "oklch(61% 0.0099 248.28)",
+          "oklch(73% 0.0099 248.28)",
+          "oklch(85% 0.0099 248.28)",
+          "oklch(95% 0.0099 248.28)"
+        ]
       },
       "muted": {
         "role": "neutral",
-        "displayName": "Gris de superficie"
+        "displayName": "Gris de superficie",
+        "tonalRamp": [
+          "oklch(15% 0.0011 197.14)",
+          "oklch(25% 0.0011 197.14)",
+          "oklch(37% 0.0011 197.14)",
+          "oklch(49% 0.0011 197.14)",
+          "oklch(61% 0.0011 197.14)",
+          "oklch(73% 0.0011 197.14)",
+          "oklch(85% 0.0011 197.14)",
+          "oklch(95% 0.0011 197.14)"
+        ]
+      },
+      "header-surface": {
+        "role": "neutral",
+        "displayName": "Superficie de cabecera",
+        "tonalRamp": [
+          "oklch(15% 0.0000 89.88)",
+          "oklch(25% 0.0000 89.88)",
+          "oklch(37% 0.0000 89.88)",
+          "oklch(49% 0.0000 89.88)",
+          "oklch(61% 0.0000 89.88)",
+          "oklch(73% 0.0000 89.88)",
+          "oklch(85% 0.0000 89.88)",
+          "oklch(95% 0.0000 89.88)"
+        ]
+      },
+      "header-divider": {
+        "role": "neutral",
+        "displayName": "Divisor de imagen",
+        "tonalRamp": [
+          "oklch(15% 0.0025 228.79)",
+          "oklch(25% 0.0025 228.79)",
+          "oklch(37% 0.0025 228.79)",
+          "oklch(49% 0.0025 228.79)",
+          "oklch(61% 0.0025 228.79)",
+          "oklch(73% 0.0025 228.79)",
+          "oklch(85% 0.0025 228.79)",
+          "oklch(95% 0.0025 228.79)"
+        ]
+      },
+      "charcoal-hover": {
+        "role": "neutral",
+        "displayName": "Carbón de interacción",
+        "tonalRamp": [
+          "oklch(15% 0.0133 248.21)",
+          "oklch(25% 0.0133 248.21)",
+          "oklch(37% 0.0133 248.21)",
+          "oklch(49% 0.0133 248.21)",
+          "oklch(61% 0.0133 248.21)",
+          "oklch(73% 0.0133 248.21)",
+          "oklch(85% 0.0133 248.21)",
+          "oklch(95% 0.0133 248.21)"
+        ]
+      },
+      "muted-foreground": {
+        "role": "neutral",
+        "displayName": "Gris de lectura secundaria",
+        "tonalRamp": [
+          "oklch(15% 0.0138 240.13)",
+          "oklch(25% 0.0138 240.13)",
+          "oklch(37% 0.0138 240.13)",
+          "oklch(49% 0.0138 240.13)",
+          "oklch(61% 0.0138 240.13)",
+          "oklch(73% 0.0138 240.13)",
+          "oklch(85% 0.0138 240.13)",
+          "oklch(95% 0.0138 240.13)"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Borde general",
+        "tonalRamp": [
+          "oklch(15% 0.0046 214.33)",
+          "oklch(25% 0.0046 214.33)",
+          "oklch(37% 0.0046 214.33)",
+          "oklch(49% 0.0046 214.33)",
+          "oklch(61% 0.0046 214.33)",
+          "oklch(73% 0.0046 214.33)",
+          "oklch(85% 0.0046 214.33)",
+          "oklch(95% 0.0046 214.33)"
+        ]
+      },
+      "field-border": {
+        "role": "neutral",
+        "displayName": "Borde de campo",
+        "tonalRamp": [
+          "oklch(15% 0.0069 233.66)",
+          "oklch(25% 0.0069 233.66)",
+          "oklch(37% 0.0069 233.66)",
+          "oklch(49% 0.0069 233.66)",
+          "oklch(61% 0.0069 233.66)",
+          "oklch(73% 0.0069 233.66)",
+          "oklch(85% 0.0069 233.66)",
+          "oklch(95% 0.0069 233.66)"
+        ]
+      },
+      "field-border-strong": {
+        "role": "neutral",
+        "displayName": "Borde de campo reforzado",
+        "tonalRamp": [
+          "oklch(15% 0.0088 236.59)",
+          "oklch(25% 0.0088 236.59)",
+          "oklch(37% 0.0088 236.59)",
+          "oklch(49% 0.0088 236.59)",
+          "oklch(61% 0.0088 236.59)",
+          "oklch(73% 0.0088 236.59)",
+          "oklch(85% 0.0088 236.59)",
+          "oklch(95% 0.0088 236.59)"
+        ]
+      },
+      "light-hover": {
+        "role": "neutral",
+        "displayName": "Interacción clara",
+        "tonalRamp": [
+          "oklch(15% 0.0051 228.82)",
+          "oklch(25% 0.0051 228.82)",
+          "oklch(37% 0.0051 228.82)",
+          "oklch(49% 0.0051 228.82)",
+          "oklch(61% 0.0051 228.82)",
+          "oklch(73% 0.0051 228.82)",
+          "oklch(85% 0.0051 228.82)",
+          "oklch(95% 0.0051 228.82)"
+        ]
       },
       "stock-available": {
         "role": "semantic",
-        "displayName": "Disponibilidad"
+        "displayName": "Disponibilidad",
+        "tonalRamp": [
+          "oklch(15% 0.0712 153.87)",
+          "oklch(25% 0.0712 153.87)",
+          "oklch(37% 0.0712 153.87)",
+          "oklch(49% 0.0712 153.87)",
+          "oklch(61% 0.0712 153.87)",
+          "oklch(73% 0.0712 153.87)",
+          "oklch(85% 0.0712 153.87)",
+          "oklch(95% 0.0712 153.87)"
+        ]
       }
     },
     "typographyMeta": {
@@ -84,6 +260,14 @@
       {
         "name": "small-mobile",
         "value": "380px"
+      },
+      {
+        "name": "header-menu",
+        "value": "1050px"
+      },
+      {
+        "name": "header-search-row",
+        "value": "600px"
       }
     ],
     "focus": {
@@ -97,7 +281,11 @@
       "src/app/layout.tsx",
       "src/components/store/fade-content.tsx",
       "src/app/admin/admin.css",
-      "src/components/admin/admin-nav.tsx"
+      "src/components/admin/admin-nav.tsx",
+      "src/components/store/site-header.module.css",
+      "src/components/store/product-card.tsx",
+      "src/components/store/price-tag.tsx",
+      "src/app/admin/workspace.css"
     ],
     "scope": "Los tokens del frontmatter y los componentes de este archivo corresponden a la tienda pública. El panel administrativo tiene una dirección Operate propia, documentada en DESIGN.md y .impeccable/surfaces/src-app-admin-panel-layout-tsx.md: navegación carbón, superficies claras, fotografías de producto y precios diferenciados por función."
   },
@@ -132,15 +320,15 @@
       "refersTo": "search-input",
       "description": "Búsqueda siempre visible, incluida la cabecera móvil.",
       "html": "<label class=\"ds-search\"><input aria-label=\"Buscar productos\" placeholder=\"¿Qué estás buscando?\"></label>",
-      "css": ".ds-search{display:flex;height:46px;padding:0 16px;background:#f2f3f3;border:1px solid transparent;align-items:center}.ds-search:focus-within{border-color:var(--primary,#d30000)}.ds-search input{font:14px var(--font-figtree,Figtree),sans-serif;color:#171b1f;background:transparent;width:100%;border:0;outline:none}.ds-search input::placeholder{color:#5a6268}"
+      "css": ".ds-search{display:flex;height:44px;padding:0 14px;background:#f2f3f3;border:1px solid #dce0e1;border-radius:2px;align-items:center}.ds-search:focus-within{outline:2px solid #d30000;outline-offset:2px}.ds-search input{font:13px var(--font-figtree,Figtree),sans-serif;color:#171b1f;background:transparent;width:100%;border:0;outline:none}.ds-search input::placeholder{color:#5a6268}"
     },
     {
       "name": "Navegación",
       "kind": "nav",
       "refersTo": "navigation",
-      "description": "Navegación comercial con catálogo destacado.",
-      "html": "<nav class=\"ds-nav\" aria-label=\"Tienda\"><a href=\"#catalogo\">Productos</a><a href=\"#instalacion\">Instalación</a></nav>",
-      "css": ".ds-nav{display:flex;gap:34px;height:47px;background:#fff;border-block:1px solid #dce0e1;font:600 13px var(--font-figtree,Figtree),sans-serif}.ds-nav a{position:relative;display:flex;align-items:center;text-decoration:none;color:#171b1f}.ds-nav a:first-child{color:var(--primary,#d30000)}.ds-nav a:after{content:\"\";position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--primary,#d30000);transform:scaleX(0);transform-origin:left;transition:transform .2s}.ds-nav a:hover:after{transform:scaleX(1)}.ds-nav a:focus-visible{outline:2px solid var(--primary,#d30000);outline-offset:4px;}"
+      "description": "Navegación de tienda; selección explícita mediante aria-current.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Tienda\"><a href=\"#catalogo\" aria-current=\"page\">Productos</a><a href=\"#instalaciones\">Instalaciones</a><a href=\"#nosotros\">Nosotros</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:24px;background:#fff;font:600 13px var(--font-figtree,Figtree),sans-serif}.ds-nav a{display:flex;align-items:center;min-height:44px;text-decoration:none;color:#171b1f;transition:color .2s}.ds-nav a[aria-current]{color:#d30000;box-shadow:inset 0 -2px #d30000}.ds-nav a:hover{color:#ac0000}.ds-nav a:focus-visible{outline:2px solid #d30000;outline-offset:4px}"
     },
     {
       "name": "Filtro activo",
@@ -154,49 +342,44 @@
       "name": "Tarjeta de producto",
       "kind": "card",
       "refersTo": "product-card",
-      "description": "Producto sin imagen específica: consulta honesta, sin inventar precio.",
-      "html": "<a class=\"ds-card\" href=\"#producto\"><div class=\"ds-card-media\">Consultá por este producto<span class=\"ds-card-arrow\" aria-hidden=\"true\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M7 17 17 7M7 7h10v10\"/></svg></span></div><div class=\"ds-card-copy\"><span class=\"ds-category\">Tejidos</span><h3>Tejido romboidal</h3><p>Elegí tu medida y consultá disponibilidad.</p><div class=\"ds-price\">Precio a confirmar</div></div></a>",
-      "css": ".ds-card{display:block;max-width:320px;color:#171b1f;text-decoration:none;font-family:var(--font-figtree,Figtree),sans-serif}.ds-card-media{position:relative;display:flex;align-items:center;justify-content:center;aspect-ratio:1;background:#eef0f0;color:#5a6268;font-size:12px;padding:24px}.ds-card-copy{padding-top:18px}.ds-category{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#5a6268}.ds-card h3{font-family:var(--font-archivo,Archivo),sans-serif;font-size:18px;font-weight:700;line-height:1.3;letter-spacing:-.02em;margin:7px 0 0}.ds-card p{font-size:12px;color:#5a6268;line-height:1.65;margin-top:8px}.ds-price{border-top:1px solid #dce0e1;margin-top:16px;padding-top:12px;font-size:14px;font-weight:600}.ds-card-arrow{position:absolute;right:12px;top:12px;width:32px;height:32px;display:grid;place-items:center;background:#fff;transition:background .2s,color .2s}.ds-card:hover .ds-card-arrow{background:var(--primary,#d30000);color:#fff}.ds-card:focus-visible{outline:2px solid var(--primary,#d30000);outline-offset:4px;}"
+      "description": "Tarjeta de catálogo: importe, unidad y disponibilidad separados; acción de ancho completo. Precio oculto representado sin importe.",
+      "html": "<a class=\"ds-card\" href=\"#producto\"><div class=\"ds-card-media\">Foto próximamente</div><div class=\"ds-card-copy\"><span class=\"ds-category\">Tejidos</span><h3>Tejido romboidal</h3><p>Elegí tu medida y consultá disponibilidad.</p><div class=\"ds-card-purchase\"><div class=\"ds-card-price\"><span class=\"ds-inquiry\">Consultar precio</span></div><span class=\"ds-stock\">Consultar disponibilidad</span><span class=\"ds-cta\">Ver opciones <svg width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m9 18 6-6-6-6\"/></svg></span></div></div></a>",
+      "css": ".ds-card{min-width: 0;\n  display: flex;\n  flex-direction: column;}\n.ds-card-copy{display: flex;\n  flex: 1;\n  flex-direction: column;\n  padding-top: 18px;}\n.ds-card h3{font-size: 18px;\n  margin-top: 7px;\n  line-height: 1.3;\n  letter-spacing: -0.02em;}\n.ds-category{font-size: 10px;\n  color: #5a6268;\n  text-transform: uppercase;\n  letter-spacing: 0.06em;}\n.ds-card p{font-size: 12px;\n  color: #5a6268;\n  margin-top: 8px;\n  display: -webkit-box;\n  -webkit-line-clamp: 2;\n  -webkit-box-orient: vertical;\n  overflow: hidden;}\n.ds-card-purchase{margin-top: auto;\n  padding-top: 20px;}\n.ds-card-price{display: flex;\n  flex-direction: column;\n  align-items: flex-start;\n  gap: 4px;\n  min-height: 74px;}\n.ds-price{display: flex;\n  flex-direction: column;\n  gap: 4px;\n  font-family: var(--font-figtree), sans-serif;\n  color: #171b1f;}\n.ds-prefix{font-size: 12px;\n  line-height: 16px;\n  font-weight: 400;\n  color: #5a6268;}\n.ds-amount{font-size: clamp(24px, 2vw, 28px);\n  line-height: 1.15;\n  font-weight: 600;\n  letter-spacing: -0.02em;\n  font-variant-numeric: tabular-nums;\n  white-space: nowrap;}\n.ds-inquiry{padding-top: 20px;}\n.ds-unit{font-size: 12px;\n  line-height: 18px;\n  color: #5a6268;}\n.ds-stock{display: flex;\n  align-items: center;\n  gap: 6px;\n  font-size: 12px;\n  line-height: 18px;\n  margin-top: 10px;\n  color: #5a6268;}\n.ds-cta{display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 8px;\n  min-height: 44px;\n  margin-top: 16px;\n  padding: 10px 14px;\n  border: 1px solid #cbd0d3;\n  border-radius: 2px;\n  color: #171b1f;\n  font-size: 13px;\n  font-weight: 600;\n  transition: background 0.2s, border-color 0.2s, color 0.2s;}\n.ds-card{max-width:320px;text-decoration:none;color:#171b1f;font-family:var(--font-figtree,Figtree),sans-serif}.ds-card-media{aspect-ratio:1;display:grid;place-items:center;background:#fff;border:1px solid #eceeef;border-radius:6px;color:#5a6268;font-size:12px}.ds-card:hover .ds-cta,.ds-card:focus-visible .ds-cta{background:#d30000;border-color:#d30000;color:#fff}.ds-card:focus-visible{outline:2px solid #d30000;outline-offset:4px}.ds-card h3{font-family:var(--font-archivo,Archivo),sans-serif;font-weight:700}.ds-card p{line-height:1.65}"
     }
   ],
   "narrative": {
     "northStar": "La casa del alambrado, a escala de obra.",
-    "overview": "Estructura comercial de YETI, carácter industrial de Milwaukee y movimiento inspirado en React Bits. La identidad propia la aportan el logo real, el rojo, el carbón y las fotografías del negocio y de sus materiales.\n\nLa tienda combina campañas amplias con información precisa: reconocer el negocio, encontrar material, elegir medida y armar un pedido trazable. Geometría firme y superficies claras sostienen la lectura móvil.",
+    "overview": "La tienda pública combina campañas amplias con información de producto precisa. El recorrido lleva de reconocer el negocio a encontrar material, elegir medida y armar un pedido trazable. La geometría firme, las superficies claras y los títulos Archivo sostienen una experiencia concreta, legible desde el celular.\n\nEste documento registra la implementación de `src/app/(store)/storefront.css` y `src/components/store`, con fuentes de `src/app/layout.tsx` y valores compartidos de `src/app/globals.css`. Reemplaza la antigua dirección verde para el storefront por autorización explícita del usuario. El panel administrativo usa una dirección específica de operación, descrita abajo. Los valores del frontmatter corresponden a la tienda pública.",
     "keyCharacteristics": [
-      "Fotografía real rectangular",
-      "Rojo de marca, carbón y blanco",
-      "Archivo y Figtree",
-      "Catálogo y pedido claros",
-      "Movimiento breve y accesible"
+      "Fotografía real rectangular y campañas de ancho completo.",
+      "Rojo de marca para acciones; carbón para estructura y contraste.",
+      "Archivo para jerarquía, Figtree para lectura y controles.",
+      "Catálogo, filtros y pedido con información visible y geometría sobria.",
+      "Movimiento breve, con pausa donde corresponde y respeto por movimiento reducido."
     ],
     "rules": [
       {
-        "name": "Identidad propia",
-        "body": "Romboidal es fabricante comercializado; el rojo pertenece al logo real de Alambres Tandil.",
+        "name": "Regla de identidad",
+        "body": "Mantener el rojo del logo real; Romboidal es un fabricante comercializado, no la identidad de la tienda.",
         "section": "colors"
       },
       {
-        "name": "Tracking legible",
-        "body": "No comprimir títulos por debajo de -0.04em.",
+        "name": "Regla de tracking",
+        "body": "Los títulos usan el espaciado observado por contexto: normalmente -0.035em, servicios -0.04em, producto -0.02em. No comprimir por debajo de -0.04em.",
         "section": "typography"
-      },
-      {
-        "name": "Tarjetas planas",
-        "body": "Separadores y superficies construyen jerarquía; sin sombras decorativas.",
-        "section": "elevation"
       }
     ],
     "dos": [
-      "Do mantener foco visible y movimiento reducido.",
-      "Do conservar procedencia de imágenes; el panel no muestra el rótulo «imagen de referencia» en las tarjetas.",
-      "Do continuar el pedido guardado mediante botón explícito de WhatsApp.",
-      "Do mantener el administrador como mesa de trabajo compacta con navegación de cinco destinos."
+      "**Do** conservar el logo real y fotografías de producto, instalaciones y negocio con procedencia registrada.",
+      "**Do** mantener controles claros, foco rojo y movimiento reducido.",
+      "**Do** escribir en voseo: armá, consultá, pedí; el pedido se guarda y continúa por un botón explícito de WhatsApp en la página de éxito.",
+      "**Do** conservar el administrador como mesa de trabajo compacta, sin trasladarle campañas ni animaciones de portada."
     ],
     "donts": [
-      "Don’t recuperar la antigua dirección verde de la tienda.",
-      "Don’t inventar precios, certificaciones ni testimonios.",
-      "Don’t simular disponibilidad del video pendiente.",
-      "Don’t reemplazar el catálogo por WhatsApp."
+      "**Don't** recuperar la antigua identidad verde en la tienda ni confundir fabricante con marca propia.",
+      "**Don't** inventar precios, testimonios, certificaciones o imágenes específicas de una variante.",
+      "**Don't** sustituir el catálogo por un botón flotante de WhatsApp ni presentar cobro online.",
+      "**Don't** añadir sombras decorativas, cápsulas generalizadas o tracking más cerrado que -0.04em."
     ]
   }
 }

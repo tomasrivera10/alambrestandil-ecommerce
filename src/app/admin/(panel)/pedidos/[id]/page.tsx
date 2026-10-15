@@ -4,7 +4,21 @@ import { prisma } from "@/server/db";
 import { formatMoney, formatOrderNumber, unitLabel } from "@/lib/format";
 import { nextStatuses } from "@/features/orders/transitions";
 import { updateOrderStatus } from "@/server/crm/actions";
-import { Button } from "@/components/ui/button";
+import { StatusLabel, statusText } from "@/components/admin/status-label";
+import { ActionForm } from "@/components/admin/action-form";
+import Link from "next/link";
+
+const actions: Record<string, string> = {
+  NUEVO: "Marcar como nuevo",
+  ENVIADO_A_WHATSAPP: "Marcar enviado a WhatsApp",
+  CONTACTADO: "Marcar contactado",
+  COTIZADO: "Marcar presupuestado",
+  CONFIRMADO: "Confirmar pedido",
+  PREPARANDO: "Comenzar preparación",
+  LISTO: "Marcar listo para entregar",
+  ENTREGADO: "Registrar entrega",
+  CANCELADO: "Cancelar pedido",
+};
 
 export default async function OrderDetailPage({ params }: { params: Promise<{ id: string }> }) {
   await requireArea("orders");
@@ -21,10 +35,13 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
   const next = nextStatuses(order.status);
 
   return (
-    <div className="max-w-3xl">
+    <main className="admin-page workspace-page max-w-3xl">
+      <Link href="/admin/pedidos" className="admin-back">
+        Volver a pedidos
+      </Link>
       <h1 className="font-heading text-3xl">{formatOrderNumber(order.number)}</h1>
       <p className="mt-2 text-sm">
-        {order.customer.name} · {order.customer.phone} · {order.status}
+        {order.customer.name} · {order.customer.phone} · <StatusLabel value={order.status} />
       </p>
       <ul className="mt-6 divide-y divide-border border-y border-border text-sm">
         {order.items.map((item) => (
@@ -48,17 +65,17 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
       {next.length > 0 ? (
         <div className="mt-6 flex flex-wrap gap-2">
           {next.map((status) => (
-            <form
+            <ActionForm
               key={status}
               action={async () => {
                 "use server";
                 await updateOrderStatus(order.id, status);
               }}
             >
-              <Button type="submit" variant="outline">
-                {status}
-              </Button>
-            </form>
+              <button type="submit" className="admin-button-secondary">
+                {actions[status] ?? statusText(status)}
+              </button>
+            </ActionForm>
           ))}
         </div>
       ) : null}
@@ -66,11 +83,12 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
       <ol className="mt-3 space-y-2 text-sm">
         {order.history.map((entry) => (
           <li key={entry.id}>
-            {entry.fromStatus ?? "inicio"} → {entry.toStatus}
+            {entry.fromStatus ? statusText(entry.fromStatus) : "Inicio"} →{" "}
+            {statusText(entry.toStatus)}
             {entry.note ? ` · ${entry.note}` : ""}
           </li>
         ))}
       </ol>
-    </div>
+    </main>
   );
 }

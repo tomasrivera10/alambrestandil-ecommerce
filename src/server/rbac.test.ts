@@ -66,3 +66,12 @@ it.each(["saveMargin", "addMarketReference", "verifyMarketReference", "publishVa
     await expect(actions[name as "saveMargin"](new FormData())).rejects.toThrow("No tenés permiso");
   },
 );
+
+it.each(["recordStockForm", "recordCountForm"] as const)(
+  "rejects direct inventory mutation %s for VENDEDOR before parsing input",
+  async (name) => {
+    getSession.mockResolvedValue({ user: { id: "sales", role: "VENDEDOR" } });
+    const actions = await import("./inventory/actions");
+    await expect(actions[name](new FormData())).rejects.toThrow("No tenés permiso");
+  },
+);

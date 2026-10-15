@@ -1,0 +1,190 @@
+{
+  "date": "2026-10-15",
+  "tool": "image_gen built-in",
+  "status": "Completado: activos con imágenes publicadas y aplicadas. Revisión visual final a cargo del usuario, por su indicación.",
+  "style": "Fotografía de producto aislado sobre fondo blanco opaco, iluminación neutral de estudio, sombra suave, producto completo, textura realista, sin textos ni marcas. Guía del usuario en referencias/guia-estilo.png.",
+  "images": [
+    {
+      "file": "tejido-romboidal.png",
+      "generationId": "5c3fcfc8-cc60-4402-802f-8da60b0093f1",
+      "original": "/Users/tomaspc/.codex/generated_images/01a13d8a-6e92-7230-a592-191e9b1b4ffe/exec-5c3fcfc8-cc60-4402-802f-8da60b0093f1.png"
+    },
+    {
+      "file": "alambre-galvanizado.png",
+      "generationId": "61482569-d7f9-4e0c-a974-1b9351b4a3b2",
+      "original": "/Users/tomaspc/.codex/generated_images/01a13d8a-6e92-7230-a592-191e9b1b4ffe/exec-61482569-d7f9-4e0c-a974-1b9351b4a3b2.png"
+    },
+    {
+      "file": "alambre-de-fardo.png",
+      "generationId": "ea966a68-c3d2-4522-a2b5-35e79a6d985c",
+      "original": "/Users/tomaspc/.codex/generated_images/01a13d8a-6e92-7230-a592-191e9b1b4ffe/exec-ea966a68-c3d2-4522-a2b5-35e79a6d985c.png"
+    },
+    {
+      "file": "alambre-alta-resistencia.png",
+      "generationId": "af69ca94-8de1-4478-94b8-b46fa8d1922d",
+      "original": "/Users/tomaspc/.codex/generated_images/01a13d8a-6e92-7230-a592-191e9b1b4ffe/exec-af69ca94-8de1-4478-94b8-b46fa8d1922d.png"
+    },
+    {
+      "file": "clavo-cabeza-chata.png",
+      "generationId": "f254b0cc-f508-4c9a-a675-996eb3182a43",
+      "original": "/Users/tomaspc/.codex/generated_images/01a13d8a-6e92-7230-a592-191e9b1b4ffe/exec-f254b0cc-f508-4c9a-a675-996eb3182a43.png"
+    },
+    {
+      "file": "clavo-cabeza-perdida.png",
+      "generationId": "45d01abd-c862-4dc5-a857-5ce3f4400c0d",
+      "original": "/Users/tomaspc/.codex/generated_images/01a13d8a-6e92-7230-a592-191e9b1b4ffe/exec-45d01abd-c862-4dc5-a857-5ce3f4400c0d.png"
+    },
+    {
+      "file": "clavo-espiralado.png",
+      "generationId": "ddb55378-411e-407e-9243-cbeb7884ea53",
+      "original": "/Users/tomaspc/.codex/generated_images/01a13d8a-6e92-7230-a592-191e9b1b4ffe/exec-ddb55378-411e-407e-9243-cbeb7884ea53.png"
+    },
+    {
+      "file": "clavo-cajonero.png",
+      "generationId": "d3c54a39-6b98-4828-aa43-c73a0017b689",
+      "original": "/Users/tomaspc/.codex/generated_images/01a13d8a-6e92-7230-a592-191e9b1b4ffe/exec-d3c54a39-6b98-4828-aa43-c73a0017b689.png"
+    },
+    {
+      "file": "clavo-punta-paris-acerbrag.png",
+      "generationId": "13f0aff0-062d-4fa0-a907-5a2910f8476c",
+      "original": "/Users/tomaspc/.codex/generated_images/01a13d8a-6e92-7230-a592-191e9b1b4ffe/exec-13f0aff0-062d-4fa0-a907-5a2910f8476c.png"
+    },
+    {
+      "file": "clavo-punta-paris-acindar.png",
+      "generationId": "09fca3b3-c66b-456b-9a90-8fe898288c6e",
+      "original": "/Users/tomaspc/.codex/generated_images/01a13d8a-6e92-7230-a592-191e9b1b4ffe/exec-09fca3b3-c66b-456b-9a90-8fe898288c6e.png"
+    },
+    {
+      "file": "gancho-j.png",
+      "generationId": "c69e470b-75e9-4ef6-bd38-45a1dd33bd5e",
+      "original": "/Users/tomaspc/.codex/generated_images/01a13d8a-6e92-7230-a592-191e9b1b4ffe/exec-c69e470b-75e9-4ef6-bd38-45a1dd33bd5e.png"
+    },
+    {
+      "file": "torniquete-zincado.png",
+      "generationId": "286e6d1d-57a8-4388-b6eb-0e39e555fd17",
+      "original": "/Users/tomaspc/.codex/generated_images/01a13d8a-6e92-7230-a592-191e9b1b4ffe/exec-286e6d1d-57a8-4388-b6eb-0e39e555fd17.png"
+    },
+    {
+      "file": "torniquete-doble.png",
+      "generationId": "b696df46-1aeb-41db-872b-479880f7a8ec",
+      "original": "/Users/tomaspc/.codex/generated_images/01a13d8a-6e92-7230-a592-191e9b1b4ffe/exec-b696df46-1aeb-41db-872b-479880f7a8ec.png"
+    }
+  ],
+  "sources": [
+    "https://www.romboidal.com.ar/",
+    "https://www.gerdau.com.ar/node/331",
+    "https://acerbrag.com/imgs/brochure_productos.pdf",
+    "https://www.gramtor.com/producto.html?productId=32",
+    "https://www.mla.com.ar/torniquete-doble-y-doble-reforzado/",
+    "JULIO CATALOGO MAYORISTA MT 2026.pdf (proveedor Metales Tratados, páginas 7, 9, 11, 16)",
+    "CATALOGO QUEBRACHO MT JULIO 2026.pdf (proveedor Metales Tratados)"
+  ],
+  "prompts": "Los prompts completos están en las llamadas image_gen de esta conversación; este archivo conserva el criterio visual y los identificadores de cada salida.",
+  "validation": {
+    "activeFamilies": 31,
+    "activeVariants": 86,
+    "assignedReferenceImages": 34,
+    "webAssets": 29,
+    "missingImages": 0,
+    "nativeResolutionPreserved": true,
+    "manualBrowserReview": false,
+    "httpChecks": {
+      "publicProductPages": 4,
+      "adminProductPages": 4
+    }
+  },
+  "additionalGenerations": [
+    {
+      "tool": "image_gen built-in",
+      "date": "2026-10-15",
+      "prompt": "Use case: product-mockup. Create a premium photorealistic hardware ecommerce catalog photograph. Image 1 is ONLY the visual style reference: pure opaque white #ffffff seamless background, realistic neutral silver-gray metal (or the specified real material), soft diffuse studio lighting and subtle gray contact shadow. No labels, logos, watermark, text, packaging or environment. Square canvas at highest available native resolution. Show the COMPLETE subject centered, about 70–75% frame occupancy, ample white safe margins on every side. Fine realistic material detail, coherent mechanical geometry, sharp edges, no clipped parts, no colored contamination. One compact dense coil of smooth single galvanized electric fencing wire, Argentine alambre boyero 1.80 mm x 1000 m product family. Round wire in neat concentric winding, four small wire ties, open center, lying at three-quarter overhead angle. Zinc metallic silver-gray, thin consistent single strand, no barbs, rope braiding, plastic spool or cable insulation. Represent the wire form without asserting a specific brand.",
+      "original": "/Users/tomaspc/.codex/generated_images/01a13d8a-6e92-7230-a592-191e9b1b4ffe/exec-c65b5908-bd93-4082-84da-309936404956.png",
+      "referenceImages": [],
+      "file": "alambre-boyero.png"
+    },
+    {
+      "tool": "image_gen built-in",
+      "date": "2026-10-15",
+      "prompt": "Use case: product-mockup. Create a premium photorealistic hardware ecommerce catalog photograph. Image 1 is ONLY the visual style reference: pure opaque white #ffffff seamless background, realistic neutral silver-gray metal (or the specified real material), soft diffuse studio lighting and subtle gray contact shadow. No labels, logos, watermark, text, packaging or environment. Square canvas at highest available native resolution. Show the COMPLETE subject centered, about 70–75% frame occupancy, ample white safe margins on every side. Fine realistic material detail, coherent mechanical geometry, sharp edges, no clipped parts, no colored contamination. A tidy group of FOUR Argentine dented-shank LEAD HEAD roofing nails, clavo cabeza de plomo dentado, representative 3 inch. Image 2 defines the broad rounded flattened mushroom lead sealing head that covers the steel head, much wider than the shaft. Straight steel shank has fine annular serrations / retaining teeth on most of its length and sharp diamond point, not screw threads. Natural dull gray lead head and slightly brighter steel shank. One nail shows its round lead sealing cap, others show complete profile. No plastic or rubber washers, no screws, no ordinary small Paris heads, no loose unrelated parts. Image 1 is the user's style guide; any additional image is a morphology reference.",
+      "original": "/Users/tomaspc/.codex/generated_images/01a13d8a-6e92-7230-a592-191e9b1b4ffe/exec-5281591c-7a70-4393-8ee2-151b9760710a.png",
+      "referenceImages": [
+        "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/public/images/catalogo-estudio/referencias/clavo-cabeza-plomo.jpg"
+      ],
+      "file": "clavo-cabeza-plomo.png"
+    },
+    {
+      "tool": "image_gen built-in",
+      "date": "2026-10-15",
+      "prompt": "Use case: product-mockup. Create a premium photorealistic hardware ecommerce catalog photograph. Image 1 is ONLY the visual style reference: pure opaque white #ffffff seamless background, realistic neutral silver-gray metal (or the specified real material), soft diffuse studio lighting and subtle gray contact shadow. No labels, logos, watermark, text, packaging or environment. Square canvas at highest available native resolution. Show the COMPLETE subject centered, about 70–75% frame occupancy, ample white safe margins on every side. Fine realistic material detail, coherent mechanical geometry, sharp edges, no clipped parts, no colored contamination. One galvanized CROSS-CLIPPED concertina razor-wire coil, representative 450 mm diameter, partially expanded as a short horizontal cylinder with about 6 loops. Adjacent loops are connected with small steel clips at alternating points to form the characteristic diamond/accordion barrier, unlike an unconnected simple helix. Razor tape with regularly spaced stamped sharp double blades, NOT ordinary four-point barbed wire. Three-quarter perspective, whole coil including both end loops, open white center. Use Romboidal crossed concertina morphology in image 2, improve visual clarity without a fence or installation. Image 1 is the user's style guide; any additional image is a morphology reference.",
+      "original": "/Users/tomaspc/.codex/generated_images/01a13d8a-6e92-7230-a592-191e9b1b4ffe/exec-f92fda3b-8d9f-4daf-b9b5-429995e6d2ec.png",
+      "referenceImages": [
+        "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/public/images/romboidal/concertinas.webp"
+      ],
+      "file": "concertina-cruzada.png"
+    },
+    {
+      "tool": "image_gen built-in",
+      "date": "2026-10-15",
+      "prompt": "Use case: product-mockup. Create a premium photorealistic hardware ecommerce catalog photograph. Image 1 is ONLY the visual style reference: pure opaque white #ffffff seamless background, realistic neutral silver-gray metal (or the specified real material), soft diffuse studio lighting and subtle gray contact shadow. No labels, logos, watermark, text, packaging or environment. Square canvas at highest available native resolution. Show the COMPLETE subject centered, about 70–75% frame occupancy, ample white safe margins on every side. Fine realistic material detail, coherent mechanical geometry, sharp edges, no clipped parts, no colored contamination. One galvanized razor-wire SIMPLE helical concertina coil, representative diameter 300 mm, photographed partially expanded as a short horizontal cylinder with about 6 separated circular loops. Single continuous helix with regular stamped double razor blade tape; loops are NOT clipped to each other, no diamond concertina cross-connections. No ordinary four-point barbs. Keep complete coil and both end loops inside frame; three-quarter perspective shows the open white center and repeated razor shapes. Reference product: Argentine simple concertina 300 mm x 10 m; do not depict a fence or installation. Image 1 is the user's style guide; any additional image is a morphology reference.",
+      "original": "/Users/tomaspc/.codex/generated_images/01a13d8a-6e92-7230-a592-191e9b1b4ffe/exec-80b35683-bcb2-4882-b03f-34d8eca0de24.png",
+      "referenceImages": [
+        "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/public/images/romboidal/concertinas.webp"
+      ],
+      "file": "concertina-simple.png"
+    },
+    {
+      "tool": "image_gen built-in",
+      "date": "2026-10-15",
+      "prompt": "Use case: product-mockup. Create a premium photorealistic hardware ecommerce catalog photograph. Image 1 is ONLY the visual style reference: pure opaque white #ffffff seamless background, realistic neutral silver-gray metal (or the specified real material), soft diffuse studio lighting and subtle gray contact shadow. No labels, logos, watermark, text, packaging or environment. Square canvas at highest available native resolution. Show the COMPLETE subject centered, about 70–75% frame occupancy, ample white safe margins on every side. Fine realistic material detail, coherent mechanical geometry, sharp edges, no clipped parts, no colored contamination. ONE galvanized bent FLAT steel fencing clip, Argentine palomita curva/J. Use the RIGHTMOST curved clip in image 2 as the exact shape authority: a broad flat steel strip with a round bolt hole in its straight upper attachment tab, a pronounced open J return hook at the opposite end, with the intervening offset bend. NOT a round threaded J-bolt, not a wing nut, not a square U clamp. Three-quarter angle showing strip width, thickness and the open hook. Keep this exact single-piece manufactured shape. Input image 1: style guide only. Input image 2: supplier product geometry.",
+      "original": "/Users/tomaspc/.codex/generated_images/01a13d8a-6e92-7230-a592-191e9b1b4ffe/exec-80584d8b-4305-4dad-aca4-67cdb99ccb50.png",
+      "referenceImage": "mt-palomitas.png",
+      "source": "JULIO CATALOGO MAYORISTA MT 2026.pdf, página 11",
+      "file": "palomita-j.png"
+    },
+    {
+      "tool": "image_gen built-in",
+      "date": "2026-10-15",
+      "prompt": "Use case: product-mockup. Create a premium photorealistic hardware ecommerce catalog photograph. Image 1 is ONLY the visual style reference: pure opaque white #ffffff seamless background, realistic neutral silver-gray metal (or the specified real material), soft diffuse studio lighting and subtle gray contact shadow. No labels, logos, watermark, text, packaging or environment. Square canvas at highest available native resolution. Show the COMPLETE subject centered, about 70–75% frame occupancy, ample white safe margins on every side. Fine realistic material detail, coherent mechanical geometry, sharp edges, no clipped parts, no colored contamination. ONE galvanized bent FLAT steel fencing clip, Argentine palomita recta/Z. Use the LEFTMOST offset clip in image 2 as shape authority: one solid broad flat steel strip with round mounting hole in the straight end tab, offset angular middle bend, and short open return lip at the opposite end, angular Z-like side profile. Not a round hook, wing nut, hinge, U-bolt or bracket with extra holes. Three-quarter angle revealing the two bends and strip thickness. This is a single small fencing tension accessory. Input image 1: style guide only. Input image 2: supplier product geometry.",
+      "original": "/Users/tomaspc/.codex/generated_images/01a13d8a-6e92-7230-a592-191e9b1b4ffe/exec-f40e6f41-2b0e-46ba-86dd-7dac374f03e6.png",
+      "referenceImage": "mt-palomitas.png",
+      "source": "JULIO CATALOGO MAYORISTA MT 2026.pdf, página 11",
+      "file": "palomita-z.png"
+    },
+    {
+      "tool": "image_gen built-in",
+      "date": "2026-10-15",
+      "prompt": "Use case: product-mockup. Create a premium photorealistic hardware ecommerce catalog photograph. Image 1 is ONLY the visual style reference: pure opaque white #ffffff seamless background, realistic neutral silver-gray metal (or the specified real material), soft diffuse studio lighting and subtle gray contact shadow. No labels, logos, watermark, text, packaging or environment. Square canvas at highest available native resolution. Show the COMPLETE subject centered, about 70–75% frame occupancy, ample white safe margins on every side. Fine realistic material detail, coherent mechanical geometry, sharp edges, no clipped parts, no colored contamination. ONE complete one-meter long wall-top security spike strip (Argentine pinche para medianera eco cinco puntas). Image 2 is the supplier's actual product photo: preserve its long thin flat base rail, repeating welded five-point flowers of slender sharp flat steel spikes with central upward point and four outward splayed points. Natural dark bare steel, unpainted industrial gray, no silver stainless bird-control needles, no plastic. Show whole strip diagonally receding into distance, generous white margin, sharp identifiable foreground flower and coherent repeated modules. No wall or installation environment. Input image 1: style guide only. Input image 2: supplier product geometry.",
+      "original": "/Users/tomaspc/.codex/generated_images/01a13d8a-6e92-7230-a592-191e9b1b4ffe/exec-29708b96-c1c6-41ea-8978-4eebdb618bbd.png",
+      "referenceImage": "mt-pinche.jpg",
+      "source": "JULIO CATALOGO MAYORISTA MT 2026.pdf, página 16",
+      "file": "pinche-medianera.png"
+    },
+    {
+      "tool": "image_gen built-in",
+      "date": "2026-10-15",
+      "prompt": "Use case: product-mockup. Create a premium photorealistic hardware ecommerce catalog photograph. Image 1 is ONLY the visual style reference: pure opaque white #ffffff seamless background, realistic neutral silver-gray metal (or the specified real material), soft diffuse studio lighting and subtle gray contact shadow. No labels, logos, watermark, text, packaging or environment. Square canvas at highest available native resolution. Show the COMPLETE subject centered, about 70–75% frame occupancy, ample white safe margins on every side. Fine realistic material detail, coherent mechanical geometry, sharp edges, no clipped parts, no colored contamination. Three straight long galvanized FLAT steel tension bars for chain-link fencing (Argentine planchuela zincada 3/4 x 3/16, representative length 1.5 m). Thin rectangular cross section, flat parallel faces, clean square-cut ends. They are solid flat strips, NOT angle iron, NOT square tubes, NOT rods, no drilled holes. Arrange three slightly separated parallel diagonal bars, entire length visible, one subtly rotated to reveal thin thickness. Natural spangled zinc silver finish. The bars correspond to MT catalog flat tension strips and Alambre Pallás reference shape.",
+      "original": "/Users/tomaspc/.codex/generated_images/01a13d8a-6e92-7230-a592-191e9b1b4ffe/exec-d0a9c63d-fbba-468b-8fc9-d6f5e642261a.png",
+      "referenceImages": [
+        "/Users/tomaspc/Documents/Programacion/tienda-alambrestandil/public/images/catalogo/planchuelas.jpg"
+      ],
+      "file": "planchuela-zincada.png"
+    },
+    {
+      "tool": "image_gen built-in",
+      "date": "2026-10-15",
+      "prompt": "Use case: product-mockup. Create a premium photorealistic hardware ecommerce catalog photograph. Image 1 is ONLY the visual style reference: pure opaque white #ffffff seamless background, realistic neutral silver-gray metal (or the specified real material), soft diffuse studio lighting and subtle gray contact shadow. No labels, logos, watermark, text, packaging or environment. Square canvas at highest available native resolution. Show the COMPLETE subject centered, about 70–75% frame occupancy, ample white safe margins on every side. Fine realistic material detail, coherent mechanical geometry, sharp edges, no clipped parts, no colored contamination. ONE Argentine Alambres Temperley code 270 steel concertina/barbed-wire support in Y shape. Authentic dimensions from seller: two flat steel arms each about 30 cm form a V, welded to a straight lower mounting stem about 20 cm, overall height about 50 cm. Flat strip fabrication with clear welded junction, arms gently notched to carry wire, straight stem has two mounting holes. This product is ungalvanized dark gray bare mild steel; no bright zinc coating, no concrete, no wire mounted on it. Freestanding isolated Y bracket in a slight three-quarter view, all three tips visible. No invented heavy base plate.",
+      "original": "/Users/tomaspc/.codex/generated_images/01a13d8a-6e92-7230-a592-191e9b1b4ffe/exec-830f7bd5-bdf1-43d3-98f6-b2c86e2d732c.png",
+      "referenceImages": [],
+      "file": "soporte-concertina-y.png"
+    },
+    {
+      "tool": "image_gen built-in",
+      "date": "2026-10-15",
+      "prompt": "Use case: product-mockup. Create a premium photorealistic hardware ecommerce catalog photograph. Image 1 is ONLY the visual style reference: pure opaque white #ffffff seamless background, realistic neutral silver-gray metal (or the specified real material), soft diffuse studio lighting and subtle gray contact shadow. No labels, logos, watermark, text, packaging or environment. Square canvas at highest available native resolution. Show the COMPLETE subject centered, about 70–75% frame occupancy, ample white safe margins on every side. Fine realistic material detail, coherent mechanical geometry, sharp edges, no clipped parts, no colored contamination. ONE galvanized CHAIN-LINK woven wire mesh roll partially unrolled forward/right, identical to the subject geometry in image 1. Important: the unrolled panel is made of interlocked zigzag steel helices forming RHOMBUS/DIAMOND openings angled 45 degrees to the straight panel edges. NO welded square grid, NO horizontal ladder rungs, no knots, no double wires at every crossing. Each zigzag helix interlocks through its neighboring helix as real chain-link mesh; consistent thin silver wire, clean regular diamond openings and bent/knuckled edges. Horizontal cylindrical roll diagonally recedes to upper right; open curled roll end visible at left; full unrolled sheet in view. Match the guide's realistic woven construction and generous white framing. Highest native detail. Image 1 is the user's style guide; any additional image is a morphology reference.",
+      "original": "/Users/tomaspc/.codex/generated_images/01a13d8a-6e92-7230-a592-191e9b1b4ffe/exec-8fb7a83a-16de-41e4-8d09-cf30b0c9bd5f.png",
+      "referenceImages": [],
+      "file": "tejido-romboidal-v2.png"
+    }
+  ],
+  "appliedManifest": "src/content/catalog-studio.json"
+}

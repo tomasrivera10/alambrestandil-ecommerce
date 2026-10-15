@@ -1,0 +1,329 @@
+{
+  "version": "catalog-studio-2026-10-15-v1",
+  "assets": {
+    "tejido-romboidal": {
+      "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/e15b47a2-62cf-421b-8b4c-ab196ba1f66a.webp",
+      "localUrl": "/images/catalogo-estudio/tejido-romboidal.webp",
+      "alt": "Rollo de tejido romboidal galvanizado parcialmente desplegado. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "sourceUrl": "https://www.romboidal.com.ar/",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 218392,
+      "sha256": "e4f496797c60ee0d9e0d2850e8d2f0c5e3b6c9438277e76f43c2c00512c157ca"
+    },
+    "alambre-boyero": {
+      "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/4497aa42-ee37-4c2d-a26c-be7ed3f90878.webp",
+      "localUrl": "/images/catalogo-estudio/alambre-boyero.webp",
+      "alt": "Rollo de alambre boyero galvanizado. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "sourceUrl": null,
+      "width": 1254,
+      "height": 1254,
+      "bytes": 296358,
+      "sha256": "946a5ce5c8ab5d358e3d4555c282208b4ea949ece6f208c14b48d079274c5f74"
+    },
+    "alambre-alta-resistencia": {
+      "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/7ab60ad1-bf49-4fb3-b893-ccad522743d2.webp",
+      "localUrl": "/images/catalogo-estudio/alambre-alta-resistencia.webp",
+      "alt": "Rollo de alambre liso galvanizado de alta resistencia. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "sourceUrl": "https://www.romboidal.com.ar/",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 228992,
+      "sha256": "0b9c5257df4aa4370d24a48e9a4e4e9382ce0925d9e9b48ceb0cc841564d92fa"
+    },
+    "alambre-de-fardo": {
+      "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/2a4dfc65-d38a-4f79-8777-0e4c3862d8f2.webp",
+      "localUrl": "/images/catalogo-estudio/alambre-de-fardo.webp",
+      "alt": "Rollo de alambre recocido para fardos. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "sourceUrl": null,
+      "width": 1254,
+      "height": 1254,
+      "bytes": 146200,
+      "sha256": "a339b6dc3456ba6edc8e63d207b024a69c7c9cd74c138a4ce6313a1a056795bb"
+    },
+    "alambre-galvanizado": {
+      "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/6471224d-4af9-4b6f-8556-195e272c3eaa.webp",
+      "localUrl": "/images/catalogo-estudio/alambre-galvanizado.webp",
+      "alt": "Rollo de alambre liso galvanizado. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "sourceUrl": "https://www.romboidal.com.ar/",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 181462,
+      "sha256": "e6e4ad3f3a7b9af1aa0b5e76449d3a6678f523ad15f0ad0e975240ebb49493d0"
+    },
+    "torniquete-zincado": {
+      "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/e168f84f-2050-4cf6-b16d-85bacd8fa22c.webp",
+      "localUrl": "/images/catalogo-estudio/torniquete-zincado.webp",
+      "alt": "Torniquete zincado para tensar alambre. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "sourceUrl": null,
+      "width": 1254,
+      "height": 1254,
+      "bytes": 152786,
+      "sha256": "729a96e09cac3708dd1d2f805f94c75d0c0022a3b2a2946f798a79ac9490c251"
+    },
+    "torniquete-doble": {
+      "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/d823a323-afbd-4a95-b10e-70b64aa1cf69.webp",
+      "localUrl": "/images/catalogo-estudio/torniquete-doble.webp",
+      "alt": "Torniquete doble zincado para alambrado. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "sourceUrl": "https://www.mla.com.ar/torniquete-doble-y-doble-reforzado/",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 96736,
+      "sha256": "d9167a933f4eac69867887c0f72f943fdccc9045f9af7c554c8114a9f1575c83"
+    },
+    "gancho-j": {
+      "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/dca6fd83-d20c-4562-8b49-662c161154b6.webp",
+      "localUrl": "/images/catalogo-estudio/gancho-j.webp",
+      "alt": "Gancho tensor J roscado con tuercas. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "sourceUrl": "https://www.gramtor.com/producto.html?productId=32",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 70552,
+      "sha256": "7e8781ac4616f7779bc8d8b7f6f9714cbf9c6b0548e45209ba7fa97a4ed17eba"
+    },
+    "planchuela-zincada": {
+      "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/7a73787d-317b-4012-8307-17836b9fab19.webp",
+      "localUrl": "/images/catalogo-estudio/planchuela-zincada.webp",
+      "alt": "Planchuelas rectas zincadas para tensar tejido. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "sourceUrl": null,
+      "width": 1254,
+      "height": 1254,
+      "bytes": 97646,
+      "sha256": "70dee0cb5e9c3b2afdb04615f14de68265a20e740f44a1f4ae37fc7d6fd7fe20"
+    },
+    "soporte-concertina-y": {
+      "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/2fab0a37-f592-4e60-ba99-f9368978a148.webp",
+      "localUrl": "/images/catalogo-estudio/soporte-concertina-y.webp",
+      "alt": "Soporte de acero para concertina en Y. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "sourceUrl": null,
+      "width": 1254,
+      "height": 1254,
+      "bytes": 58144,
+      "sha256": "ed97b22f00b7d1126ba3cbe955614ad5bb6a9072044aec825893ca1fb5b64e20"
+    },
+    "pinche-medianera": {
+      "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/995174c5-6e45-43c8-9357-967b066fbc1a.webp",
+      "localUrl": "/images/catalogo-estudio/pinche-medianera.webp",
+      "alt": "Tira de pinches de seguridad para medianera de cinco puntas. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "sourceUrl": null,
+      "width": 1254,
+      "height": 1254,
+      "bytes": 65324,
+      "sha256": "ebdf0791ce73eaa37b2f10248e1bee2684eeffb520344db54c67f34314e3f116"
+    },
+    "palomita-j": {
+      "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/12adb6ad-8000-4b54-8154-ac58ff4487f6.webp",
+      "localUrl": "/images/catalogo-estudio/palomita-j.webp",
+      "alt": "Palomita J curva de planchuela galvanizada. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "sourceUrl": null,
+      "width": 1254,
+      "height": 1254,
+      "bytes": 96490,
+      "sha256": "84c64929035506c2a838a65f101d2fb0ca1524846dd37886b5e9985dc8fcf94c"
+    },
+    "palomita-z": {
+      "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/23bf39cb-146c-4f19-9460-050e7d8f0580.webp",
+      "localUrl": "/images/catalogo-estudio/palomita-z.webp",
+      "alt": "Palomita Z de planchuela galvanizada. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "sourceUrl": null,
+      "width": 1254,
+      "height": 1254,
+      "bytes": 76472,
+      "sha256": "44a0ac7fcd28c42e4fbbc02974dbea701564b4f79118019035f4fa58f4095450"
+    },
+    "concertina-simple": {
+      "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/6bbcf300-037c-4c21-a75e-7052f4f91d03.webp",
+      "localUrl": "/images/catalogo-estudio/concertina-simple.webp",
+      "alt": "Concertina simple de 300 mm, SKU AT-XLS-033. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "sourceUrl": "https://www.romboidal.com.ar/",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 146492,
+      "sha256": "61a6034d43b1b46b714c63f430b3d6e5f6d613b55ee5d92f9b5ae7d31ff03174"
+    },
+    "concertina-cruzada": {
+      "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/c4f0da15-89fe-48be-9e4f-f74e62aa7189.webp",
+      "localUrl": "/images/catalogo-estudio/concertina-cruzada.webp",
+      "alt": "Concertina cruzada de 450 mm, SKU AT-XLS-034. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "sourceUrl": "https://www.romboidal.com.ar/",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 166652,
+      "sha256": "2ec35225c68786d3d5282bb1d7e90b1faa0a22681b9ca63bd1f7862fa0bfb957"
+    },
+    "clavo-cabeza-chata": {
+      "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/54239f9b-6298-4c24-988b-f3ce54255127.webp",
+      "localUrl": "/images/catalogo-estudio/clavo-cabeza-chata.webp",
+      "alt": "Clavos de acero de cabeza chata y vástago liso. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "sourceUrl": "https://www.gerdau.com.ar/node/331",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 87716,
+      "sha256": "70458b9eefb58ce20480fe411c03dccfa8f98a84ac0c532066b5b769852c9b25"
+    },
+    "clavo-cabeza-perdida": {
+      "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/451407bc-369e-4c0f-8eb3-398da68ac63e.webp",
+      "localUrl": "/images/catalogo-estudio/clavo-cabeza-perdida.webp",
+      "alt": "Clavos de acero de cabeza perdida. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "sourceUrl": "https://www.gerdau.com.ar/node/331",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 87750,
+      "sha256": "a23489e43f0c6fcf186e81a3666268c3bbfc73a4ba72333e826bad381045aa8e"
+    },
+    "clavo-espiralado": {
+      "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/e38ae43a-c6b2-494e-b08c-218129dceedf.webp",
+      "localUrl": "/images/catalogo-estudio/clavo-espiralado.webp",
+      "alt": "Clavos de acero de vástago espiralado. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "sourceUrl": "https://www.gerdau.com.ar/node/331",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 126254,
+      "sha256": "1f7069bbe284b121c38b5d85f16ef3de400332e13734fe698bc1662488455a4f"
+    },
+    "clavo-cajonero": {
+      "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/58b3cec1-30a8-4173-9e9b-b4cfaf2d556b.webp",
+      "localUrl": "/images/catalogo-estudio/clavo-cajonero.webp",
+      "alt": "Clavos punta cajonero de acero. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "sourceUrl": "https://www.gerdau.com.ar/node/331",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 88316,
+      "sha256": "597ec0e7c3b2186abe0b4a8fd6c8be20b2fe5892466bd4daf9d3a769c85a57e1"
+    },
+    "clavo-cabeza-plomo": {
+      "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/b3ff423f-9b0f-482a-93fa-732466ce1e99.webp",
+      "localUrl": "/images/catalogo-estudio/clavo-cabeza-plomo.webp",
+      "alt": "Clavos dentados para techo con cabeza de plomo. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "sourceUrl": "https://www.gerdau.com.ar/node/331",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 116534,
+      "sha256": "f8be5dbfeec321b80fe07cc0c9efcc80883a37e4f5cfbf4a04fe52c463967256"
+    },
+    "clavo-punta-paris-acerbrag": {
+      "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/a582db53-252f-45d7-92e2-5ba262dd2ae7.webp",
+      "localUrl": "/images/catalogo-estudio/clavo-punta-paris-acerbrag.webp",
+      "alt": "Clavos punta París de acero, familia Acerbrag. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "sourceUrl": "https://acerbrag.com/imgs/brochure_productos.pdf",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 112950,
+      "sha256": "012945453171f4090ba37acda35eb76d630fb32de3c46d4351c5d01ed30ab81f"
+    },
+    "clavo-punta-paris-acindar": {
+      "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/44a9b853-e3ed-4827-ab7d-17dbfa525912.webp",
+      "localUrl": "/images/catalogo-estudio/clavo-punta-paris-acindar.webp",
+      "alt": "Clavos punta París de acero, familia Acindar. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "sourceUrl": "https://www.acindar.com.ar/",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 91330,
+      "sha256": "c4fbfe53e8893612690de5b1e717e9bb14f56d633046f8e6c01da419b1124fc3"
+    },
+    "clavo-punta-paris": {
+      "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/343a6fc8-2f11-4980-bebf-03d529a9308a.webp",
+      "localUrl": "/images/catalogo-estudio/clavo-punta-paris.webp",
+      "alt": "Clavos punta París de acero. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "sourceUrl": null,
+      "width": 1254,
+      "height": 1254,
+      "bytes": 151910,
+      "sha256": "476876cb342f6866a2adb22cde0e329a2dc2ee768f793b897b469da09255677b"
+    },
+    "alambre-de-puas": {
+      "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/72c7bf3a-8a73-4546-9f90-3e46e9763c09.webp",
+      "localUrl": "/images/catalogo-estudio/alambre-de-puas.webp",
+      "alt": "Rollo de alambre galvanizado de púas. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "sourceUrl": "https://www.romboidal.com.ar/",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 321530,
+      "sha256": "4aca70e011d936903131cbb14b41a33eb7c43929b7bff836833a0b99f9b06a71"
+    },
+    "poste-recto": {
+      "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/addb4d9f-3404-424a-b20d-fdc1c02ee651.webp",
+      "localUrl": "/images/catalogo-estudio/poste-recto.webp",
+      "alt": "Poste de hormigón recto. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "sourceUrl": "https://www.romboidal.com.ar/",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 28216,
+      "sha256": "2f10684f43245631554099bff4d5bf1e8d41ba4a1e6f6ccd8c285202cadd925c"
+    },
+    "poste-olimpico": {
+      "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/938c63b4-a570-4f6f-9417-c8bf440f4992.webp",
+      "localUrl": "/images/catalogo-estudio/poste-olimpico.webp",
+      "alt": "Poste olímpico de hormigón con codo. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "sourceUrl": "https://www.romboidal.com.ar/",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 31808,
+      "sha256": "74251640e15bf7a7c9fcd19161b17fc04ae723a43113dc4c3b30de0968fdeae4"
+    },
+    "puntal": {
+      "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/af47ba1f-aa0b-44dd-9707-51334d1a28dc.webp",
+      "localUrl": "/images/catalogo-estudio/puntal.webp",
+      "alt": "Puntal de hormigón para cerco. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "sourceUrl": "https://www.romboidal.com.ar/",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 37278,
+      "sha256": "9b001fc9a43d5c6571ba749dc3fbca4dd0c72570710e0893b264b8c052044010"
+    },
+    "puerta-peatonal": {
+      "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/c70c010d-d0b4-4e90-a26b-5c23a3161a4c.webp",
+      "localUrl": "/images/catalogo-estudio/puerta-peatonal.webp",
+      "alt": "Puerta peatonal galvanizada con tejido romboidal. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "sourceUrl": null,
+      "width": 1024,
+      "height": 1536,
+      "bytes": 227154,
+      "sha256": "d051bef4df1744929b9c3eb19d063b206cb9d30f8d10fb9b4492bdd4c6671d9a"
+    },
+    "porton-dos-hojas": {
+      "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/c9e21a39-a104-48fe-b7c7-6d4c7f632a30.webp",
+      "localUrl": "/images/catalogo-estudio/porton-dos-hojas.webp",
+      "alt": "Portón galvanizado de dos hojas con tejido romboidal. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "sourceUrl": null,
+      "width": 1774,
+      "height": 887,
+      "bytes": 342800,
+      "sha256": "e463ce5a13c912b50dacfbc97c21f281f67450365369da0e52f3e432b9ec7fd7"
+    }
+  },
+  "products": {
+    "tejido-romboidal-galvanizado": ["tejido-romboidal"],
+    "alambre-boyero": ["alambre-boyero"],
+    "alambre-alta-resistencia": ["alambre-alta-resistencia"],
+    "alambre-de-fardo": ["alambre-de-fardo"],
+    "alambre-galvanizado": ["alambre-galvanizado"],
+    "alambre-de-puas": ["alambre-de-puas"],
+    "torniquete-zincado": ["torniquete-zincado"],
+    "torniquete-doble": ["torniquete-doble"],
+    "gancho-j": ["gancho-j"],
+    "planchuela-zincada": ["planchuela-zincada"],
+    "soporte-concertina-y": ["soporte-concertina-y"],
+    "pinche-medianera": ["pinche-medianera"],
+    "palomita-j": ["palomita-j"],
+    "palomita-z": ["palomita-z"],
+    "concertina-de-seguridad": ["concertina-simple", "concertina-cruzada"],
+    "clavo-cabeza-chata": ["clavo-cabeza-chata"],
+    "clavo-cabeza-chata-gerdau": ["clavo-cabeza-chata"],
+    "clavo-cabeza-chata-otras": ["clavo-cabeza-chata"],
+    "clavo-cabeza-perdida": ["clavo-cabeza-perdida"],
+    "clavo-espiralado": ["clavo-espiralado"],
+    "clavo-cajonero": ["clavo-cajonero"],
+    "clavo-cabeza-plomo": ["clavo-cabeza-plomo"],
+    "clavo-punta-paris": ["clavo-punta-paris"],
+    "clavo-punta-paris-grande": ["clavo-punta-paris"],
+    "clavo-punta-paris-acerbrag": ["clavo-punta-paris-acerbrag"],
+    "clavo-punta-paris-acindar": ["clavo-punta-paris-acindar"],
+    "poste-esquinero": ["poste-recto", "poste-olimpico"],
+    "poste-intermedio": ["poste-recto", "poste-olimpico"],
+    "poste-olimpico-con-codo": ["poste-olimpico"],
+    "puntal": ["puntal"],
+    "puerta-para-cerco": ["puerta-peatonal"],
+    "porton-para-cerco": ["porton-dos-hojas"]
+  }
+}

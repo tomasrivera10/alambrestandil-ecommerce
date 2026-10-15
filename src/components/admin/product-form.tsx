@@ -49,10 +49,12 @@ export function ProductForm({
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [priceVisibility, setPriceVisibility] = useState(product?.priceVisibility ?? "HIDDEN");
+  const [price, setPrice] = useState(product?.price?.toString().replace(".", ",") ?? "");
 
   return (
     <form
-      className="admin-form text-sm"
+      className="admin-form admin-product-form text-sm"
       onSubmit={async (event) => {
         event.preventDefault();
         setBusy(true);
@@ -93,9 +95,9 @@ export function ProductForm({
     >
       <section className="admin-form-section">
         <h2>Información del producto</h2>
-        <p>Lo que el cliente necesita para reconocerlo.</p>
+        <p>Identificá el producto tal como aparece en la tienda.</p>
         <div className="admin-form-grid">
-          <label className="grid gap-1">
+          <label className="grid gap-1 admin-span-all">
             Nombre
             <Input
               name="name"
@@ -114,7 +116,7 @@ export function ProductForm({
             <select
               name="categoryId"
               defaultValue={product?.categoryId}
-              className="h-10 border border-input bg-card px-2"
+              className="admin-product-select"
             >
               {categories.map((category) => (
                 <option key={category.id} value={category.id}>
@@ -123,7 +125,7 @@ export function ProductForm({
               ))}
             </select>
           </label>
-          <label className="grid gap-1 sm:col-span-2">
+          <label className="grid gap-1 admin-span-all">
             Descripción corta
             <Textarea
               name="shortDescription"
@@ -141,7 +143,7 @@ export function ProductForm({
             <select
               name="salesUnit"
               defaultValue={product?.salesUnit ?? "UNIDAD"}
-              className="h-10 border border-input bg-card px-2"
+              className="admin-product-select"
             >
               {["UNIDAD", "METRO", "ROLLO", "KG", "PAQUETE", "PANEL", "JUEGO"].map((unit) => (
                 <option key={unit} value={unit}>
@@ -154,34 +156,51 @@ export function ProductForm({
       </section>
       <section className="admin-form-section">
         <h2>Precio y publicación</h2>
-        <p>Elegí cómo mostrarlo en la tienda. Cada medida puede tener su propio precio.</p>
-        <div className="admin-form-grid">
+        <p>Definí qué verá el cliente. Las medidas pueden tener precios propios.</p>
+        <div className="admin-product-pricing">
           <label className="grid gap-1">
-            Precio
+            Cómo se muestra el precio
             <select
               name="priceVisibility"
-              defaultValue={product?.priceVisibility ?? "HIDDEN"}
-              className="h-10 border border-input bg-card px-2"
+              value={priceVisibility}
+              onChange={(event) => setPriceVisibility(event.target.value)}
+              className="admin-product-select"
             >
-              <option value="PUBLIC">Público</option>
-              <option value="HIDDEN">Consultar</option>
-              <option value="FROM">Desde</option>
+              <option value="PUBLIC">Mostrar precio</option>
+              <option value="FROM">Mostrar «Desde»</option>
+              <option value="HIDDEN">Pedir precio</option>
             </select>
           </label>
+          {priceVisibility === "HIDDEN" ? (
+            <>
+              <input type="hidden" name="price" value={price} />
+              <p className="admin-product-price-note">El cliente verá “Consultar precio”. No se mostrará ningún importe.</p>
+            </>
+          ) : (
+            <label className="admin-product-price-field">
+              <span>{priceVisibility === "FROM" ? "Precio desde" : "Precio de venta"}</span>
+              <span className="admin-product-price-control">
+                <span aria-hidden="true">$</span>
+                <Input
+                  name="price"
+                  inputMode="decimal"
+                  required
+                  placeholder="0,00"
+                  value={price}
+                  onChange={(event) => setPrice(event.target.value)}
+                  aria-describedby="admin-price-help"
+                />
+                <span aria-hidden="true">ARS</span>
+              </span>
+              <span id="admin-price-help" className="admin-product-field-help">Ingresá el importe con coma para los centavos.</span>
+            </label>
+          )}
           <label className="grid gap-1">
-            Importe en ARS (ej. 12500,50)
-            <Input
-              name="price"
-              inputMode="decimal"
-              defaultValue={product?.price?.toString().replace(".", ",") ?? ""}
-            />
-          </label>
-          <label className="grid gap-1">
-            Estado
+            Publicación
             <select
               name="status"
               defaultValue={product?.status ?? "DRAFT"}
-              className="h-10 border border-input bg-card px-2"
+              className="admin-product-select"
             >
               <option value="DRAFT">Borrador</option>
               <option value="ACTIVE">Publicado</option>

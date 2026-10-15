@@ -1,7 +1,13 @@
+import studio from "./catalog-studio.json";
+
+function studioPhoto(key: keyof typeof studio.assets) {
+  const image = studio.assets[key];
+  return { src: image.localUrl, alt: image.alt };
+}
+
 export const categoryPhotos: Record<string, { src: string; alt: string }> = {
   "tejido-romboidal": {
-    src: "/images/referencias-productos/tejido-galvanizado.jpeg",
-    alt: "Rollo de tejido romboidal galvanizado, imagen de referencia",
+    ...studioPhoto("tejido-romboidal"),
   },
   "tejido-revestido": {
     src: "/images/tandil/rombogreen.webp",
@@ -16,13 +22,16 @@ export const categoryPhotos: Record<string, { src: string; alt: string }> = {
     alt: "Rollos de malla electrosoldada",
   },
   "postes-de-hormigon": {
-    src: "/images/tandil/materiales.webp",
-    alt: "Postes de hormigón en el depósito",
+    ...studioPhoto("poste-olimpico"),
   },
   "puertas-y-portones": {
-    src: "/images/productos-transparentes/portones/porton-dos-hojas.webp",
-    alt: "Portón galvanizado de dos hojas con tejido romboidal, visualización orientativa",
+    ...studioPhoto("porton-dos-hojas"),
   },
+  "accesorios-de-colocacion": studioPhoto("torniquete-zincado"),
+  "alambre-galvanizado": studioPhoto("alambre-galvanizado"),
+  concertinas: studioPhoto("concertina-cruzada"),
+  "alambre-de-puas": studioPhoto("alambre-de-puas"),
+  clavos: studioPhoto("clavo-punta-paris"),
 };
 export const featuredCategories = [
   {
@@ -35,8 +44,7 @@ export const featuredCategories = [
     slug: "postes-de-hormigon",
     name: "Postes",
     detail: "El sostén de tu alambrado.",
-    src: "/images/productos-transparentes/postes/poste-olimpico.png",
-    alt: "Poste olímpico de hormigón, visualización orientativa",
+    ...categoryPhotos["postes-de-hormigon"],
   },
   {
     slug: "puertas-y-portones",
@@ -48,8 +56,7 @@ export const featuredCategories = [
     slug: "accesorios-de-colocacion",
     name: "Accesorios",
     detail: "Cada pieza para la colocación.",
-    src: "/images/referencias-productos/torniquete-cambren.webp",
-    alt: "Torniquete zincado, imagen de referencia de Cambren",
+    ...categoryPhotos["accesorios-de-colocacion"],
   },
 ];
 export const filterLabels: Record<string, string> = {

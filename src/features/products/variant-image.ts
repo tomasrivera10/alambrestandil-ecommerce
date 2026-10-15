@@ -19,7 +19,7 @@ export function variantImageIndex(images: Image[], variant?: Variant): number {
   );
   if (exact >= 0) return exact;
   const description = normalize(`${variant.name} ${Object.values(variant.attributes).join(" ")}`);
-  for (const type of ["olimpico", "recto"]) {
+  for (const type of ["olimpico", "recto", "cruzada", "simple"]) {
     if (!new RegExp(`\\b${type}\\b`).test(description)) continue;
     const index = images.findIndex((image) =>
       new RegExp(`\\b${type}\\b`).test(normalize(`${image.alt} ${image.url.replaceAll("-", " ")}`)),

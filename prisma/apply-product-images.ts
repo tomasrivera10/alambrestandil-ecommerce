@@ -122,6 +122,54 @@ export async function applyPostImages(prisma: PrismaClient) {
   });
 }
 
+/** Keep existing variant IDs, prices, inventory, and movement history when separating Olympic posts. */
+export async function applyOlympicPostAndPuntal(prisma: PrismaClient) {
+  const key = "olympic-post-and-puntal-image-2026-10-14";
+  if (await prisma.siteSetting.findUnique({ where: { key } })) return;
+  await prisma.$transaction(async (tx) => {
+    const category = await tx.category.findUniqueOrThrow({ where: { slug: "postes-de-hormigon" } });
+    const product = await tx.product.upsert({
+      where: { slug: "poste-olimpico-con-codo" },
+      create: {
+        slug: "poste-olimpico-con-codo",
+        name: "Poste olímpico con codo",
+        categoryId: category.id,
+        salesUnit: "UNIDAD",
+        shortDescription: "Poste olímpico de hormigón con codo para cerramientos. Elegí la variante para armar tu pedido.",
+        technicalDescription: "Poste olímpico de hormigón con codo. Disponible en las variantes esquinero e intermedio; confirmá medidas y disponibilidad con el local.",
+        priceVisibility: "HIDDEN",
+        status: "ACTIVE",
+      },
+      update: {},
+    });
+    for (const [sku, tipo] of [["AT-XLS-058", "Esquinero"], ["AT-XLS-062", "Intermedio"]] as const) {
+      await tx.productVariant.update({ where: { sku }, data: { productId: product.id, attributes: { tipo } } });
+    }
+    const olympicUrl = "/images/productos-transparentes/postes/poste-olimpico.png";
+    if (!(await tx.productImage.findFirst({ where: { productId: product.id, url: olympicUrl } }))) {
+      await tx.productImage.create({ data: {
+        productId: product.id, url: olympicUrl, sortOrder: 0, isReference: true,
+        alt: "Poste olímpico de hormigón con codo; visualización orientativa generada con IA.",
+        sourceUrl: "https://www.romboidal.com.ar/#presupuesto",
+      } });
+    }
+    for (const slug of ["poste-esquinero", "poste-intermedio"]) {
+      const straight = await tx.product.findUniqueOrThrow({ where: { slug } });
+      await tx.productImage.deleteMany({ where: { productId: straight.id, url: olympicUrl } });
+    }
+    const puntal = await tx.product.findUniqueOrThrow({ where: { slug: "puntal" } });
+    const puntalUrl = "/images/productos-transparentes/postes/puntal.png";
+    if (!(await tx.productImage.findFirst({ where: { productId: puntal.id, url: puntalUrl } }))) {
+      await tx.productImage.updateMany({ where: { productId: puntal.id }, data: { sortOrder: { increment: 1 } } });
+      await tx.productImage.create({ data: {
+        productId: puntal.id, url: puntalUrl, sortOrder: 0, isReference: true,
+        alt: "Puntal de hormigón para cerco; visualización orientativa generada con IA, sin medidas exactas.",
+      } });
+    }
+    await tx.siteSetting.create({ data: { key, value: "Poste olímpico separado y puntal con imagen de producto" } });
+  });
+}
+
 export async function applyFeaturedImages(prisma: PrismaClient) {
   const key = "featured-images-generated-2026-10-08-v1";
   if (await prisma.siteSetting.findUnique({ where: { key } })) return;

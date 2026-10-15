@@ -1,0 +1,8 @@
+{
+  "tool": "image_gen built-in",
+  "date": "2026-10-15",
+  "prompt": "Use case: product-mockup. Create a premium photorealistic hardware ecommerce catalog photograph. Image 1 is ONLY the visual style reference: pure opaque white #ffffff seamless background, realistic neutral silver-gray metal (or the specified real material), soft diffuse studio lighting and subtle gray contact shadow. No labels, logos, watermark, text, packaging or environment. Square canvas at highest available native resolution. Show the COMPLETE subject centered, about 70–75% frame occupancy, ample white safe margins on every side. Fine realistic material detail, coherent mechanical geometry, sharp edges, no clipped parts, no colored contamination. ONE galvanized bent FLAT steel fencing clip, Argentine palomita curva/J. Use the RIGHTMOST curved clip in image 2 as the exact shape authority: a broad flat steel strip with a round bolt hole in its straight upper attachment tab, a pronounced open J return hook at the opposite end, with the intervening offset bend. NOT a round threaded J-bolt, not a wing nut, not a square U clamp. Three-quarter angle showing strip width, thickness and the open hook. Keep this exact single-piece manufactured shape. Input image 1: style guide only. Input image 2: supplier product geometry.",
+  "original": "/Users/tomaspc/.codex/generated_images/01a13d8a-6e92-7230-a592-191e9b1b4ffe/exec-80584d8b-4305-4dad-aca4-67cdb99ccb50.png",
+  "referenceImage": "mt-palomitas.png",
+  "source": "JULIO CATALOGO MAYORISTA MT 2026.pdf, página 11"
+}

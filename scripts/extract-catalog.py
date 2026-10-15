@@ -75,6 +75,19 @@ for start,end,category,name,slug in families:
         variants.append(dict(sku=f'AT-XLS-{row:03}',name=' '.join(original.split()),salesUnit={'Rollo':'ROLLO','Kg':'KG','Unidad':'UNIDAD'}[unit],attributes=attrs,sourceReference=f'Alambres Tandil.xlsx · Stock!A{row}:B{row}',reviewNote=note or None,active=active))
     brand = 'Acerbrag' if start==78 else 'Acindar' if start==79 else 'Gerdau' if start==96 else None
     products.append(dict(name=name,slug=slug,category=category,brand=brand,salesUnit=variants[0]['salesUnit'],shortDescription=f'{name}. Elegí la medida o presentación para armar tu pedido.',technicalDescription=f'{name}. Las medidas y presentaciones disponibles se detallan en cada variante. Consultá precio y disponibilidad con el local.',featured=start in (3,14,36,52,57,76),variants=variants))
+olympic_variants = []
+for slug, sku, tipo in [('poste-esquinero', 'AT-XLS-058', 'Esquinero'), ('poste-intermedio', 'AT-XLS-062', 'Intermedio')]:
+    product = next(p for p in products if p['slug'] == slug)
+    variant = next(v for v in product['variants'] if v['sku'] == sku)
+    product['variants'].remove(variant)
+    variant['attributes']['tipo'] = tipo
+    olympic_variants.append(variant)
+name = 'Poste olímpico con codo'
+products.insert(next(i for i, p in enumerate(products) if p['slug'] == 'poste-intermedio') + 1,
+    dict(name=name,slug='poste-olimpico-con-codo',category='postes-de-hormigon',brand=None,salesUnit='UNIDAD',
+         shortDescription='Poste olímpico de hormigón con codo para cerramientos. Elegí la variante para armar tu pedido.',
+         technicalDescription='Poste olímpico de hormigón con codo. Disponible en las variantes esquinero e intermedio; confirmá medidas y disponibilidad con el local.',
+         featured=False,variants=olympic_variants))
 out=dict(source='Alambres Tandil.xlsx',sheet='Stock',ignoredColumns=['Precio Lista','Precio con descuento','Precio Final','Stock Actual','Totales'],duplicates=[dict(keptRow=i,duplicateRow=i+29) for i in range(41,47)],products=products)
 (root/'prisma/catalog.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
 print(f'{len(products)} familias, {sum(len(p["variants"]) for p in products)} referencias únicas; 6 duplicados consolidados.')

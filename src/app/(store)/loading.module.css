@@ -1,0 +1,63 @@
+.loading {
+  min-height: calc(100svh - 112px);
+  display: grid;
+  place-items: center;
+  padding: 80px 24px;
+  background: #fff;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.wire {
+  width: min(320px, 76vw);
+  height: auto;
+  margin-bottom: 18px;
+  overflow: visible;
+}
+
+.coil {
+  transform-origin: 110px 67px;
+  animation: coil-settle 2.4s ease-in-out infinite;
+}
+
+.looseWire,
+.wireGleam {
+  stroke-dasharray: 160;
+  stroke-dashoffset: 160;
+  animation: draw-wire 2.4s cubic-bezier(.16, 1, .3, 1) infinite;
+}
+
+.message {
+  margin: 10px 0 0;
+  color: #171a1d;
+  font-size: clamp(18px, 2vw, 23px);
+  font-weight: 550;
+  letter-spacing: -.025em;
+}
+
+.ellipsis { color: #cf0000; }
+
+@keyframes draw-wire {
+  0% { stroke-dashoffset: 160; opacity: 1; }
+  62%, 82% { stroke-dashoffset: 0; opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+@keyframes coil-settle {
+  0%, 100% { transform: rotate(-3deg); }
+  62%, 82% { transform: rotate(3deg); }
+}
+
+@media (max-width: 700px) {
+  .loading { min-height: calc(100svh - 76px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coil, .looseWire, .wireGleam { animation: none; }
+  .looseWire, .wireGleam { stroke-dasharray: none; }
+}

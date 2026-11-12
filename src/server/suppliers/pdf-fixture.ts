@@ -1,8 +1,16 @@
 // Small local fixtures for verifying PDF text and OCR import. No external documents.
-export function pdfFixture(content: string | Buffer, image = false, width = 1000, height = 220) {
-  const stream = image
-    ? Buffer.from(`q ${width} 0 0 ${height} 0 0 cm /I1 Do Q`)
-    : Buffer.from(`BT /F1 18 Tf 20 180 Td (${String(content).replace(/[()\\]/g, "\\$&")}) Tj ET`);
+export function pdfFixture(
+  content: string | Buffer,
+  image = false,
+  width = 1000,
+  height = 220,
+  raw = false,
+) {
+  const stream = raw
+    ? Buffer.from(content)
+    : image
+      ? Buffer.from(`q ${width} 0 0 ${height} 0 0 cm /I1 Do Q`)
+      : Buffer.from(`BT /F1 18 Tf 20 180 Td (${String(content).replace(/[()\\]/g, "\\$&")}) Tj ET`);
   const objects: Buffer[] = [
     Buffer.from("<< /Type /Catalog /Pages 2 0 R >>"),
     Buffer.from("<< /Type /Pages /Kids [3 0 R] /Count 1 >>"),

@@ -775,11 +775,11 @@
         },
         {
           "sku": "AT-XLS-060",
-          "name": "POSTE ESQUINERO 1M 12M",
+          "name": "POSTE ESQUINERO 1M 1,20M",
           "salesUnit": "UNIDAD",
           "attributes": {},
           "sourceReference": "Alambres Tandil.xlsx · Stock!A60:B60",
-          "reviewNote": "Medida ambigua en el Excel. Confirmar antes de publicar esta variante.",
+          "reviewNote": null,
           "active": false
         }
       ]

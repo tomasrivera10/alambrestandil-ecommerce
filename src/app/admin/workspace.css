@@ -482,6 +482,61 @@
   text-decoration: underline;
   text-underline-offset: 4px;
 }
+.admin-content .workspace-stock-navigation {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin: 0 0 28px;
+  border: 1px solid var(--workspace-border);
+  border-radius: 4px;
+  background: var(--workspace-border);
+  overflow: hidden;
+}
+.admin-content .workspace-stock-navigation a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 92px;
+  padding: 18px 20px;
+  background: var(--workspace-paper);
+  color: var(--workspace-ink);
+  text-decoration: none;
+}
+.admin-content .workspace-stock-navigation a > svg {
+  flex-shrink: 0;
+  color: var(--workspace-accent);
+}
+.admin-content .workspace-stock-navigation a > svg:last-child {
+  margin-left: auto;
+}
+.admin-content .workspace-stock-navigation strong {
+  display: block;
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 650;
+}
+.admin-content .workspace-stock-navigation small {
+  display: block;
+  margin-top: 4px;
+  color: var(--workspace-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.admin-content .workspace-stock-navigation a:hover {
+  background: #f8f0ee;
+}
+.admin-content .workspace-stock-navigation a:focus-visible {
+  outline-offset: -3px;
+}
+@media (max-width: 640px) {
+  .admin-content .workspace-stock-navigation {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .admin-content .workspace-stock-navigation a {
+    min-height: 82px;
+    padding: 14px 16px;
+  }
+}
 .admin-content table.workspace-stock-table {
   min-width: 880px;
 }
@@ -504,6 +559,22 @@
   min-height: 36px;
   padding: 7px 11px;
   font-size: 12px;
+}
+.admin-content .workspace-stock-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.admin-content .workspace-entry-reason {
+  display: grid;
+  gap: 5px;
+  font-size: 12px;
+}
+.admin-content .workspace-entry-reason input {
+  min-width: 0;
+  min-height: 40px;
+  padding: 8px;
+  font-size: 13px;
 }
 .admin-content .workspace-entry-controls {
   display: flex;
@@ -1012,8 +1083,8 @@
     min-height: 44px;
     font-size: 13px;
   }
-  .admin-content .workspace-stock-entry > .admin-button-secondary {
-    width: 100%;
+  .admin-content .workspace-stock-actions .admin-button-secondary {
+    flex: 1;
   }
   .admin-content .workspace-entry-controls input:not([type="checkbox"]) {
     height: 46px;
@@ -1062,4 +1133,40 @@
   .admin-content .workspace-filter-fields[data-expanded="false"] {
     display: none;
   }
+}
+
+/* Shared directional controls: visible before hover, usable by keyboard and touch. */
+.admin-shell :is(.admin-back, .admin-store-link) {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid #b9c1b9;
+  border-radius: 4px;
+  background: #fff;
+  color: #252824;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.admin-shell :is(a.admin-back, .admin-store-link):hover,
+.admin-shell a:hover > .admin-back {
+  border-color: #94181d;
+  background: #f8eded;
+  color: #94181d;
+}
+.admin-shell :is(a.admin-back, .admin-store-link):focus-visible,
+.admin-shell a:focus-visible > .admin-back {
+  outline: 2px solid #b51f24;
+  outline-offset: 3px;
+}
+.admin-shell :is(a, button, summary) :is(
+  .lucide-chevron-left, .lucide-chevron-right, .lucide-chevron-down,
+  .lucide-chevron-up, .lucide-arrow-left, .lucide-arrow-right, .lucide-arrow-up-right
+) {
+  flex-shrink: 0;
+  stroke-width: 2.5;
+  min-width: 18px;
+  min-height: 18px;
 }

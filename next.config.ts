@@ -3,10 +3,12 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   distDir: process.env.NEXT_DIST_DIR || ".next",
+  allowedDevOrigins: ["127.0.0.1"],
   serverExternalPackages: ["@napi-rs/canvas", "tesseract.js", "pdfjs-dist", "exceljs", "mammoth"],
   // Prisma uses a custom generated client; include its native engine in Functions.
   outputFileTracingIncludes: {
     "/*": ["./src/generated/prisma/libquery_engine-*.so.node"],
+    "/admin/proveedores/[id]": ["./node_modules/@tesseract.js-data/spa/4.0.0/spa.traineddata.gz"],
     "/api/admin/supplier-lists": ["./node_modules/@tesseract.js-data/spa/4.0.0/spa.traineddata.gz"],
     "/api/admin/supplier-lists/chunks": [
       "./node_modules/@tesseract.js-data/spa/4.0.0/spa.traineddata.gz",

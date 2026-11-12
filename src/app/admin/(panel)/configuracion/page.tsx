@@ -1,3 +1,4 @@
+import { retailHosts } from "@/server/pricing/search";
 import { marketConnected } from "@/server/pricing/token";
 import { requireArea } from "@/server/rbac";
 import { prisma } from "@/server/db";
@@ -71,12 +72,18 @@ export default async function SettingsPage() {
         <div className="admin-panel mt-4 p-5">
           <p>
             Mercado Libre:{" "}
-            <strong>{marketConnected() ? "Conectado" : "Pendiente de conectar"}</strong>
+            <strong>
+              {marketConnected()
+                ? "Credenciales configuradas (acceso sin verificar)"
+                : "Sin credenciales para leer precios por API"}
+            </strong>
           </p>
           <p className="admin-help mt-2">
             Tiendas habilitadas:{" "}
-            {(process.env.MARKET_ALLOWED_HOSTS ?? "").split(",").filter(Boolean).join(", ") ||
-              "Ninguna"}
+            {[
+              ...retailHosts,
+              ...(process.env.MARKET_ALLOWED_HOSTS ?? "").split(",").filter(Boolean),
+            ].join(", ")}
           </p>
           <p className="admin-help mt-2">
             Actualización diaria:{" "}

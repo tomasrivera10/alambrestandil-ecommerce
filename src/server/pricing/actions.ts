@@ -93,9 +93,16 @@ export async function removeMarketReference(form: FormData) {
 }
 export async function findMarketReferences(form: FormData) {
   await requireArea("suppliers");
-  const count = await discoverMarket(z.string().min(1).parse(form.get("variantId")));
+  const result = await discoverMarket(
+    z.string().min(1).parse(form.get("variantId")),
+    z
+      .string()
+      .min(1)
+      .optional()
+      .parse(form.get("supplierItemId") || undefined),
+  );
   revalidatePath("/admin", "layout");
-  return `${count} publicaciones encontradas. Revisá la coincidencia antes de aceptarlas.`;
+  return `${result.found} publicaciones con precio encontradas para «${result.context.query}» (${result.context.supplier}, código ${result.context.code}). Revisá marca, medidas y presentación antes de aceptarlas.${result.errors.length ? ` Fuentes con dificultades: ${result.errors.join(" · ")}` : ""}`;
 }
 export async function publishVariantPrice(form: FormData) {
   const actor = await requireArea("products");

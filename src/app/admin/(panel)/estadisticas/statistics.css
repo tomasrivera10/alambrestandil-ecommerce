@@ -1,0 +1,39 @@
+.stock-statistics { max-width: 1500px; }
+.stock-statistics-summary { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); background: #fff; border: 1px solid #d9ddd7; border-radius: 4px; margin-bottom: 12px; }
+.stock-statistics-summary > div { display: flex; flex-direction: column; gap: 8px; padding: 22px; border-right: 1px solid #d9ddd7; min-width: 0; }
+.stock-statistics-summary > div:last-child { border-right: 0; }
+.stock-statistics-summary span, .stock-statistics-panel-heading span { color: #5d665f; font-size: 13px; }
+.stock-statistics-summary strong { font-size: clamp(22px,2.3vw,32px); letter-spacing: -.035em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.stock-statistics-summary small { color: #5d665f; font-size: 12px; }
+.stock-statistics-summary > div:nth-child(2) strong { color: #87501b; }
+.stock-statistics-summary > div:nth-child(3) strong { color: #1f6848; }
+.stock-statistics-note { color: #5d665f; font-size: 13px; line-height: 1.55; max-width: 95ch; margin: 0 0 25px; }
+.stock-statistics-note a { color: #a91a22; text-decoration: underline; text-underline-offset: 3px; }
+.stock-statistics-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 18px; margin-bottom: 18px; align-items: start; }
+.stock-statistics-panel { background: white; border: 1px solid #d9ddd7; border-radius: 4px; padding: 22px; min-width: 0; }
+.stock-statistics-panel-heading { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; margin-bottom: 20px; }
+.stock-statistics-panel h2 { font-size: 20px; font-weight: 700; letter-spacing: -.02em; }
+.stock-statistics-bars { display: grid; gap: 17px; }
+.stock-statistics-bar-row > div:first-child { display: flex; justify-content: space-between; gap: 15px; font-size: 13px; margin-bottom: 7px; }
+.stock-statistics-bar-row strong { font-weight: 600; }
+.stock-statistics-bar-row span { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.stock-statistics-track { height: 9px; background: #e8ebe7; overflow: hidden; border-radius: 2px; }
+.stock-statistics-track > span { display: block; height: 100%; background: #a91a22; border-radius: inherit; }
+.stock-statistics-family-list > div { display: grid; grid-template-columns: minmax(0,1fr) auto auto; gap: 15px; align-items: baseline; padding: 11px 0; border-bottom: 1px solid #e7eae5; font-size: 13px; }
+.stock-statistics-family-list > div:last-child { border: 0; }
+.stock-statistics-family-list strong, .stock-statistics-family-list small { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.stock-statistics-family-list small { color: #5d665f; }
+.stock-statistics-coverage { display: flex; align-items: baseline; gap: 12px; margin-bottom: 15px; }
+.stock-statistics-coverage strong { font-size: 30px; font-variant-numeric: tabular-nums; }
+.stock-statistics-coverage span, .stock-statistics-panel p { color: #5d665f; font-size: 13px; }
+.stock-statistics-panel p { margin-top: 15px; line-height: 1.5; }
+.stock-statistics-products { list-style: decimal; padding-left: 22px; margin: 0; }
+.stock-statistics-products li { padding: 10px 0; border-bottom: 1px solid #e7eae5; font-size: 13px; }
+.stock-statistics-products li:last-child { border: 0; }
+.stock-statistics-products li::marker { color: #5d665f; }
+.stock-statistics-products li > span { display: inline-block; width: calc(100% - 120px); vertical-align: top; }
+.stock-statistics-products small { display: block; color: #5d665f; margin-top: 3px; }
+.stock-statistics-products strong { float: right; font-variant-numeric: tabular-nums; }
+@media(max-width: 1050px) { .stock-statistics-summary { grid-template-columns: repeat(2,minmax(0,1fr)); } .stock-statistics-summary > div:nth-child(2) { border-right: 0; } .stock-statistics-summary > div:nth-child(-n+2) { border-bottom: 1px solid #d9ddd7; } }
+@media(max-width: 760px) { .stock-statistics-grid { grid-template-columns: 1fr; } .stock-statistics-summary > div { padding: 16px; } .stock-statistics-family-list > div { grid-template-columns: minmax(0,1fr) auto; } .stock-statistics-family-list small { grid-column: 1 / -1; } }
+@media(max-width: 480px) { .stock-statistics-summary { grid-template-columns: 1fr; } .stock-statistics-summary > div { border-right: 0; border-bottom: 1px solid #d9ddd7; } .stock-statistics-summary > div:last-child { border-bottom: 0; } }

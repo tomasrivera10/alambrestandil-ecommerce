@@ -1631,3 +1631,41 @@
 .admin-shell .admin-content .stock-analysis-table .stock-analysis-editable input[type="text"]:focus { border-color: #a91a22 !important; background: #fff; outline: 1px solid #a91a22; outline-offset: 0; }
 .admin-shell .admin-content .stock-analysis-toolbar input:focus-visible, .admin-shell .admin-content .stock-analysis-toolbar select:focus-visible { outline: 1px solid #a91a22; outline-offset: 1px; }
 .admin-content .stock-analysis-table .stock-analysis-margin.is-zero { color: #8a949d; font-weight: 400; }
+
+/* Orders: one work surface, progressively disclosed details. */
+.order-queues { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 0 0 24px; padding: 12px 0; border-block: 1px solid #e1e4df; }
+.order-queues a { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; color: #414a43; }
+.order-queues a:hover, .order-permalink:hover { color: #a80000; text-decoration: underline; }
+.order-queues strong { font-variant-numeric: tabular-nums; }
+.order-worklist { border: 1px solid #e1e4df; background: #fff; }
+.order-worklist:empty { display: none; }
+.order-workitem + .order-workitem { border-top: 1px solid #e1e4df; }
+.order-workitem > summary { display: grid; grid-template-columns: 1fr 1.25fr 1.4fr 1fr auto; gap: 16px; align-items: center; padding: 20px; cursor: pointer; list-style: none; }
+.order-workitem > summary::-webkit-details-marker { display: none; }
+.order-workitem > summary:hover, .order-workitem[open] > summary { background: #f5f5f3; }
+.order-workitem small, .order-detail-grid small { display: block; margin-top: 5px; color: #59635c; font-size: 12px; }
+.order-expand { color: #a80000; font-size: 13px; text-decoration: underline; text-underline-offset: 3px; }
+.order-workitem[open] .order-expand { font-weight: 700; }
+.order-detail-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 32px; padding: 24px 20px; font-size: 14px; border-top: 1px solid #e1e4df; }
+.order-detail-grid section { min-width: 0; }
+.order-detail-grid h2 { margin-bottom: 12px; font-weight: 700; font-size: 16px; }
+.order-detail-grid h2:not(:first-child) { margin-top: 28px; }
+.order-lines { list-style: none; padding: 0; }
+.order-lines li { display: flex; justify-content: space-between; gap: 20px; padding: 12px 0; border-bottom: 1px solid #e1e4df; }
+.order-lines li > span { flex-shrink: 0; font-variant-numeric: tabular-nums; }
+.order-lines strong, .order-note { overflow-wrap: anywhere; }
+.order-note { white-space: pre-wrap; margin-top: 8px; }
+.order-total { display: flex; justify-content: space-between; gap: 16px; margin-top: 16px; font-variant-numeric: tabular-nums; }
+.order-help { color: #59635c; font-size: 12px; line-height: 1.6; margin: 10px 0 16px; }
+.order-contact { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.order-status-form label, .order-cancel label { display: grid; gap: 6px; margin-bottom: 12px; }
+.order-detail-grid select, .order-detail-grid textarea { width: 100%; min-height: 44px; border: 1px solid #b9c1b9; padding: 10px; background: #fff; border-radius: 5px; }
+.order-history, .order-cancel { margin-top: 20px; border-top: 1px solid #e1e4df; padding-top: 10px; }
+.order-history summary, .order-cancel summary { cursor: pointer; min-height: 44px; padding-block: 12px; }
+.order-history ol { list-style: none; padding: 0; }
+.order-history li { padding: 12px 0; border-bottom: 1px solid #e1e4df; }
+.order-cancel .order-confirm { display: flex; align-items: center; gap: 10px; }
+.order-permalink { display: inline-flex; align-items: center; min-height: 44px; margin: 0 20px 16px; text-decoration: underline; }
+.order-workitem summary:focus-visible, .order-queues a:focus-visible { outline: 2px solid #c90000; outline-offset: 3px; }
+@media (max-width: 1100px) { .order-workitem > summary { grid-template-columns: 1fr 1fr; } .order-expand { grid-column: 1 / -1; } }
+@media (max-width: 700px) { .order-detail-grid { grid-template-columns: 1fr; gap: 28px; padding: 20px 16px; } .order-workitem > summary { padding: 16px; gap: 16px 10px; } .order-queues { gap: 4px 16px; } .order-lines li { flex-wrap: wrap; gap: 6px; } }

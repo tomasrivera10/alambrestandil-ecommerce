@@ -12,12 +12,6 @@ const socialLinks = [
 export function SiteFooter() {
   return (
     <footer className="store-footer" data-store-section="contacto">
-      <div className="store-container footer-top">
-        <h2>Un buen cerco empieza con una buena charla.</h2>
-        <Link href="/contacto" className="store-button button-light">
-          Hablemos de tu proyecto <ArrowUpRight size={18} aria-hidden="true" />
-        </Link>
-      </div>
       <div className="store-container footer-grid">
         <div className="footer-brand">
           <Link href="/" aria-label="Alambres Tandil, inicio">
@@ -52,6 +46,9 @@ export function SiteFooter() {
               <Mail size={16} aria-hidden="true" /> {site.email}
             </a>
           </div>
+          <Link href="/contacto" className="footer-project-link">
+            Hablemos de tu proyecto <ArrowUpRight size={16} aria-hidden="true" />
+          </Link>
         </div>
         <div className="footer-navigation">
           <nav aria-label="Catálogo">

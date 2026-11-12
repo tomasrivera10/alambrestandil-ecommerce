@@ -3,6 +3,7 @@ import { cachedCatalogRead } from "./cache";
 import { prisma } from "@/server/db";
 import { decimalToNumber } from "@/lib/format";
 import { rankSearchHit } from "@/features/search/rank";
+import { currentStudioImage } from "@/features/products/studio-image";
 import type { Prisma } from "@/generated/prisma/client";
 
 export type CatalogProduct = {
@@ -39,6 +40,7 @@ function mapProduct(product: {
   images: { url: string; alt: string; isReference?: boolean }[];
   variants: { inventory: { onHand: number; reserved: number } | null }[];
 }): CatalogProduct {
+  const image = product.images[0] ? currentStudioImage(product.slug, product.images[0]) : null;
   const available = product.variants.reduce((sum, variant) => {
     if (!variant.inventory) return sum;
     return sum + (variant.inventory.onHand - variant.inventory.reserved);
@@ -56,9 +58,9 @@ function mapProduct(product: {
     price: product.priceVisibility === "HIDDEN" ? null : decimalToNumber(product.price),
     featured: product.featured,
     uses: product.uses,
-    imageUrl: product.images[0]?.url ?? null,
-    imageAlt: product.images[0]?.alt ?? null,
-    imageIsReference: product.images[0]?.isReference ?? false,
+    imageUrl: image?.url ?? null,
+    imageAlt: image?.alt ?? null,
+    imageIsReference: image?.isReference ?? false,
     available,
   };
 }
@@ -180,6 +182,7 @@ async function loadGetProductBySlug(categorySlug: string, slug: string) {
   if (!product) return null;
   return {
     ...product,
+    images: product.images.map((image) => currentStudioImage(product.slug, image)),
     price: product.priceVisibility === "HIDDEN" ? null : decimalToNumber(product.price),
     variants: product.variants.map((variant) => ({
       ...variant,

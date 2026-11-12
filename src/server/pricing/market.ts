@@ -1,6 +1,7 @@
 import "server-only";
 import { marketToken, marketConnected } from "./token";
 import { prisma } from "@/server/db";
+import { literalSearch, retailHosts, searchHosts, searchRetail } from "./search";
 import { variantIdentity } from "@/features/pricing/calculation";
 
 const allowedHosts = () =>
@@ -15,7 +16,7 @@ export function validateMarketUrl(raw: string) {
   const ml = /^(?:www\.)?(?:mercadolibre\.com\.ar|articulo\.mercadolibre\.com\.ar)$/.test(
     url.hostname,
   );
-  if (!ml && !allowedHosts().includes(url.hostname.toLowerCase()))
+  if (!ml && ![...retailHosts, ...allowedHosts()].includes(url.hostname.toLowerCase()))
     throw new Error("Esta tienda todavía no está habilitada como fuente de mercado.");
   return { url: url.toString(), ml };
 }
@@ -157,44 +158,72 @@ export async function fetchMarketListing(rawUrl: string) {
   }
   throw new Error("Esta página no ofrece un precio único, disponible y verificable en ARS.");
 }
-export async function discoverMarket(variantId: string) {
+export async function discoverMarket(variantId: string, supplierItemId?: string) {
   const variant = await prisma.productVariant.findUniqueOrThrow({
     where: { id: variantId },
-    include: { product: true },
+    include: { product: true, supplierItems: { include: { supplier: true } } },
   });
-  if (!marketConnected())
-    throw new Error("Falta conectar Mercado Libre. Podés agregar enlaces de tiendas habilitadas.");
-  const query = [
-    variant.product.brand,
-    variant.product.name,
-    variant.name,
-    ...Object.values(variant.attributes as Record<string, string>),
-  ]
-    .filter(Boolean)
-    .join(" ");
-  const data = await readJson(
-    `https://api.mercadolibre.com/sites/MLA/search?q=${encodeURIComponent(query)}&limit=10`,
-  );
+  const items = variant.supplierItems.filter((item) => item.purchased);
+  const selected = supplierItemId
+    ? items.find((item) => item.id === supplierItemId)
+    : items.length === 1
+      ? items[0]
+      : null;
+  if (!selected) throw new Error("Elegí el artículo del proveedor para buscar su nombre literal.");
+  const context = literalSearch(selected);
   let found = 0;
-  for (const item of data.results ?? []) {
-    if (item.condition !== "new" || !item.permalink) continue;
-    const url = validateMarketUrl(item.permalink).url;
-    const existing = await prisma.marketListing.findUnique({ where: { url } });
-    if (existing) continue;
-    await prisma.marketListing.create({
-      data: {
-        variantId,
-        url,
-        title: String(item.title),
-        seller: `ML-${item.seller.id}`,
-        source: "Mercado Libre",
-        externalId: String(item.id),
-        identity: variantIdentity(variant),
-      },
-    });
-    found++;
+  const errors: string[] = [];
+  const urls = new Set<string>();
+  const results = await Promise.allSettled(
+    searchHosts.map(async (host) => ({ host, urls: await searchRetail(context.query, host) })),
+  );
+  results.forEach((result, index) => {
+    if (result.status === "fulfilled") {
+      result.value.urls.forEach((url) => urls.add(url));
+      if (!result.value.urls.length)
+        errors.push(`${result.value.host}: sin coincidencias para el nombre literal.`);
+    } else
+      errors.push(
+        `${searchHosts[index]}: ${result.reason instanceof Error ? result.reason.message : "No se pudo buscar."}`,
+      );
+  });
+  if (marketConnected()) {
+    try {
+      const data = await readJson(
+        `https://api.mercadolibre.com/sites/MLA/search?q=${encodeURIComponent(context.query)}&limit=10`,
+      );
+      for (const item of data.results ?? [])
+        if (item.condition === "new" && item.permalink)
+          urls.add(validateMarketUrl(item.permalink).url);
+    } catch (error) {
+      errors.push(
+        `Mercado Libre API: ${error instanceof Error ? error.message : "Consulta fallida."}`,
+      );
+    }
   }
-  return found;
+  // Read prices from the product page, never from search snippets.
+  for (const url of [...urls].slice(0, 12)) {
+    try {
+      const existing = await prisma.marketListing.findUnique({ where: { url } });
+      if (existing) continue;
+      const data = await fetchMarketListing(url);
+      await prisma.marketListing.create({
+        data: {
+          variantId,
+          url,
+          ...data,
+          identity: variantIdentity(variant),
+          refreshedAt: new Date(),
+        },
+      });
+      found++;
+    } catch (error) {
+      errors.push(
+        `${new URL(url).hostname}: ${error instanceof Error ? error.message : "No se pudo leer el precio."}`,
+      );
+    }
+  }
+  return { found, errors, context };
 }
 export async function refreshMarketReferences() {
   const total = await prisma.marketListing.count({ where: { verifiedAt: { not: null } } });

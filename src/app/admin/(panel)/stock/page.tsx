@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { Calculator, ClipboardCheck, History, ArrowDownUp } from "lucide-react";
+import {
+  Calculator,
+  ClipboardCheck,
+  History,
+  ArrowDownUp,
+  PackagePlus,
+  ArrowRight,
+} from "lucide-react";
 import { requireArea, can } from "@/server/rbac";
 import { prisma } from "@/server/db";
 import { StockMovementForm } from "@/components/admin/stock-movement-form";
@@ -70,7 +77,7 @@ export default async function StockPage() {
       <div className="workspace-heading">
         <div>
           <h1>Stock</h1>
-          <p>Encontrá una presentación y registrá la mercadería que ingresa.</p>
+          <p>Encontrá una presentación y registrá ingresos o descuentos de stock.</p>
         </div>
         {can(role, "products") && (
           <Link href="/admin/analisis-stock" className="admin-button-secondary">
@@ -79,19 +86,38 @@ export default async function StockPage() {
           </Link>
         )}
       </div>
-      <nav className="workspace-task-links" aria-label="Tareas de stock">
-        <a href="#inventario">Existencias e ingresos</a>
+      <nav className="workspace-stock-navigation" aria-label="Tareas de stock">
+        <a href="#inventario">
+          <PackagePlus size={22} aria-hidden="true" />
+          <span>
+            <strong>Existencias y movimientos</strong>
+            <small>Consultá el stock, sumá o restá mercadería.</small>
+          </span>
+          <ArrowRight size={18} aria-hidden="true" />
+        </a>
         <a href="#recuento">
-          <ClipboardCheck size={16} aria-hidden="true" />
-          Recuento físico
+          <ClipboardCheck size={22} aria-hidden="true" />
+          <span>
+            <strong>Recuento físico</strong>
+            <small>Compará lo contado con el sistema.</small>
+          </span>
+          <ArrowRight size={18} aria-hidden="true" />
         </a>
         <a href="#movimientos">
-          <ArrowDownUp size={16} aria-hidden="true" />
-          Otros movimientos
+          <ArrowDownUp size={22} aria-hidden="true" />
+          <span>
+            <strong>Otros movimientos</strong>
+            <small>Registrá ajustes y devoluciones.</small>
+          </span>
+          <ArrowRight size={18} aria-hidden="true" />
         </a>
         <a href="#historial">
-          <History size={16} aria-hidden="true" />
-          Historial
+          <History size={22} aria-hidden="true" />
+          <span>
+            <strong>Historial</strong>
+            <small>Revisá los últimos movimientos.</small>
+          </span>
+          <ArrowRight size={18} aria-hidden="true" />
         </a>
       </nav>
       <div id="inventario" className="admin-anchor">

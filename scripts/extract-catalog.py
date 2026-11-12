@@ -45,10 +45,14 @@ for start,end,category,name,slug in families:
     for row in range(start,end+1):
         original, unit = rows[row-1]
         original = str(original).strip()
+        if row == 60:
+            original = 'POSTE ESQUINERO 1M 1,20M'
         attrs = {}
         note = ''
         active = True
-        if row in (60,64):
+        if row == 60:
+            active = False
+        if row == 64:
             note = 'Medida ambigua en el Excel. Confirmar antes de publicar esta variante.'
             active = False
         if 41 <= row <= 46:

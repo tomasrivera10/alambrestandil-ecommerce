@@ -4,9 +4,10 @@
 import { useState, useTransition } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { Package, Search, Plus, Check, X } from "lucide-react";
+import { Package, Search, Plus, Minus, Check, X } from "lucide-react";
 import { recordStockForm } from "@/server/inventory/actions";
 import { unitLabel } from "@/lib/format";
+import { roundQuantity } from "@/features/inventory/stock";
 
 export type StockCategory = {
   id: string;
@@ -31,30 +32,49 @@ function StockEntry({ row }: { row: StockCategory["rows"][number] }) {
   const [refreshing, startRefresh] = useTransition();
   const [quantity, setQuantity] = useState("");
   const [editing, setEditing] = useState(false);
+  const [mode, setMode] = useState<"entry" | "remove">("entry");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
   const unit = unitLabel(row.unit);
   const decimal = row.unit === "KG" || row.unit === "METRO";
+  const next = roundQuantity(row.onHand + (mode === "entry" ? 1 : -1) * Number(quantity));
   const valid =
+    quantity !== "" &&
     Number.isFinite(Number(quantity)) &&
     Number(quantity) > 0 &&
-    (decimal || Number.isInteger(Number(quantity)));
+    (decimal || Number.isInteger(Number(quantity))) &&
+    next >= row.reserved;
 
   return (
     <div className="workspace-stock-entry">
       {!editing ? (
-        <button
-          type="button"
-          className="admin-button-secondary"
-          disabled={refreshing}
-          onClick={() => {
-            setEditing(true);
-            setMessage("");
-          }}
-        >
-          <Plus size={16} aria-hidden="true" /> Sumar
-        </button>
+        <div className="workspace-stock-actions">
+          <button
+            type="button"
+            className="admin-button-secondary"
+            disabled={refreshing}
+            onClick={() => {
+              setMode("entry");
+              setEditing(true);
+              setMessage("");
+            }}
+          >
+            <Plus size={16} aria-hidden="true" /> Sumar
+          </button>
+          <button
+            type="button"
+            className="admin-button-secondary"
+            disabled={refreshing || row.onHand <= row.reserved}
+            onClick={() => {
+              setMode("remove");
+              setEditing(true);
+              setMessage("");
+            }}
+          >
+            <Minus size={16} aria-hidden="true" /> Restar
+          </button>
+        </div>
       ) : (
         <form
           onSubmit={async (event) => {
@@ -65,13 +85,13 @@ function StockEntry({ row }: { row: StockCategory["rows"][number] }) {
             setMessage("");
             const data = new FormData(event.currentTarget);
             data.set("variantId", row.id);
-            data.set("type", "ENTRADA");
-            data.set("quantity", quantity);
-            data.set("reason", "Ingreso de mercadería desde Stock");
+            data.set("type", mode === "entry" ? "ENTRADA" : "AJUSTE");
+            data.set("quantity", String((mode === "entry" ? 1 : -1) * Number(quantity)));
+            if (mode === "entry") data.set("reason", "Ingreso de mercadería desde Stock");
             try {
               await recordStockForm(data);
               setMessage(
-                `Se sumaron ${Number(quantity).toLocaleString("es-AR")} ${unit}. Movimiento registrado.`,
+                `Se ${mode === "entry" ? "sumaron" : "restaron"} ${Number(quantity).toLocaleString("es-AR")} ${unit}. Movimiento registrado.`,
               );
               setQuantity("");
               setEditing(false);
@@ -80,7 +100,7 @@ function StockEntry({ row }: { row: StockCategory["rows"][number] }) {
               setError(
                 cause instanceof Error
                   ? cause.message
-                  : "No se pudo sumar. Revisá la cantidad e intentá de nuevo.",
+                  : "No se pudo registrar el movimiento. Revisá la cantidad e intentá de nuevo.",
               );
             } finally {
               setBusy(false);
@@ -91,7 +111,7 @@ function StockEntry({ row }: { row: StockCategory["rows"][number] }) {
             <div className="workspace-entry-controls">
               <label>
                 <span className="sr-only">
-                  Cantidad que ingresa de {row.product}, {row.variant}, en {unit}
+                  Cantidad que {mode === "entry" ? "ingresa" : "se resta"} de {row.product}, {row.variant}, en {unit}
                 </span>
                 <input
                   type="number"
@@ -111,7 +131,7 @@ function StockEntry({ row }: { row: StockCategory["rows"][number] }) {
               <button
                 type="button"
                 className="workspace-icon-button"
-                aria-label="Cancelar ingreso"
+                aria-label={`Cancelar ${mode === "entry" ? "ingreso" : "descuento"}`}
                 onClick={() => {
                   setEditing(false);
                   setQuantity("");
@@ -121,22 +141,26 @@ function StockEntry({ row }: { row: StockCategory["rows"][number] }) {
                 <X size={18} />
               </button>
             </div>
-            {valid && (
+            {mode === "remove" && (
+              <label className="workspace-entry-reason">
+                Motivo de la salida
+                <input name="reason" required minLength={3} placeholder="Ej. Material dañado" />
+              </label>
+            )}
+            {quantity !== "" && Number.isFinite(next) && (
               <p className="workspace-entry-preview">
                 Físico: {row.onHand.toLocaleString("es-AR")} →{" "}
-                <strong>
-                  {(row.onHand + Number(quantity)).toLocaleString("es-AR")} {unit}
-                </strong>
+                <strong>{next.toLocaleString("es-AR")} {unit}</strong>
                 <br />
-                Disponible: {(row.onHand + Number(quantity) - row.reserved).toLocaleString(
-                  "es-AR",
-                )}{" "}
-                {unit}
+                Disponible: {roundQuantity(next - row.reserved).toLocaleString("es-AR")} {unit}
               </p>
+            )}
+            {mode === "remove" && quantity !== "" && next < row.reserved && (
+              <p className="admin-error">Solo podés restar el stock disponible; hay {row.reserved.toLocaleString("es-AR")} {unit} reservados.</p>
             )}
             <button type="submit" className="admin-button" disabled={!valid || busy || refreshing}>
               <Check size={15} aria-hidden="true" />
-              {busy ? "Guardando…" : "Confirmar ingreso"}
+              {busy ? "Guardando…" : mode === "entry" ? "Confirmar ingreso" : "Confirmar descuento"}
             </button>
           </fieldset>
           {error && (
@@ -238,7 +262,7 @@ export function StockCategoryWorkspace({ categories }: { categories: StockCatego
               <th>Físico</th>
               <th>Reservado</th>
               <th>Disponible</th>
-              <th>Mercadería que ingresa</th>
+              <th>Movimiento de stock</th>
             </tr>
           </thead>
           <tbody>
@@ -331,7 +355,7 @@ export function StockCategoryWorkspace({ categories }: { categories: StockCatego
         </nav>
       )}
       <p className="workspace-footnote">
-        Disponible = físico − reservado. Cada ingreso confirmado genera un movimiento en el
+        Disponible = físico − reservado. Cada cambio confirmado genera un movimiento en el
         historial.
       </p>
     </section>

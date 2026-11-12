@@ -3,6 +3,7 @@ import mammoth from "mammoth";
 import { createHash } from "node:crypto";
 import { createRequire } from "node:module";
 import type { Worker } from "tesseract.js";
+import { extractDesignedPage } from "./designed-pdf";
 
 export type ImportedRow = {
   code: string;
@@ -10,10 +11,28 @@ export type ImportedRow = {
   price: number | null;
   unit?: string;
   page?: number;
+  documentY?: number;
+  sourceBounds?: { x: number; y: number; width: number; height: number };
+  parserVersion?: number;
+  currency?: "ARS" | "USD";
+  sourceName?: string;
+  sourcePrice?: number | null;
+  sourceCurrency?: "ARS" | "USD";
+  readBackup?: { rowsJson: string; notes: string | null; createdAt: string };
   warning?: string;
   variantId?: string;
   excluded?: boolean;
-  extraction?: "text" | "ocr";
+  reviewed?: boolean;
+  appliedItemId?: string;
+  appliedUpdatedAt?: string;
+  previousItem?: {
+    name: string;
+    unit: string | null;
+    listPrice: number | null;
+    variantId: string | null;
+    purchased: boolean;
+  } | null;
+  extraction?: "text" | "ocr" | "verified";
 };
 
 function money(value: unknown): number | null {
@@ -74,11 +93,16 @@ export async function parseSupplierFile(
   const isMetales = /metales tratados/i.test(supplierName);
   if (ext === "pdf") {
     const pdfjs = await import("pdfjs-dist/legacy/build/pdf.mjs");
-    const doc = await pdfjs.getDocument({
+    const task = pdfjs.getDocument({
       data: new Uint8Array(bytes),
       useSystemFonts: true,
       disableFontFace: true,
-    }).promise;
+    });
+    const doc = await task.promise;
+    if (doc.numPages > 60) {
+      await task.destroy();
+      throw new Error("La lista supera las 60 páginas. Dividila en archivos más pequeños.");
+    }
     pages = [];
     let ocrWorker: Worker | undefined;
     try {
@@ -109,6 +133,7 @@ export async function parseSupplierFile(
             canvas: canvas as never,
             viewport,
           }).promise;
+          await ocrWorker.setParameters({ tessedit_pageseg_mode: "3" as never });
           const result = await ocrWorker.recognize(canvas.toBuffer("image/png"));
           ocrPages.add(n);
           pages.push(result.data.text);
@@ -119,31 +144,17 @@ export async function parseSupplierFile(
           const y = Math.round(item.transform[5] / 3) * 3;
           lines.set(y, [...(lines.get(y) ?? []), { x: item.transform[4], text: item.str }]);
         }
-        if (isMetales) {
-          [...lines.entries()]
-            .sort((a, b) => b[0] - a[0])
-            .forEach(([, parts]) => {
-              const priceText = parts
-                .filter((part) => part.x > 380 && part.text.includes("$"))
-                .map((part) => part.text.replace(/\s+/g, ""))
-                .at(0);
-              const nameText = parts
-                .filter((part) => part.x < 205 && !part.text.includes("$"))
-                .sort((a, b) => a.x - b.x)
-                .map((part) => part.text)
-                .join(" ")
-                .trim();
-              const price = priceText ? money(priceText) : null;
-              if (!nameText || price == null) return;
-              const name = nameText.replace(/\s*\.\s*/g, ".").replace(/\s+/g, " ");
-              positionedRows.push({
-                code: `MT-${createHash("sha256").update(name.toUpperCase()).digest("hex").slice(0, 12)}`,
-                name,
-                price,
-                page: n,
-                warning: "Verificar lectura visual y unidad",
-              });
-            });
+        if (isMetales && fragments.some((item) => /\$|\bU\s*S\s*D\b/.test(item.str))) {
+          const { createWorker } = await import("tesseract.js");
+          const require = createRequire(import.meta.url);
+          const language = require("@tesseract.js-data/spa") as { langPath: string };
+          ocrWorker ??= await createWorker("spa", undefined, {
+            langPath: language.langPath,
+            cacheMethod: "none",
+          });
+          positionedRows.push(...(await extractDesignedPage(page, ocrWorker, n)));
+          pages.push("");
+          continue;
         }
         pages.push(
           [...lines.entries()]
@@ -159,19 +170,14 @@ export async function parseSupplierFile(
       }
     } finally {
       await ocrWorker?.terminate();
+      await task.destroy();
     }
   } else if (ext === "docx") {
     pages = [(await mammoth.extractRawText({ buffer: bytes })).value];
   } else {
     throw new Error("Formato no admitido. Subí PDF, XLSX o DOCX.");
   }
-  const rows: ImportedRow[] = [];
-  if (isMetales && positionedRows.length)
-    return {
-      rows: positionedRows,
-      notes:
-        "Catálogo diagramado: verificá cada precio, descripción y unidad contra la página antes de aprobar.",
-    };
+  const rows: ImportedRow[] = [...positionedRows];
   const isTemperley = /temperley/i.test(supplierName);
   pages.forEach((page, index) => {
     page.split(/\n/).forEach((line) => {
@@ -205,8 +211,10 @@ export async function parseSupplierFile(
     );
   return {
     rows,
-    notes: isTemperley
-      ? "Verificá IVA y descuentos en el documento. Guardamos cada costo literalmente."
-      : "Revisá cada fila: los catálogos diseñados pueden superponer texto.",
+    notes: isMetales
+      ? "Lectura de las filas visibles, contrastada con el texto del PDF. Las discrepancias requieren confirmación. Importes literales, sin IVA ni descuentos inferidos."
+      : isTemperley
+        ? "Verificá IVA y descuentos en el documento. Guardamos cada costo literalmente."
+        : "Revisá cada fila: los catálogos diseñados pueden superponer texto.",
   };
 }

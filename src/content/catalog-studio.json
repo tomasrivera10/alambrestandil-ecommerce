@@ -114,22 +114,22 @@
     "palomita-j": {
       "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/12adb6ad-8000-4b54-8154-ac58ff4487f6.webp",
       "localUrl": "/images/catalogo-estudio/palomita-j.webp",
-      "alt": "Palomita J curva de planchuela galvanizada. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "alt": "Palomita J de planchuela recta perforada, con pliegue corto en un extremo. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
       "sourceUrl": null,
-      "width": 1254,
-      "height": 1254,
-      "bytes": 96490,
-      "sha256": "84c64929035506c2a838a65f101d2fb0ca1524846dd37886b5e9985dc8fcf94c"
+      "width": 1536,
+      "height": 1536,
+      "bytes": 57004,
+      "sha256": "816d87a563bb0893ace5ac444665cd657ec07a0bb5d23f5089bc569ad5ffb86f"
     },
     "palomita-z": {
       "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/23bf39cb-146c-4f19-9460-050e7d8f0580.webp",
       "localUrl": "/images/catalogo-estudio/palomita-z.webp",
-      "alt": "Palomita Z de planchuela galvanizada. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
+      "alt": "Palomita Z de planchuela galvanizada, con pestaña perforada y extremo de retorno. Visualización de referencia generada con IA; medidas y detalles pueden variar.",
       "sourceUrl": null,
       "width": 1254,
       "height": 1254,
-      "bytes": 76472,
-      "sha256": "44a0ac7fcd28c42e4fbbc02974dbea701564b4f79118019035f4fa58f4095450"
+      "bytes": 51530,
+      "sha256": "3850ed9297d20cb60fd5b36bc3d3012beaf4ad84dbab4bf5017e7bf51840ee17"
     },
     "concertina-simple": {
       "url": "https://3ht3xuzo95hkgwht.public.blob.vercel-storage.com/productos/6bbcf300-037c-4c21-a75e-7052f4f91d03.webp",

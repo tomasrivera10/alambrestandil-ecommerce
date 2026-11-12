@@ -27,11 +27,11 @@ Para Preview usar otra base, otro secreto y la URL HTTPS de ese entorno. El buil
 
 - Repositorio: `tomasrivera10/alambrestandil-ecommerce`, rama `main`.
 - Framework: Next.js. Root Directory: `./`. Node.js: 22.x.
-- Install Command: `npm ci`. Build Command: `npm run vercel-build`.
+- Install Command y Build Command: dejar los valores automáticos de Vercel. Detecta Next.js y ejecuta el script `build` de `package.json`.
 - Output Directory: dejar el valor predeterminado de Next.js.
 - En la pantalla de la captura, **Prisma Postgres es opcional**: no hace falta agregarlo si usás Neon.
 
-Subir los cambios de este repositorio a GitHub. Hacer Deploy en Vercel después de configurar las variables. `vercel.json` configura la instalación y el build; el build valida las variables, genera Prisma y aplica las migraciones pendientes únicamente en Production. No ejecuta seed en cada deploy.
+Subir los cambios de este repositorio a GitHub. Hacer Deploy en Vercel después de configurar las variables. `vercel.json` configura solo el cron; el build valida las variables en Vercel, genera Prisma y aplica las migraciones pendientes únicamente en Production. No ejecuta seed en cada deploy.
 
 ## 4. Catálogo y primer administrador
 

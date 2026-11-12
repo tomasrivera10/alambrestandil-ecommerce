@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 import { auth } from "@/server/auth";
@@ -23,6 +24,7 @@ const groups = [
     label: "Gestión",
     links: [
       { href: "/admin/metricas", label: "Resultados", area: "metrics" as const },
+      { href: "/admin/estadisticas", label: "Estadísticas de stock", area: "metrics" as const },
       { href: "/admin/configuracion", label: "Configuración", area: "settings" as const },
     ],
   },
@@ -78,7 +80,7 @@ export default async function PanelLayout({ children }: { children: React.ReactN
       <div className="admin-main">
         <header className="admin-topbar">
           <Link href="/" target="_blank" className="admin-store-link">
-            Ver la tienda ↗
+            Ver la tienda <ArrowUpRight size={18} aria-hidden="true" />
           </Link>
           <span>
             {role === "ADMIN" ? "Administración" : role === "STOCK" ? "Depósito" : "Ventas"}

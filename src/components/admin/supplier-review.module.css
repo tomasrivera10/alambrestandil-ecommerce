@@ -1,77 +1,200 @@
-.bulkReview {
-  margin: 18px 0 24px;
-  padding: 20px;
-  border: 1px solid #dce0e6;
-  border-radius: 10px;
-  background: #fff;
-  min-width: 0;
+.heading {
+  margin-block: 24px 16px;
 }
-
-.bulkReview > :global(.admin-help) {
-  margin: 8px 0 16px;
+.heading h3 {
+  margin: 0 0 8px;
 }
-
-.selectionForm {
-  min-width: 0;
+.heading p,
+.actions p,
+.refresh p,
+.backup p {
+  color: var(--muted-foreground, #57616d);
+  line-height: 1.5;
+  margin: 0;
+  max-width: 80ch;
 }
-
-.bulkList {
-  display: grid;
-  max-height: 360px;
-  overflow: auto;
-  border-block: 1px solid #dce0e6;
+.toolbar {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
   margin-bottom: 16px;
 }
-
-.bulkRow {
+.toolbar label {
   display: grid;
-  grid-template-columns: 18px minmax(0, 1fr) auto;
+  gap: 6px;
+  flex: 1 1 220px;
+  max-width: 440px;
+}
+.selection {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 12px;
-  min-width: 0;
-  padding: 12px 4px;
-  border-bottom: 1px solid #edf0f2;
-  cursor: pointer;
+  gap: 10px;
+  margin-bottom: 16px;
 }
-
-.bulkRow:last-child {
-  border-bottom: 0;
+.selection span {
+  color: #57616d;
+  font-size: 0.875rem;
 }
-
-.rowDetail {
-  display: grid;
-  gap: 3px;
-  min-width: 0;
-  line-height: 1.35;
+.tableScroll {
+  overflow-x: auto;
+  border: 1px solid #dce0e6;
+  border-radius: 8px;
 }
-
-.rowDetail strong,
-.rowDetail small {
+.tableScroll:focus-visible {
+  outline: 2px solid #a81820;
+  outline-offset: 3px;
+}
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 1020px;
+  text-align: left;
+  font-size: 0.875rem;
+}
+.table th {
+  background: #f2f3f3;
+  color: #343a40;
+  font-weight: 600;
+  padding: 12px;
+  border-bottom: 1px solid #dce0e6;
+}
+.table td {
+  padding: 12px;
+  border-bottom: 1px solid #e3e6e7;
+  vertical-align: top;
+}
+.table th:first-child,
+.table td:first-child {
+  width: 36px;
+}
+.table th:nth-child(2) {
+  width: 27%;
+  min-width: 250px;
+}
+.table th:nth-child(3) {
+  width: 155px;
+  min-width: 150px;
+}
+.table th:nth-child(4) {
+  width: 30%;
+  min-width: 250px;
+}
+.table :global(.admin-input) {
+  width: 100%;
+  font-size: 0.875rem;
+  min-height: 40px;
+  padding: 8px;
+  margin-bottom: 6px;
+}
+.table td small {
+  display: block;
+  line-height: 1.45;
+  color: #57616d;
+  margin-top: 5px;
   overflow-wrap: anywhere;
 }
-
-.rowDetail small {
-  color: #57616d;
-  font-weight: 400;
-}
-
-.rowPrice {
-  white-space: nowrap;
+.table input[inputmode="decimal"] {
   font-variant-numeric: tabular-nums;
-  text-align: right;
 }
-
+.table td input[type="checkbox"],
+.table th input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #a81820;
+}
+.table td button {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  white-space: nowrap;
+}
+.selected {
+  background: #faf5f2;
+}
+.warning,
+.table td small.warning {
+  color: #8a4b08;
+}
+.valid {
+  color: #326042;
+}
+.empty {
+  padding: 24px;
+  color: #57616d;
+}
+.actions {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: end;
+  padding-block: 20px 28px;
+  border-bottom: 1px solid #dce0e6;
+  margin-bottom: 20px;
+}
+.actions button {
+  margin-top: 12px;
+}
+.refresh {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+  padding: 20px;
+  background: #fff8ec;
+  border: 1px solid #ebd2a6;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+.refresh h3 {
+  margin: 0 0 6px;
+}
+.refresh > div {
+  flex: 1 1 350px;
+}
+.source {
+  max-width: 1000px;
+  padding: 8px;
+}
+.source figure {
+  margin: 0 0 8px;
+}
+.source img {
+  display: block;
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  border: 1px solid #dce0e6;
+}
+.source figcaption {
+  font-size: 0.875rem;
+  color: #57616d;
+  margin-top: 8px;
+}
+.source :global(.admin-document iframe) {
+  height: 520px;
+}
+.backup {
+  margin-block: 24px;
+}
+.backup p {
+  margin-block: 12px;
+}
 @media (max-width: 700px) {
-  .bulkReview {
+  .actions {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  .selection {
+    align-items: stretch;
+  }
+  .selection button {
+    flex: 1 1 200px;
+  }
+  .refresh {
     padding: 16px;
   }
-
-  .bulkRow {
-    grid-template-columns: 18px minmax(0, 1fr);
-  }
-
-  .rowPrice {
-    grid-column: 2;
-    justify-self: start;
+  .source {
+    max-width: 75vw;
   }
 }

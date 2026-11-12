@@ -16,6 +16,12 @@ El piso orientativo es costo / (1 − objetivo / 100). Con referencia de mercado
 
 ## Fuentes de mercado
 
+La búsqueda dinámica parte de `SupplierItem.name` literal, conservando proveedor, código y unidad como contexto visible. No utiliza el nombre genérico del catálogo ni supone que el distribuidor sea fabricante. El servidor valida que el artículo seleccionado esté comprado y vinculado a la variante; si hay varios proveedores debe seleccionarse uno.
+
+Se consulta el mapa público de productos de Megaben, y búsqueda web RSS con dominio exacto para Comercial CMP y publicaciones de Mercado Libre. El descubrimiento no toma precios de fragmentos del buscador. Cada candidato se consulta en su página; solo se guardan precios únicos, disponibles y en ARS. Las coincidencias parciales del catálogo son candidatos sin verificar: requieren confirmar marca, calibre, medidas, material y presentación. Si una fuente falla o no devuelve coincidencias, se informa al terminar la búsqueda. El acceso RSS depende del buscador y no garantiza cobertura.
+
+Megaben y Comercial CMP están habilitados por defecto para enlaces directos. Mercado Libre conserva el lector de su API y requiere acceso válido para extraer precios; la búsqueda en las otras tiendas no se bloquea por falta de esas credenciales. Encontrar un enlace de Mercado Libre no garantiza permiso de lectura de su precio.
+
 Configurar `MERCADOLIBRE_ACCESS_TOKEN` en el servidor para búsqueda y consulta a Mercado Libre, según los permisos vigentes de su API. Para operación diaria configurar también `MERCADOLIBRE_CLIENT_ID`, `MERCADOLIBRE_CLIENT_SECRET` y el `MERCADOLIBRE_REFRESH_TOKEN` inicial con offline_access. Las credenciales renovadas se guardan cifradas con AES-GCM y el secreto de autenticación del proyecto; un bloqueo en PostgreSQL serializa la renovación entre Functions. Un token de acceso aislado expira y requiere renovación manual. Los resultados de búsqueda son candidatos; necesitan confirmación de identidad por el operador. Se excluyen publicaciones con múltiples variaciones, productos usados, publicaciones inactivas y monedas distintas de ARS.
 
 `MARKET_ALLOWED_HOSTS` es una lista separada por comas de dominios HTTPS exactos de comercios autorizados. El lector admite JSON-LD Product con una única Offer en stock y precio ARS; rechaza rangos, ofertas múltiples y redirecciones. No hay precios inventados ni fuentes de ejemplo incorporadas al catálogo.

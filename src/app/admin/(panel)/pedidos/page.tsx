@@ -1,3 +1,5 @@
+import { OrderWorkspaceDetail, orderDate } from "@/components/admin/order-workspace-detail";
+import { formatMoney } from "@/lib/format";
 import { StatusLabel, statusText } from "@/components/admin/status-label";
 import { SectionNav } from "@/components/admin/section-nav";
 import { requireArea } from "@/server/rbac";
@@ -50,10 +52,22 @@ export default async function OrdersPage({
   const orders = await prisma.order.findMany({
     where,
     orderBy: { createdAt: "desc" },
-    include: { customer: true },
+    include: {
+      customer: true,
+      items: true,
+      history: { orderBy: { createdAt: "desc" }, include: { user: true } },
+    },
     take: 30,
     skip: (page - 1) * 30,
   });
+  const [groups, staleCount] = await Promise.all([
+    prisma.order.groupBy({ by: ["status"], _count: true }),
+    prisma.order.count({ where: staleOrderFilter() }),
+  ]);
+  const totalFor = (statuses: OrderStatus[]) =>
+    groups
+      .filter((group) => statuses.includes(group.status))
+      .reduce((sum, group) => sum + group._count, 0);
   const pageUrl = (n: number) =>
     `/admin/pedidos?${new URLSearchParams({ q, estado: status, atencion: attention, pagina: String(n) })}`;
   return (
@@ -69,6 +83,21 @@ export default async function OrdersPage({
         </Link>
       </div>
       <SectionNav kind="orders" />
+      <nav className="order-queues" aria-label="Resumen de todos los pedidos">
+        <Link href="/admin/pedidos?atencion=nuevos">
+          Por atender{" "}
+          <strong>{totalFor([OrderStatus.NUEVO, OrderStatus.ENVIADO_A_WHATSAPP])}</strong>
+        </Link>
+        <Link href="/admin/pedidos?estado=PREPARANDO">
+          En preparación <strong>{totalFor([OrderStatus.PREPARANDO])}</strong>
+        </Link>
+        <Link href="/admin/pedidos?estado=LISTO">
+          Listos para entregar <strong>{totalFor([OrderStatus.LISTO])}</strong>
+        </Link>
+        <Link href="/admin/pedidos?atencion=demorados">
+          Sin actualizar en 48 h <strong>{staleCount}</strong>
+        </Link>
+      </nav>
       <form className="workspace-filterbar">
         <label className="workspace-search">
           <span>Buscar pedido</span>
@@ -101,50 +130,52 @@ export default async function OrdersPage({
         </button>
       </form>
       <div className="workspace-results">
-        <p>{count} pedidos</p>
+        <p>
+          {count} {count === 1 ? "pedido" : "pedidos"} · Abrí un pedido para ver todo y gestionarlo.
+        </p>
         {(q || status || attention) && <Link href="/admin/pedidos">Limpiar filtros</Link>}
       </div>
-      <div
-        className="workspace-table-scroll"
-        tabIndex={0}
-        role="region"
-        aria-label="Pedidos, desplazable horizontalmente"
-      >
-        <table className="workspace-table">
-          <thead>
-            <tr>
-              <th>Pedido</th>
-              <th>Cliente</th>
-              <th>Estado</th>
-              <th>Localidad</th>
-              <th>Recibido</th>
-            </tr>
-          </thead>
-          <tbody>
-            {orders.map((order) => (
-              <tr key={order.id}>
-                <td>
-                  <Link className="workspace-inline-link" href={`/admin/pedidos/${order.id}`}>
-                    {formatOrderNumber(order.number)}
-                  </Link>
-                </td>
-                <td>
-                  {order.customer.name}
-                  <p>{order.customer.phone}</p>
-                </td>
-                <td>
-                  <StatusLabel value={order.status} />
-                </td>
-                <td>{order.locality || "Sin indicar"}</td>
-                <td>
-                  {order.createdAt.toLocaleDateString("es-AR", {
-                    timeZone: "America/Argentina/Buenos_Aires",
-                  })}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="order-worklist">
+        {orders.map((order) => (
+          <details className="order-workitem" key={order.id}>
+            <summary>
+              <span>
+                <strong>{formatOrderNumber(order.number)}</strong>
+                <small>{orderDate(order.createdAt)}</small>
+              </span>
+              <span>
+                <strong>{order.customer.name}</strong>
+                <small>{order.customer.phone}</small>
+              </span>
+              <span>
+                <StatusLabel value={order.status} />
+                <small>
+                  {order.fulfillment === "ENVIO" ? "Envío" : "Retiro"} ·{" "}
+                  {order.locality || "Sin localidad"}
+                </small>
+              </span>
+              <span>
+                <strong>
+                  {order.estimatedTotal == null
+                    ? "A cotizar"
+                    : formatMoney(Number(order.estimatedTotal))}
+                </strong>
+                <small>
+                  {order.items.length} {order.items.length === 1 ? "producto" : "productos"}
+                  {order.items.some((item) => item.lineTotal == null) &&
+                  order.estimatedTotal != null
+                    ? " · Importe parcial"
+                    : ""}
+                </small>
+              </span>
+              <span className="order-expand">Ver y gestionar</span>
+            </summary>
+            <OrderWorkspaceDetail order={order} />
+            <Link className="order-permalink" href={`/admin/pedidos/${order.id}`}>
+              Abrir página del pedido
+            </Link>
+          </details>
+        ))}
       </div>
       {!orders.length && (
         <div className="workspace-empty">

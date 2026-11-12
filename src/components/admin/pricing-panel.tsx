@@ -1,5 +1,4 @@
 import { PriceConfirmation } from "./price-confirmation";
-import { marketConnected } from "@/server/pricing/token";
 import Link from "next/link";
 import { AlertTriangle, CheckCircle2, ExternalLink, Search, TrendingUp } from "lucide-react";
 import { pricingForVariant, familyObservedMargin } from "@/server/pricing/queries";
@@ -18,9 +17,11 @@ import {
 export async function PricingPanel({
   variantId,
   supplierItemId,
+  focused = false,
 }: {
   variantId: string;
   supplierItemId?: string;
+  focused?: boolean;
 }) {
   const state = await pricingForVariant(variantId, supplierItemId);
   const family = await familyObservedMargin(state.variant.product.categoryId);
@@ -39,18 +40,20 @@ export async function PricingPanel({
     n == null ? "Sin datos" : `${n.toLocaleString("es-AR", { maximumFractionDigits: 1 })}%`;
   return (
     <section className="admin-pricing-panel" aria-label={`Precios de ${state.variant.name}`}>
-      <div className="admin-section-heading">
-        <div>
-          <h3>{state.variant.name}</h3>
-          <p>
-            {state.variant.product.name} · {state.variant.sku} ·{" "}
-            {(state.variant.salesUnit ?? state.variant.product.salesUnit).toLowerCase()}
-          </p>
+      {!focused && (
+        <div className="admin-section-heading">
+          <div>
+            <h3>{state.variant.name}</h3>
+            <p>
+              {state.variant.product.name} · {state.variant.sku} ·{" "}
+              {(state.variant.salesUnit ?? state.variant.product.salesUnit).toLowerCase()}
+            </p>
+          </div>
+          <span className="admin-badge">
+            <TrendingUp size={14} /> Guía de precio
+          </span>
         </div>
-        <span className="admin-badge">
-          <TrendingUp size={14} /> Guía de precio
-        </span>
-      </div>
+      )}
       {state.linked.length > 1 && !state.selected && (
         <div className="admin-notice">
           <p>
@@ -69,16 +72,18 @@ export async function PricingPanel({
         </div>
       )}
       <div className="admin-prices-grid">
-        <PriceDisplay
-          kind="cost"
-          label="Costo de compra"
-          value={state.cost}
-          note={
-            state.selected
-              ? `${state.selected.supplier.name} · importe literal de lista`
-              : "Vinculá un costo del proveedor"
-          }
-        />
+        {!focused && (
+          <PriceDisplay
+            kind="cost"
+            label="Costo de compra"
+            value={state.cost}
+            note={
+              state.selected
+                ? `${state.selected.supplier.name} · importe literal de lista`
+                : "Vinculá un costo del proveedor"
+            }
+          />
+        )}
         <PriceDisplay
           kind="market"
           label="Referencia de mercado"
@@ -96,16 +101,28 @@ export async function PricingPanel({
               : "Confirmá costo y margen objetivo"
           }
         />
-        <PriceDisplay
-          label={
-            state.variant.product.priceVisibility === "HIDDEN"
-              ? "Precio de venta actual"
-              : "Precio publicado"
-          }
-          value={state.price}
-          note={`${state.variant.product.priceVisibility === "HIDDEN" ? "En tienda: a consultar · " : ""}Margen observado: ${pct(state.observed)}`}
-        />
+        {!focused && (
+          <PriceDisplay
+            label={
+              state.variant.product.priceVisibility === "HIDDEN"
+                ? "Precio de venta actual"
+                : "Precio publicado"
+            }
+            value={state.price}
+            note={`${state.variant.product.priceVisibility === "HIDDEN" ? "En tienda: a consultar · " : ""}Margen observado: ${pct(state.observed)}`}
+          />
+        )}
       </div>
+      {focused && state.recommendation && state.price != null && (
+        <p className="admin-help">
+          Diferencia entre sugerido y vigente:{" "}
+          {(state.recommendation.price - state.price).toLocaleString("es-AR", {
+            style: "currency",
+            currency: "ARS",
+          })}
+          . La sugerencia no cambia el precio del ecommerce.
+        </p>
+      )}
       <p className="admin-help">
         Margen bruto = (venta − costo) ÷ venta. No contempla otros gastos. Los importes se comparan
         tal como están publicados; verificá IVA, descuentos, envío y presentación.
@@ -117,8 +134,8 @@ export async function PricingPanel({
         </p>
       )}
       <div className="admin-pricing-workspace">
-        <div>
-          <h4>Objetivo de margen</h4>
+        <details open={!focused}>
+          <summary>Editar objetivo de margen</summary>
           <p className="admin-help">
             Actual: {pct(state.policy?.margin ?? null)}
             {state.policySource ? ` · ${state.policySource}` : ""}. La referencia observada de la
@@ -161,9 +178,9 @@ export async function PricingPanel({
               <button className="admin-text-button">Usar objetivo de la familia</button>
             </ActionForm>
           )}
-        </div>
-        <div>
-          <h4>Confirmar precio de venta</h4>
+        </details>
+        <details open={!focused}>
+          <summary>Actualizar precio de venta</summary>
           <p className="admin-help">
             El precio de esta medida se actualiza únicamente cuando lo confirmás.
           </p>
@@ -182,7 +199,7 @@ export async function PricingPanel({
               Falta un costo vinculado o un objetivo de margen confirmado.
             </p>
           )}
-        </div>
+        </details>
       </div>
       <details className="admin-disclosure">
         <summary>
@@ -193,17 +210,19 @@ export async function PricingPanel({
           al menos 3 vendedores distintos, sin valores extremos, consultados en las últimas 36
           horas.
         </p>
-        {!marketConnected() && (
-          <p className="admin-notice">
-            Mercado Libre está pendiente de conexión. La búsqueda automática se habilita al conectar
-            la fuente.
-          </p>
-        )}
+        <p className="admin-help">
+          {state.selected
+            ? `Búsqueda literal: «${state.selected.name}». Proveedor: ${state.selected.supplier.name} · Código: ${state.selected.code} · Unidad: ${state.selected.unit ?? "Sin especificar"}.`
+            : "Elegí el artículo del proveedor para buscar su nombre literal."}{" "}
+          Se consultan Mercado Libre, Megaben y Comercial CMP. El proveedor identifica el origen del
+          artículo; no se presupone que sea su marca. Las coincidencias se revisan antes de usarlas.
+        </p>
         <div className="admin-inline-form">
           <ActionForm action={findMarketReferences}>
             <input hidden name="variantId" value={variantId} readOnly />
-            <button disabled={!marketConnected()} className="admin-button-secondary">
-              <Search size={16} /> Buscar en Mercado Libre
+            <input hidden name="supplierItemId" value={state.selected?.id ?? ""} readOnly />
+            <button disabled={!state.selected} className="admin-button-secondary">
+              <Search size={16} /> Buscar precios de venta
             </button>
           </ActionForm>
         </div>

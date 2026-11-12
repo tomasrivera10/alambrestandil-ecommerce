@@ -29,7 +29,7 @@ export default async function HomePage() {
             Tejidos romboidales, accesorios, puertas y portones galvanizados, directo de fábrica.
           </p>
           <div className="hero-actions">
-            <Link href="/productos" className="store-button">
+            <Link href="/productos" scroll={false} className="store-button">
               Ver productos y medidas <ArrowUpRight size={19} />
             </Link>
             <Link href="#productos" className="hero-secondary">

@@ -162,7 +162,6 @@ Se revisaron también Romboidal (https://www.romboidal.com.ar/), con miniaturas 
 - AT-XLS-044 · PAQ.C/PLOMO 3" X 100U: Repetido en Stock!A73: figura Unidad y Kg. Confirmar unidad de venta; se conserva una sola referencia.
 - AT-XLS-045 · CAJ.C/PLOMO 4" DENTADO: Repetido en Stock!A74: figura Unidad y Kg. Confirmar unidad de venta; se conserva una sola referencia.
 - AT-XLS-046 · PAQ.C/PLOMO 4" X 100U: Repetido en Stock!A75: figura Unidad y Kg. Confirmar unidad de venta; se conserva una sola referencia.
-- AT-XLS-060 · POSTE ESQUINERO 1M 12M: Medida ambigua en el Excel. Confirmar antes de publicar esta variante.
 - AT-XLS-064 · INTERMEDIO 1M 1,2M: Medida ambigua en el Excel. Confirmar antes de publicar esta variante.
 
 ## Operación

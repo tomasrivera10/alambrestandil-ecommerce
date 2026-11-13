@@ -2,6 +2,7 @@ import { cache } from "react";
 import { cachedCatalogRead } from "./cache";
 import { prisma } from "@/server/db";
 import { decimalToNumber } from "@/lib/format";
+import { activeOffer } from "./offer";
 import { rankSearchHit } from "@/features/search/rank";
 import { currentStudioImage } from "@/features/products/studio-image";
 import type { Prisma } from "@/generated/prisma/client";
@@ -17,6 +18,8 @@ export type CatalogProduct = {
   salesUnit: string;
   priceVisibility: "PUBLIC" | "HIDDEN" | "FROM";
   price: number | null;
+  regularPrice: number | null;
+  promotionName: string | null;
   featured: boolean;
   uses: string[];
   imageUrl: string | null;
@@ -34,17 +37,49 @@ function mapProduct(product: {
   salesUnit: string;
   priceVisibility: CatalogProduct["priceVisibility"];
   price: { toNumber(): number } | null;
+  discountPrice: { toNumber(): number } | null;
+  promotionName: string | null;
+  promotionStartsAt: Date | null;
+  promotionEndsAt: Date | null;
   featured: boolean;
   uses: string[];
   category: { slug: string; name: string };
   images: { url: string; alt: string; isReference?: boolean }[];
-  variants: { inventory: { onHand: number; reserved: number } | null }[];
+  variants: {
+    inventory: { onHand: number; reserved: number } | null;
+    price: { toNumber(): number } | null;
+    discountPrice: { toNumber(): number } | null;
+  }[];
 }): CatalogProduct {
   const image = product.images[0] ? currentStudioImage(product.slug, product.images[0]) : null;
   const available = product.variants.reduce((sum, variant) => {
     if (!variant.inventory) return sum;
     return sum + (variant.inventory.onHand - variant.inventory.reserved);
   }, 0);
+  const regular = decimalToNumber(product.price);
+  const baseOffer = activeOffer(
+    regular,
+    decimalToNumber(product.discountPrice),
+    product.promotionStartsAt,
+    product.promotionEndsAt,
+  );
+  const variantPrices = product.variants
+    .map((variant) => {
+      const sale = decimalToNumber(variant.price) ?? regular;
+      const discount =
+        decimalToNumber(variant.discountPrice) ??
+        (variant.price == null ? decimalToNumber(product.discountPrice) : null);
+      const offer = activeOffer(sale, discount, product.promotionStartsAt, product.promotionEndsAt);
+      return { price: offer ?? sale, regular: offer == null ? null : sale, offer: offer != null };
+    })
+    .filter((item) => item.price != null);
+  const lowest = variantPrices.length
+    ? variantPrices.reduce((best, item) => (item.price! < best.price! ? item : best))
+    : {
+        price: baseOffer ?? regular,
+        regular: baseOffer == null ? null : regular,
+        offer: baseOffer != null,
+      };
   return {
     id: product.id,
     name: product.name,
@@ -55,7 +90,10 @@ function mapProduct(product: {
     brand: product.brand,
     salesUnit: String(product.salesUnit),
     priceVisibility: product.priceVisibility,
-    price: product.priceVisibility === "HIDDEN" ? null : decimalToNumber(product.price),
+    price: product.priceVisibility === "HIDDEN" ? null : lowest.price,
+    regularPrice: product.priceVisibility === "HIDDEN" ? null : lowest.regular,
+    promotionName:
+      product.priceVisibility === "HIDDEN" || !lowest.offer ? null : product.promotionName,
     featured: product.featured,
     uses: product.uses,
     imageUrl: image?.url ?? null,
@@ -180,16 +218,40 @@ async function loadGetProductBySlug(categorySlug: string, slug: string) {
     },
   });
   if (!product) return null;
+  const {
+    purchasePrice: _purchasePrice,
+    discountPrice: _discountPrice,
+    ...publicProduct
+  } = product;
+  void _purchasePrice;
+  void _discountPrice;
   return {
-    ...product,
+    ...publicProduct,
     images: product.images.map((image) => currentStudioImage(product.slug, image)),
     price: product.priceVisibility === "HIDDEN" ? null : decimalToNumber(product.price),
-    variants: product.variants.map((variant) => ({
-      ...variant,
-      price: product.priceVisibility === "HIDDEN" ? null : decimalToNumber(variant.price),
-      available: variant.inventory ? variant.inventory.onHand - variant.inventory.reserved : 0,
-      attributes: variant.attributes as Record<string, string>,
-    })),
+    variants: product.variants.map((variant) => {
+      const sale = decimalToNumber(variant.price) ?? decimalToNumber(product.price);
+      const discount =
+        decimalToNumber(variant.discountPrice) ??
+        (variant.price == null ? decimalToNumber(product.discountPrice) : null);
+      const offer = activeOffer(sale, discount, product.promotionStartsAt, product.promotionEndsAt);
+      const {
+        purchasePrice: _purchasePrice,
+        discountPrice: _discountPrice,
+        ...publicVariant
+      } = variant;
+      void _purchasePrice;
+      void _discountPrice;
+      return {
+        ...publicVariant,
+        price: product.priceVisibility === "HIDDEN" ? null : (offer ?? sale),
+        regularPrice: product.priceVisibility === "HIDDEN" ? null : offer == null ? null : sale,
+        promotionName:
+          product.priceVisibility === "HIDDEN" || offer == null ? null : product.promotionName,
+        available: variant.inventory ? variant.inventory.onHand - variant.inventory.reserved : 0,
+        attributes: variant.attributes as Record<string, string>,
+      };
+    }),
     complements: product.complements.map((item) => mapProduct(item.suggested as never)),
   };
 }

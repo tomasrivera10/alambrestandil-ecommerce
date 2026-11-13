@@ -32,7 +32,13 @@ export function ProductCard({ product }: { product: CatalogProduct }) {
         <p className="product-card-description">{product.shortDescription}</p>
         <div className="product-card-purchase">
           <div className="product-card-price">
-            <PriceTag visibility={product.priceVisibility} price={product.price} layout="catalog" />
+            <PriceTag
+              visibility={product.priceVisibility}
+              price={product.price}
+              regularPrice={product.regularPrice}
+              promotionName={product.promotionName}
+              layout="catalog"
+            />
             {hasPrice && (
               <span className="product-card-unit">por {unitLabel(product.salesUnit, 1)}</span>
             )}

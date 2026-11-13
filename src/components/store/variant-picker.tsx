@@ -18,6 +18,8 @@ type Variant = {
   name: string;
   sku: string;
   price: number | null;
+  regularPrice: number | null;
+  promotionName: string | null;
   salesUnit: string | null;
   available: number;
   attributes: Record<string, string>;
@@ -56,7 +58,12 @@ export function VariantPicker({
   return (
     <div id="pedido" className="variant-panel">
       <div className="variant-price">
-        <PriceTag visibility={priceVisibility} price={variant.price ?? fallbackPrice} />
+        <PriceTag
+          visibility={priceVisibility}
+          price={variant.price ?? fallbackPrice}
+          regularPrice={variant.regularPrice}
+          promotionName={variant.promotionName}
+        />
         <span>por {unitLabel(unit, 1)}</span>
       </div>
       <fieldset className="variant-options">

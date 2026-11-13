@@ -1,0 +1,406 @@
+.catalog-pricing {
+  max-width: 1280px !important;
+  margin: auto;
+}
+.catalog-pricing-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+.catalog-pricing-head h1 {
+  font-family: Archivo, sans-serif;
+  font-size: clamp(30px, 3vw, 40px);
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  margin: 3px 0 8px;
+}
+.catalog-pricing-head p:last-child {
+  color: #5d665f;
+  font-size: 14px;
+}
+.catalog-pricing-eyebrow {
+  color: #a91a22 !important;
+  font-size: 11px !important;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.catalog-pricing-filters {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #d9ddd7;
+  padding: 12px;
+  margin: 20px 0 12px;
+}
+.catalog-pricing-filters label {
+  min-width: 0;
+}
+.catalog-pricing-filters .catalog-pricing-search {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #b9c1b9;
+  padding: 0 12px;
+  min-width: 220px;
+}
+.catalog-pricing-filters input,
+.catalog-pricing-filters select {
+  height: 44px;
+  border: 1px solid #b9c1b9;
+  background: white;
+  border-radius: 3px;
+  padding: 0 11px;
+  color: #252824;
+  font: inherit;
+  font-size: 13px;
+}
+.catalog-pricing-filters .catalog-pricing-search input {
+  border: 0;
+  outline: 0;
+  width: 100%;
+  padding: 0;
+}
+.catalog-pricing-filters .catalog-pricing-search:focus-within {
+  outline: 2px solid #b51f24;
+  outline-offset: 2px;
+}
+.catalog-pricing-results {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #5d665f;
+  font-size: 13px;
+  margin: 16px 0;
+}
+.catalog-pricing-results a,
+.catalog-pricing-footer a {
+  color: #a91a22;
+  font-weight: 650;
+  text-decoration: none;
+}
+.catalog-pricing-list {
+  display: grid;
+  gap: 14px;
+}
+.catalog-pricing-card {
+  background: #fff;
+  border: 1px solid #d9ddd7;
+  box-shadow: 0 3px 13px #20282009;
+}
+.catalog-pricing-ident {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px 20px;
+  border-bottom: 1px solid #e5e8e3;
+}
+.catalog-pricing-image {
+  width: 60px;
+  height: 60px;
+  flex: none;
+  background: #f4f4f0;
+  display: grid;
+  place-items: center;
+  color: #79827a;
+}
+.catalog-pricing-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.catalog-pricing-ident h2 {
+  font-size: 18px;
+  line-height: 1.25;
+  font-weight: 700;
+  margin: 2px 0 4px;
+}
+.catalog-pricing-meta {
+  font-size: 12px;
+  color: #5d665f;
+}
+.catalog-pricing-state {
+  margin-left: auto;
+  border: 1px solid #d9ddd7;
+  background: #f4f4f0;
+  color: #4f5952;
+  font-weight: 700;
+  font-size: 11px;
+  padding: 6px 9px;
+  white-space: nowrap;
+}
+.catalog-pricing-state.is-live {
+  background: #eaf3ec;
+  color: #275b38;
+  border-color: #b6d2bd;
+}
+.catalog-pricing-form {
+  padding: 18px 20px;
+}
+.catalog-pricing-fields {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(130px, 0.7fr) auto;
+  gap: 12px;
+  align-items: end;
+}
+.catalog-pricing-fields label,
+.catalog-pricing-promotion label,
+.catalog-pricing-variant label {
+  display: block;
+  color: #343c36;
+  font-size: 12px;
+  font-weight: 700;
+}
+.catalog-pricing-fields label > span:not(.sr-only) {
+  font-weight: 500;
+  color: #778078;
+}
+.catalog-pricing-fields input:not([type="checkbox"]),
+.catalog-pricing-promotion input,
+.catalog-pricing-variant input {
+  display: block;
+  margin-top: 6px;
+  width: 100%;
+  height: 44px;
+  border: 1px solid #b9c1b9;
+  border-radius: 3px;
+  padding: 0 11px;
+  background: #fff;
+  color: #252824;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+.catalog-pricing-fields input:focus-visible,
+.catalog-pricing-promotion input:focus-visible,
+.catalog-pricing-variant input:focus-visible,
+.catalog-pricing-filters select:focus-visible {
+  outline: 2px solid #b51f24;
+  outline-offset: 2px;
+}
+.catalog-pricing-publish {
+  height: 44px;
+  display: flex !important;
+  align-items: center;
+  gap: 9px;
+  white-space: nowrap;
+}
+.catalog-pricing-publish input {
+  width: 18px;
+  height: 18px;
+  accent-color: #b51f24;
+}
+.catalog-pricing-publish span {
+  font-weight: 700 !important;
+  color: #252824 !important;
+}
+.catalog-pricing-fields button {
+  min-height: 44px;
+}
+.catalog-pricing-promotion {
+  border-top: 1px solid #e5e8e3;
+  margin-top: 18px;
+  padding-top: 14px;
+}
+.catalog-pricing-promotion summary,
+.catalog-pricing-variants summary {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  color: #252824;
+  list-style-position: inside;
+}
+.catalog-pricing-promotion summary strong {
+  color: #a91a22;
+}
+.catalog-pricing-promotion > div {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 12px;
+  margin-top: 14px;
+}
+.catalog-pricing-promotion p,
+.catalog-pricing-variants > p {
+  font-size: 12px;
+  color: #5d665f;
+  margin-top: 10px;
+}
+.catalog-pricing-variants {
+  border-top: 1px solid #e5e8e3;
+  padding: 16px 20px;
+}
+.catalog-pricing-variants summary span {
+  color: #5d665f;
+  font-weight: 500;
+}
+.catalog-pricing-variant-list {
+  display: grid;
+  gap: 1px;
+  background: #e5e8e3;
+  margin-top: 15px;
+}
+.catalog-pricing-variant {
+  display: grid;
+  grid-template-columns: minmax(180px, 1.5fr) repeat(3, minmax(90px, 1fr)) auto;
+  gap: 12px;
+  align-items: end;
+  background: #f8f9f7;
+  padding: 13px;
+}
+.catalog-pricing-variant-name {
+  align-self: center;
+  min-width: 0;
+}
+.catalog-pricing-variant-name strong {
+  display: block;
+  font-size: 13px;
+  line-height: 1.3;
+}
+.catalog-pricing-variant-name small {
+  display: block;
+  color: #5d665f;
+  font-size: 11px;
+  margin-top: 3px;
+}
+.catalog-pricing-variant button {
+  min-height: 44px;
+  white-space: nowrap;
+}
+.catalog-pricing-footer {
+  display: flex;
+  gap: 22px;
+  border-top: 1px solid #e5e8e3;
+  padding: 13px 20px;
+  font-size: 12px;
+}
+.catalog-pricing-footer a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.catalog-pricing-empty {
+  text-align: center;
+  background: white;
+  border: 1px solid #d9ddd7;
+  padding: 50px 20px;
+}
+.catalog-pricing-empty svg {
+  margin: auto;
+  color: #79827a;
+}
+.catalog-pricing-empty h2 {
+  font-size: 20px;
+  margin: 12px 0 5px;
+}
+.catalog-pricing-empty p {
+  font-size: 13px;
+  color: #5d665f;
+  margin-bottom: 17px;
+}
+.catalog-pricing .admin-error,
+.catalog-pricing .admin-success {
+  margin-top: 10px;
+}
+.catalog-pricing .admin-action-fields {
+  min-width: 0;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+@media (max-width: 1050px) {
+  .catalog-pricing-filters {
+    flex-wrap: wrap;
+  }
+  .catalog-pricing-search {
+    flex-basis: 100% !important;
+  }
+  .catalog-pricing-fields {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .catalog-pricing-publish {
+    grid-column: span 2;
+  }
+  .catalog-pricing-variant {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .catalog-pricing-variant-name {
+    grid-column: 1/-1;
+  }
+  .catalog-pricing-variant button {
+    grid-column: 1/-1;
+  }
+}
+@media (max-width: 640px) {
+  .catalog-pricing-head {
+    align-items: start;
+    flex-direction: column;
+  }
+  .catalog-pricing-head .admin-button {
+    width: 100%;
+    justify-content: center;
+  }
+  .catalog-pricing-filters {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .catalog-pricing-filters .catalog-pricing-search {
+    grid-column: 1/-1;
+    min-width: 0;
+  }
+  .catalog-pricing-filters label,
+  .catalog-pricing-filters select,
+  .catalog-pricing-filters button {
+    width: 100%;
+  }
+  .catalog-pricing-ident {
+    padding: 14px;
+    gap: 10px;
+    align-items: start;
+  }
+  .catalog-pricing-image {
+    width: 50px;
+    height: 50px;
+  }
+  .catalog-pricing-ident h2 {
+    font-size: 15px;
+  }
+  .catalog-pricing-state {
+    font-size: 10px;
+  }
+  .catalog-pricing-form,
+  .catalog-pricing-variants {
+    padding: 14px;
+  }
+  .catalog-pricing-fields {
+    grid-template-columns: 1fr 1fr;
+  }
+  .catalog-pricing-fields label:first-child {
+    grid-column: 1/-1;
+  }
+  .catalog-pricing-publish {
+    grid-column: 1/-1;
+  }
+  .catalog-pricing-fields button {
+    grid-column: 1/-1;
+  }
+  .catalog-pricing-promotion > div {
+    grid-template-columns: 1fr 1fr;
+  }
+  .catalog-pricing-promotion > div label:first-child {
+    grid-column: 1/-1;
+  }
+  .catalog-pricing-variant {
+    gap: 8px;
+    padding: 12px;
+  }
+  .catalog-pricing-variant input {
+    font-size: 13px;
+  }
+  .catalog-pricing-footer {
+    padding: 13px 14px;
+    flex-wrap: wrap;
+  }
+}

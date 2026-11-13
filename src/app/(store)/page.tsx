@@ -1,70 +1,97 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, ChevronRight, MapPin, MessageCircle, Ruler, Wrench } from "lucide-react";
+import { ArrowUpRight, ChevronRight, MapPin, MessageCircle, Ruler, Wrench } from "lucide-react";
 import { listProducts } from "@/server/products/queries";
 import { ProductCard } from "@/components/store/product-card";
-import { HeroMedia } from "@/components/store/hero-media";
 import { FadeContent } from "@/components/store/fade-content";
 import { featuredCategories } from "@/content/storefront";
+import { formatMoney, unitLabel } from "@/lib/format";
 
 // Featured products include current prices and availability.
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
   const featured = await listProducts({ featured: true });
+  const postSlugs = [
+    "palo-de-eucalipto-3m",
+    "postes-de-quebracho",
+    "poste-esquinero",
+    "poste-intermedio",
+    "puntal",
+  ];
+  const offers = [...featured].sort((a, b) => {
+    const aOrder = postSlugs.indexOf(a.slug);
+    const bOrder = postSlugs.indexOf(b.slug);
+    return (aOrder === -1 ? postSlugs.length : aOrder) - (bOrder === -1 ? postSlugs.length : bOrder);
+  });
+  const pricedOffers = offers
+    .filter((product) => product.priceVisibility !== "HIDDEN" && product.price != null)
+    .sort((a, b) => {
+      const aDiscount = a.regularPrice != null && a.price != null ? 1 - a.price / a.regularPrice : 0;
+      const bDiscount = b.regularPrice != null && b.price != null ? 1 - b.price / b.regularPrice : 0;
+      return bDiscount - aDiscount;
+    })
+    .slice(0, 3);
   return (
     <>
-      <section className="store-hero" data-store-section="productos">
-        <HeroMedia videoSrc={process.env.NEXT_PUBLIC_HERO_VIDEO_URL} />
-        <div className="hero-shade" />
-        <div className="store-container hero-content">
-          <h1>
-            La casa del
-            <br />
-            alambrado.
-          </h1>
-          <p>
-            En Tandil, todo para el alambrado y el alambrador.
-            <br />
-            Tejidos romboidales, accesorios, puertas y portones galvanizados, directo de fábrica.
-          </p>
-          <div className="hero-actions">
-            <Link href="/productos" scroll={false} className="store-button">
-              Ver productos y medidas <ArrowUpRight size={19} />
+      {offers.length > 0 && (
+        <section id="productos" data-store-section="productos" className="store-section offers-section home-offers-section" aria-labelledby="offers-title">
+          <div className="store-container">
+            <h1 id="offers-title" className="sr-only">Postes de madera y hormigón para tu proyecto</h1>
+            <Link href="#ofertas-productos" className="offers-campaign" aria-label="Ver productos de postes de madera y hormigón">
+              <Image src="/images/postes-madera-hormigon-campana.png" alt="Tu proyecto empieza con buenos postes. Eucalipto, quebracho y hormigón. Ver productos." fill sizes="(min-width: 1440px) 1360px, 100vw" priority />
             </Link>
-            <Link href="#productos" className="hero-secondary">
-              Elegí por categoría <ArrowRight size={17} />
-            </Link>
+            {pricedOffers.length > 0 && (
+              <div className="campaign-prices" aria-label="Precios destacados">
+                {pricedOffers.map((product) => {
+                  const discount = product.regularPrice != null && product.price != null
+                    ? Math.round((1 - product.price / product.regularPrice) * 100)
+                    : 0;
+                  return (
+                    <Link className="campaign-price" href={`/productos/${product.categorySlug}/${product.slug}`} key={product.id}>
+                      <span className="campaign-price-top">
+                        <span className="campaign-price-name">{product.name}</span>
+                        {discount > 0 && <strong className="campaign-price-off">{discount}% OFF</strong>}
+                      </span>
+                      <span className="campaign-price-bottom">
+                        <span>
+                          {discount > 0 && <s>{formatMoney(product.regularPrice)}</s>}
+                          <strong>{product.priceVisibility === "FROM" ? "Desde " : ""}{formatMoney(product.price)}</strong>
+                          <small>por {unitLabel(product.salesUnit, 1)}</small>
+                        </span>
+                        <ArrowUpRight size={20} aria-hidden="true" />
+                      </span>
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
+            <div className="offers-products-heading" id="ofertas-productos">
+              <div>
+                <h2>{offers.some((product) => product.regularPrice != null && product.price != null && product.regularPrice > product.price) ? "Ofertas y destacados" : "Postes destacados"}</h2>
+                <p>Precios y opciones para elegir el poste que necesitás.</p>
+              </div>
+              <Link href="/productos" className="text-link">Ver catálogo completo <ArrowUpRight size={17} /></Link>
+            </div>
+            <div className="offers-products" role="list">
+              {offers.map((product) => (
+                <div className="offers-product" role="listitem" key={product.id}>
+                  <ProductCard product={product} />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-        <div className="hero-footnote">
-          <span>Materiales e instalación en Tandil y zona.</span>
-          <span>Alambres Tandil · La Casa del Alambrado</span>
-        </div>
-      </section>
-      <div className="service-strip store-container">
-        <span>
-          <MapPin />
-          Retirá en Ijurco 1480, Tandil
-        </span>
-        <span>
-          <MessageCircle />
-          Cerrá tu pedido por WhatsApp
-        </span>
-        <span>
-          <Wrench />
-          Consultá por instalación
-        </span>
+        </section>
+      )}
+      <div className="service-strip store-container home-service-strip">
+        <span><MapPin /> Retirá en Ijurco 1480, Tandil</span>
+        <span><MessageCircle /> Cerrá tu pedido por WhatsApp</span>
+        <span><Wrench /> Consultá por instalación</span>
       </div>
-      <section
-        id="productos"
-        data-store-section="productos"
-        className="store-section store-container home-categories"
-        aria-labelledby="categories-title"
-      >
+      <section className="store-section store-container home-categories" aria-labelledby="categories-title">
         <div className="section-heading">
           <div>
-            <h2 id="categories-title">Productos por categoría</h2>
+            <h2 id="categories-title">Comprá por categoría</h2>
             <p>Elegí el material, revisá las medidas y agregalo a tu pedido.</p>
           </div>
           <Link href="/productos" className="text-link">
@@ -73,18 +100,9 @@ export default async function HomePage() {
         </div>
         <div className="category-grid">
           {featuredCategories.map((category) => (
-            <Link
-              href={`/productos/${category.slug}`}
-              className="category-tile"
-              key={category.slug}
-            >
+            <Link href={`/productos/${category.slug}`} className="category-tile" key={category.slug}>
               <div className="category-photo">
-                <Image
-                  src={category.src}
-                  alt={category.alt}
-                  fill
-                  sizes="(min-width: 900px) 25vw, 50vw"
-                />
+                <Image src={category.src} alt={category.alt} fill sizes="(min-width: 900px) 25vw, 50vw" />
               </div>
               <div className="category-copy">
                 <h3>{category.name}</h3>
@@ -95,27 +113,6 @@ export default async function HomePage() {
           ))}
         </div>
       </section>
-      {featured.length > 0 && (
-        <section
-          className="store-section store-container featured-section"
-          aria-labelledby="featured-title"
-        >
-          <div className="section-heading">
-            <div>
-              <h2 id="featured-title">Productos destacados</h2>
-              <p>Tejidos, postes y accesorios para el trabajo de todos los días.</p>
-            </div>
-            <Link href="/productos" className="text-link">
-              Ver productos <ArrowUpRight size={17} />
-            </Link>
-          </div>
-          <div className="product-grid">
-            {featured.slice(0, 4).map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        </section>
-      )}
       <div className="home-catalog-next store-container">
         <p>¿Buscás otro material? Encontrá todas las categorías y medidas en el catálogo.</p>
         <Link href="/productos" className="store-button">

@@ -254,7 +254,7 @@ export function ProductForm({
           </label>
           <label className="flex items-center gap-2">
             <input type="checkbox" name="featured" defaultChecked={product?.featured} />
-            Destacado
+            Mostrar en Ofertas y destacados de la portada
           </label>
           <label className="grid gap-1">
             Usos, separados por coma

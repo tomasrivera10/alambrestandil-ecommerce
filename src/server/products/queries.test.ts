@@ -31,10 +31,20 @@ const product = {
   shortDescription: "Tejido",
   priceVisibility: "HIDDEN",
   price: { toNumber: () => 98765 },
+  purchasePrice: { toNumber: () => 54321 },
+  discountPrice: { toNumber: () => 70000 },
   category: { slug: "mallas", name: "Mallas" },
   images: [],
   complements: [],
-  variants: [{ id: "v1", price: { toNumber: () => 87654 }, inventory: null }],
+  variants: [
+    {
+      id: "v1",
+      price: { toNumber: () => 87654 },
+      purchasePrice: { toNumber: () => 43210 },
+      discountPrice: { toNumber: () => 75000 },
+      inventory: null,
+    },
+  ],
 };
 
 beforeEach(() => {
@@ -53,7 +63,7 @@ describe("public price privacy", () => {
     const result = await getProductBySlug("mallas", "tejido");
     expect(result?.price).toBeNull();
     expect(result?.variants[0].price).toBeNull();
-    expect(JSON.stringify(result)).not.toMatch(/98765|87654/);
+    expect(JSON.stringify(result)).not.toMatch(/98765|87654|54321|43210|70000|75000/);
   });
   it("keeps explicitly public prices available", async () => {
     findFirst.mockResolvedValue({ ...product, priceVisibility: "PUBLIC" });

@@ -6,6 +6,7 @@ import { isPlausiblePhone, normalizeArPhone } from "@/lib/phone";
 import { checkoutSchema } from "@/features/orders/schema";
 import { buildOrderWhatsappMessage, whatsappUrl } from "@/features/whatsapp/message";
 import { decimalToNumber } from "@/lib/format";
+import { activeOffer } from "@/server/products/offer";
 import { site } from "@/content/site";
 
 async function whatsappDigits() {
@@ -32,7 +33,11 @@ export async function createOrder(raw: unknown) {
   }
 
   const variants = await prisma.productVariant.findMany({
-    where: { id: { in: input.items.map((item) => item.variantId) }, active: true, product: { status: "ACTIVE" } },
+    where: {
+      id: { in: input.items.map((item) => item.variantId) },
+      active: true,
+      product: { status: "ACTIVE" },
+    },
     include: { product: true },
   });
   if (variants.length !== input.items.length) {
@@ -61,7 +66,17 @@ export async function createOrder(raw: unknown) {
     let hasPrice = false;
     const lines = input.items.map((item) => {
       const variant = variants.find((entry) => entry.id === item.variantId)!;
-      const unitPrice = decimalToNumber(variant.price) ?? decimalToNumber(variant.product.price);
+      const regular = decimalToNumber(variant.price) ?? decimalToNumber(variant.product.price);
+      const discount =
+        decimalToNumber(variant.discountPrice) ??
+        (variant.price == null ? decimalToNumber(variant.product.discountPrice) : null);
+      const unitPrice =
+        activeOffer(
+          regular,
+          discount,
+          variant.product.promotionStartsAt,
+          variant.product.promotionEndsAt,
+        ) ?? regular;
       const visibility = variant.product.priceVisibility;
       const lineTotal =
         unitPrice != null && visibility !== "HIDDEN" ? unitPrice * item.quantity : null;

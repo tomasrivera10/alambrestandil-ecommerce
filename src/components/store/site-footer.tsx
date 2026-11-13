@@ -62,8 +62,6 @@ export function SiteFooter() {
           <nav aria-label="Ayuda y empresa">
             <h3>Te ayudamos</h3>
             <Link href="/calcular-alambrado">Calculá tu alambrado</Link>
-            <Link href="/instalaciones">Pedí instalación</Link>
-            <Link href="/nosotros">Conocenos</Link>
             <Link href="/pedido">Tu pedido</Link>
           </nav>
         </div>

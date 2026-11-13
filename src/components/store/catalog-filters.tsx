@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { SlidersHorizontal, Search, X, ArrowRight, ChevronRight } from "lucide-react";
+import { SlidersHorizontal, Search, X, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -28,7 +28,7 @@ export function CatalogFilters(props: FilterProps) {
   const [open, setOpen] = useState(false);
   const [pending, startTransition] = useTransition();
   const router = useRouter();
-  const form = (mobile: boolean) => (
+  const form = () => (
     <form
       className="filter-form"
       onSubmit={(event) => {
@@ -55,15 +55,15 @@ export function CatalogFilters(props: FilterProps) {
           />
         </div>
       </label>
-      <fieldset className="filter-group">
-        <legend>Categorías</legend>
+      <div className="filter-group" aria-label="Categorías">
+        <h3>Categorías</h3>
+        <div className="filter-category-list">
         <Link
           href={categoryLink(props, "")}
           onClick={() => setOpen(false)}
           className={!props.currentCategory ? "filter-category selected" : "filter-category"}
         >
-          Todos los productos
-          <ChevronRight className="navigation-chevron" size={16} strokeWidth={1.75} aria-hidden="true" />
+          <span>Todos los productos</span>
         </Link>
         {props.categories.map((category) => (
           <Link
@@ -76,14 +76,16 @@ export function CatalogFilters(props: FilterProps) {
                 : "filter-category"
             }
           >
-            {category.name}
+            <span className="filter-category-name">{category.name}</span>
             <span className="filter-category-trailing">
               <span>{category._count.products}</span>
-              <ChevronRight className="navigation-chevron" size={16} strokeWidth={1.75} aria-hidden="true" />
             </span>
           </Link>
         ))}
-      </fieldset>
+        </div>
+      </div>
+      <div className="filter-refine-heading"><h3>Refiná los resultados</h3><span>{props.total} {props.total === 1 ? "producto" : "productos"}</span></div>
+      <div className="filter-fields">
       {(props.brands.length > 0 || props.query.marca) && (
         <label className="filter-label">
           Marca
@@ -112,6 +114,7 @@ export function CatalogFilters(props: FilterProps) {
           </select>
         </label>
       ))}
+      </div>
       <label className="availability-filter">
         <input
           type="checkbox"
@@ -121,13 +124,15 @@ export function CatalogFilters(props: FilterProps) {
         />
         Solo con stock disponible
       </label>
-      <Button className="filter-submit" type="submit" disabled={pending}>
-        {pending ? "Buscando…" : mobile ? "Ver resultados" : "Aplicar filtros"}
-        <ArrowRight size={16} />
-      </Button>
-      <Link href={props.basePath} className="filter-reset" onClick={() => setOpen(false)}>
-        Limpiar filtros
-      </Link>
+      <div className="filter-actions">
+        <Button className="filter-submit" type="submit" disabled={pending}>
+          {pending ? "Buscando…" : `Ver ${props.total} ${props.total === 1 ? "producto" : "productos"}`}
+          <ArrowRight size={16} />
+        </Button>
+        <Link href={props.basePath} className="filter-reset" onClick={() => setOpen(false)}>
+          Limpiar filtros
+        </Link>
+      </div>
     </form>
   );
   return (
@@ -137,7 +142,7 @@ export function CatalogFilters(props: FilterProps) {
           <SlidersHorizontal size={17} />
           <h2>Filtrá tu búsqueda</h2>
         </div>
-        {form(false)}
+        {form()}
       </aside>
       <div className="mobile-filters">
         <Sheet open={open} onOpenChange={setOpen}>
@@ -152,7 +157,7 @@ export function CatalogFilters(props: FilterProps) {
               <SheetTitle>Encontrá tu material</SheetTitle>
               <SheetDescription>Elegí las opciones y aplicá los filtros.</SheetDescription>
             </SheetHeader>
-            <div className="filter-panel-body">{form(true)}</div>
+            <div className="filter-panel-body">{form()}</div>
           </SheetContent>
         </Sheet>
       </div>

@@ -39,24 +39,28 @@ export const featuredCategories = [
     name: "Tejidos",
     detail: "Romboidales para tu alambrado.",
     ...categoryPhotos["tejido-romboidal"],
+    src: "/images/categorias-transparentes/tejidos.png",
   },
   {
     slug: "postes-de-hormigon",
     name: "Postes",
     detail: "El sostén de tu alambrado.",
     ...categoryPhotos["postes-de-hormigon"],
+    src: "/images/categorias-transparentes/postes.png",
   },
   {
     slug: "puertas-y-portones",
     name: "Portones",
     detail: "Puertas y portones galvanizados.",
     ...categoryPhotos["puertas-y-portones"],
+    src: "/images/categorias-transparentes/portones.png",
   },
   {
     slug: "accesorios-de-colocacion",
     name: "Accesorios",
     detail: "Cada pieza para la colocación.",
     ...categoryPhotos["accesorios-de-colocacion"],
+    src: "/images/categorias-transparentes/accesorios.png",
   },
 ];
 export const filterLabels: Record<string, string> = {

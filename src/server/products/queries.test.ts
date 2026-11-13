@@ -65,9 +65,11 @@ describe("public price privacy", () => {
     expect(result?.variants[0].price).toBeNull();
     expect(JSON.stringify(result)).not.toMatch(/98765|87654|54321|43210|70000|75000/);
   });
-  it("keeps explicitly public prices available", async () => {
+  it("shows the active offer and original price for public products", async () => {
     findFirst.mockResolvedValue({ ...product, priceVisibility: "PUBLIC" });
-    expect((await getProductBySlug("mallas", "tejido"))?.price).toBe(98765);
+    const result = await getProductBySlug("mallas", "tejido");
+    expect(result?.price).toBe(70000);
+    expect(result?.regularPrice).toBe(98765);
   });
 });
 

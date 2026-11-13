@@ -5,8 +5,6 @@ import { usePathname } from "next/navigation";
 
 export const storeNavigation = [
   { label: "Productos", href: "/productos", section: "productos" },
-  { label: "Instalaciones", href: "/instalaciones", section: "instalaciones" },
-  { label: "Nosotros", href: "/nosotros", section: "nosotros" },
 ] as const;
 
 export function useStoreNavigation(paused = false) {

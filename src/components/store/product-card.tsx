@@ -8,23 +8,24 @@ import type { CatalogProduct } from "@/server/products/queries";
 export function ProductCard({ product }: { product: CatalogProduct }) {
   const reference = !product.imageUrl ? categoryPhotos[product.categorySlug] : null;
   const hasPrice = product.priceVisibility !== "HIDDEN" && product.price != null;
+  const discountPercent = hasPrice && product.regularPrice != null && product.regularPrice > product.price!
+    ? Math.round((1 - product.price! / product.regularPrice) * 100)
+    : 0;
   const inStock = product.available != null && product.available > 0;
   return (
     <Link
       href={`/productos/${product.categorySlug}/${product.slug}`}
       className="store-product-card"
-      aria-label={`Ver opciones de ${product.name}`}
+      aria-label={`Elegir opciones de ${product.name}`}
     >
       <div className="product-card-image">
+        {discountPercent > 0 && <span className="product-card-discount">{discountPercent}% OFF</span>}
         <ProductMedia
           src={product.imageUrl ?? reference?.src ?? null}
           alt={product.imageAlt ?? (reference ? `Imagen de referencia: ${reference.alt}` : null)}
           name={product.name}
           ratio="aspect-square"
         />
-        <span className="product-card-arrow">
-          <ChevronRight size={20} strokeWidth={1.75} aria-hidden="true" />
-        </span>
       </div>
       <div className="product-card-copy">
         <p className="product-category">{product.brand || product.categoryName}</p>
@@ -47,7 +48,7 @@ export function ProductCard({ product }: { product: CatalogProduct }) {
             {inStock ? "Stock disponible" : "Consultar disponibilidad"}
           </span>
           <span className="product-card-cta">
-            Ver opciones <ChevronRight size={17} aria-hidden="true" />
+            Elegir opciones <ChevronRight size={17} aria-hidden="true" />
           </span>
         </div>
       </div>

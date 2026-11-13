@@ -7,6 +7,7 @@ import { FadeContent } from "@/components/store/fade-content";
 import { ProductGallery } from "@/components/store/product-gallery";
 import { ProductSelection } from "@/components/store/product-selection";
 import { ProductCard } from "@/components/store/product-card";
+import { PriceTag } from "@/components/store/price-tag";
 import { getProductBySlug } from "@/server/products/queries";
 import { categoryPhotos } from "@/content/storefront";
 import { site } from "@/content/site";
@@ -95,6 +96,7 @@ export default async function ProductPage({ params }: Props) {
               />
             ) : (
               <div className="product-unavailable">
+                <PriceTag visibility={product.priceVisibility} price={product.price} regularPrice={product.regularPrice} promotionName={product.promotionName} layout="catalog" />
                 <p>Consultanos por las opciones de este producto.</p>
                 <a href={wa} className="store-button">
                   Consultar disponibilidad <MessageCircle size={17} />

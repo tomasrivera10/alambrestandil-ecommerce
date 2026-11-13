@@ -7,6 +7,7 @@
   font-weight: 500;
   line-height: 1.3;
 }
+.catalog-price-percent,
 .catalog-price-offer,
 .store-offer-label {
   display: inline-block;

@@ -31,7 +31,8 @@ export function ProductMedia({
               src.startsWith("/images/catalogo-estudio/") ||
               src.startsWith("/images/romboidal/") ||
               src.startsWith("/images/productos-generados/") ||
-              src.startsWith("/images/productos-transparentes/")
+              src.startsWith("/images/productos-transparentes/") ||
+              src.endsWith("-catalogo.png")
                 ? { objectFit: "contain" }
                 : undefined
             }

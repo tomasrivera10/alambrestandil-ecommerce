@@ -4,7 +4,7 @@ import { prisma } from "@/server/db";
 import { decimalToNumber } from "@/lib/format";
 import { activeOffer } from "./offer";
 import { rankSearchHit } from "@/features/search/rank";
-import { currentStudioImage } from "@/features/products/studio-image";
+import { catalogImageForProduct, currentStudioImage, galleryImagesForProduct } from "@/features/products/studio-image";
 import type { Prisma } from "@/generated/prisma/client";
 
 export type CatalogProduct = {
@@ -51,7 +51,10 @@ function mapProduct(product: {
     discountPrice: { toNumber(): number } | null;
   }[];
 }): CatalogProduct {
-  const image = product.images[0] ? currentStudioImage(product.slug, product.images[0]) : null;
+  const image = catalogImageForProduct(
+    product.slug,
+    product.images[0] ? currentStudioImage(product.slug, product.images[0]) : null,
+  );
   const available = product.variants.reduce((sum, variant) => {
     if (!variant.inventory) return sum;
     return sum + (variant.inventory.onHand - variant.inventory.reserved);
@@ -225,10 +228,21 @@ async function loadGetProductBySlug(categorySlug: string, slug: string) {
   } = product;
   void _purchasePrice;
   void _discountPrice;
+  const regularProductPrice = decimalToNumber(product.price);
+  const productOffer = activeOffer(
+    regularProductPrice,
+    decimalToNumber(product.discountPrice),
+    product.promotionStartsAt,
+    product.promotionEndsAt,
+  );
   return {
     ...publicProduct,
-    images: product.images.map((image) => currentStudioImage(product.slug, image)),
-    price: product.priceVisibility === "HIDDEN" ? null : decimalToNumber(product.price),
+    images: galleryImagesForProduct(
+      product.slug,
+      product.images.map((image) => currentStudioImage(product.slug, image)),
+    ),
+    price: product.priceVisibility === "HIDDEN" ? null : (productOffer ?? regularProductPrice),
+    regularPrice: product.priceVisibility === "HIDDEN" || productOffer == null ? null : regularProductPrice,
     variants: product.variants.map((variant) => {
       const sale = decimalToNumber(variant.price) ?? decimalToNumber(product.price);
       const discount =

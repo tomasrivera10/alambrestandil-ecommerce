@@ -24,6 +24,7 @@ export function PriceTag({
         {regularPrice != null && regularPrice > price && (
           <span className="catalog-price-old">
             <s>{formatMoney(regularPrice)}</s>
+            <span className="catalog-price-percent">{Math.round((1 - price / regularPrice) * 100)}% OFF</span>
             {promotionName && <span className="catalog-price-offer">{promotionName}</span>}
           </span>
         )}

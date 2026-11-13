@@ -287,7 +287,15 @@
       "src/components/store/price-tag.tsx",
       "src/app/admin/workspace.css"
     ],
-    "scope": "Los tokens del frontmatter y los componentes de este archivo corresponden a la tienda pública. El panel administrativo tiene una dirección Operate propia, documentada en DESIGN.md y .impeccable/surfaces/src-app-admin-panel-layout-tsx.md: navegación carbón, superficies claras, fotografías de producto y precios diferenciados por función."
+    "scope": "Los tokens del frontmatter y los componentes de este archivo corresponden a la tienda pública. El panel administrativo tiene una dirección Operate propia, documentada en DESIGN.md y .impeccable/surfaces/src-app-admin-panel-layout-tsx.md: navegación carbón, superficies claras, fotografías de producto y precios diferenciados por función.",
+    "storefrontCampaign": {
+      "reference": "Mercado Libre; user requested",
+      "font": "Figtree approximation; Proxima Nova is not installed",
+      "headerRows": 2,
+      "shipping": "Envíos en Tandil",
+      "campaignDiscount": "Rounded maximum from active public featured product offers",
+      "adminTypography": "Unchanged: Archivo and Figtree"
+    }
   },
   "components": [
     {

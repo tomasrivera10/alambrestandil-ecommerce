@@ -7,24 +7,26 @@ import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 
 const slides = [
   {
-    title: "Postes para tu alambrado",
+    title: "Tu próximo proyecto empieza acá",
+    category: "postes",
     detail: "Eucalipto, quebracho y hormigón.",
     href: "/productos/postes-de-hormigon",
     action: "Ver postes",
-    src: "/images/tandil/cercos.webp",
-    alt: "Alambrado instalado con postes de hormigón en Tandil",
+    src: "/images/campanas/postes-tejido-rojo-v1.png",
+    alt: "Composición publicitaria generada con IA de postes y tejido romboidal",
   },
   {
     title: "Clavos para cada trabajo",
+    category: "clavos",
     detail: "Medidas y presentaciones para obra, madera y techos.",
     href: "/productos/clavos",
     action: "Ver clavos",
-    src: "/images/clavo-punta-paris-real-transparente.png",
-    alt: "Clavo punta París, fotografía de referencia con fondo transparente",
+    src: "/images/campanas/clavos-madera-carbon-v1.png",
+    alt: "Composición publicitaria generada con IA de clavos sobre madera",
   },
 ];
 
-export function HomePromoCarousel() {
+export function HomePromoCarousel({ discounts }: { discounts: Record<string, number> }) {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
@@ -61,13 +63,16 @@ export function HomePromoCarousel() {
       <div className="home-promo-stage">
         {slides.map((slide, index) => (
           <div className={`home-promo-slide${active === index ? " is-active" : ""}`} key={slide.href} aria-hidden={active !== index} inert={active !== index}>
+            <div className="home-promo-photo">
+              <Image src={slide.src} alt={slide.alt} fill sizes="100vw" priority={index === 0} />
+            </div>
             <div className="home-promo-copy">
               <h2>{slide.title}</h2>
+              {discounts[slide.category] > 0 && (
+                <div className="home-promo-offer"><span>HASTA</span><strong>{discounts[slide.category]}<span>%</span><em>OFF</em></strong><small>En productos seleccionados</small></div>
+              )}
               <p>{slide.detail}</p>
               <Link href={slide.href} className="store-button">{slide.action} <ArrowUpRight size={18} aria-hidden="true" /></Link>
-            </div>
-            <div className="home-promo-photo">
-              <Image src={slide.src} alt={slide.alt} fill sizes="(min-width: 800px) 58vw, 100vw" priority={index === 0} />
             </div>
           </div>
         ))}

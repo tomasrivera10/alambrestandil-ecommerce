@@ -1,11 +1,13 @@
 import "./storefront.css";
 import { SiteFooter } from "@/components/store/site-footer";
 import { SiteHeader } from "@/components/store/site-header";
+import { listCategories } from "@/server/products/queries";
 
-export default function StoreLayout({ children }: { children: React.ReactNode }) {
+export default async function StoreLayout({ children }: { children: React.ReactNode }) {
+  const categories = (await listCategories()).map(({ slug, name }) => ({ slug, name }));
   return (
     <div className="storefront flex min-h-full flex-col">
-      <SiteHeader />
+      <SiteHeader categories={categories} />
       <a href="#contenido" className="skip-link">
         Saltar al contenido
       </a>

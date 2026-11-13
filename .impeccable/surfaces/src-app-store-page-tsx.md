@@ -24,3 +24,11 @@ FORM: dirección elegida explícitamente por el usuario, referencia YETI + Milwa
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
 
 Pendiente externo: video original de Instagram. No se simula ni se declara descargado. No modificar datos de producción para poblar imágenes o precios.
+
+## Actualización aprobada · noviembre 2026
+THESIS: comercio de materiales con estructura comercial inspirada en la referencia Mercado Libre provista por el usuario.
+OWN-WORLD: se conserva marca real, blanco, rojo y carbón; Figtree en títulos y cifras aproxima Proxima Nova.
+STORY: buscar material, explorar ofertas activas y armar pedido asistido.
+FIRST VIEWPORT: header de dos filas con buscador central y «Envíos en Tandil»; carrusel a toda anchura con producto a la derecha, texto y porcentaje de oferta a la izquierda. En móvil la foto antecede al texto.
+FORM: implementación directa según referencia explícita; ambas imágenes de IA fueron mostradas y aprobadas antes de integrar.
+FINISH: inspección propia en escritorio y móvil; TypeScript, ESLint y pruebas de precios públicos. La revisión detectó y corrigió diferencia de redondeo en porcentajes.

@@ -20,10 +20,17 @@ export default async function HomePage() {
     .map((slug) => catalog.find((product) => product.slug === slug))
     .filter((product) => product != null);
 
+  const discounts: Record<string, number> = { postes: 0, clavos: 0 };
+  for (const product of products) {
+    if (product.priceVisibility === "HIDDEN" || product.price == null || product.regularPrice == null || product.regularPrice <= product.price) continue;
+    const category = product.categorySlug === "clavos" ? "clavos" : "postes";
+    discounts[category] = Math.max(discounts[category], Math.round((1 - product.price / product.regularPrice) * 100));
+  }
+
   return (
     <>
     <section id="productos" data-store-section="productos" className="store-section home-commerce" aria-label="Promociones de productos">
-      <div className="store-container"><HomePromoCarousel /></div>
+      <HomePromoCarousel discounts={discounts} />
     </section>
     <section className="store-section store-container home-categories" aria-labelledby="categories-title">
       <div className="section-heading">

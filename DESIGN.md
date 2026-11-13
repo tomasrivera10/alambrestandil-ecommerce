@@ -18,19 +18,19 @@ colors:
   stock-available: "#326042"
 typography:
   display:
-    fontFamily: "Archivo, sans-serif"
+    fontFamily: "Figtree, sans-serif"
     fontSize: "clamp(3.5rem, 6.5vw, 6rem)"
     fontWeight: 700
     lineHeight: 1.02
     letterSpacing: "-0.035em"
   headline:
-    fontFamily: "Archivo, sans-serif"
+    fontFamily: "Figtree, sans-serif"
     fontSize: "clamp(2rem, 3.5vw, 3rem)"
     fontWeight: 700
     lineHeight: 1.12
     letterSpacing: "-0.035em"
   product-title:
-    fontFamily: "Archivo, sans-serif"
+    fontFamily: "Figtree, sans-serif"
     fontSize: "18px"
     fontWeight: 700
     lineHeight: 1.3
@@ -271,3 +271,11 @@ Proveedores conserva el recorrido documento → fila → presentación exacta �
 ### Precios de las tarjetas del catálogo · octubre 2026
 
 El bloque comercial separa «Desde» (12px, gris) del importe Figtree de 24–28px y peso 600, con cifras tabulares y unidad de venta de 12px debajo. El precio oculto conserva «Consultar precio». Disponibilidad de 12px; verde e indicador solo cuando hay stock registrado. «Ver opciones» ocupa una fila propia de al menos 44px, borde gris y hover rojo. Las tarjetas usan columna flexible para alinear las acciones al pie de cada fila y conservan dos columnas en móvil. Se mantiene la geometría y fotografía actuales; no hay cambios a importes, inventario ni consultas públicas.
+
+### Tienda pública · referencia Mercado Libre (noviembre 2026)
+
+Por pedido del usuario, la tienda pública usa Figtree también en títulos para aproximar las formas de Proxima Nova; no se incluye ni se declara la fuente comercial exacta. El panel conserva Archivo. Precios de catálogo de 26–30px y peso 400; destacados de 25–32px y peso 400. Las cifras de campaña usan 62–112px y peso 800.
+
+Header blanco de dos filas en escritorio: marca, buscador y pieza roja «Envíos en Tandil» arriba; dirección, navegación y pedido debajo. En móvil usa menú, marca y pedido, buscador completo y una franja con dirección y envíos. Sin promesas de gratuidad ni plazos.
+
+Carrusel de ancho completo con dos composiciones de IA aprobadas previamente por el usuario: postes y tejido sobre rojo, clavos y madera sobre carbón. Texto HTML superpuesto en escritorio y debajo de la foto en móvil. Los mensajes «Hasta N% OFF» se calculan exclusivamente con precios públicos y ofertas activas de los destacados; si no hay oferta, no aparece porcentaje. Flechas, indicadores y pausa por interacción; movimiento reducido respetado. Procedencia y prompts en `public/images/campanas/*.generation.json`.

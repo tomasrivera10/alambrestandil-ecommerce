@@ -279,3 +279,7 @@ Por pedido del usuario, la tienda pública usa Figtree también en títulos para
 Header blanco de dos filas en escritorio: marca, buscador y pieza roja «Envíos en Tandil» arriba; dirección, navegación y pedido debajo. En móvil usa menú, marca y pedido, buscador completo y una franja con dirección y envíos. Sin promesas de gratuidad ni plazos.
 
 Carrusel de ancho completo con dos composiciones de IA aprobadas previamente por el usuario: postes y tejido sobre rojo, clavos y madera sobre carbón. Texto HTML superpuesto en escritorio y debajo de la foto en móvil. Los mensajes «Hasta N% OFF» se calculan exclusivamente con precios públicos y ofertas activas de los destacados; si no hay oferta, no aparece porcentaje. Flechas, indicadores y pausa por interacción; movimiento reducido respetado. Procedencia y prompts en `public/images/campanas/*.generation.json`.
+
+### Carga de la tienda · noviembre 2026
+
+La carga usa el logo oficial sobre blanco y un cerco SVG con tejido romboidal entrelazado, postes galvanizados, travesaño y amarres. El tejido se revela de izquierda a derecha y recibe un reflejo metálico; no usa imágenes ni dependencias nuevas. El fallback de Next comparte la pieza. Al entrar o cambiar ruta o parámetros (búsqueda, filtros y atrás/adelante), una presentación de 1,6 s permite apreciar la marca también con páginas precargadas, sin demorar consultas ni navegación. Desaparece por CSS, no captura clics y se oculta ante foco de teclado. Movimiento reducido: cerco estático y salida de 250 ms. Mensaje Figtree de 17–20 px, peso 550.

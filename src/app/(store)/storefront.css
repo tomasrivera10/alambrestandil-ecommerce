@@ -2563,11 +2563,13 @@
 
 /* The storefront opens with shopping, not a full-screen campaign. */
 .home-commerce { padding: 0 0 28px; }
-.home-promo-stage { position: relative; height: clamp(340px, 32vw, 490px); overflow: hidden; background: #bb0000; }
-.home-promo-slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity 550ms ease, visibility 550ms; }
+/* Match the 2172 × 724 artwork and cap its CSS width at the source resolution. */
+.home-promo-stage { position: relative; display: grid; width: 100%; max-width: 2172px; margin-inline: auto; overflow: hidden; background: #bb0000; }
+.home-promo-slide { position: relative; grid-area: 1 / 1; min-width: 0; aspect-ratio: 3 / 1; background: #b80000; opacity: 0; visibility: hidden; transition: opacity 550ms ease, visibility 550ms; }
+.home-promo-slide:nth-child(2) { background: #202225; }
 .home-promo-slide.is-active { opacity: 1; visibility: visible; z-index: 1; }
 .home-promo-photo { position: absolute; inset: 0; }
-.home-promo-photo img { object-fit: cover; object-position: center; }
+.home-promo-photo img { object-fit: contain; object-position: center; }
 .home-promo-copy { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; width: min(100% - 160px, 1200px); height: 100%; margin-inline: auto; padding-block: 30px 40px; color: #fff; }
 .home-promo-copy h2 { max-width: 44%; color: #fff; font-size: clamp(28px, 3.3vw, 49px); font-weight: 750; line-height: 1.05; letter-spacing: -.03em; }
 .home-promo-copy p { max-width: 43%; margin: 12px 0 18px; color: #fff; font-size: clamp(14px, 1.2vw, 17px); line-height: 1.4; }
@@ -2584,7 +2586,7 @@
 .home-promo-next { right: 0; border-radius: 40px 0 0 40px; }
 .home-promo-arrow:hover { background: #f5eded; }
 .home-promo-dots { position: absolute; z-index: 3; display: flex; left: 50%; bottom: 12px; transform: translateX(-50%); }
-.home-promo-dots button { display: grid; place-items: center; width: 28px; height: 28px; }
+.home-promo-dots button { display: grid; place-items: center; width: 44px; height: 44px; }
 .home-promo-dots button::after { content: ""; width: 8px; height: 8px; border: 1px solid white; border-radius: 50%; }
 .home-promo-dots button.is-active::after { background: white; }
 .home-featured .offers-products-heading { margin: 32px 0 18px; }
@@ -2593,19 +2595,20 @@
 @media (max-width: 1000px) {
   .home-featured .offers-products { grid-auto-columns: minmax(230px, 32%); }
 }
-@media (max-width: 800px) {
-  .home-promo-stage { height: 530px; }
-  .home-promo-photo { bottom: auto; height: 250px; }
-  .home-promo-photo img { object-fit: cover; object-position: 77% center; }
-  .home-promo-slide { background: #b80000; }
-  .home-promo-slide:nth-child(2) { background: #202225; }
-  .home-promo-copy { justify-content: flex-start; width: auto; margin: 0; padding: 266px 24px 32px; }
+@media (max-width: 1100px) {
+  .home-promo-slide { aspect-ratio: auto; }
+  /* Trim only the empty left side of the artwork, preserving its full height. */
+  .home-promo-photo { position: relative; height: clamp(192px, 60vw, 360px); overflow: hidden; }
+  .home-promo-photo img { left: auto !important; right: 0 !important; width: clamp(576px, 180vw, 1080px) !important; max-width: none; }
+  .home-promo-copy { justify-content: flex-start; width: auto; height: auto; margin: 0; padding: 20px clamp(24px, 5vw, 48px) 64px; }
   .home-promo-copy h2 { max-width: 100%; font-size: 30px; }
-  .home-promo-copy p { max-width: 100%; margin: 8px 0 14px; font-size: 14px; }
+  .home-promo-copy p { max-width: 100%; margin: 8px 0 14px; font-size: 16px; }
   .home-promo-offer { margin-top: 9px; }
   .home-promo-offer strong { font-size: 65px; }
-  .home-promo-arrow { top: 125px; width: 36px; height: 52px; }
+  .home-promo-arrow { top: clamp(96px, 30vw, 180px); width: 44px; height: 52px; }
   .home-promo-dots { bottom: 4px; }
+}
+@media (max-width: 800px) {
   .home-featured .offers-products { grid-auto-columns: minmax(240px,72vw); }
   .home-featured .offers-products-heading { margin-top: 25px; }
 }

@@ -1,0 +1,96 @@
+.loading,
+.transition {
+  display: grid;
+  place-items: center;
+  padding: 48px 24px;
+  background: #fff;
+}
+
+.loading { min-height: calc(100svh - 112px); }
+
+.transition {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  /* Hold the branded moment, then reveal the already-loaded page. */
+  animation: reveal-page 1.6s linear forwards;
+}
+
+/* Keyboard users can move straight to the page without a visual obstruction. */
+:global(body):has(:focus-visible) .transition {
+  animation: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(440px, 100%);
+  text-align: center;
+}
+
+.brand :global(.brand-logo) { width: 260px; height: 90px; }
+.brand :global(.brand-logo img) { width: 330px; height: 330px; }
+
+.wire {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 24px;
+}
+
+.mesh {
+  clip-path: inset(0);
+  animation: weave-fence 2.8s cubic-bezier(.16, 1, .3, 1) infinite;
+}
+
+.gleam { animation: steel-light 2.8s ease-in-out infinite; }
+
+.transition .mesh,
+.transition .gleam {
+  animation-duration: 1.6s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.message {
+  margin: 18px 0 0;
+  color: #171b1f;
+  font-size: clamp(17px, 2vw, 20px);
+  font-weight: 550;
+  letter-spacing: -.025em;
+}
+
+.message span { color: #d30000; }
+
+@keyframes weave-fence {
+  0% { clip-path: inset(0 90% 0 0); }
+  48%, 100% { clip-path: inset(0); }
+}
+
+@keyframes steel-light {
+  0%, 35% { transform: translateX(-150px); opacity: 0; }
+  45% { opacity: .7; }
+  85%, 100% { transform: translateX(360px); opacity: 0; }
+}
+
+@keyframes reveal-page {
+  0%, 84% { opacity: 1; visibility: visible; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+@media (max-width: 700px) {
+  .loading { min-height: calc(100svh - 76px); }
+  .brand :global(.brand-logo) { width: 225px; height: 78px; }
+  .brand :global(.brand-logo img) { width: 285px; height: 285px; }
+  .wire { margin-top: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mesh, .gleam { animation: none; }
+  .gleam { opacity: 0; }
+  .transition { animation: reveal-page .25s linear forwards; }
+}

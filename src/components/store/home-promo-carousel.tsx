@@ -21,8 +21,8 @@ const slides = [
     detail: "Medidas y presentaciones para obra, madera y techos.",
     href: "/productos/clavos",
     action: "Ver clavos",
-    src: "/images/campanas/clavos-madera-carbon-v1.png",
-    alt: "Composición publicitaria generada con IA de clavos sobre madera",
+    src: "/images/campanas/clavos-madera-carbon-v2.png",
+    alt: "Composición publicitaria generada con IA de clavos punta París, cabeza chata, cabeza perdida, espiralado, cajonero y cabeza de plomo sobre madera",
   },
 ];
 
@@ -64,7 +64,15 @@ export function HomePromoCarousel({ discounts }: { discounts: Record<string, num
         {slides.map((slide, index) => (
           <div className={`home-promo-slide${active === index ? " is-active" : ""}`} key={slide.href} aria-hidden={active !== index} inert={active !== index}>
             <div className="home-promo-photo">
-              <Image src={slide.src} alt={slide.alt} fill sizes="100vw" priority={index === 0} />
+              <Image
+                src={slide.src}
+                alt={slide.alt}
+                fill
+                sizes="(max-width: 320px) 576px, (max-width: 600px) 180vw, (max-width: 1100px) 1080px, (max-width: 2172px) 100vw, 2172px"
+                quality={95}
+                loading={index === 0 ? "eager" : "lazy"}
+                fetchPriority={index === 0 ? "high" : "auto"}
+              />
             </div>
             <div className="home-promo-copy">
               <h2>{slide.title}</h2>

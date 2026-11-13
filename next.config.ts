@@ -2,6 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  images: {
+    qualities: [75, 95],
+  },
   distDir: process.env.NEXT_DIST_DIR || ".next",
   allowedDevOrigins: ["127.0.0.1"],
   serverExternalPackages: ["@napi-rs/canvas", "tesseract.js", "pdfjs-dist", "exceljs", "mammoth"],
